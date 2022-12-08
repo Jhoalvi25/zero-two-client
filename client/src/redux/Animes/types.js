@@ -1,0 +1,3 @@
+export const GET_ANIMES = "GET_ANIMES";
+export const SEARCH_ANIMES = "SEARCH_ANIMES";
+export const GET_DETAIL_ANIMES = "GET_DETAILS_ANIME";
