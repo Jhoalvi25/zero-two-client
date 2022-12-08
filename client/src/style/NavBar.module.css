@@ -1,0 +1,60 @@
+.nav {
+  background: #ffffff;
+  text-decoration: none;
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+  top: 0;
+}
+
+.elements {
+  gap: 850px;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 70px;
+  margin-left: 10px;
+  display: flex;
+}
+
+.linea {
+  background: #4a235a;
+  height: 10px;
+  width: 100%;
+  display: block;
+  border-bottom-left-radius: 20px;
+}
+
+.explore {
+  margin-top: 25px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-weight: bold;
+}
+
+.down {
+  margin-top: 29px;
+}
+
+.elem {
+  display: flex;
+}
+
+.routes {
+ display: flex;
+}
+
+.routes Link{
+    text-decoration: none;
+}
+
+.sus{
+    text-decoration: none;
+    margin-right: 30px;
+}
+
+.user{
+    text-decoration: none;
+}
