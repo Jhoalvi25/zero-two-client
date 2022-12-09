@@ -3,13 +3,28 @@ import React from "react";
 import zero from "../img/zero11.jpg";
 
 export default function AnimeCards(props) {
-  console.log("rrr", props);
   return (
     <div>
-      <image src={props.image} alt="image" />
-      <strong>{props.name}</strong>
-      {props.type}
-      {props.rating}
+      <div>
+        {props.image ? (
+          <img src={`${props.image}`} alt="img" />
+        ) : (
+          <img src={zero} alt="img"></img>
+        )}
+      </div>
+      <br />
+      <div>
+        <div>
+          <strong>{props.name}</strong>
+        </div>
+
+        <div>
+          <strong>{props.type}</strong>
+        </div>
+        <div>
+          <strong>{props.rating}</strong>
+        </div>
+      </div>
     </div>
   );
 }

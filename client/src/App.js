@@ -18,7 +18,7 @@ function App() {
       <div className="App">
         <Switch>
           <Route exact path="/" component={LandingPage} />
-          <Route path="/dashboard" component={Dashboard} />
+          <Route path="/zerotwo" component={Dashboard} />
         </Switch>
       </div>
     </BrowserRouter>

@@ -1,8 +1,8 @@
-import { GET_ANIMES } from "../types";
+import { GET_ANIMES, SEARCH_ANIMES } from "../types";
 
 const initialState = {
-  allAnimes: [],
   animes: [],
+  anime: [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -10,9 +10,14 @@ function rootReducer(state = initialState, action) {
     case GET_ANIMES: {
       return {
         ...state,
-        animes: action.payload,
+        animes: action.payload.data,
       };
     }
+    case SEARCH_ANIMES:
+      return {
+        ...state,
+        anime: action.payload.data,
+      };
     default:
       return state;
   }
