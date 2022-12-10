@@ -10,6 +10,7 @@ import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import caruselImg from "../Carusel-logyc/caruselImg";
 import CardInformative from "./CardInformative";
+import CardBasic from "./CardBasic";
 
 export default function LandingPage() {
   return (
@@ -30,30 +31,9 @@ export default function LandingPage() {
         <h2 className={style.section1}>New Episodes - Winter - Week 2</h2>
       </div>
       <section className={style.section_cont}>
-        {sectionCard &&
-          sectionCard.map((elem) => {
+        {sectionCard && sectionCard.map((elem) => {
             return (
-              // <div className={style.card}>
-              //   <Link to={"/home/" + elem.id}>
-              //     <div className={style.left}>
-              //       <img
-              //         src={elem.image}
-              //         alt="img"
-              //         width="300px"
-              //         height="170px"
-              //       />
-              //       <h3>{elem.name}</h3>
-              //     </div>
-              //     <div className={style.rigth}>
-              //       <span>Description:</span>
-              //       <p>
-              //         Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              //       </p>
-              //       <span>Date: 09/12/2002</span>
-              //     </div>
-              //   </Link>
-              // </div>
-              <CardInformative name={elem.name} img={elem.image}/>
+              <CardInformative name={elem.name} img={elem.image} id={elem.id} key={elem.id}/>
             );
           })}
         <Link to={"/animes"}>
@@ -62,9 +42,11 @@ export default function LandingPage() {
           </span>
         </Link>
       </section>
-      <section className={style.free}>
-        <h1>You can watch it for free...</h1>
-        <div className={style.freeCont}>
+      <h2 style={{padding: '2em', color:'#1A0750'}}>You can watch it for free...</h2>
+      {/*<section className={style.free}>*/ }
+      <section className={style.section_free}>
+        
+        {/* <div className={style.freeCont}>
           <div className={style.cardDos}>
             <button className={style.btn}>
               {" "}
@@ -104,7 +86,24 @@ export default function LandingPage() {
               <FontAwesomeIcon icon={faChevronRight} />{" "}
             </button>
           </div>
+        </div> */}
+        <button className={style.btn}>
+              {" "}
+              <FontAwesomeIcon icon={faChevronLeft} />
+            </button>
+        <div className={style.cardsContainer}>
+          {sectionCard && sectionCard.map((anime, i) => {
+            return (
+            i < 3 ? <CardBasic name={anime.name} img={anime.image} key={anime +'s' + i} />: ''
+            )
+            
+          })}
         </div>
+        <button className={style.btn}>
+              {" "}
+              <FontAwesomeIcon icon={faChevronRight} />{" "}
+            </button>
+        
       </section>
     </div>
   );
