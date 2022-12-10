@@ -12,6 +12,12 @@
     height: 20px;
     fill: #1A0750;
 }
+
+.icon{
+    margin-left: 8px;
+}
+
+
 .footer::before {
    
     content: "";
