@@ -1,7 +1,147 @@
-.container {
-  background-color: rgba(0, 0, 0, 0.8);
-  position: fixed;
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* header */
+
+.header {
+  background-image: url("../img/2102.i518.009_sky_cloud_evening_illustration.jpg");
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: auto;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+/* tittle */
+
+.header h1 {
+  margin-top: auto;
+  padding-top: 20px;
+  color: white;
+  font-size: 28px;
+}
+
+.header span {
+  color: #ffcb1d;
+}
+
+/* espacio */
+
+.space {
+  background: #ffffff;
+  height: 50px;
   width: 100%;
-  z-index: 100;
-  top: 0;
+  display: block;
+}
+
+/* sección */
+
+.section1 {
+  color: white;
+  background-color: #47037c;
+  padding: 40px;
+  font-size: 20px;
+}
+
+/*scroll*/
+
+body::-webkit-scrollbar {
+  width: 10px;
+  background: #ecf0f1;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #47037c;
+  border-radius: 5px;
+}
+
+/*sección 2 */
+* {
+  text-decoration: none;
+}
+
+.section_cont {
+  background-color: #1a0750;
+  text-decoration: none;
+}
+
+.card {
+  display: inline-block;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px;
+}
+
+.card h3 {
+  color: black;
+}
+
+.card span {
+  color: white;
+}
+
+.card p {
+  color: white;
+  margin: 10px;
+}
+
+.left {
+  background-color: #ecf0f1;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+.rigth {
+  background-color: #47037c;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  text-decoration: none;
+}
+
+.left:hover {
+  border: solid 2px #c374ff;
+}
+
+.rigth:hover {
+  border: solid 2px #c374ff;
+}
+
+.down {
+  color: white;
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+/* seccion dos */
+
+.free h1 {
+  margin: 50px;
+}
+
+.freeCont {
+  background-color: #47037c;
+}
+
+.cardDos {
+  display: inline-flex;
+  align-items: center;
+  padding: 20px;
+  margin: 50px;
+  justify-content: space-between;
+}
+
+.img {
+  width: 100%;
+  width: 170px;
+  height: 200px;
+  background-color: #fff;
+  border: solid 2px #c374ff;
+  border-radius: 25px;
+  box-shadow: 0px 10px 10px #00000030;
+  overflow: hidden;
 }

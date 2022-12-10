@@ -1,3 +1,5 @@
+/* Navbar */
+
 .nav {
   background: #ffffff;
   text-decoration: none;
@@ -8,7 +10,7 @@
 }
 
 .elements {
-  gap: 850px;
+  gap: 800px;
   display: flex;
   align-items: center;
 }
@@ -20,7 +22,7 @@
 }
 
 .linea {
-  background: #4a235a;
+  background: #47037c;
   height: 10px;
   width: 100%;
   display: block;
@@ -43,18 +45,31 @@
 }
 
 .routes {
- display: flex;
+  display: flex;
 }
 
-.routes Link{
-    text-decoration: none;
+.routes Link {
+  text-decoration: none;
 }
 
-.sus{
-    text-decoration: none;
-    margin-right: 30px;
+.sus {
+  text-decoration: none;
+  margin-right: 30px;
 }
 
-.user{
-    text-decoration: none;
+.user {
+  text-decoration: none;
 }
+
+.routes button {
+  margin-left: 8px;
+  padding: 0.7em 1.7em;
+  font-size: 13px;
+  border-radius: 0.5em;
+  background: #ffcb1d;
+  border: 2px solid black;
+  transition: all 0.3s;
+}
+
+
+
