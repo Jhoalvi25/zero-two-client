@@ -18,6 +18,9 @@
     display: flex;
     flex-direction: column;
 }
+.cardInformative a {
+    color: #1A0750;
+}
 
 .cardInformative-first .about {
     background-color: white;

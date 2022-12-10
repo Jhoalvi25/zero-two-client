@@ -1,0 +1,31 @@
+.cardBasic {
+    color: #1A0750;
+    min-height: 300px;
+    max-width: 256px;
+    width: 100%;
+    text-align: left;
+    border-radius: .5em;
+    box-sizing: border-box;
+    overflow: hidden;
+    height: auto;
+}
+
+.carBasic-img-container {
+    border-radius: .5em;
+    height: 70%;
+  
+}
+.carBasic-img-container .anime-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.cardBasic-about {
+    background-color: white;
+    padding: .5em;
+    height: 100%;
+}
+
+.cardBasic-about .title {
+    font-weight: bold;
+}

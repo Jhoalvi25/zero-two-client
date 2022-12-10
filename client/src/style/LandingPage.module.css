@@ -75,6 +75,36 @@ body::-webkit-scrollbar-thumb {
   gap: 1em;
 }
 
+.section_free {
+  background-color: #47037C;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  
+}
+
+.section_free .cardsContainer {
+  width: 70%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  padding: 2em;
+  justify-content: space-between;
+}
+.section_free .btn {
+  width: 50px;
+  height: 50px;
+  color: #fff;
+  background-color: transparent;
+  border: none;
+  font-size: 50px;
+  cursor: pointer;
+  margin: 20px;
+}
+.section_free .btn:hover {
+  opacity: .7;
+}
+
 .card {
   display: inline-block;
   align-items: center;
