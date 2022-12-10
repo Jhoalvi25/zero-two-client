@@ -9,6 +9,7 @@ import sectionCard from "../sections/section1";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import caruselImg from "../Carusel-logyc/caruselImg";
+import CardInformative from "./CardInformative";
 
 export default function LandingPage() {
   return (
@@ -26,32 +27,33 @@ export default function LandingPage() {
         <span className={style.space}></span>
       </div>
       <div>
-        <h2 className={style.section1}>New Animes</h2>
+        <h2 className={style.section1}>New Episodes - Winter - Week 2</h2>
       </div>
       <section className={style.section_cont}>
         {sectionCard &&
           sectionCard.map((elem) => {
             return (
-              <div className={style.card}>
-                <Link to={"/home/" + elem.id}>
-                  <div className={style.left}>
-                    <img
-                      src={elem.image}
-                      alt="img"
-                      width="300px"
-                      height="170px"
-                    />
-                    <h3>{elem.name}</h3>
-                  </div>
-                  <div className={style.rigth}>
-                    <span>Description:</span>
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </p>
-                    <span>Date: 09/12/2002</span>
-                  </div>
-                </Link>
-              </div>
+              // <div className={style.card}>
+              //   <Link to={"/home/" + elem.id}>
+              //     <div className={style.left}>
+              //       <img
+              //         src={elem.image}
+              //         alt="img"
+              //         width="300px"
+              //         height="170px"
+              //       />
+              //       <h3>{elem.name}</h3>
+              //     </div>
+              //     <div className={style.rigth}>
+              //       <span>Description:</span>
+              //       <p>
+              //         Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              //       </p>
+              //       <span>Date: 09/12/2002</span>
+              //     </div>
+              //   </Link>
+              // </div>
+              <CardInformative name={elem.name} img={elem.image}/>
             );
           })}
         <Link to={"/animes"}>
