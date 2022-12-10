@@ -1,0 +1,9 @@
+.cards{
+    width:90%;
+    min-width:1339px;
+    margin: 0 auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
+    padding:60px 0;
+    gap:0.1em;
+}

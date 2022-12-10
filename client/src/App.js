@@ -19,6 +19,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={LandingPage} />
           <Route path="/zerotwo" component={Dashboard} />
+          
         </Switch>
       </div>
     </BrowserRouter>

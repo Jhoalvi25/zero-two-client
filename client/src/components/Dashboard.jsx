@@ -4,12 +4,18 @@ import SearchBar from "./SearchBar";
 import { useEffect, useState } from "react";
 import { getAnimes } from "../redux/Animes/actions/index";
 import { useDispatch, useSelector } from "react-redux";
-
+import css from '../style/CardAnime.module.css'
+import Paginated from './Paginated'
 export const Dashboard = () => {
   const dispatch = useDispatch();
   const animes = useSelector((state) => state.animes);
   const anime = useSelector((state) => state.anime);
-  console.log("animes", anime);
+  console.log("animes", animes);
+  const [currentPage, setCurrentpage] = useState(1)
+  const [pagine, setPagine] = useState(8)
+  const  indexOfLast  = currentPage * pagine
+  const indexFirst = indexOfLast - pagine
+  const currentAnimes = animes?.slice(indexFirst, indexOfLast)
 
   useEffect(() => {
     dispatch(getAnimes());
@@ -19,6 +25,9 @@ export const Dashboard = () => {
     e.preventDefault();
     // dispatch({ type: SEARCH_ANIMES, payload: [] });
     dispatch(getAnimes());
+  }
+  const currentPagineChange = (numberPagine)=>{
+    setCurrentpage(numberPagine)
   }
 
   return (
@@ -42,8 +51,8 @@ export const Dashboard = () => {
             );
           })
         ) : (
-          <div className="card-container">
-            {animes?.map((a) => {
+          <div className={css.cards}>
+            {currentAnimes?.map((a) => {
               return (
                 <div className="container-card">
                   <AnimeCards
@@ -57,7 +66,9 @@ export const Dashboard = () => {
             })}
           </div>
         )}
+       
       </div>
+      <Paginated pagine={pagine} animes={animes} currentPagineChange={currentPagineChange} />
     </div>
   );
 };
