@@ -46,6 +46,7 @@
   background-color: #47037c;
   padding: 40px;
   font-size: 20px;
+  text-align: left;
 }
 
 /*scroll*/
@@ -68,6 +69,10 @@ body::-webkit-scrollbar-thumb {
 .section_cont {
   background-color: #1a0750;
   text-decoration: none;
+  padding: 2em;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
 }
 
 .card {
