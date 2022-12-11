@@ -28,3 +28,25 @@ export function searchAnimeName(name) {
     }
   };
 }
+
+export const getAnimeById = (id) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(`http://localhost:3001/animes/${id}`);
+      dispatch({type: types.GET_ANIME_BY_ID, payload: response.data});
+    } catch (err) {
+      return({error: {message: `The anime with id ${id} doesn't exist. Try with another one`}});
+    }
+  }
+}
+
+export const getAnimeEpisodes = (id) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(`http://localhost:3001/episodes/${id}`);
+      dispatch({type: types.GET_ANIME_EPISODES, payload: response.data});
+    } catch (err) {
+      return({error: {message: `Not available episodes for anime ${id}`}});
+    }
+  }
+}
