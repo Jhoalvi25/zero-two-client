@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import LandingPage from "./components/LandingPage";
 import Dashboard from "./components/Dashboard";
 import { useEffect } from "react";
-import { getAnimes } from "./redux/Animes/actions";
+import { getAnimeGenres, getAnimes } from "./redux/Animes/actions";
 import Footer from "./components/Footer";
 import AnimeDetail from "./components/Animedetail";
 function App() {
@@ -12,6 +12,7 @@ function App() {
   const animes = useSelector((state) => state.animes);
   useEffect(() => {
     dispatch(getAnimes());
+    dispatch(getAnimeGenres());
   }, []);
 
   return (
