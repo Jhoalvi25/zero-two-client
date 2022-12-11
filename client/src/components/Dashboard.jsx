@@ -8,6 +8,7 @@ import style from "../style/Home.module.css";
 import { useEffect, useState } from "react";
 import { getAnimes } from "../redux/Animes/actions/index";
 import { useDispatch, useSelector } from "react-redux";
+import Filters from './Filters.jsx';
 
 export const Dashboard = () => {
   const dispatch = useDispatch();
@@ -37,7 +38,8 @@ export const Dashboard = () => {
 
   return (
     <div className={style["container"]}>
-      <NavBar />
+      <Filters />
+      {/* <NavBar /> */}
       <div className={style["Nav"]}>
         <div className={style["search"]}></div>
       </div>
@@ -50,10 +52,10 @@ export const Dashboard = () => {
                 <div className={style["recipe-card"]}>
                   <div className={style["container-card"]}>
                     <AnimeCards
-                      image={a.attributes.posterImage.small}
-                      name={a.attributes.slug}
-                      type={a.type}
-                      rating={a.attributes.averageRating}
+                      image={a?.posterImage}
+                      name={a?.name}
+                      type={a?.showType}
+                      rating={a?.averageRating}
                     />
                   </div>
                 </div>
@@ -67,10 +69,10 @@ export const Dashboard = () => {
                 <div className={style["recipe-card"]}>
                   <div className={style["container-card"]}>
                     <AnimeCards
-                      image={a.attributes.posterImage.small}
-                      name={a.attributes.slug}
-                      type={a.type}
-                      rating={a.attributes.averageRating}
+                      image={a.posterImage}
+                      name={a?.name}
+                      type={a?.showType}
+                      rating={a?.averageRating}
                     />
                   </div>
                 </div>
