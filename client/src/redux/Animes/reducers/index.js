@@ -17,7 +17,6 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         animes: action.payload,
-,
         isActive: false,
       };
     }
