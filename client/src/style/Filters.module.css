@@ -1,0 +1,35 @@
+.options {
+    background-color: transparent;
+    color: white;
+    padding: 1em;
+    display: flex;
+    gap: 2em;
+
+    
+}
+.options > div {
+    width: fit-content;
+}
+
+.options > div > div {
+    padding: .5em;
+    background-color: black;
+}
+.option {
+    width: 100%;
+    background-color: #1A0750;
+    justify-content: space-between;
+    padding: .5em 0em;
+    display: flex;
+}
+
+.filters-menu {
+    background-color: white;
+    max-height: 300px;
+    overflow-y: scroll;
+}
+
+.sorts {
+    color: #1A0750;
+    background-color: transparent;
+}
