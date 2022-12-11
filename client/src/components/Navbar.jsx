@@ -3,7 +3,6 @@ import style from "../style/NavBar.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
-import { faCrown } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import logo from "../img/zero.png";
 
@@ -25,15 +24,19 @@ export default function NavBar() {
           <div className={style.routes}>
             <Link to={"/suscription"} className={style.sus}>
               {" "}
-              <button>
-                <FontAwesomeIcon icon={faCrown} className={style.crown} />
+              <button className={style.premium}>
                 Get premium
+                <span className={style.vip}>VIP</span>
               </button>
             </Link>
-            <Link to={"/login"} className={style.user}>
-              <button>
-                <FontAwesomeIcon icon={faUser} className={style.iconUser} />{" "}
+            <Link to={"/zerotwo"} className={style.user}>
+              <button className={style.log}>
                 User
+                <FontAwesomeIcon
+                  icon={faCaretDown}
+                  className={style.iconDown}
+                />
+                <FontAwesomeIcon icon={faUser} className={style.iconUser} />{" "}
               </button>
             </Link>
           </div>

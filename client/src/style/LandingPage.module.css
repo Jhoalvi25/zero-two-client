@@ -20,8 +20,9 @@
 /* tittle */
 
 .header h1 {
+  height: 20px;
   margin-top: auto;
-  padding-top: 20px;
+  padding-top: 120px;
   color: white;
   font-size: 28px;
 }
@@ -76,21 +77,23 @@ body::-webkit-scrollbar-thumb {
 }
 
 .section_free {
-  background-color: #47037C;
-  display: flex;
+  background-color: #47037c;
   justify-content: space-around;
   align-items: center;
-  
+  overflow: hidden;
+  width: 100%;
 }
 
 .section_free .cardsContainer {
-  width: 70%;
+  max-height: 300px;
   display: flex;
-  flex-wrap: wrap;
+  width: 135vw;
   gap: 1em;
   padding: 2em;
   justify-content: space-between;
 }
+
+
 .section_free .btn {
   width: 50px;
   height: 50px;
@@ -102,7 +105,7 @@ body::-webkit-scrollbar-thumb {
   margin: 20px;
 }
 .section_free .btn:hover {
-  opacity: .7;
+  opacity: 0.7;
 }
 
 .card {
