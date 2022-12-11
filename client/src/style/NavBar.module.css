@@ -1,3 +1,5 @@
+/* Navbar */
+
 .nav {
   background: #ffffff;
   text-decoration: none;
@@ -8,7 +10,7 @@
 }
 
 .elements {
-  gap: 850px;
+  gap: 770px;
   display: flex;
   align-items: center;
 }
@@ -20,7 +22,7 @@
 }
 
 .linea {
-  background: #4a235a;
+  background: #47037c;
   height: 10px;
   width: 100%;
   display: block;
@@ -43,18 +45,58 @@
 }
 
 .routes {
- display: flex;
+  display: flex;
 }
 
-.routes Link{
-    text-decoration: none;
+.routes Link {
+  text-decoration: none;
 }
 
-.sus{
-    text-decoration: none;
-    margin-right: 30px;
+.sus {
+  text-decoration: none;
+  margin-right: 30px;
 }
 
-.user{
-    text-decoration: none;
+.premium {
+  color: #ffcb1d;
+  background: radial-gradient(
+    circle,
+    rgba(137, 112, 233, 1) 27%,
+    rgba(75, 49, 235, 1) 100%
+  );
+  padding: 0.7em 0.2em;
+  font-size: 18px;
+  border: 0;
+}
+
+.vip {
+  margin-left: 10px;
+  margin-right: 2px;
+  background-color: #ffcb1d;
+  color: rgba(137, 112, 233, 1);
+  padding: 2px 2px;
+  border-radius: 2px;
+  font-weight: bold;
+}
+
+.log {
+  color: white;
+  background-color: #1a056d;
+  padding: 11px;
+  font-size: 18px;
+  border: 0;
+}
+
+.iconDown{
+  margin-left: 10px;
+  margin-right: 10px;
+
+}
+
+.iconUser{
+  background-color: white;
+  padding: 2px 5px;
+  margin-right: 5px;
+  color: #1a056d;
+  border-radius: 12px;
 }

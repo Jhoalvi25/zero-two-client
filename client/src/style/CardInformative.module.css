@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+.cardInformative {
+    min-height: 230px;
+    height: auto;
+    background-color: #47037C;
+    max-width: 375px;
+    display: flex;
+    font-size: 14px;
+    font-family: 'Ubuntu', sans-serif;
+}
+.cardInformative > div {
+    width: 50%;
+    height: 100%;
+}
+
+.cardInformative-first {
+    color: #1A0750;
+    display: flex;
+    flex-direction: column;
+}
+.cardInformative a {
+    color: #1A0750;
+}
+
+.cardInformative-first .about {
+    background-color: white;
+    padding: 1em;
+}
+
+
+.cardInformative-image-container {
+    width: 100%;
+    height: 100%;
+    background-color: red;
+}
+
+.cardInformative-image-container .anime-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cardInformative-second {
+    color: white;
+    padding: 1em;
+    text-align: left;
+    font-weight: 500;
+}
+.cardInformative-second > * {
+    margin-bottom: 1em;
+}
+
+.cardInformative-second .tag {
+    margin-top: 1em;
+    min-width: 70px;
+    padding: .1em .5em;
+    background-color: aquamarine;
+    width: fit-content;
+    color: #1A0750;
+    font-weight: bold;
+    border-radius: .5em;
+}
