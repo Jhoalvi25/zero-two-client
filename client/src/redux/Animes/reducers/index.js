@@ -1,10 +1,18 @@
-import { GET_ANIMES, GET_ANIME_BY_ID, GET_ANIME_EPISODES, SEARCH_ANIMES } from "../types";
+import {
+  GET_ANIMES,
+  GET_ANIME_BY_ID,
+  GET_ANIME_EPISODES,
+  SEARCH_ANIMES,
+} from "../types";
 
 const initialState = {
   animes: [],
   anime: [],
+
+  isActive: false,
+
   animeDetails: [],
-  animeEpisodes:[]
+  animeEpisodes: [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -13,23 +21,25 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         animes: action.payload.data,
+        isActive: false,
       };
     }
     case SEARCH_ANIMES:
       return {
         ...state,
         anime: action.payload.data,
+        isActive: true,
       };
     case GET_ANIME_BY_ID:
       return {
         ...state,
-        animeDetails: action.payload
-      }
-    case GET_ANIME_EPISODES: 
+        animeDetails: action.payload,
+      };
+    case GET_ANIME_EPISODES:
       return {
         ...state,
-        animeEpisodes: action.payload
-      }
+        animeEpisodes: action.payload,
+      };
     default:
       return state;
   }
