@@ -8,9 +8,22 @@ import Carusel from "./Carusel";
 import sectionCard from "../sections/section1";
 import CardInformative from "./CardInformative";
 import CardBasic from "./CardBasic";
+import Footer from "./Footer";
 import { motion } from "framer-motion";
+import { getAnimes } from "../redux/Animes/actions/index";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 
 export default function LandingPage() {
+  const dispatch = useDispatch();
+  const animes = useSelector((state) => state.animes);
+
+  console.log(animes);
+
+  useEffect(() => {
+    dispatch(getAnimes());
+  }, []);
+
   return (
     <div>
       <div>
@@ -68,6 +81,7 @@ export default function LandingPage() {
             })}
         </motion.div>
       </motion.section>
+      <Footer></Footer>
     </div>
   );
 }
