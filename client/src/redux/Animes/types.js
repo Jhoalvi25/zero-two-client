@@ -1,2 +1,4 @@
 export const GET_ANIMES = "GET_ANIMES";
 export const SEARCH_ANIMES = "SEARCH_ANIMES";
+export const GET_ANIME_BY_ID = 'GET_ANIME_BY_ID';
+export const GET_ANIME_EPISODES = 'GET_ANIME_EPISODES';
