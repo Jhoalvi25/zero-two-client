@@ -5,7 +5,7 @@ import LandingPage from "./components/LandingPage";
 import Dashboard from "./components/Dashboard";
 import { useEffect } from "react";
 import { getAnimes } from "./redux/Animes/actions";
-import Footer from "./components/Footer";
+
 function App() {
   const dispatch = useDispatch();
   const animes = useSelector((state) => state.animes);
@@ -21,7 +21,6 @@ function App() {
           <Route path="/zerotwo" component={Dashboard} />
         </Switch>
       </div>
-      <Footer />
     </BrowserRouter>
   );
 }

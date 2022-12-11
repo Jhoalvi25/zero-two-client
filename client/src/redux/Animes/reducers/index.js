@@ -3,6 +3,7 @@ import { GET_ANIMES, SEARCH_ANIMES } from "../types";
 const initialState = {
   animes: [],
   anime: [],
+  isActive: false,
 };
 
 function rootReducer(state = initialState, action) {
@@ -11,12 +12,14 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         animes: action.payload.data,
+        isActive: false,
       };
     }
     case SEARCH_ANIMES:
       return {
         ...state,
         anime: action.payload.data,
+        isActive: true,
       };
     default:
       return state;
