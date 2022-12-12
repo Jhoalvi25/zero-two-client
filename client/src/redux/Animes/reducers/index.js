@@ -1,9 +1,11 @@
 
-import { FILTER_AND_SORT_ANIMES, GET_ANIMES, GET_ANIME_BY_ID, GET_ANIME_EPISODES, GET_ANIME_GENRES, SEARCH_ANIMES } from "../types";
+import { FILTER_AND_SORT_ANIMES, GET_ANIMES, GET_ANIME_BY_ID, GET_ANIME_EPISODES, GET_ANIME_GENRES, SEARCH_ANIMES, GET_ANIME_NEWEST, GET_ANIME_OLDEST } from "../types";
 
 const initialState = {
   animes: [],
   anime: [],
+  animeNewest: [],
+  animeOldest: [],
   isActive: false,
   animeDetails: [],
   animeEpisodes:[],
@@ -45,6 +47,17 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         genres: action.payload
+      }
+
+    case GET_ANIME_NEWEST:
+      return {
+        ...state,
+        animeNewest: action.payload
+      }
+    case GET_ANIME_OLDEST:
+      return {
+        ...state,
+        animeOldest: action.payload
       }
 
     default:

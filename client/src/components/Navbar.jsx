@@ -25,26 +25,28 @@ export default function NavBar() {
             <Link to={"/suscription"} className={style.sus}>
               {" "}
               <button className={style.premium}>
-                Get premium
+                <div>
+                  <p>Get premium</p>
+                  <p className={style.freeTrial}>15 days free!</p>
+                </div>
                 <span className={style.vip}>VIP</span>
               </button>
             </Link>
-            <Link to={"/zerotwo"} className={style.user}>
+            <Link to={"/animes"} className={style.user}>
               <button className={style.log}>
-                User
+                <FontAwesomeIcon icon={faUser} className={style.iconUser} />
                 <FontAwesomeIcon
                   icon={faCaretDown}
                   className={style.iconDown}
                 />
-                <FontAwesomeIcon icon={faUser} className={style.iconUser} />{" "}
               </button>
             </Link>
           </div>
         </nav>
 
-        <div>
+        {/* <div>
           <span className={style.linea}></span>
-        </div>
+        </div> */}
       </div>
     </div>
   );

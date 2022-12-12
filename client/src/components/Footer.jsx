@@ -22,16 +22,16 @@ export default function Footer () {
                     <h4 className={style['title']}>Explore</h4>
                     <div className={style['options']}>
                         <div className={style['option']}>
-                            <span>Most popular</span>
                             <FontAwesomeIcon icon={faFire} className={style['icon']}/>
+                            <span>Most popular</span>
                         </div>
                         <div className={style['option']}>
-                            <span>Playing now</span>
                             <FontAwesomeIcon icon={faEye} className={style['icon']}/>
+                            <span>Playing now</span>
                         </div>
                         <div className={style['option']}>
-                            <span>Genres</span>
                             <FontAwesomeIcon icon={faMasksTheater} className={style['icon']}/>
+                            <span>Genres</span>
                         </div>
                     </div>
                     
@@ -41,12 +41,12 @@ export default function Footer () {
                     <h4 className={style['title']}>Account</h4>
                     <div className={style['options']}>
                         <div className={style['option']}>
-                            <span>Create account</span>
                             <FontAwesomeIcon icon={faUserPen} className={style['icon']} />
+                            <span>Create account</span>
                         </div>
                         <div className={style['option']}>
-                            <span>Sign in</span>
                             <FontAwesomeIcon icon={faKey} className={style['icon']} />
+                            <span>Sign in</span>
                         </div>
                     </div>
                 </div>
@@ -56,55 +56,51 @@ export default function Footer () {
                 <span className={style["made-by"]}>Made by</span>
 
                 <div className={style['footer-profile']}>
-                    <div className={style['user']}>
-                        <span className={style['user-name']}>Username</span>
-                        <FontAwesomeIcon icon={faGithub} />
-                    </div>
-                    <span className={style['tag']}>Tag role</span>
-                    
+                    <a className={style['a-href']} href="https://github.com/juandavid015">
+                        <div className={style['user']}>
+                            <span className={style['user-name']}>juandavid015</span>
+                            <FontAwesomeIcon icon={faGithub} />
+                        </div>
+                        <span className={style['tag']}>Tag role</span>
+                    </a>   
                 </div>
                 <div className={style['footer-profile']}>
-                    <div className={style['user']}>
-                        <span className={style['user-name']}>Username</span>
-                        <FontAwesomeIcon icon={faGithub} />
+                    <a className={style['a-href']} href="https://github.com/nicosanchezprev">
+                        <div className={style['user']}>
+                            <span className={style['user-name']}>nicosanchezprev</span>
+                            <FontAwesomeIcon icon={faGithub} />
                        
-                    </div>
-                    <span className={style['tag']}>Tag role</span>
-                    
+                        </div>
+                        <span className={style['tag']}>Tag role</span>
+                    </a> 
                 </div>
                 <div className={style['footer-profile']}>
-                    <div className={style['user']}>
-                        <span className={style['user-name']}>Username</span>
-                        <FontAwesomeIcon icon={faGithub} />
-                    </div>
-                    <span className={style['tag']}>Tag role</span>
-                    
+                    <a className={style['a-href']} href="https://github.com/jhoalvi25">
+                        <div className={style['user']}>
+                            <span className={style['user-name']}>jhoalvi25</span>
+                            <FontAwesomeIcon icon={faGithub} />
+                        </div>
+                        <span className={style['tag']}>Tag role</span>
+                    </a>
                 </div>
                 <div className={style['footer-profile']}>
-                    <div className={style['user']}>
-                        <span className={style['user-name']}>Username</span>
-                        <FontAwesomeIcon icon={faGithub} />
-                    </div>
-                    <span className={style['tag']}>Tag role</span>
-                    
+                    <a className={style['a-href']} href="https://github.com/Mariapaula56">
+                        <div className={style['user']}>
+                            <span className={style['user-name']}>Mariapaula56</span>
+                            <FontAwesomeIcon icon={faGithub} />
+                        </div>
+                        <span className={style['tag']}>Tag role</span>
+                    </a> 
                 </div>
                 <div className={style['footer-profile']}>
-                    <div className={style['user']}>
-                        <span className={style['user-name']}>Username</span>
-                        <FontAwesomeIcon icon={faGithub} />
-                    </div>
-                    <span className={style['tag']}>Tag role</span>
-                    
+                    <a className={style['a-href']} href="https://github.com/billyandrys">
+                        <div className={style['user']}>
+                            <span className={style['user-name']}>billyandrys</span>
+                            <FontAwesomeIcon icon={faGithub} />
+                        </div>
+                        <span className={style['tag']}>Tag role</span>
+                    </a>
                 </div>
-                <div className={style['footer-profile']}>
-                    <div className={style['user']}>
-                        <span className={style['user-name']}>Username</span>
-                        <FontAwesomeIcon icon={faGithub} />
-                    </div>
-                    <span className={style['tag']}>Tag role</span>
-                    
-                </div>
-                
             </div>
         </footer>
     )
