@@ -6,7 +6,7 @@ import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import caruselImg from "../Carusel-logyc/caruselImg";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-
+import defaultImg from '../img/defaultImg.jpg'
 export default function Carusel() {
   const [currentImage, setImageCurrent] = React.useState(0);
   const animes = useSelector(state => state.animes);
@@ -44,7 +44,7 @@ export default function Carusel() {
               <div key={index} className='img-container'>
                 {currentImage === index && (
                   <Link to={`/animes/${elem?.id}`}>
-                    <img key={index} src={elem.coverImage}  alt="img" />
+                    <img key={index} src={elem.coverImage ? elem.coverImage: defaultImg}  alt="img" />
                   </Link>
                   
                 )}

@@ -43,9 +43,9 @@ export const Dashboard = () => {
       <SearchBar />
       <div className={style["containerc"]}>
         {anime.length > 0 ? (
-          anime.map((a) => {
+          anime.map((a, i) => {
             return (
-              <div className={style["card-container"]}>
+              <div className={style["card-container"]} key={i}>
                 <div className={style["recipe-card"]}>
                   <div className={style["container-card"]}>
                     <AnimeCards
@@ -61,9 +61,9 @@ export const Dashboard = () => {
           })
         ) : (
           <div className={style["card-container"]}>
-            {currentData?.map((a) => {
+            {currentData?.map((a, i) => {
               return (
-                <div className={style["recipe-card"]}>
+                <div className={style["recipe-card"]} key={i}>
                   <div className={style["container-card"]}>
                     <AnimeCards
                       image={a.posterImage}
