@@ -18,16 +18,16 @@ export default function Filters() {
   const [showGenres, setShowGenres] = useState(false);
   const [showSort, setShowSort] = useState(false);
 
-  let display = (type) => {
-    if (type === "sort") {
-      setShowSort(!showSort);
-    }
-    if (type === "genres") {
-      setShowGenres(!showGenres);
-    } else {
-      return;
-    }
-  };
+  // let display = (type) => {
+  //   if (type === "sort") {
+  //     setShowSort(!showSort);
+  //   }
+  //   if (type === "genres") {
+  //     setShowGenres(!showGenres);
+  //   } else {
+  //     return;
+  //   }
+  // };
   let changeOption = (value, type, e) => {
     if (type === "genres") {
       if (genresQuery.includes(value)) {
@@ -81,7 +81,8 @@ export default function Filters() {
           {genres &&
             genres.map((elem, i) => {
               return (
-                <button key={i} value={elem.name} className={style["btn"]} onClick={(e)=> changeOption(elem.name, 'genres', e)}>
+                <button key={i} value={elem.name} className={genresQuery.includes(elem.name) ? style['btn-active']: style["btn"]} 
+                onClick={(e)=> changeOption(elem.name, 'genres', e)}>
                   {elem.name}
                 </button>
               );
@@ -89,13 +90,13 @@ export default function Filters() {
         </div>
       </div>
 
-      {/* <div className={style['sorts']}>
+      <div className={style['sorts']}>
                 <label htmlFor="alphabetic">Alphabetic:</label>
                 <select name="alphabetic" id={'alphabetic'} onClick={(e)=> changeOption(null, 'sort', e)}>
                     <option value={'ASC'} >Asc</option>
                     <option value={'DESC'} >Desc</option>
                 </select>
-            </div> */}
+      </div>
     </div>
   );
 }
