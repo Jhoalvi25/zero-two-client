@@ -79,9 +79,9 @@ export default function Filters() {
         <div className={style["filters-btn"]}>
           <label className={style["filters-title"]}>Genres:</label>
           {genres &&
-            genres.map((elem) => {
+            genres.map((elem, i) => {
               return (
-                <button value={elem.name} className={style["btn"]}>
+                <button key={i} value={elem.name} className={style["btn"]} onClick={(e)=> changeOption(elem.name, 'genres', e)}>
                   {elem.name}
                 </button>
               );

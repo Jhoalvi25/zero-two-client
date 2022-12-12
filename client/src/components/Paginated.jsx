@@ -10,6 +10,8 @@ export default function Pagination({ cardPerPage, totalCards, pagination }) {
     pageNumbers.push(i);
   }
 
+  console.log('render')
+
   return (
     <div>
       <ul className="pagination">
