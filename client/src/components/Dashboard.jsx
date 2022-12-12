@@ -33,10 +33,6 @@ export const Dashboard = () => {
     setCurrentPage(pageNumber);
   };
 
-  useEffect(() => {
-    dispatch(getAnimes());
-  }, []);
-
   return (
     <div className={style["container"]}>
       <NavBar />
