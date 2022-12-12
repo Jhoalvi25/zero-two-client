@@ -17,6 +17,15 @@
   cursor: pointer;
 
 }
+.btn:hover, .btn-active, .btn-active:focus {
+  background-color: white;
+  color: #1a0750;
+  box-shadow: 5px 5px 5px #ae7cf3;
+}
+
+
+
+
 
 
 
