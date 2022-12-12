@@ -11,12 +11,12 @@ import CardBasic from "./CardBasic";
 import Footer from "./Footer";
 import { motion } from "framer-motion";
 import { getAnimes, getAnimeGenres } from "../redux/Animes/actions/index";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
 export default function LandingPage() {
   const dispatch = useDispatch();
-  // const animes = useSelector((state) => state.animes);
+  const animes = useSelector((state) => state.animes);
 
   useEffect(() => {
     dispatch(getAnimes());
