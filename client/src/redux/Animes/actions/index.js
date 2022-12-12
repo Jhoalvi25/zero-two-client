@@ -1,10 +1,24 @@
 import * as types from "../types";
 import axios from "axios";
 
-export const getAnimes = () => {
+export const getAllAnimes = ()=> {
   return (dispatch) =>
     axios
       .get("http://localhost:3001/animes?page=1")
+      .then((response) => {
+        dispatch({
+          type: types.GET_ALL_ANIMES,
+          payload: response.data,
+        });
+      })
+      .catch((error) => {
+        return { error: { message: "Not found" } };
+      });
+}
+export const getAnimes = () => {
+  return (dispatch) =>
+    axios
+      .get("http://localhost:3001/animes")
       .then((response) => {
         dispatch({
           type: types.GET_ANIMES,

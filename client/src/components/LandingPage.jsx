@@ -15,8 +15,8 @@ import { useSelector } from "react-redux";
 
 export default function LandingPage() {
 
-  const animes = useSelector((state) => state.animes);
-
+  const allAnimes = useSelector((state) => state.allAnimes);
+  const newestAnimes = useSelector(state => state.animeNewest)
   return (
     <div>
       <div>
@@ -35,8 +35,8 @@ export default function LandingPage() {
         <h2 className={style.section1}>New Episodes - Winter - Week 2</h2>
       </div>
       <section className={style.section_cont}>
-        {animes &&
-          animes.map((elem) => {
+        {newestAnimes &&
+          newestAnimes.map((elem) => {
             return (
               <CardInformative
                 name={elem.name}
@@ -65,8 +65,8 @@ export default function LandingPage() {
           dragConstraints={{ right: 0, left: -512 }}
           className={style.cardsContainer}
         >
-          {animes &&
-            animes.map((anime, i) => {
+          {allAnimes &&
+            allAnimes.map((anime, i) => {
               return (
                 <CardBasic
                   name={anime.name}
