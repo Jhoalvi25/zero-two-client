@@ -15,7 +15,7 @@ export default function AnimeCards(props) {
       <br />
       <div>
         <div className={style["text-name"]}>
-          <strong>{props.name}</strong>
+          <div>{props.name}</div>
         </div>
         <div className={style["tr"]}>
           <div className={style["type-text"]}>

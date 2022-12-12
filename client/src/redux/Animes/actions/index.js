@@ -12,7 +12,7 @@ export const getAnimes = () => {
         });
       })
       .catch((error) => {
-        return({error: {message: 'Not found'}});
+        return { error: { message: "Not found" } };
       });
 };
 
@@ -24,73 +24,77 @@ export function searchAnimeName(name) {
       );
       return dispatch({ type: types.SEARCH_ANIMES, payload: response.data });
     } catch {
-      return({error: {message: 'Not found'}});
+      return { error: { message: "Not found" } };
     }
   };
-};
+}
 
 export const getAnimeById = (id) => {
   return async (dispatch) => {
     try {
       const response = await axios.get(`http://localhost:3001/animes/${id}`);
-      dispatch({type: types.GET_ANIME_BY_ID, payload: response.data});
+      dispatch({ type: types.GET_ANIME_BY_ID, payload: response.data });
     } catch (err) {
-      return({error: {message: `The anime with id ${id} doesn't exist. Try with another one`}});
+      return {
+        error: {
+          message: `The anime with id ${id} doesn't exist. Try with another one`,
+        },
+      };
     }
-  }
+  };
 };
 
 export const getAnimeEpisodes = (id) => {
   return async (dispatch) => {
     try {
       const response = await axios.get(`http://localhost:3001/episodes/${id}`);
-      dispatch({type: types.GET_ANIME_EPISODES, payload: response.data});
+      dispatch({ type: types.GET_ANIME_EPISODES, payload: response.data });
     } catch (err) {
-      return({error: {message: `Not available episodes for anime ${id}`}});
+      return { error: { message: `Not available episodes for anime ${id}` } };
     }
-  }
+  };
 };
 
 export const filterAndSortAnimes = (query) => {
   return async (dispatch) => {
     try {
       const response = await axios.get(`http://localhost:3001/animes?${query}`);
-      dispatch({type: types.FILTER_AND_SORT_ANIMES, payload: response.data});
+      dispatch({ type: types.FILTER_AND_SORT_ANIMES, payload: response.data });
     } catch (err) {
-      return({error: {message: `Not found`}});
+      return { error: { message: `Not found` } };
     }
-  }
+  };
 };
 
-export const getAnimeGenres  = () => {
+export const getAnimeGenres = () => {
   return async (dispatch) => {
     try {
       const response = await axios.get(`http://localhost:3001/genres`);
-      dispatch({type: types.GET_ANIME_GENRES, payload: response.data});
+      dispatch({ type: types.GET_ANIME_GENRES, payload: response.data });
     } catch (err) {
-      return({error: {message: `Not found`}});
+      return { error: { message: `Not found` } };
     }
-  }
+  };
 };
 
 export const getAnimeNewest = () => {
   return async (dispatch) => {
     try {
-      const response = await axios.get('http://localhost:3001/animes/newest');
-      dispatch({type: types.GET_ANIME_NEWEST, payload: response.data});
+      const response = await axios.get("http://localhost:3001/animes/newest");
+      dispatch({ type: types.GET_ANIME_NEWEST, payload: response.data });
     } catch (err) {
-      return({error: {message: 'Not found'}});
+      return { error: { message: "Not found" } };
     }
-  }
+  };
 };
 
 export const getAnimeOldest = () => {
   return async (dispatch) => {
     try {
-      const response = await axios.get('http://localhost:3001/animes/oldest');
-      dispatch({type: types.GET_ANIME_OLDEST, payload: response.data});
+      const response = await axios.get("http://localhost:3001/animes/oldest");
+      dispatch({ type: types.GET_ANIME_OLDEST, payload: response.data });
     } catch (err) {
-      return({error: {message: 'Not found'}});
+      return { error: { message: "Not found" } };
     }
-  }
+  };
 };
