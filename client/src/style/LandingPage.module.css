@@ -72,9 +72,19 @@ body::-webkit-scrollbar-thumb {
   text-decoration: none;
   padding: 2em;
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
   gap: 1em;
 }
+.test1 {
+  width: 95%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+}
+.test2 {
+  width: 5%;
+}
+
 
 .section_free {
   background-color: #47037c;

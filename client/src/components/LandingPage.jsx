@@ -35,25 +35,31 @@ export default function LandingPage() {
         <h2 className={style.section1}>New Episodes - Winter - Week 2</h2>
       </div>
       <section className={style.section_cont}>
-        {newestAnimes &&
-          newestAnimes.map((elem) => {
-            return (
-              <CardInformative
-                name={elem.name}
-                img={elem.posterImage}
-                id={elem.id}
-                key={elem.id}
-                description={elem.synopsis}
-                showType={elem.showType}
-                status={elem.status}
-              />
-            );
-          })}
-        <Link to={"/animes"}>
-          <span>
-            <FontAwesomeIcon icon={faChevronDown} className={style.down} />
-          </span>
-        </Link>
+        <div className={style.test1}>
+          {newestAnimes &&
+            newestAnimes.map((elem) => {
+              return (
+                <CardInformative
+                  name={elem.name}
+                  img={elem.posterImage}
+                  id={elem.id}
+                  key={elem.id}
+                  description={elem.synopsis}
+                  showType={elem.showType}
+                  status={elem.status}
+                />
+              );
+            })}
+        </div>
+        
+        <div className={style['test2']}>
+          <Link to={"/animes"}>
+            <span>
+              <FontAwesomeIcon icon={faChevronDown} className={style.down} />
+            </span>
+          </Link>
+        </div>
+       
       </section>
       <h2 style={{ padding: "2em", color: "#1A0750" }}>
         You can watch it for free...
@@ -69,11 +75,13 @@ export default function LandingPage() {
             allAnimes.map((anime, i) => {
               return (
                 <CardBasic
+                  
                   name={anime.name}
                   img={anime.posterImage}
                   key={anime + "s" + i}
                   showType={anime.showType}
                   status={anime.status}
+           
                 />
               );
             })}

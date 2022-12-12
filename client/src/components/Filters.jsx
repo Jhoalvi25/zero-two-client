@@ -29,6 +29,7 @@ export default function Filters({setCurrentPage}) {
   //   }
   // };
   let changeOption = (value, type, e) => {
+    e.preventDefault();
     if (type === "genres") {
       if (genresQuery.includes(value)) {
         let elIndex = genresQuery.indexOf(value);
@@ -93,7 +94,7 @@ export default function Filters({setCurrentPage}) {
       </div>
 
       <div className={style['sorts']}>
-                <label htmlFor="alphabetic">Alphabetic:</label>
+                <label htmlFor="alphabetic" style={{color:'white'}}>Alphabetic:</label>
                 <select name="alphabetic" id={'alphabetic'} onClick={(e)=> changeOption(null, 'sort', e)}>
                     <option value={'ASC'} >Asc</option>
                     <option value={'DESC'} >Desc</option>
