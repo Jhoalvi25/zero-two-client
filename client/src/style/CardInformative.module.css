@@ -45,6 +45,8 @@
     padding: 1em;
     text-align: left;
     font-weight: 500;
+    max-height: 220px;
+
 }
 .cardInformative-second > * {
     margin-bottom: 1em;
@@ -60,3 +62,13 @@
     font-weight: bold;
     border-radius: .5em;
 }
+
+.description {
+    width: 100%;
+    height: 120px;
+    line-height: 1.5;
+    overflow: hidden;
+    text-overflow: ellipsis;
+   
+}
+

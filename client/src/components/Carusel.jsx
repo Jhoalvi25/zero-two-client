@@ -4,10 +4,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import caruselImg from "../Carusel-logyc/caruselImg";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 export default function Carusel() {
   const [currentImage, setImageCurrent] = React.useState(0);
-
+  const animes = useSelector(state => state.animes);
   const amount = caruselImg?.length;
 
   if (!Array.isArray(caruselImg) || amount === 0) return;
@@ -29,19 +31,22 @@ export default function Carusel() {
         </button>
 
         <div className="img_carusel_cont fade">
-          {caruselImg.map((elem, index) => {
+          {animes && animes.map((elem, index) => {
             return (
-              <div>
+              <div key={index}>
                 {currentImage === index && <h2 key={index}>{elem.name}</h2>}
               </div>
             );
           })}
 
-          {caruselImg.map((elem, index) => {
+          {animes && animes.map((elem, index) => {
             return (
-              <div>
+              <div key={index} className='img-container'>
                 {currentImage === index && (
-                  <img key={index} src={elem.image}  alt="img" />
+                  <Link to={`/animes/${elem?.id}`}>
+                    <img key={index} src={elem.coverImage}  alt="img" />
+                  </Link>
+                  
                 )}
               </div>
             );
