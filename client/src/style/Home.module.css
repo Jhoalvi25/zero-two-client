@@ -2,7 +2,7 @@
   margin-top: 15px;
   background-size: contain;
   width: 100%;
-  height: 240vh;
+  /* height: 240vh; */
   background-color: white;
 }
 .Nav {
@@ -51,6 +51,6 @@
   box-shadow: 8px 8px #47037c;
 }
 
-.container{
+.container {
   overflow: hidden;
 }
