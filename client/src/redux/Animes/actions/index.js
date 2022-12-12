@@ -12,7 +12,7 @@ export const getAnimes = () => {
         });
       })
       .catch((error) => {
-        console.log(error);
+        return({error: {message: 'Not found'}});
       });
 };
 
@@ -24,10 +24,10 @@ export function searchAnimeName(name) {
       );
       return dispatch({ type: types.SEARCH_ANIMES, payload: response.data });
     } catch {
-      return alert("Anime not found");
+      return({error: {message: 'Not found'}});
     }
   };
-}
+};
 
 export const getAnimeById = (id) => {
   return async (dispatch) => {
@@ -38,7 +38,7 @@ export const getAnimeById = (id) => {
       return({error: {message: `The anime with id ${id} doesn't exist. Try with another one`}});
     }
   }
-}
+};
 
 export const getAnimeEpisodes = (id) => {
   return async (dispatch) => {
@@ -49,7 +49,7 @@ export const getAnimeEpisodes = (id) => {
       return({error: {message: `Not available episodes for anime ${id}`}});
     }
   }
-}
+};
 
 export const filterAndSortAnimes = (query) => {
   return async (dispatch) => {
@@ -60,7 +60,7 @@ export const filterAndSortAnimes = (query) => {
       return({error: {message: `Not found`}});
     }
   }
-}
+};
 
 export const getAnimeGenres  = () => {
   return async (dispatch) => {
@@ -71,4 +71,26 @@ export const getAnimeGenres  = () => {
       return({error: {message: `Not found`}});
     }
   }
-}
+};
+
+export const getAnimeNewest = () => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get('http://localhost:3001/animes/newest');
+      dispatch({type: types.GET_ANIME_NEWEST, payload: response.data});
+    } catch (err) {
+      return({error: {message: 'Not found'}});
+    }
+  }
+};
+
+export const getAnimeOldest = () => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get('http://localhost:3001/animes/oldest');
+      dispatch({type: types.GET_ANIME_OLDEST, payload: response.data});
+    } catch (err) {
+      return({error: {message: 'Not found'}});
+    }
+  }
+};
