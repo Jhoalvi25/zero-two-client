@@ -6,7 +6,7 @@ import { filterAndSortAnimes } from "../redux/Animes/actions";
 import style from "../style/Filters.module.css";
 import parseQuery from "../utils/parseQuery";
 
-export default function Filters() {
+export default function Filters({setCurrentPage}) {
   const dispatch = useDispatch();
   const [query, setQuery] = useState("");
   const genres = useSelector((state) => state.genres);
@@ -59,11 +59,13 @@ export default function Filters() {
         setSorts(() => value);
         let params = parseQuery(query, e.target.value, type);
         setQuery(() => params);
+        setCurrentPage(1)
       } else {
         console.log(e.target.value);
         setSorts(() => e.target.value);
         let params = parseQuery(query, e.target.value, type);
         setQuery(() => params);
+        setCurrentPage(1)
       }
     }
   };
