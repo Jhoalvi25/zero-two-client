@@ -17,7 +17,7 @@ export const Dashboard = () => {
   const anime = useSelector((state) => state.anime);
   console.log("animes", anime);
   const isActive = useSelector((state) => state.isActive);
-
+  console.log(animes)
   const [orden, setOrden] = useState("");
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -38,7 +38,7 @@ export const Dashboard = () => {
       <NavBar />
       <motion.div drag="x"
           dragConstraints={{ right: 0, left: -3580 }} className={style["Nav"]}>
-        <Filters />
+        <Filters setCurrentPage ={setCurrentPage} />
       </motion.div>
       <SearchBar />
       <div className={style["containerc"]}>
@@ -91,6 +91,7 @@ export const Dashboard = () => {
               cardPerPage={cardPerPage}
               totalCards={animes.length}
               pagination={pagination}
+              currentPage={currentPage}
             />
           )}
     </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import style from "../style/Paginated.module.css";
 
-export default function Pagination({ cardPerPage, totalCards, pagination }) {
+export default function Pagination({ cardPerPage, totalCards, pagination, currentPage }) {
   /*   console.log("cardperpage", cardPerPage);
   console.log("total", totalCards);
   console.log("paginado", pagination); */
@@ -20,14 +20,15 @@ export default function Pagination({ cardPerPage, totalCards, pagination }) {
         ) : ( */}
         <nav className={style.page}>
           <ul>
+            <div className="pag" >
             {pageNumbers &&
               pageNumbers?.map((p) => (
-                <div className="pag" key={p}>
-                  <button className="page-link" onClick={() => pagination(p)}>
+                  <button className={p === currentPage ? style[`page-selected`] : style["page-link" ]}
+                  onClick={() => pagination(p)} key={p}>
                     {p}
                   </button>
-                </div>
               ))}
+            </div>
           </ul>
         </nav>
         {/* )} */}

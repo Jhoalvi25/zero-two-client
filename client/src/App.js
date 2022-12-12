@@ -5,7 +5,7 @@ import Dashboard from "./components/Dashboard";
 // import Footer from "./components/Footer";
 import AnimeDetail from "./components/Animedetail";
 import { useDispatch, useSelector } from "react-redux";
-import { getAnimeGenres, getAnimes } from "./redux/Animes/actions";
+import { getAllAnimes, getAnimeGenres, getAnimeNewest, getAnimes } from "./redux/Animes/actions";
 import { useEffect } from "react";
 
 function App() {
@@ -15,6 +15,8 @@ function App() {
   useEffect(() => {
     dispatch(getAnimes());
     dispatch(getAnimeGenres());
+    dispatch(getAllAnimes());
+    dispatch(getAnimeNewest())
   }, [dispatch]);
   return (
     <BrowserRouter>
