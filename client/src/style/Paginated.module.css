@@ -1,3 +1,6 @@
+.page{
+  margin-top: 50px;
+}
 
 .page button {
   font-weight: 700;
@@ -7,6 +10,7 @@
   height: 40px;
   border-radius: 50%;
 }
+
 .page-link {
   background-color: #1a0750;
   box-sizing: border-box;

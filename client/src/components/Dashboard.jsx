@@ -35,7 +35,6 @@ export const Dashboard = () => {
 
   return (
     <div className={style["container"]}>
-      <NavBar />
       <motion.div drag="x"
           dragConstraints={{ right: 0, left: -3580 }} className={style["Nav"]}>
         <Filters setCurrentPage ={setCurrentPage} />
