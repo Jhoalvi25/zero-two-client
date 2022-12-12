@@ -1,35 +1,22 @@
-.options {
-    background-color: transparent;
-    color: white;
-    padding: 1em;
-    display: flex;
-    gap: 2em;
-
-    
-}
-.options > div {
-    width: fit-content;
+.filters-btn {
+  width: 370vw;
+  margin: 30px;
 }
 
-.options > div > div {
-    padding: .5em;
-    background-color: black;
-}
-.option {
-    width: 100%;
-    background-color: #1A0750;
-    justify-content: space-between;
-    padding: .5em 0em;
-    display: flex;
+.filters-title {
+  color: white;
+  margin-right: 10px;
 }
 
-.filters-menu {
-    background-color: white;
-    max-height: 300px;
-    overflow-y: scroll;
+.btn {
+  margin-right: 10px;
+  background-color: #1a0750;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+
 }
 
-.sorts {
-    color: #1A0750;
-    background-color: transparent;
-}
+
+

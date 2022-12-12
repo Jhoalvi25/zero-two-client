@@ -8,7 +8,8 @@ import style from "../style/Home.module.css";
 import { useEffect, useState } from "react";
 import { getAnimes } from "../redux/Animes/actions/index";
 import { useDispatch, useSelector } from "react-redux";
-import Filters from './Filters.jsx';
+import Filters from "./Filters.jsx";
+import { motion } from "framer-motion";
 
 export const Dashboard = () => {
   const dispatch = useDispatch();
@@ -34,11 +35,11 @@ export const Dashboard = () => {
 
   return (
     <div className={style["container"]}>
-      <Filters />
-      {/* <NavBar /> */}
-      <div className={style["Nav"]}>
-        <div className={style["search"]}></div>
-      </div>
+      <NavBar />
+      <motion.div drag="x"
+          dragConstraints={{ right: 0, left: -3580 }} className={style["Nav"]}>
+        <Filters />
+      </motion.div>
       <SearchBar />
       <div className={style["containerc"]}>
         {anime.length > 0 ? (
