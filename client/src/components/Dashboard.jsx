@@ -70,6 +70,7 @@ export const Dashboard = () => {
                       name={a?.name}
                       type={a?.showType}
                       rating={a?.averageRating}
+                      id={a.id}
                     />
                   </div>
                 </div>
