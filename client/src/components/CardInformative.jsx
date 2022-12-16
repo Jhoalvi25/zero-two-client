@@ -2,8 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import style from '../style/CardInformative.module.css';
 import Tag from "./Tag";
+import formatDate from "../utils/formatDate";
 
 export default function CardInformative ({name, img, id, description, showType, status, date}) {
+    date = new Date(date)
     return (
         <div className={style['cardInformative']} key={name + id}> 
             <div className={style['cardInformative-first']}>
@@ -18,15 +20,19 @@ export default function CardInformative ({name, img, id, description, showType, 
             </div>
             <div className={style['cardInformative-second']}>
                 <h4>Description</h4>
-                {description ? <div className={style.description}><p>{description}</p></div>
-                :<div className={style.description}><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, numquam.</p></div>
-                }
-                <span>{date}</span>
+                 <div className={style.description}>
+                    <p>{description}</p>
+                    <Link to={`/animes/${id}`} className={style['read-more']}>read more</Link>
+                </div>
+                
+                <span className={style.date}>{formatDate(date)}</span>
                 {/* <div className={style['tag']}>
                     {showType || 'OVA'}
                 </div> */}
-                <Tag title={showType} bgColor={'#CB8442'}/>
-                <Tag title={status} color={"#CB8442"} bgColor={"#120B39"}/>
+                <div className={style['tags']}>
+                <Tag title={showType} bgColor={'#CB8442'} rounded={true}/>
+                <Tag title={status} color={"#CB8442"} bgColor={"#120B39"} rounded={true}/>
+                </div>
             </div>
         </div>
     )

@@ -1,5 +1,5 @@
 .containerc {
-  margin-top: 15px;
+  margin-top: 0px;
   background-size: contain;
   width: 100%;
   /* height: 240vh; */
@@ -15,42 +15,31 @@
   margin-bottom: 10px;
   margin-right: 0px;
 }
+.search-sorts-filters-container {
+  margin-top: 100px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  position: sticky;
+  z-index: 100;
+  top: 70px;
+}
 .search {
   margin-top: 80px;
   display: flex;
   position: relative;
 }
 .card-container {
-  padding: auto;
-  width: 95%;
-  min-height: 100vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  margin-left: auto;
-  margin-right: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2em;
+  padding: 2em;
 }
-.recipe-card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  width: 33%;
-  align-items: center;
-}
+
 .container-card {
-  margin-bottom: 15px;
 
-  background-color: #ae7cf3;
-  cursor: pointer;
-
-  width: 60%;
-  display: flex;
-  justify-content: center;
-  box-shadow: 8px 8px #47037c;
 }
 
 .container {
-  overflow: hidden;
+  
 }
