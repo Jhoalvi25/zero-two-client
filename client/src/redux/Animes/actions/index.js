@@ -70,6 +70,7 @@ export const getAnimeEpisodes = (id) => {
 };
 
 export const filterAndSortAnimes = (query) => {
+
   return async (dispatch) => {
     try {
       const response = await axios.get(`http://localhost:3001/animes?${query}`);

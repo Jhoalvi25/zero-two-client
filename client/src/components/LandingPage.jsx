@@ -37,7 +37,7 @@ export default function LandingPage() {
                   img={elem.posterImage}
                   id={elem.id}
                   key={elem.id}
-                  description={elem.synopsis}
+                  description={elem?.synopsis?.substring(0, 60) + '...'}
                   showType={elem.showType}
                   status={elem.status}
                   date={elem.startDate}

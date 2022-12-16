@@ -1,4 +1,5 @@
 export default function parseQuery (query, params, type) {
+    console.log('PARAMS LENGTH', params.length)
     if (params.length) {
         if (type === 'genres') {
         
