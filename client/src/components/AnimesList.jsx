@@ -1,20 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import AnimeCards from "./AnimeCards";
 import SearchBar from "./SearchBar";
 import Pagination from "./Paginated";
-import style from "../style/Home.module.css";
+import style from "../style/AnimeList.module.css";
 
 import { useState } from "react";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Filters from "./Filters.jsx";
-import { motion } from "framer-motion";
 
-export const Dashboard = () => {
-  const dispatch = useDispatch();
-  const animes = useSelector((state) => state.animes);
+export const AnimeList = () => {
+  // const dispatch = useDispatch();
+  const animes = useSelector((state) => state.allAnimes);
   const anime = useSelector((state) => state.anime);
-
   const isActive = useSelector((state) => state.isActive);
 
   // const [orden, setOrden] = useState("");
@@ -32,8 +30,13 @@ export const Dashboard = () => {
     setCurrentPage(pageNumber);
   };
 
+  useEffect(() => {
+    window.scrollTo({top: 0, behavior: "smooth"});
+  });
+
+
   return (
-    <div className={style["container"]}>
+    <div className={style["container"]} >
 
     <div className={style['search-sorts-filters-container']}>
         <Filters setCurrentPage ={setCurrentPage} />
@@ -97,4 +100,4 @@ export const Dashboard = () => {
     </div>
   );
 };
-export default Dashboard;
+export default AnimeList;

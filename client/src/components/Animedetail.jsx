@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getAnimeById, getAnimeEpisodes } from "../redux/Animes/actions";
+import { getAnimeById, getAnimeEpisodes } from "../redux/actions/index";
 import style from '../style/AnimeDetail.module.css';
 import Tag from './Tag.jsx';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

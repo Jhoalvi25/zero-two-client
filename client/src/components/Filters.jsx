@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { filterAndSortAnimes } from "../redux/Animes/actions";
+import { filterAndSortAnimes } from "../redux/actions/index";
 import style from "../style/Filters.module.css";
 import parseQuery from "../utils/parseQuery";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

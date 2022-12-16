@@ -1,18 +1,16 @@
 import React from "react";
-import "../style/Carusel.css";
+import style from "../../style/Home/Carousel.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
-import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
-import caruselImg from "../Carusel-logyc/caruselImg";
+import { faChevronRight, faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import defaultImg from '../img/defaultImg.jpg'
-export default function Carusel() {
+import defaultImg from '../../img/defaultImg.jpg'
+export default function Carousel() {
   const [currentImage, setImageCurrent] = React.useState(0);
   const animes = useSelector(state => state.animes);
-  const amount = caruselImg?.length;
+  const amount = animes?.length;
 
-  if (!Array.isArray(caruselImg) || amount === 0) return;
+  if (!Array.isArray(animes) || amount === 0) return;
 
   const nextImage = () => {
     setImageCurrent(currentImage === 0 ? amount - 1 : currentImage - 1);
@@ -23,14 +21,18 @@ export default function Carusel() {
   };
 
   return (
-    <div className="center">
-      <div className="carusel_cont">
-        <button onClick={backImage} className="btn">
+    <div className={style.center}>
+      <section className={style.header}>
+        <h1>
+          What´s being <span>watched</span> now?
+        </h1>
+      <div className={style.carusel_cont}>
+        <button onClick={backImage} className={style.btn}>
           {" "}
           <FontAwesomeIcon icon={faChevronLeft} />
         </button>
 
-        <div className="img_carusel_cont fade">
+        <div className={style['img_carusel_cont']}>
           {animes && animes.map((elem, index) => {
             return (
               <div key={index}>
@@ -41,7 +43,7 @@ export default function Carusel() {
 
           {animes && animes.map((elem, index) => {
             return (
-              <div key={index} className='img-container'>
+              <div key={index} className={style["img-container"] + ' ' +  style['fade']}>
                 {currentImage === index && (
                   <Link to={`/animes/${elem?.id}`}>
                     <img key={index} src={elem.coverImage ? elem.coverImage: defaultImg}  alt="img" />
@@ -53,11 +55,12 @@ export default function Carusel() {
           })}
         </div>
 
-        <button onClick={nextImage} className="btn">
+        <button onClick={nextImage} className={style["btn"]}>
           {" "}
           <FontAwesomeIcon icon={faChevronRight} />{" "}
         </button>
       </div>
+      </section>
     </div>
   );
 }

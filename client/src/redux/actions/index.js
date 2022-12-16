@@ -1,13 +1,13 @@
 import * as types from "../types";
 import axios from "axios";
 
-export const getAllAnimes = ()=> {
-  return (dispatch) =>
-    axios
+export const getAnimes = ()=> {
+  return async (dispatch) =>
+    await axios
       .get("http://localhost:3001/animes?page=1")
       .then((response) => {
         dispatch({
-          type: types.GET_ALL_ANIMES,
+          type: types.GET_ANIMES,
           payload: response.data,
         });
       })
@@ -15,13 +15,13 @@ export const getAllAnimes = ()=> {
         return { error: { message: "Not found" } };
       });
 }
-export const getAnimes = () => {
-  return (dispatch) =>
-    axios
+export const getAllAnimes = () => {
+  return async (dispatch) =>
+    await axios
       .get("http://localhost:3001/animes")
       .then((response) => {
         dispatch({
-          type: types.GET_ANIMES,
+          type: types.GET_ALL_ANIMES,
           payload: response.data,
         });
       })

@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { searchAnimeName } from "../redux/Animes/actions";
+import { searchAnimeName } from "../redux/actions/index";
 import style from "../style/SearchBar.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons";
