@@ -14,7 +14,7 @@
 }
 
 .icon{
-    margin-left: 8px;
+    margin-right: 8px;
 }
 
 
@@ -87,10 +87,11 @@
     padding: .5em;
     background-color: white;
     box-shadow: 6px 6px 2px #A77DDD;
+    transition: all ease-in-out 0.3s;
 }
 .footer-profile:hover {
     cursor: pointer;
-    transform:scale(1.04)
+    transform:scale(1.1)
 }
 .footer-profile .user {
     display: flex;
@@ -112,3 +113,13 @@
     font-weight: bold;
 }
 
+.a-href {
+    text-decoration: none;
+    font-size: 12px;
+}
+.a-href .user{
+    color: #1A0750;
+}
+.a-href .tag{
+    color: #8C8CA7;
+}

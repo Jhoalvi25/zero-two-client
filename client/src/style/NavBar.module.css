@@ -7,12 +7,13 @@
   width: 100%;
   z-index: 100;
   top: 0;
+  box-shadow: 0px 3px 6px #47037c;
 }
 
 .elements {
-  gap: 770px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .logo {
@@ -22,11 +23,12 @@
 }
 
 .linea {
-  background: #47037c;
+  background-color: #47037c;
   height: 10px;
   width: 100%;
   display: block;
   border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 
 .explore {
@@ -46,6 +48,7 @@
 
 .routes {
   display: flex;
+  align-items: center;
 }
 
 .routes Link {
@@ -64,39 +67,47 @@
     rgba(137, 112, 233, 1) 27%,
     rgba(75, 49, 235, 1) 100%
   );
-  padding: 0.7em 0.2em;
-  font-size: 18px;
+  padding: 1em;
+  font-size: 16px;
   border: 0;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
 }
-
+.freeTrial{
+  font-size: 12px;
+  color: #cecee6;
+}
 .vip {
   margin-left: 10px;
   margin-right: 2px;
   background-color: #ffcb1d;
-  color: rgba(137, 112, 233, 1);
+  color: #8970e9;
   padding: 2px 2px;
   border-radius: 2px;
   font-weight: bold;
+  font-size: 14px;
 }
 
 .log {
   color: white;
   background-color: #1a056d;
-  padding: 11px;
-  font-size: 18px;
+  font-size: 16px;
+  padding: 1em;
   border: 0;
+  margin-right: 10px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
 }
 
 .iconDown{
   margin-left: 10px;
-  margin-right: 10px;
-
 }
 
 .iconUser{
   background-color: white;
-  padding: 2px 5px;
-  margin-right: 5px;
+  padding: 4px 4px;
   color: #1a056d;
-  border-radius: 12px;
+  border-radius: 20px;
 }

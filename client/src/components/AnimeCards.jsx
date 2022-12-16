@@ -1,31 +1,24 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
+import Tag from './Tag.jsx';
 import zero from "../img/zero11.jpg";
 import style from "../style/Animecard.module.css";
-export default function AnimeCards(props) {
+export default function AnimeCards({image, name, id, showType, status}) {
   return (
-    <div className={style["cardBasic"]}>
-      <div>
-        {props.image ? (
-          <img className={style["image"]} src={`${props.image}`} alt="img" />
-        ) : (
-          <img src={zero} alt="img"></img>
-        )}
-      </div>
-      <br />
-      <div>
-        <div className={style["text-name"]}>
-          <strong>{props.name}</strong>
+    
+      <div className={style["cardAnime"]}>
+        <div className={style['cardAnime-image-container']}>
+          <Link to={`/animes/${id}`}>
+            <img src={image} alt={`image of ${name}`} className={style['anime-img']} />
+          </Link>
         </div>
-        <div className={style["tr"]}>
-          <div className={style["type-text"]}>
-            <strong>{props.type}</strong>
-          </div>
-          <div className={style["rating-text"]}>
-            <strong>{props.rating}</strong>
-          </div>
+        <div className={style['cardAnime-content-container']}>
+          <h4>{name}</h4>
+          <Tag title={showType} bgColor={'#CB8442'} rounded={false}/>
+          <Tag title={status} color={"#CB8442"} bgColor={"#120B39"} rounded={false}/>
         </div>
       </div>
-    </div>
+    
+    
   );
 }

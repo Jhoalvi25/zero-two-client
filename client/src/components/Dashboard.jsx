@@ -2,21 +2,22 @@ import React from "react";
 import AnimeCards from "./AnimeCards";
 import SearchBar from "./SearchBar";
 import Pagination from "./Paginated";
-import NavBar from "./Navbar";
 import style from "../style/Home.module.css";
 
-import { useEffect, useState } from "react";
-import { getAnimes } from "../redux/Animes/actions/index";
+import { useState } from "react";
+
 import { useDispatch, useSelector } from "react-redux";
+import Filters from "./Filters.jsx";
+import { motion } from "framer-motion";
 
 export const Dashboard = () => {
   const dispatch = useDispatch();
   const animes = useSelector((state) => state.animes);
   const anime = useSelector((state) => state.anime);
-  console.log("animes", anime);
+
   const isActive = useSelector((state) => state.isActive);
 
-  const [orden, setOrden] = useState("");
+  // const [orden, setOrden] = useState("");
 
   const [currentPage, setCurrentPage] = useState(1);
   //estado local
@@ -31,29 +32,26 @@ export const Dashboard = () => {
     setCurrentPage(pageNumber);
   };
 
-  useEffect(() => {
-    dispatch(getAnimes());
-  }, []);
-
   return (
     <div className={style["container"]}>
-      <NavBar />
-      <div className={style["Nav"]}>
-        <div className={style["search"]}></div>
-      </div>
-      <SearchBar />
+
+    <div className={style['search-sorts-filters-container']}>
+        <Filters setCurrentPage ={setCurrentPage} />
+        <SearchBar />
+    </div>
+     
       <div className={style["containerc"]}>
         {anime.length > 0 ? (
-          anime.map((a) => {
+          anime.map((a, i) => {
             return (
-              <div className={style["card-container"]}>
+              <div className={style["card-container"]} key={i}>
                 <div className={style["recipe-card"]}>
                   <div className={style["container-card"]}>
                     <AnimeCards
-                      image={a.attributes.posterImage.small}
-                      name={a.attributes.slug}
-                      type={a.type}
-                      rating={a.attributes.averageRating}
+                      image={a?.posterImage}
+                      name={a?.name}
+                      type={a?.showType}
+                      rating={a?.averageRating}
                     />
                   </div>
                 </div>
@@ -62,15 +60,16 @@ export const Dashboard = () => {
           })
         ) : (
           <div className={style["card-container"]}>
-            {currentData?.map((a) => {
+            {currentData?.map((a, i) => {
               return (
-                <div className={style["recipe-card"]}>
+                <div className={style["recipe-card"]} key={i}>
                   <div className={style["container-card"]}>
                     <AnimeCards
-                      image={a.attributes.posterImage.small}
-                      name={a.attributes.slug}
-                      type={a.type}
-                      rating={a.attributes.averageRating}
+                      image={a?.posterImage}
+                      name={a?.name}
+                      showType={a?.showType}
+                      status={a?.status}
+                      id={a.id}
                     />
                   </div>
                 </div>
@@ -92,6 +91,7 @@ export const Dashboard = () => {
               cardPerPage={cardPerPage}
               totalCards={animes.length}
               pagination={pagination}
+              currentPage={currentPage}
             />
           )}
     </div>

@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 .cardInformative {
-    min-height: 230px;
-    height: auto;
     background-color: #47037C;
-    max-width: 375px;
+    min-width: 380px;
+    max-height: 246px;
     display: flex;
-    font-size: 14px;
+    font-size: 16px;
     font-family: 'Ubuntu', sans-serif;
+   
 }
 .cardInformative > div {
     width: 50%;
@@ -17,6 +17,9 @@
     color: #1A0750;
     display: flex;
     flex-direction: column;
+    justify-content: stretch;
+    height: 246px;
+    width: 60%;
 }
 .cardInformative a {
     color: #1A0750;
@@ -25,12 +28,15 @@
 .cardInformative-first .about {
     background-color: white;
     padding: 1em;
+    height: fit-content;
+   
 }
 
 
 .cardInformative-image-container {
+    overflow: hidden;
     width: 100%;
-    height: 100%;
+    height: auto;
     background-color: red;
 }
 
@@ -45,18 +51,28 @@
     padding: 1em;
     text-align: left;
     font-weight: 500;
+    max-height: 220px;
+    width: 40%;
+
 }
 .cardInformative-second > * {
     margin-bottom: 1em;
 }
 
-.cardInformative-second .tag {
-    margin-top: 1em;
-    min-width: 70px;
-    padding: .1em .5em;
-    background-color: aquamarine;
-    width: fit-content;
-    color: #1A0750;
-    font-weight: bold;
-    border-radius: .5em;
+.description {
+    opacity: .9;
+    width: 100%;
+    /* height: 65px; */
+    line-height: 1.5;
+    /* overflow: hidden;
+    text-overflow: ellipsis; */
+   
 }
+.date {
+    font-size: 14px ;
+}
+.read-more {
+    color: rgba(255, 255, 255, 0.685) !important;
+ 
+}
+
