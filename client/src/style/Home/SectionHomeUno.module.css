@@ -1,0 +1,50 @@
+/* sección */
+
+.section1_container {
+  color: white;
+  background-color: #47037c;
+  padding: 40px;
+  font-size: 20px;
+  text-align: left;
+}
+
+/*scroll*/
+
+body::-webkit-scrollbar {
+  width: 10px;
+  background: #ecf0f1;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #727272;
+  border-radius: 5px;
+}
+
+* {
+  text-decoration: none;
+}
+
+.section_container {
+  background-color: #1a0750;
+  text-decoration: none;
+  padding: 2em 0em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+}
+.section_newAnimes {
+  width: 95%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 2em;
+}
+.section_link {
+  width: 5%;
+}
+
+.down {
+  font-size: 30px;
+  color: white;
+}

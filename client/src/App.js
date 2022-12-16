@@ -1,16 +1,16 @@
 import "./App.css";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import LandingPage from "./components/LandingPage";
-import Dashboard from "./components/Dashboard";
+import Home from "./components/Home/Home";
+import AnimeList from "./components/AnimesList";
 import Footer from "./components/Footer";
 import AnimeDetail from "./components/Animedetail";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
-  getAllAnimes,
+  getAnimes,
   getAnimeGenres,
   getAnimeNewest,
-  getAnimes,
-} from "./redux/Animes/actions";
+  getAllAnimes,
+} from "./redux/actions/index";
 import { useEffect } from "react";
 import NavBar from "../src/components/Navbar";
 
@@ -19,9 +19,9 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAnimes());
-    dispatch(getAnimeGenres());
     dispatch(getAllAnimes());
+    dispatch(getAnimeGenres());
+    dispatch(getAnimes());
     dispatch(getAnimeNewest());
   }, [dispatch]);
   return (
@@ -30,8 +30,8 @@ function App() {
         <NavBar></NavBar>
 
         <Switch>
-          <Route exact path="/" component={LandingPage} />
-          <Route exact path="/animes" component={Dashboard} />
+          <Route exact path="/" component={Home} />
+          <Route exact path="/animes" component={AnimeList} />
           <Route path="/animes/:id" component={AnimeDetail} />
         </Switch>
         <Footer></Footer>
