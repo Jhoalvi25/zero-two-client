@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  font-weight: bold;
 }
 
 /* header */
@@ -58,7 +59,7 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-thumb {
-  background: #47037c;
+  background: #727272;
   border-radius: 5px;
 }
 
@@ -70,15 +71,20 @@ body::-webkit-scrollbar-thumb {
 .section_cont {
   background-color: #1a0750;
   text-decoration: none;
-  padding: 2em;
+  padding: 2em 0em;
   display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 1em;
 }
 .test1 {
   width: 95%;
-  display: flex;
+  /* display: flex;
   flex-wrap: wrap;
+  gap: 2em; */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
   gap: 2em;
 }
 .test2 {

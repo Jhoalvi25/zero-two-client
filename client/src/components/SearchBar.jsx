@@ -2,8 +2,9 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { searchAnimeName } from "../redux/Animes/actions";
-import style from "../style/Search.modules.css";
-
+import style from "../style/SearchBar.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons";
 export const SearchBar = () => {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
@@ -17,22 +18,22 @@ export const SearchBar = () => {
 
   return (
     <div className={style["search-container"]}>
-      <div className={style["input-icons"]}>
-        <input
+   
+        <input className={style['search-input']}
           type="text"
-          placeholder="search anime"
+          placeholder="Search anime..."
           value={name}
           onChange={(e) => handleInputChange(e)}
         />
 
         <button
-          className={style["button"]}
+          className={style["search-btn"]}
           type="submit"
           onClick={(e) => handleClick(e)}
         >
-          Search
+          <FontAwesomeIcon icon={faMagnifyingGlass} className={style['search-icon']}/>
         </button>
-      </div>
+   
     </div>
   );
 };

@@ -2,11 +2,10 @@ import React from "react";
 import AnimeCards from "./AnimeCards";
 import SearchBar from "./SearchBar";
 import Pagination from "./Paginated";
-import NavBar from "./Navbar";
 import style from "../style/Home.module.css";
 
-import { useEffect, useState } from "react";
-import { getAnimes } from "../redux/Animes/actions/index";
+import { useState } from "react";
+
 import { useDispatch, useSelector } from "react-redux";
 import Filters from "./Filters.jsx";
 import { motion } from "framer-motion";
@@ -15,10 +14,10 @@ export const Dashboard = () => {
   const dispatch = useDispatch();
   const animes = useSelector((state) => state.animes);
   const anime = useSelector((state) => state.anime);
-  console.log("animes", anime);
+
   const isActive = useSelector((state) => state.isActive);
-  console.log(animes)
-  const [orden, setOrden] = useState("");
+
+  // const [orden, setOrden] = useState("");
 
   const [currentPage, setCurrentPage] = useState(1);
   //estado local
@@ -35,12 +34,12 @@ export const Dashboard = () => {
 
   return (
     <div className={style["container"]}>
-      <NavBar />
-      <motion.div drag="x"
-          dragConstraints={{ right: 0, left: -3580 }} className={style["Nav"]}>
+
+    <div className={style['search-sorts-filters-container']}>
         <Filters setCurrentPage ={setCurrentPage} />
-      </motion.div>
-      <SearchBar />
+        <SearchBar />
+    </div>
+     
       <div className={style["containerc"]}>
         {anime.length > 0 ? (
           anime.map((a, i) => {
@@ -66,10 +65,10 @@ export const Dashboard = () => {
                 <div className={style["recipe-card"]} key={i}>
                   <div className={style["container-card"]}>
                     <AnimeCards
-                      image={a.posterImage}
+                      image={a?.posterImage}
                       name={a?.name}
-                      type={a?.showType}
-                      rating={a?.averageRating}
+                      showType={a?.showType}
+                      status={a?.status}
                       id={a.id}
                     />
                   </div>

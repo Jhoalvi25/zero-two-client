@@ -3,25 +3,18 @@ import { Link } from "react-router-dom";
 import style from "../style/LandingPage.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
-import NavBar from "./Navbar";
 import Carusel from "./Carusel";
-import sectionCard from "../sections/section1";
 import CardInformative from "./CardInformative";
 import CardBasic from "./CardBasic";
-import Footer from "./Footer";
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
 
-
 export default function LandingPage() {
-
   const allAnimes = useSelector((state) => state.allAnimes);
-  const newestAnimes = useSelector(state => state.animeNewest)
+  const newestAnimes = useSelector((state) => state.animeNewest);
   return (
     <div>
-      <div>
-        <NavBar></NavBar>
-      </div>
+      <div></div>
       <section className={style.header}>
         <h1>
           What´s being <span>watched</span> now?
@@ -44,22 +37,22 @@ export default function LandingPage() {
                   img={elem.posterImage}
                   id={elem.id}
                   key={elem.id}
-                  description={elem.synopsis}
+                  description={elem?.synopsis?.substring(0, 60) + '...'}
                   showType={elem.showType}
                   status={elem.status}
+                  date={elem.startDate}
                 />
               );
             })}
         </div>
-        
-        <div className={style['test2']}>
+
+        <div className={style["test2"]}>
           <Link to={"/animes"}>
             <span>
               <FontAwesomeIcon icon={faChevronDown} className={style.down} />
             </span>
           </Link>
         </div>
-       
       </section>
       <h2 style={{ padding: "2em", color: "#1A0750" }}>
         You can watch it for free...
@@ -75,19 +68,16 @@ export default function LandingPage() {
             allAnimes.map((anime, i) => {
               return (
                 <CardBasic
-                  
                   name={anime.name}
                   img={anime.posterImage}
                   key={anime + "s" + i}
                   showType={anime.showType}
                   status={anime.status}
-           
                 />
               );
             })}
         </motion.div>
       </motion.section>
-      <Footer></Footer>
     </div>
   );
 }

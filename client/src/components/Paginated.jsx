@@ -10,29 +10,23 @@ export default function Pagination({ cardPerPage, totalCards, pagination, curren
     pageNumbers.push(i);
   }
 
-  console.log("render");
+  // console.log("render");
 
   return (
-    <div>
-      <ul className="pagination">
-        {/* {pageNumbers.length <= 1 ? (
-          <></>
-        ) : ( */}
-        <nav className={style.page}>
-          <ul>
-            <div className="pag" >
-            {pageNumbers &&
-              pageNumbers?.map((p) => (
-                  <button className={p === currentPage ? style[`page-selected`] : style["page-link" ]}
-                  onClick={() => pagination(p)} key={p}>
-                    {p}
-                  </button>
-              ))}
-            </div>
-          </ul>
-        </nav>
-        {/* )} */}
-      </ul>
+    <div className={style['pagination-container']}>
+      <div className={style['pagination-prev']}>Prev</div>
+
+      <div className={style['pagination-pages']}>
+        {pageNumbers &&
+        pageNumbers?.map((p) => (
+            <button className={p === currentPage ? style[`page-selected`] : style["page" ]}
+            onClick={() => pagination(p)} key={p}>
+              {p}
+            </button>
+        ))}
+      </div>
+
+      <div className={style['pagination-next']}>Next</div>
     </div>
   );
 }

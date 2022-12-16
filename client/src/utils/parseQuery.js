@@ -1,10 +1,10 @@
 export default function parseQuery (query, params, type) {
+    console.log('PARAMS LENGTH', params.length)
     if (params.length) {
         if (type === 'genres') {
         
             query = new URLSearchParams(query);
             query.set(type, params);
-            query.set('page', 1)
             query = decodeURIComponent(query);
     
             return query
@@ -14,7 +14,6 @@ export default function parseQuery (query, params, type) {
     
             query = new URLSearchParams(query);
             query.set('sort', params)
-            query.set('page', 1)
             query = decodeURIComponent(query);
             // console.log(query)
             return query;
