@@ -1,10 +1,11 @@
 import * as types from "../types";
 import axios from "axios";
 
-export const getAnimes = ()=> {
+export const getAnimes = (query)=> {
+console.log('aaa', query)
   return async (dispatch) =>
     await axios
-      .get("http://localhost:3001/animes?page=1")
+      .get(query ? `http://localhost:3001/animes${query}`:`http://localhost:3001/animes?page=1` )
       .then((response) => {
         dispatch({
           type: types.GET_ANIMES,
@@ -15,10 +16,14 @@ export const getAnimes = ()=> {
         return { error: { message: "Not found" } };
       });
 }
-export const getAllAnimes = () => {
+export const getAllAnimes = (query) => {
+  query = new URLSearchParams(query)
+  query.delete('page');
+  query = decodeURIComponent(query)
+  console.log('QQ', query)
   return async (dispatch) =>
     await axios
-      .get("http://localhost:3001/animes")
+    .get(query ? `http://localhost:3001/animes?${query}`:`http://localhost:3001/animes` )
       .then((response) => {
         dispatch({
           type: types.GET_ALL_ANIMES,

@@ -1,15 +1,4 @@
-.options {
-  box-sizing: border-box;
-  max-width: 50%;
-  width: 100%;
-  /* margin-top: 100px; */
-  background-color: #1a0750;
-  color: white;
-  text-align: left;
-  padding: 1em;
-  display: flex;
-  justify-content: space-between;
-}
+
 .filters {
   display: flex;
   position: relative;

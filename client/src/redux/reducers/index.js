@@ -32,7 +32,7 @@ function rootReducer(state = initialState, action) {
     case SEARCH_ANIMES:
       return {
         ...state,
-        anime: action.payload,
+        animes: action.payload,
         isActive: true,
       };
     case GET_ANIME_BY_ID:
