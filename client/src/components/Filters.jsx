@@ -1,120 +1,94 @@
-import React from "react";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { filterAndSortAnimes } from "../redux/actions/index";
 import style from "../style/Filters.module.css";
 import parseQuery from "../utils/parseQuery";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSortDown, faCheck } from "@fortawesome/free-solid-svg-icons";
+import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-export default function Filters({setCurrentPage}) {
-  const dispatch = useDispatch();
-  const [query, setQuery] = useState("");
+export default function Filters({search, filterParams}) {
+
+  const [filters, setFilters] = useState({})
   const genres = useSelector((state) => state.genres);
-
+  const history = useHistory();
   //filter & sorts
-  const [genresParams, setGenreParams] = useState([]);
-  const [sorts, setSorts] = useState("");
 
-  const [showGenres, setShowGenres] = useState(false);
-  const [showSort, setShowSort] = useState(false);
+  const [showFilters, setShowFilters] = useState(false);
+ 
 
-  let display = (type) => {
-    if (type === "sort") {
-      setShowSort(!showSort);
-    }
-    if (type === "genres") {
-      setShowGenres(!showGenres);
-    } else {
-      return;
-    }
+  let display = () => {
+
+    setShowFilters(!showFilters);
+
   };
-  let changeOption = (value, type, e) => {
+  let changeOption = (e, type) => {
     e.preventDefault();
-    if (type === "genres") {
-      if (genresParams.includes(value)) {
-        let elIndex = genresParams.indexOf(value);
-        let newQuery = [
-          ...genresParams.slice(0, elIndex),
-          ...genresParams.slice(elIndex + 1),
-        ];
 
-        setGenreParams(() => newQuery);
-        let params = parseQuery(query, newQuery, type);
-        setQuery(() => params);
+    let paramValue = e.target.value;
+    let paramName = e.target.name
+    
+    if (filters[paramName].includes(paramValue)) {
+      let elIndex = filters[paramName].indexOf(paramValue);
+      let newParamValue = [
+        ...filters[paramName].slice(0, elIndex),
+        ...filters[paramName].slice(elIndex + 1),
+      ];
+
+      let params = parseQuery(search, newParamValue, paramName, type);
+      history.push(`/animes?${params}`);
       
-      } else {
+    } else {
         
-        let newQuery = [...genresParams, value];
-        setGenreParams(() => newQuery);
-        let params = parseQuery(query, newQuery, type);  
-        setQuery(() => params);
-
+      let newParamValue = [...filters[paramName], paramValue];
+      let params = parseQuery(search, newParamValue, paramName, type);  
+      history.push(`/animes?${params}`);
     
       }
-    }
-    if (type === "sort") {
-      if (sorts === e.target.value) {
-        let value = "";
-        setSorts(() => value);
-        let params = parseQuery(query, e.target.value, type);
-        setQuery(() => params);
-        setCurrentPage(1)
-      } else {
-        let value = e.target.value;
-        setSorts(() => value);
-        let params = parseQuery(query, e.target.value, type);
-        setQuery(() => params);
-        setCurrentPage(1)
-      }
-    }
   };
 
-  useEffect(() => {
-    dispatch(filterAndSortAnimes(query));
-  }, [dispatch, query]);
+  useEffect(()=> {
+    setFilters(()=> {
+      let newObj = {}
+      Object.entries(filterParams).forEach(([key, value]) => {
+        newObj[key] = value ? value?.split(','): []
+      })
+      return newObj
+    })
+  }, [filterParams])
   // console.log(query)
 
   return (
-    <div className={style["options"]}>
+   
 
       <div className={style["filters"]}>
         <div className={style['filters-selected']} onClick={(e)=> {display('genres')}}>
-            <span className={style['filter-s']}>{genresParams.join(', ') || ' Genres '}</span>
+            <span className={style['filter-s']}>{filters['genres']?.join(', ') || ' Genres '}</span>
             <FontAwesomeIcon icon={faSortDown } className={style['arr-down']}/>
         </div>
 
         <span className={style['animes']}>/ Animes</span>
 
-        <div className={style["filters-menu"]} style={{display:`${showGenres ? 'flex': 'none'}`}}>
+        <div className={style["filters-menu"]} style={{display:`${showFilters ? 'flex': 'none'}`}}>
           
           {genres &&
             genres.map((elem, i) => {
               return (
-                <label htmlFor={elem.name} className={style.option}>
-                  <input id={elem.name} name={elem.name} type={'checkbox'} 
+                <label htmlFor={elem.name} className={style.option} key={elem.name + i}>
+                  <input id={elem.name} name={'genres'} type={'checkbox'} 
                   key={i} value={elem.name} className={style.checkbox} 
-                  onClick={(e)=> changeOption(elem.name, 'genres', e)}>
+                  onClick={(e)=> changeOption(e, 'filters')}>
                    
                   </input>
                 
                   {elem.name}
                   <FontAwesomeIcon icon={faCheck} className={style['check']}
-                  style={{visibility: `${genresParams.includes(elem.name) ? 'visible': 'hidden'}`}}/>
+                  style={{visibility: `${filters['genres']?.includes(elem.name) ? 'visible': 'hidden'}`}}/>
                 </label>
               );
             })}
         </div>
       </div>
-
-      <div className={style['sorts']}>
-                <label htmlFor="alphabetic" style={{color:'white'}}>Alphabetic:</label>
-                <select name="alphabetic" id={'alphabetic'} onClick={(e)=> changeOption(null, 'sort', e)}>
-                    <option value={'ASC'} >Asc</option>
-                    <option value={'DESC'} >Desc</option>
-                </select>
-      </div>
-    </div>
+   
   );
 }

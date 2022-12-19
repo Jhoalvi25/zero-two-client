@@ -24,6 +24,7 @@ function App() {
     dispatch(getAnimes());
     dispatch(getAnimeNewest());
   }, [dispatch]);
+  console.log('he')
   return (
     <BrowserRouter>
       <div className="App">

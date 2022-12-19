@@ -3,100 +3,74 @@ import AnimeCards from "./AnimeCards";
 import SearchBar from "./SearchBar";
 import Pagination from "./Paginated";
 import style from "../style/AnimeList.module.css";
-
-import { useState } from "react";
-
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Filters from "./Filters.jsx";
+import { useLocation } from "react-router-dom";
+import { getAllAnimes, getAnimes} from "../redux/actions";
+import Sorts from "./Sorts";
 
 export const AnimeList = () => {
-  // const dispatch = useDispatch();
-  const animes = useSelector((state) => state.allAnimes);
-  const anime = useSelector((state) => state.anime);
-  const isActive = useSelector((state) => state.isActive);
 
-  // const [orden, setOrden] = useState("");
+  const allAnimes = useSelector((state) => state.allAnimes);
+  const animes = useSelector((state) => state.animes);
+  const dispatch = useDispatch();
 
-  const [currentPage, setCurrentPage] = useState(1);
-  //estado local
-  const [cardPerPage] = useState(12);
+  let {search} = useLocation();
+  let searchParams = new URLSearchParams(search);
 
-  const indexOfLastCard = currentPage * cardPerPage;
-  const indexOfFirstCard = indexOfLastCard - cardPerPage;
+//   allAnimeQuery.delete('page');
+//   allAnimeQuery = decodeURIComponent(allAnimeQuery);
 
-  var currentData = animes.slice(indexOfFirstCard, indexOfLastCard);
-
-  const pagination = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
+  let page = searchParams.get('page') || 1;
+  let name = searchParams.get('name') || '';
+  let genres = searchParams.get('genres');
+  let sort = searchParams.get('sort') || '';
+  let filters = {
+    genres: genres || ''
+  }
+  let totalPages = Math.ceil(allAnimes.length / 9);
 
   useEffect(() => {
+
     window.scrollTo({top: 0, behavior: "smooth"});
-  });
+    dispatch(getAllAnimes(search))
+    dispatch(getAnimes(search))
 
-
+  },[dispatch, search]);
+  console.log('search', search)
   return (
     <div className={style["container"]} >
 
-    <div className={style['search-sorts-filters-container']}>
-        <Filters setCurrentPage ={setCurrentPage} />
-        <SearchBar />
-    </div>
-     
-      <div className={style["containerc"]}>
-        {anime.length > 0 ? (
-          anime.map((a, i) => {
-            return (
-              <div className={style["card-container"]} key={i}>
-                <div className={style["recipe-card"]}>
-                  <div className={style["container-card"]}>
-                    <AnimeCards
-                      image={a?.posterImage}
-                      name={a?.name}
-                      type={a?.showType}
-                      rating={a?.averageRating}
-                    />
-                  </div>
-                </div>
+      <div className={style['search-sorts-filters-container']}>
+
+        <div className={style["filter-sort-options"]}>
+          <Filters search ={search} filterParams={filters}/>
+          <Sorts query={search} sort={sort}/>
+        </div>
+
+        <SearchBar searchName={name}/>
+      </div>
+   
+      <div className={style["card-container"]}>
+        {animes?.map((a, i) => {
+          return (
+            <div className={style["recipe-card"]} key={i}>
+              <div className={style["container-card"]}>
+                <AnimeCards
+                  image={a?.posterImage}
+                  name={a?.name}
+                  showType={a?.showType}
+                  status={a?.status}
+                  id={a.id}
+                />
               </div>
-            );
-          })
-        ) : (
-          <div className={style["card-container"]}>
-            {currentData?.map((a, i) => {
-              return (
-                <div className={style["recipe-card"]} key={i}>
-                  <div className={style["container-card"]}>
-                    <AnimeCards
-                      image={a?.posterImage}
-                      name={a?.name}
-                      showType={a?.showType}
-                      status={a?.status}
-                      id={a.id}
-                    />
-                  </div>
-                </div>
+            </div>
               );
             })}
-          </div>
-        )}
-      </div>
-      {isActive
-        ? anime.length > 11 && (
-            <Pagination
-              cardPerPage={cardPerPage}
-              totalCards={animes.length}
-              pagination={pagination}
-            />
-          )
-        : currentData && (
-            <Pagination
-              cardPerPage={cardPerPage}
-              totalCards={animes.length}
-              pagination={pagination}
-              currentPage={currentPage}
-            />
-          )}
+     
+        </div>
+
+        <Pagination totalPages={totalPages} search={search} page={page} />
     </div>
   );
 };
