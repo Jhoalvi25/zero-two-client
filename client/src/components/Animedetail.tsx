@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getAnimeById, getAnimeEpisodes } from "../redux/actions/index";
 import style from '../style/AnimeDetail.module.css';
-import Tag from './Tag.jsx';
+import Tag from './Tag';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFaceSmileWink } from "@fortawesome/free-solid-svg-icons";
 import { faCirclePlay } from "@fortawesome/free-solid-svg-icons";
@@ -12,8 +12,8 @@ export default function AnimeDetail () {
     const {id} = useParams();
     const dispatch = useDispatch();
 
-    const anime = useSelector(state => state.animeDetails);
-    const episodes = useSelector(state => state.animeEpisodes);
+    const anime = useSelector(state => state["animeDetails"]);
+    const episodes = useSelector(state => state["animeEpisodes"]);
 
     const [loading, setLoading] = useState(false);
     useEffect(()=> {

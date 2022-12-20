@@ -11,8 +11,8 @@ import {
   getAnimeNewest,
   getAllAnimes,
 } from "./redux/actions/index";
-import { useEffect } from "react";
-import NavBar from "../src/components/Navbar";
+import  {useEffect } from "react";
+import NavBar from "./components/Navbar";
 
 
 function App() {
@@ -24,18 +24,20 @@ function App() {
     dispatch(getAnimes());
     dispatch(getAnimeNewest());
   }, [dispatch]);
-  console.log('he')
+
   return (
     <BrowserRouter>
       <div className="App">
-        <NavBar></NavBar>
+        <NavBar />
 
-        <Switch>
+        <Switch >
           <Route exact path="/" component={Home} />
-          <Route exact path="/animes" component={AnimeList} />
-          <Route path="/animes/:id" component={AnimeDetail} />
+          <Route exact path="/animes"  component={AnimeList} />
+          <Route exact path="/animes/:id" component ={AnimeDetail}/>
         </Switch>
-        <Footer></Footer>
+         
+     
+        <Footer />
       </div>
     </BrowserRouter>
   );

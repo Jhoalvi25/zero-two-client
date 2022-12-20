@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 export default function Filters({search, filterParams}) {
 
   const [filters, setFilters] = useState({})
-  const genres = useSelector((state) => state.genres);
+  const genres = useSelector((state) => state['genres']);
   const history = useHistory();
   //filter & sorts
 
@@ -50,8 +50,10 @@ export default function Filters({search, filterParams}) {
   useEffect(()=> {
     setFilters(()=> {
       let newObj = {}
+      
       Object.entries(filterParams).forEach(([key, value]) => {
-        newObj[key] = value ? value?.split(','): []
+        let a: any = value;
+        newObj[key] = a ? a?.split(','): []
       })
       return newObj
     })
@@ -62,7 +64,7 @@ export default function Filters({search, filterParams}) {
    
 
       <div className={style["filters"]}>
-        <div className={style['filters-selected']} onClick={(e)=> {display('genres')}}>
+        <div className={style['filters-selected']} onClick={(e)=> {display()}}>
             <span className={style['filter-s']}>{filters['genres']?.join(', ') || ' Genres '}</span>
             <FontAwesomeIcon icon={faSortDown } className={style['arr-down']}/>
         </div>

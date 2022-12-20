@@ -4,15 +4,15 @@ import SearchBar from "./SearchBar";
 import Pagination from "./Paginated";
 import style from "../style/AnimeList.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import Filters from "./Filters.jsx";
+import Filters from "./Filters";
 import { useLocation } from "react-router-dom";
 import { getAllAnimes, getAnimes} from "../redux/actions";
 import Sorts from "./Sorts";
 
 export const AnimeList = () => {
 
-  const allAnimes = useSelector((state) => state.allAnimes);
-  const animes = useSelector((state) => state.animes);
+  const allAnimes = useSelector((state) => state['allAnimes']);
+  const animes = useSelector((state) => state['animes']);
   const dispatch = useDispatch();
 
   let {search} = useLocation();

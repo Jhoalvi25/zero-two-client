@@ -1,9 +1,9 @@
 import React from "react";
 import style from '../style/Tag.module.css';
 
-export default function Tag ({title, color, bgColor, rounded, padding}) {
+export default function Tag ({title, color, bgColor, rounded, padding}:any) {
 
-    title = title?.toLowerCase();
+
     return (
         <div className={style['tag']} 
         style={{backgroundColor:`${bgColor}`, color:`${color}`, 

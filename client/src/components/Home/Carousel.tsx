@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import defaultImg from '../../img/defaultImg.jpg'
 export default function Carousel() {
   const [currentImage, setImageCurrent] = React.useState(0);
-  const animes = useSelector(state => state.animes);
+  const animes = useSelector(state => state['animes']);
   const amount = animes?.length;
 
   if (!Array.isArray(animes) || amount === 0) return;

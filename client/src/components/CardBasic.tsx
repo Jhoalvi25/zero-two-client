@@ -4,7 +4,7 @@ import Tag from "./Tag";
 import { motion } from "framer-motion";
 
 
-export default function CardBasic({  name, img, showType, status }) {
+export default function CardBasic( {name, img, showType, status}:any ) {
 
 
   return (

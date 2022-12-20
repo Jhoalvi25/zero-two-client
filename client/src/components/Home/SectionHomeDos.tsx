@@ -8,7 +8,7 @@ import CardBasic from "../CardBasic";
 import { motion } from "framer-motion";
 
 export default function SectionHomeDos() {
-  const animes = useSelector((state) => state.animes);
+  const animes = useSelector((state) => state['animes']);
 
   return (
     <>

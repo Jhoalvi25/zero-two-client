@@ -10,7 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
 export default function SectionHomeUno() {
-  const newestAnimes = useSelector((state) => state.animeNewest);
+  const newestAnimes = useSelector((state) => state['animeNewest']);
   return (
     <>
     <div>
