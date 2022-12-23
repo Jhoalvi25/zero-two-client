@@ -6,6 +6,7 @@ import style from "../../style/Home/SectionHomeDos.module.css";
 import CardBasic from "../CardBasic";
 
 import { motion } from "framer-motion";
+import { useAppSelector } from "../../redux/hooks";
 
 interface AppState {
   childAnime: Array<ChildAnime>
@@ -20,7 +21,7 @@ interface ChildAnime {
 // If i want to set props to this element type this: 
 // const SectionHomeDos = ({name_of_the_prop}: Props) => {
 const SectionHomeDos = () => {
-  const animes: AppState['childAnime'] = useSelector((state) => state['animes']);
+  const animes: AppState['childAnime'] = useAppSelector((state) => state['animes']);
 
   return (
     <>

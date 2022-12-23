@@ -2,14 +2,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Tag from './Tag';
 import style from "../style/Animecard.module.css";
+import { Anime } from "./Animedetail";
 
-export default function AnimeCards({image, name, id, showType, status}) {
+export default function AnimeCards({posterImage, name, id, showType, status}:Anime) {
   return (
     
       <div className={style["cardAnime"]}>
         <div className={style['cardAnime-image-container']}>
           <Link to={`/animes/${id}`}>
-            <img src={image} alt={`img ${name}`} className={style['anime-img']} />
+            <img src={posterImage} alt={`img ${name}`} className={style['anime-img']} />
           </Link>
         </div>
         <div className={style['cardAnime-content-container']}>

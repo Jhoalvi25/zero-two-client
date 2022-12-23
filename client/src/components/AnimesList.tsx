@@ -61,7 +61,7 @@ export const AnimeList = () => {
             <div className={style["recipe-card"]} key={i}>
               <div className={style["container-card"]}>
                 <AnimeCards
-                  image={a?.posterImage}
+                  posterImage={a?.posterImage}
                   name={a?.name}
                   showType={a?.showType}
                   status={a?.status}

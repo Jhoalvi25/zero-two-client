@@ -5,11 +5,11 @@ import { faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons";
 import { useHistory } from "react-router-dom";
 import parseQuery from "../utils/parseQuery";
 
-export const SearchBar = ({searchName}) => {
+export const SearchBar = ({searchName}:{searchName: string}) => {
 
   const history = useHistory();
   
-  function handleInputChange(e) {
+  function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
     let name = e.target.value;
     let params = parseQuery('?', name, 'name', 'search')
     history.push(`/animes?${params}`)

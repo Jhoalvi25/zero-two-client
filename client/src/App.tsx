@@ -4,24 +4,24 @@ import Home from "./components/Home/Home";
 import AnimeList from "./components/AnimesList";
 import Footer from "./components/Footer";
 import AnimeDetail from "./components/Animedetail";
-import { useDispatch } from "react-redux";
 import {
   getAnimes,
   getAnimeGenres,
   getAnimeNewest,
   getAllAnimes,
-} from "./redux/actions/index.js";
+} from "./redux/actions/index";
 import  {useEffect } from "react";
 import NavBar from "./components/Navbar";
+import { useAppDispatch } from "./redux/hooks";
 
 
 function App() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(getAllAnimes());
+    dispatch(getAllAnimes(''));
     dispatch(getAnimeGenres());
-    dispatch(getAnimes());
+    dispatch(getAnimes(''));
     dispatch(getAnimeNewest());
   }, [dispatch]);
 

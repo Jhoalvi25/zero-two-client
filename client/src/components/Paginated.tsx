@@ -6,7 +6,7 @@ import parseQuery from "../utils/parseQuery";
 interface Pagination {
     totalPages: number,
     search: string, 
-    page: number
+    page: number | string
 }
 export default function Pagination({ totalPages, search, page}:Pagination) {
   

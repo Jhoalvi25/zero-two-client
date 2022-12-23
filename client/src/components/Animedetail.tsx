@@ -26,25 +26,25 @@ export interface Genre {
 export interface Anime {
     id: number,
     name: string,
-    userCount: number,
-    synopsis: string,
-    averageRating: number,
-    favoritesCount: number,
-    startDate: string,
-    endDate: string,
-    popularityRank: number,
-    ratingRank: number,
+    userCount?: number,
+    synopsis?: string,
+    averageRating?: number,
+    favoritesCount?: number,
+    startDate?: string,
+    endDate?: string,
+    popularityRank?: number,
+    ratingRank?: number,
     status: string,
     posterImage: string,
-    coverImage: string,
-    episodeCount: number,
-    episodeLength: number,
-    youtubeVideoId: string | number,
-    nsfw: boolean,
-    subtype: string,
+    coverImage?: string,
+    episodeCount?: number,
+    episodeLength?: number,
+    youtubeVideoId?: string | number,
+    nsfw?: boolean,
+    subtype?: string,
     showType: string, 
-    ageRatingGuide: string
-    genres: Genre[]
+    ageRatingGuide?: string
+    genres?: Genre[]
 }
 export default function AnimeDetail () {
     const {id}:{id:string} = useParams();
