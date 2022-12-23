@@ -3,17 +3,21 @@ import AnimeCards from "./AnimeCards";
 import SearchBar from "./SearchBar";
 import Pagination from "./Paginated";
 import style from "../style/AnimeList.module.css";
-import { useDispatch, useSelector } from "react-redux";
 import Filters from "./Filters";
 import { useLocation } from "react-router-dom";
 import { getAllAnimes, getAnimes} from "../redux/actions";
 import Sorts from "./Sorts";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { Anime } from "./Animedetail";
 
+export interface FilterParams {
+  genres: string
+}
 export const AnimeList = () => {
 
-  const allAnimes = useSelector((state) => state['allAnimes']);
-  const animes = useSelector((state) => state['animes']);
-  const dispatch = useDispatch();
+  const allAnimes = useAppSelector((state) => state['allAnimes']);
+  const animes = useAppSelector((state) => state['animes']);
+  const dispatch = useAppDispatch();
 
   let {search} = useLocation();
   let searchParams = new URLSearchParams(search);
@@ -25,7 +29,7 @@ export const AnimeList = () => {
   let name = searchParams.get('name') || '';
   let genres = searchParams.get('genres');
   let sort = searchParams.get('sort') || '';
-  let filters = {
+  let filters:FilterParams = {
     genres: genres || ''
   }
   let totalPages = Math.ceil(allAnimes.length / 9);
@@ -52,7 +56,7 @@ export const AnimeList = () => {
       </div>
    
       <div className={style["card-container"]}>
-        {animes?.map((a, i) => {
+        {animes?.map((a: Anime, i: number) => {
           return (
             <div className={style["recipe-card"]} key={i}>
               <div className={style["container-card"]}>

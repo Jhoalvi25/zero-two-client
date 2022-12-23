@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { ChangeEvent, useEffect } from "react";
 import { useState } from "react";
 import style from "../style/Filters.module.css";
 import parseQuery from "../utils/parseQuery";
@@ -6,11 +6,23 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSortDown, faCheck } from "@fortawesome/free-solid-svg-icons";
 import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useAppSelector } from "../redux/hooks";
+import { FilterParams } from "./AnimesList";
+import { Genre } from "./Animedetail";
 
-export default function Filters({search, filterParams}) {
 
-  const [filters, setFilters] = useState({})
-  const genres = useSelector((state) => state['genres']);
+interface Filter {
+  search: string,
+  filterParams: object
+}
+
+export default function Filters({search, filterParams}:Filter) {
+  let d:FilterParams = {genres: ''}
+  const [filters, setFilters] = useState<{genres: string[] | string}>({
+    genres: []
+  })
+
+  const genres = useAppSelector((state) => state['genres']);
   const history = useHistory();
   //filter & sorts
 
@@ -22,11 +34,11 @@ export default function Filters({search, filterParams}) {
     setShowFilters(!showFilters);
 
   };
-  let changeOption = (e, type) => {
+  let changeOption = (e:React.MouseEvent<HTMLInputElement> ,  type: string) => {
     e.preventDefault();
 
-    let paramValue = e.target.value;
-    let paramName = e.target.name
+    let paramValue = (e.target as HTMLInputElement).value ;
+    let paramName = (e.target as HTMLInputElement).name as keyof FilterParams
     
     if (filters[paramName].includes(paramValue)) {
       let elIndex = filters[paramName].indexOf(paramValue);
@@ -49,11 +61,11 @@ export default function Filters({search, filterParams}) {
 
   useEffect(()=> {
     setFilters(()=> {
-      let newObj = {}
+      let newObj:FilterParams= {genres: ''}
       
       Object.entries(filterParams).forEach(([key, value]) => {
         let a: any = value;
-        newObj[key] = a ? a?.split(','): []
+        newObj[key as keyof Object] = a ? a?.split(','): []
       })
       return newObj
     })
@@ -65,7 +77,10 @@ export default function Filters({search, filterParams}) {
 
       <div className={style["filters"]}>
         <div className={style['filters-selected']} onClick={(e)=> {display()}}>
-            <span className={style['filter-s']}>{filters['genres']?.join(', ') || ' Genres '}</span>
+            <span className={style['filter-s']}>
+              {typeof filters['genres'] === 'object' ? filters['genres'].join(', ') 
+              || ' Genres ': ''}
+            </span>
             <FontAwesomeIcon icon={faSortDown } className={style['arr-down']}/>
         </div>
 
@@ -74,7 +89,7 @@ export default function Filters({search, filterParams}) {
         <div className={style["filters-menu"]} style={{display:`${showFilters ? 'flex': 'none'}`}}>
           
           {genres &&
-            genres.map((elem, i) => {
+            genres.map((elem: Genre, i: number) => {
               return (
                 <label htmlFor={elem.name} className={style.option} key={elem.name + i}>
                   <input id={elem.name} name={'genres'} type={'checkbox'} 

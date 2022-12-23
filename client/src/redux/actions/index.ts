@@ -1,9 +1,10 @@
 import * as types from "../types";
 import axios from "axios";
+import { AppDispatch } from "../store";
 
-export const getAnimes = (query)=> {
+export const getAnimes = (query: string)=> {
 console.log('aaa', query)
-  return async (dispatch) =>
+  return async (dispatch: AppDispatch) =>
     await axios
       .get(query ? `http://localhost:3001/animes${query}`:`http://localhost:3001/animes?page=1` )
       .then((response) => {
@@ -16,12 +17,12 @@ console.log('aaa', query)
         return { error: { message: "Not found" } };
       });
 }
-export const getAllAnimes = (query) => {
-  query = new URLSearchParams(query)
-  query.delete('page');
-  query = decodeURIComponent(query)
-  console.log('QQ', query)
-  return async (dispatch) =>
+export const getAllAnimes = (query: string | undefined ) => {
+  // query = new URLSearchParams(query)
+  // query.delete('page');
+  // query = decodeURIComponent(query)
+  // console.log('QQ', query)
+  return async (dispatch: AppDispatch) =>
     await axios
     .get(query ? `http://localhost:3001/animes?${query}`:`http://localhost:3001/animes` )
       .then((response) => {
@@ -35,8 +36,8 @@ export const getAllAnimes = (query) => {
       });
 };
 
-export function searchAnimeName(name) {
-  return async function (dispatch) {
+export function searchAnimeName(name: string) {
+  return async function (dispatch: AppDispatch) {
     try {
       var response = await axios.get(
         `http://localhost:3001/animes?name=${name}`
@@ -48,8 +49,8 @@ export function searchAnimeName(name) {
   };
 }
 
-export const getAnimeById = (id) => {
-  return async (dispatch) => {
+export const getAnimeById = (id: number | string) => {
+  return async (dispatch: AppDispatch) => {
     try {
       const response = await axios.get(`http://localhost:3001/animes/${id}`);
       dispatch({ type: types.GET_ANIME_BY_ID, payload: response.data });
@@ -63,20 +64,20 @@ export const getAnimeById = (id) => {
   };
 };
 
-export const getAnimeEpisodes = (id) => {
-  return async (dispatch) => {
+export const getAnimeEpisodes = (id: number) => {
+  return async (dispatch: AppDispatch) => {
     try {
       const response = await axios.get(`http://localhost:3001/episodes/${id}`);
-      dispatch({ type: types.GET_ANIME_EPISODES, payload: response.data });
+      return dispatch({ type: types.GET_ANIME_EPISODES, payload: response.data });
     } catch (err) {
       return { error: { message: `Not available episodes for anime ${id}` } };
     }
   };
 };
 
-export const filterAndSortAnimes = (query) => {
+export const filterAndSortAnimes = (query: string) => {
 
-  return async (dispatch) => {
+  return async (dispatch: AppDispatch) => {
     try {
       const response = await axios.get(`http://localhost:3001/animes?${query}`);
       dispatch({ type: types.FILTER_AND_SORT_ANIMES, payload: response.data });
@@ -87,7 +88,7 @@ export const filterAndSortAnimes = (query) => {
 };
 
 export const getAnimeGenres = () => {
-  return async (dispatch) => {
+  return async (dispatch: AppDispatch) => {
     try {
       const response = await axios.get(`http://localhost:3001/genres`);
       dispatch({ type: types.GET_ANIME_GENRES, payload: response.data });
@@ -98,7 +99,7 @@ export const getAnimeGenres = () => {
 };
 
 export const getAnimeNewest = () => {
-  return async (dispatch) => {
+  return async (dispatch: AppDispatch) => {
     try {
       const response = await axios.get("http://localhost:3001/animes/newest");
       dispatch({ type: types.GET_ANIME_NEWEST, payload: response.data });
@@ -109,7 +110,7 @@ export const getAnimeNewest = () => {
 };
 
 export const getAnimeOldest = () => {
-  return async (dispatch) => {
+  return async (dispatch: AppDispatch) => {
     try {
       const response = await axios.get("http://localhost:3001/animes/oldest");
       dispatch({ type: types.GET_ANIME_OLDEST, payload: response.data });

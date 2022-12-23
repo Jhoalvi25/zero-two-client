@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { Dispatch, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getAnimeById, getAnimeEpisodes } from "../redux/actions/index";
 import style from '../style/AnimeDetail.module.css';
@@ -7,20 +6,58 @@ import Tag from './Tag';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFaceSmileWink } from "@fortawesome/free-solid-svg-icons";
 import { faCirclePlay } from "@fortawesome/free-solid-svg-icons";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { useDispatch } from "react-redux";
 
+interface Episode {
+    id: number,
+    title: string,
+    synopsis: string,
+    number: number,
+    seasonNumber: number,
+    airDate: string,
+    length: number,
+    thumbnail: { original?:string, meta?:object }
+}
+export interface Genre {
+    id: number,
+    name: string
+}
+export interface Anime {
+    id: number,
+    name: string,
+    userCount: number,
+    synopsis: string,
+    averageRating: number,
+    favoritesCount: number,
+    startDate: string,
+    endDate: string,
+    popularityRank: number,
+    ratingRank: number,
+    status: string,
+    posterImage: string,
+    coverImage: string,
+    episodeCount: number,
+    episodeLength: number,
+    youtubeVideoId: string | number,
+    nsfw: boolean,
+    subtype: string,
+    showType: string, 
+    ageRatingGuide: string
+    genres: Genre[]
+}
 export default function AnimeDetail () {
-    const {id} = useParams();
-    const dispatch = useDispatch();
-
-    const anime = useSelector(state => state["animeDetails"]);
-    const episodes = useSelector(state => state["animeEpisodes"]);
-
+    const {id}:{id:string} = useParams();
+    const dispatch = useAppDispatch()
+    const anime = useAppSelector((state) => state["animeDetails"]);
+    const episodes = useAppSelector(state => state["animeEpisodes"]);
+    
     const [loading, setLoading] = useState(false);
     useEffect(()=> {
         setLoading(true);
         dispatch(getAnimeById(id));
 
-        dispatch(getAnimeEpisodes(id)).then(()=> {
+        dispatch(getAnimeEpisodes(Number(id))).then(()=> {
             setLoading(false);
         })
     },[dispatch, id])
@@ -68,7 +105,7 @@ export default function AnimeDetail () {
                     <h3>Synopsis</h3>
                     <p>{anime.synopsis}</p>
                     {/* <div className={style['genresTags']}> */}
-                    {anime.genres && anime.genres.map(genre => {
+                    {anime.genres && anime.genres.map((genre:Genre) => {
                         return(
                             <Tag title={genre.name} bgColor={'#1A0750'} color={'white'} padding={'.5em'} key={genre.id}/>
                         )
@@ -87,7 +124,7 @@ export default function AnimeDetail () {
 
                 <div className={style['episodes']}>
                   
-                    {episodes.length && episodes.map(episode => {
+                    {episodes.length && episodes.map((episode:Episode) => {
                         return(
                         <div className={style['episode']} key={episode.id}>
                             <div className={style['episode-header']}>
@@ -104,8 +141,6 @@ export default function AnimeDetail () {
                         </div>
                         )
                     })}
-                    
-                    
                 </div>
             </div>
             
