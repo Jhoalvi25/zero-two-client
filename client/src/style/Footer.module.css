@@ -123,3 +123,7 @@
 .a-href .tag{
     color: #8C8CA7;
 }
+
+.span-links{
+    cursor: pointer;
+}
