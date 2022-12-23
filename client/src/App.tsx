@@ -10,7 +10,7 @@ import {
   getAnimeGenres,
   getAnimeNewest,
   getAllAnimes,
-} from "./redux/actions/index";
+} from "./redux/actions/index.js";
 import  {useEffect } from "react";
 import NavBar from "./components/Navbar";
 
