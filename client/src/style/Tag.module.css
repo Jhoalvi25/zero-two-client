@@ -14,3 +14,7 @@
 .tag > * {
     margin: auto;
 }
+
+.tag-title{
+    padding: 4px;
+}

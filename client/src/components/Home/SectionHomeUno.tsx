@@ -16,7 +16,7 @@ export default function SectionHomeUno() {
         arg0: (elem: {
           name: string;
           posterImage: string;
-          id: number;
+          id: string;
           synopsis: string;
           showType: string;
           status: string;
@@ -25,7 +25,7 @@ export default function SectionHomeUno() {
       ): React.ReactNode;
       name: string;
       posterImage: string;
-      id: number;
+      id: string;
       synopsis: string;
       showType: string;
       status: string;
@@ -43,8 +43,8 @@ export default function SectionHomeUno() {
           New Episodes - Winter - Week 2
         </h2>
       </div>
-      <section className={style.section_container}>
-        <div className={style.section_newAnimes}>
+      <section className={style['section_container']}>
+        <div className={style['section_newAnimes']}>
           {newestAnimes &&
             newestAnimes.map(
               (elem) => {
@@ -64,10 +64,10 @@ export default function SectionHomeUno() {
             )}
         </div>
 
-        <div className={style.section_link}>
+        <div className={style['section_link']}>
           <Link to={"/animes"}>
             <span>
-              <FontAwesomeIcon icon={faChevronDown} className={style.down} />
+              <FontAwesomeIcon icon={faChevronDown} className={style['down']} />
             </span>
           </Link>
         </div>

@@ -69,10 +69,13 @@
    
 }
 .date {
-    font-size: 14px ;
+    font-size: 14px;
 }
 .read-more {
     color: rgba(255, 255, 255, 0.685) !important;
  
 }
 
+.tags{
+    margin-top: 20px;
+}
