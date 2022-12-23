@@ -9,39 +9,26 @@ import CardInformative from "../CardInformative";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
-export default function SectionHomeUno() {
-  interface RootState {
-    animeNewest: {
-      map(
-        arg0: (elem: {
-          name: string;
-          posterImage: string;
-          id: string;
-          synopsis: string;
-          showType: string;
-          status: string;
-          startdate: string;
-        }) => JSX.Element
-      ): React.ReactNode;
-      name: string;
-      posterImage: string;
-      id: string;
-      synopsis: string;
-      showType: string;
-      status: string;
-      startDate: string;
-    };
-  }
+interface AppState {
+  childNewest: Array<ChildNewest>
+}
 
-  const newestAnimes = useSelector((state: RootState) => state.animeNewest);
+interface ChildNewest {
+  name: string
+  posterImage: string
+  id: string
+  synopsis: string
+  showType: string
+  status: string
+  startDate: string
+}
 
-  console.log(newestAnimes);
+const SectionHomeUno = () => {
+  const newestAnimes: AppState['childNewest'] = useSelector((state) => state['animeNewest']);
   return (
     <>
-      <div>
-        <h2 className={style.section1_container}>
-          New Episodes - Winter - Week 2
-        </h2>
+    <div>
+        <h2 className={style['section1_container']}>New Episodes - Winter - Week 2</h2>
       </div>
       <section className={style['section_container']}>
         <div className={style['section_newAnimes']}>
@@ -73,5 +60,7 @@ export default function SectionHomeUno() {
         </div>
       </section>
     </>
-  );
-}
+  )
+};
+
+export default SectionHomeUno;

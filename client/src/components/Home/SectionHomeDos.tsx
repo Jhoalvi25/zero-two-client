@@ -7,18 +7,20 @@ import CardBasic from "../CardBasic";
 
 import { motion } from "framer-motion";
 
-export default function SectionHomeDos() {
-  interface RootState {
-    animes: {
-      map(arg0: (anime: { name: string; posterImage: string; showType: string; status: string; }, i: string) => JSX.Element): React.ReactNode;
-      name: string;
-      posterImage: string;
-      showType: string;
-      status: string;
-    };
-  }
+interface AppState {
+  childAnime: Array<ChildAnime>
+}
 
-  const animes = useSelector((state: RootState) => state.animes);
+interface ChildAnime {
+  name: string
+  posterImage: string
+  showType: string
+  status: string
+}
+// If i want to set props to this element type this: 
+// const SectionHomeDos = ({name_of_the_prop}: Props) => {
+const SectionHomeDos = () => {
+  const animes: AppState['childAnime'] = useSelector((state) => state['animes']);
 
   return (
     <>
@@ -32,7 +34,7 @@ export default function SectionHomeDos() {
           className={style['cardsContainer']}
         >
           {animes &&
-            animes.map((anime: { name: string; posterImage: string; showType: string; status: string; }, i: string) => {
+            animes.map((anime, i) => {
               return (
                 <CardBasic
                   name={anime.name}
@@ -46,5 +48,7 @@ export default function SectionHomeDos() {
         </motion.div>
       </motion.section>
     </>
-  );
-}
+  )
+};
+
+export default SectionHomeDos;
