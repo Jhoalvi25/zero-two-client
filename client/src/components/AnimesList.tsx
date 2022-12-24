@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import AnimeCards from "./AnimeCards";
 import SearchBar from "./SearchBar";
 import Pagination from "./Paginated";
@@ -9,6 +9,7 @@ import { getAllAnimes, getAnimes} from "../redux/actions";
 import Sorts from "./Sorts";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { Anime } from "./Animedetail";
+import Loading from "./Loading";
 
 export interface FilterParams {
   genres: string
@@ -18,12 +19,14 @@ export const AnimeList = () => {
   const allAnimes = useAppSelector((state) => state['allAnimes']);
   const animes = useAppSelector((state) => state['animes']);
   const dispatch = useAppDispatch();
+  const [loading, setLoading] = useState(false);
 
   let {search} = useLocation();
   let searchParams = new URLSearchParams(search);
-
-//   allAnimeQuery.delete('page');
-//   allAnimeQuery = decodeURIComponent(allAnimeQuery);
+  let allAnimeQuery: string | URLSearchParams = new URLSearchParams(search);
+  allAnimeQuery.delete('page');
+  allAnimeQuery = allAnimeQuery.toString();
+  allAnimeQuery = decodeURIComponent(allAnimeQuery)
 
   let page = searchParams.get('page') || 1;
   let name = searchParams.get('name') || '';
@@ -35,14 +38,17 @@ export const AnimeList = () => {
   let totalPages = Math.ceil(allAnimes.length / 9);
 
   useEffect(() => {
-
+    setLoading(true);
     window.scrollTo({top: 0, behavior: "smooth"});
-    dispatch(getAllAnimes(search))
-    dispatch(getAnimes(search))
-
-  },[dispatch, search]);
-  console.log('search', search)
+    dispatch(getAllAnimes(typeof allAnimeQuery === 'string' ? allAnimeQuery: ''))
+    dispatch(getAnimes(search)).finally(()=> {
+      setLoading(false)
+    })
+ 
+  },[dispatch, search, allAnimeQuery]);
+  // console.log('search', search)
   return (
+  
     <div className={style["container"]} >
 
       <div className={style['search-sorts-filters-container']}>
@@ -54,25 +60,28 @@ export const AnimeList = () => {
 
         <SearchBar searchName={name}/>
       </div>
-   
+      
+      {loading ? <Loading /> :
       <div className={style["card-container"]}>
-        {animes?.map((a: Anime, i: number) => {
-          return (
-            <div className={style["recipe-card"]} key={i}>
-              <div className={style["container-card"]}>
-                <AnimeCards
-                  posterImage={a?.posterImage}
-                  name={a?.name}
-                  showType={a?.showType}
-                  status={a?.status}
-                  id={a.id}
-                />
-              </div>
+      {animes?.map((a: Anime, i: number) => {
+        return (
+          <div className={style["recipe-card"]} key={i}>
+            <div className={style["container-card"]}>
+              <AnimeCards
+                posterImage={a?.posterImage}
+                name={a?.name}
+                showType={a?.showType}
+                status={a?.status}
+                id={a.id}
+              />
             </div>
-              );
-            })}
-     
-        </div>
+          </div>
+            );
+          })}
+   
+      </div>
+      }
+      
 
         <Pagination totalPages={totalPages} search={search} page={page} />
     </div>

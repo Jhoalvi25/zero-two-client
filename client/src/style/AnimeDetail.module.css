@@ -95,12 +95,14 @@
 /*EPISODES*/
 
 .episodes {
+    box-sizing: border-box;
     color: #1A0750;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 2em;
     padding: 3em;
     padding-top:0 ;
+    width: 100%;
 }
 
 .episode {
@@ -126,6 +128,7 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
+   
 }
 
 .episode-content-min {

@@ -21,14 +21,14 @@ export default function Carousel() {
   const [currentImage, setImageCurrent] = React.useState(0);
 
   interface RootState {
-    animes: {
+    animesTrending: {
       name: string;
       coverImage: string;
       length: number;
     };
   }
 
-  const animes = useSelector((state: RootState) => state.animes);
+  const animes = useSelector((state: RootState) => state.animesTrending);
 
   console.log(animes);
 

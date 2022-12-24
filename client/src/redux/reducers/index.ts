@@ -1,7 +1,12 @@
 
-import { FILTER_AND_SORT_ANIMES, GET_ALL_ANIMES, GET_ANIME_BY_ID, GET_ANIME_EPISODES, GET_ANIME_GENRES, SEARCH_ANIMES, GET_ANIME_NEWEST, GET_ANIME_OLDEST, GET_ANIMES } from "../types";
+import { FILTER_AND_SORT_ANIMES, GET_ALL_ANIMES, GET_ANIME_BY_ID, GET_ANIME_EPISODES, GET_ANIME_GENRES, SEARCH_ANIMES, GET_ANIME_NEWEST, GET_ANIME_OLDEST, GET_ANIMES, GET_ANIME_TRENDING } from "../types";
 import {AnyAction} from 'redux'
+import { Anime } from "../../components/Animedetail";
 
+// Use the interfaces for each individual state importing its interfaces
+// interface StateAnimes {
+//   animeDetails: Anime 
+// }
 const initialState = {
   animes: [],
   allAnimes: [],
@@ -9,7 +14,7 @@ const initialState = {
   animeNewest: [],
   animeOldest: [],
   isActive: false,
-  animeDetails: [],
+  animeDetails: {},
   animeEpisodes:[],
   genres: []
 
@@ -67,7 +72,11 @@ function rootReducer(state = initialState, action:AnyAction) {
         ...state,
         animeOldest: action.payload
       }
-
+    case GET_ANIME_TRENDING: 
+      return {
+        ...state,
+        animesTrending: action.payload
+      }
     default:
       return state;
   }

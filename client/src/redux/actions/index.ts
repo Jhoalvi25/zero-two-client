@@ -3,7 +3,7 @@ import axios from "axios";
 import { AppDispatch } from "../store";
 
 export const getAnimes = (query: string)=> {
-console.log('aaa', query)
+
   return async (dispatch: AppDispatch) =>
     await axios
       .get(query ? `http://localhost:3001/animes${query}`:`http://localhost:3001/animes?page=1` )
@@ -17,11 +17,8 @@ console.log('aaa', query)
         return { error: { message: "Not found" } };
       });
 }
-export const getAllAnimes = (query: string | undefined ) => {
-  // query = new URLSearchParams(query)
-  // query.delete('page');
-  // query = decodeURIComponent(query)
-  // console.log('QQ', query)
+export const getAllAnimes = (query: string ) => {
+ 
   return async (dispatch: AppDispatch) =>
     await axios
     .get(query ? `http://localhost:3001/animes?${query}`:`http://localhost:3001/animes` )
@@ -98,10 +95,11 @@ export const getAnimeGenres = () => {
   };
 };
 
-export const getAnimeNewest = () => {
+export const getAnimeNewest = (query: string) => {
+  query = query.toString();
   return async (dispatch: AppDispatch) => {
     try {
-      const response = await axios.get("http://localhost:3001/animes/newest");
+      const response = await axios.get(`http://localhost:3001/animes/newest?${query}`);
       dispatch({ type: types.GET_ANIME_NEWEST, payload: response.data });
     } catch (err) {
       return { error: { message: "Not found" } };
@@ -119,3 +117,14 @@ export const getAnimeOldest = () => {
     }
   };
 };
+
+export const getAnimeTrending = () => {
+  return async (dispatch: AppDispatch) => {
+    try {
+      const response = await axios.get("http://localhost:3001/animes/newest?sort=rating");
+      dispatch({ type: types.GET_ANIME_TRENDING, payload: response.data });
+    } catch (err) {
+      return { error: { message: "Not found" } };
+    }
+  }
+}

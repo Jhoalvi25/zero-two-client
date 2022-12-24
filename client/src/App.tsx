@@ -19,10 +19,7 @@ function App() {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(getAllAnimes(''));
     dispatch(getAnimeGenres());
-    dispatch(getAnimes(''));
-    dispatch(getAnimeNewest());
   }, [dispatch]);
 
   return (
