@@ -5,10 +5,10 @@ import parseQuery from "../utils/parseQuery";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSortDown, faCheck } from "@fortawesome/free-solid-svg-icons";
 import { useHistory } from "react-router-dom";
-import { useSelector } from "react-redux";
 import { useAppSelector } from "../redux/hooks";
 import { FilterParams } from "./AnimesList";
-import { Genre } from "./Animedetail";
+import { Genre } from "../types/types";
+
 
 
 interface Filter {

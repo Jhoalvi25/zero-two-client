@@ -1,43 +1,54 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 .cardInformative {
-    background-color: #47037C;
+    box-sizing: border-box;
+    background-color: white;
+    background-color: rgba(255, 255, 255, 0.342);
+    background-color: #1A0750;
+    background-color: transparent;
+    backdrop-filter: blur(6px);
     min-width: 380px;
-    max-height: 246px;
+    height: 100%;
     display: flex;
     font-size: 16px;
     font-family: 'Ubuntu', sans-serif;
+    box-shadow: 5px 5px transparent;
+    /* padding: 1em; */
+    max-height: 300px;
+    color: white;
+    color: #1A0750;
    
+    overflow: hidden;
 }
 .cardInformative > div {
     width: 50%;
-    height: 100%;
 }
 
 .cardInformative-first {
-    color: #1A0750;
+    /* color: white; */
     display: flex;
     flex-direction: column;
     justify-content: stretch;
-    height: 246px;
+    height: 100%;
     width: 60%;
 }
 .cardInformative a {
     color: #1A0750;
+
 }
 
 .cardInformative-first .about {
-    background-color: white;
     padding: 1em;
     height: fit-content;
-   
+    height: 20%;
+    vertical-align: middle;
+    background-color: white;
 }
 
 
 .cardInformative-image-container {
-    overflow: hidden;
     width: 100%;
-    height: auto;
-    background-color: red;
+    height: 80%;
+   
 }
 
 .cardInformative-image-container .anime-img {
@@ -47,11 +58,12 @@
 }
 
 .cardInformative-second {
-    color: white;
+    /* color: #1A0750;
+    color: white; */
     padding: 1em;
     text-align: left;
     font-weight: 500;
-    max-height: 220px;
+    height: auto;
     width: 40%;
 
 }
@@ -73,6 +85,8 @@
 }
 .read-more {
     color: rgba(255, 255, 255, 0.685) !important;
+    color: #1A0750 !important;
+    opacity: .5;
  
 }
 

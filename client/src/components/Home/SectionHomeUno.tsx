@@ -25,7 +25,7 @@ interface ChildNewest {
 }
 
 const SectionHomeUno = () => {
-  const newestAnimes: AppState['childNewest'] = useAppSelector((state) => state['animeNewest']);
+  const newestAnimes= useAppSelector((state) => state['animeNewest']);
   return (
     <>
     <div>
@@ -39,13 +39,13 @@ const SectionHomeUno = () => {
                 return (
                   <CardInformative
                     name={elem.name}
-                    img={elem.posterImage}
+                    posterImage={elem.posterImage}
                     id={elem.id}
                     key={elem.id}
-                    description={elem?.synopsis?.substring(0, 60) + "..."}
+                    synopsis={elem?.synopsis?.substring(0, 60) + "..."}
                     showType={elem.showType}
                     status={elem.status}
-                    date={elem.startDate}
+                    startDate={elem.startDate}
                   />
                 );
               }

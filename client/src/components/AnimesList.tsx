@@ -8,11 +8,17 @@ import { useLocation } from "react-router-dom";
 import { getAllAnimes, getAnimes} from "../redux/actions";
 import Sorts from "./Sorts";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
-import { Anime } from "./Animedetail";
 import Loading from "./Loading";
+import NotFound from "./NotFound";
+import { Anime } from "../types/types";
+import { isError } from "../types/typeGuards";
 
 export interface FilterParams {
   genres: string
+}
+
+interface err {
+  message: string
 }
 export const AnimeList = () => {
 
@@ -35,7 +41,7 @@ export const AnimeList = () => {
   let filters:FilterParams = {
     genres: genres || ''
   }
-  let totalPages = Math.ceil(allAnimes.length / 9);
+  let totalPages = isError(allAnimes) ? 0 : Math.ceil(allAnimes.length / 9);
 
   useEffect(() => {
     setLoading(true);
@@ -61,7 +67,8 @@ export const AnimeList = () => {
         <SearchBar searchName={name}/>
       </div>
       
-      {loading ? <Loading /> :
+      {loading ? <Loading />: isError(animes) ? <NotFound msg={animes.error.message} /> :
+      
       <div className={style["card-container"]}>
       {animes?.map((a: Anime, i: number) => {
         return (
@@ -79,7 +86,7 @@ export const AnimeList = () => {
             );
           })}
    
-      </div>
+      </div> 
       }
       
 

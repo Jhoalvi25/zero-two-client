@@ -1,31 +1,44 @@
 
 import { FILTER_AND_SORT_ANIMES, GET_ALL_ANIMES, GET_ANIME_BY_ID, GET_ANIME_EPISODES, GET_ANIME_GENRES, SEARCH_ANIMES, GET_ANIME_NEWEST, GET_ANIME_OLDEST, GET_ANIMES, GET_ANIME_TRENDING } from "../types";
 import {AnyAction} from 'redux'
-import { Anime } from "../../components/Animedetail";
+import { Anime, Episode, ErrorResponse, Genre } from "../../types/types";
 
 // Use the interfaces for each individual state importing its interfaces
-// interface StateAnimes {
-//   animeDetails: Anime 
-// }
+
+interface StateAnimes {
+  animes: Array<Anime>,
+  allAnimes: Array<Anime>,
+  anime: Anime,
+  animeNewest: Array<Anime>,
+  animeOldest: Array<Anime>,
+  animesTrending: Array<Anime>,
+  isActive: Boolean,
+  animeDetails: Anime,
+  animeEpisodes: Array<Episode>, 
+  genres: Array<Genre>
+  error: ErrorResponse
+}
 const initialState = {
   animes: [],
   allAnimes: [],
-  anime: [],
+  anime: {} as Anime,
   animeNewest: [],
   animeOldest: [],
+  animesTrending: [],
   isActive: false,
-  animeDetails: {},
+  animeDetails: {} as Anime,
   animeEpisodes:[],
-  genres: []
-
+  genres: [],
+  error: {} as ErrorResponse
 };
 
-function rootReducer(state = initialState, action:AnyAction) {
+function rootReducer(state:StateAnimes = initialState, action:AnyAction) {
   switch (action.type) {
     case GET_ANIMES: {
       return {
         ...state,
-        animes: action.payload
+        animes: action.payload,
+        error: action.error
       }
     }
     case GET_ALL_ANIMES: {
@@ -33,6 +46,7 @@ function rootReducer(state = initialState, action:AnyAction) {
         ...state,
         allAnimes: action.payload,
         isActive: false,
+        error: action.error
       };
     }
     case SEARCH_ANIMES:
@@ -40,42 +54,50 @@ function rootReducer(state = initialState, action:AnyAction) {
         ...state,
         animes: action.payload,
         isActive: true,
+        error: action.error
       };
     case GET_ANIME_BY_ID:
       return {
         ...state,
         animeDetails: action.payload,
+        error: action.error
       };
     case GET_ANIME_EPISODES:
       return {
         ...state,
-        animeEpisodes: action.payload
+        animeEpisodes: action.payload,
+        error: action.error
       }
     case FILTER_AND_SORT_ANIMES: 
       return {
         ...state,
-        animes: action.payload
+        animes: action.payload,
+        error: action.error
       }
     case GET_ANIME_GENRES:
       return {
         ...state,
-        genres: action.payload
+        genres: action.payload,
+        error: action.error
       }
 
     case GET_ANIME_NEWEST:
       return {
         ...state,
-        animeNewest: action.payload
+        animeNewest: action.payload,
+        error: action.error
       }
     case GET_ANIME_OLDEST:
       return {
         ...state,
-        animeOldest: action.payload
+        animeOldest: action.payload,
+        error: action.error
       }
     case GET_ANIME_TRENDING: 
       return {
         ...state,
-        animesTrending: action.payload
+        animesTrending: action.payload,
+        error: action.error
       }
     default:
       return state;

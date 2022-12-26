@@ -21,7 +21,7 @@ interface ChildAnime {
 // If i want to set props to this element type this: 
 // const SectionHomeDos = ({name_of_the_prop}: Props) => {
 const SectionHomeDos = () => {
-  const animes: AppState['childAnime'] = useAppSelector((state) => state['animes']);
+  const animes= useAppSelector((state) => state['animes']);
 
   return (
     <>
@@ -39,7 +39,7 @@ const SectionHomeDos = () => {
               return (
                 <CardBasic
                   name={anime.name}
-                  img={anime.posterImage}
+                  posterImage={anime.posterImage}
                   key={anime.name + " - " + i}
                   showType={anime.showType}
                   status={anime.status}

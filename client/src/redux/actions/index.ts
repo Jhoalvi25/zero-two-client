@@ -14,7 +14,11 @@ export const getAnimes = (query: string)=> {
         });
       })
       .catch((error) => {
-        return { error: { message: "Not found" } };
+        dispatch({
+          type: types.GET_ANIMES,
+          payload: {error: {message: 'Not found'}}
+        })
+        // return { error: { message: "Not found" } };
       });
 }
 export const getAllAnimes = (query: string ) => {
@@ -29,7 +33,10 @@ export const getAllAnimes = (query: string ) => {
         });
       })
       .catch((error) => {
-        return { error: { message: "Not found" } };
+        dispatch({
+          type: types.GET_ALL_ANIMES,
+          payload: { error: { message: "Not found" } }
+        })
       });
 };
 
@@ -51,15 +58,16 @@ export const getAnimeById = (id: number | string) => {
     try {
       const response = await axios.get(`http://localhost:3001/animes/${id}`);
       dispatch({ type: types.GET_ANIME_BY_ID, payload: response.data });
+      
     } catch (err) {
-      return {
-        error: {
-          message: `The anime with id ${id} doesn't exist. Try with another one`,
-        },
+      dispatch({
+        type: types.GET_ANIME_BY_ID, 
+        payload: {error: { message: `The anime with id ${id} doesn't exist. Try with another one`}}});
+
       };
     }
   };
-};
+
 
 export const getAnimeEpisodes = (id: number) => {
   return async (dispatch: AppDispatch) => {
@@ -67,7 +75,11 @@ export const getAnimeEpisodes = (id: number) => {
       const response = await axios.get(`http://localhost:3001/episodes/${id}`);
       return dispatch({ type: types.GET_ANIME_EPISODES, payload: response.data });
     } catch (err) {
-      return { error: { message: `Not available episodes for anime ${id}` } };
+      return dispatch({ 
+        type: types.GET_ANIME_EPISODES,
+        payload: {error: { message: `Not available episodes for anime ${id}` }} 
+      })
+      
     }
   };
 };
@@ -78,8 +90,12 @@ export const filterAndSortAnimes = (query: string) => {
     try {
       const response = await axios.get(`http://localhost:3001/animes?${query}`);
       dispatch({ type: types.FILTER_AND_SORT_ANIMES, payload: response.data });
+
     } catch (err) {
-      return { error: { message: `Not found` } };
+      dispatch({
+        type: types.FILTER_AND_SORT_ANIMES,
+        payload: { error: { message: `Not results for your search.` } }
+      })
     }
   };
 };
@@ -89,8 +105,12 @@ export const getAnimeGenres = () => {
     try {
       const response = await axios.get(`http://localhost:3001/genres`);
       dispatch({ type: types.GET_ANIME_GENRES, payload: response.data });
+
     } catch (err) {
-      return { error: { message: `Not found` } };
+      dispatch({
+        type: types.GET_ANIME_GENRES, 
+        payload: { error: { message: `Not genres found` } }
+      })
     }
   };
 };
@@ -102,7 +122,10 @@ export const getAnimeNewest = (query: string) => {
       const response = await axios.get(`http://localhost:3001/animes/newest?${query}`);
       dispatch({ type: types.GET_ANIME_NEWEST, payload: response.data });
     } catch (err) {
-      return { error: { message: "Not found" } };
+      dispatch({
+        type: types.GET_ANIME_NEWEST, 
+        payload: { error: { message: "Not animes to show here" } }
+      });
     }
   };
 };
@@ -113,7 +136,10 @@ export const getAnimeOldest = () => {
       const response = await axios.get("http://localhost:3001/animes/oldest");
       dispatch({ type: types.GET_ANIME_OLDEST, payload: response.data });
     } catch (err) {
-      return { error: { message: "Not found" } };
+      dispatch({
+        type: types.GET_ANIME_OLDEST, 
+        payload: { error: { message: "Not found animes to show here" } }
+      })
     }
   };
 };
@@ -123,8 +149,12 @@ export const getAnimeTrending = () => {
     try {
       const response = await axios.get("http://localhost:3001/animes/newest?sort=rating");
       dispatch({ type: types.GET_ANIME_TRENDING, payload: response.data });
+
     } catch (err) {
-      return { error: { message: "Not found" } };
+      dispatch({
+        type: types.GET_ANIME_TRENDING,
+        payload: { error: { message: "Not found" } }
+      })
     }
   }
 }

@@ -11,52 +11,20 @@ import { useDispatch } from "react-redux";
 import Loading from "./Loading";
 import missingImage from '../img/missing.jpg';
 import NotFound from "./NotFound";
+import { Anime, Episode, ErrorResponse, Genre } from "../types/types";
+import { isError } from "../types/typeGuards";
 
-interface Episode {
-    id: number,
-    title: string,
-    synopsis: string,
-    number: number,
-    seasonNumber: number,
-    airDate: string,
-    length: number,
-    thumbnail: { original?:string, meta?:object },
-    error? : {message: string}
+ function isEmptyObject (input: any): input is {} {
+    if (typeof input === 'object' && !Object.entries(input).length) return true;
+    else return false;
 }
-export interface Genre {
-    id: number,
-    name: string
-}
-export interface Anime {
-    id?: number,
-    name?: string,
-    userCount?: number,
-    synopsis?: string,
-    averageRating?: number,
-    favoritesCount?: number,
-    startDate?: string,
-    endDate?: string,
-    popularityRank?: number,
-    ratingRank?: number,
-    status?: string,
-    posterImage?: string,
-    coverImage?: string,
-    episodeCount?: number,
-    episodeLength?: number,
-    youtubeVideoId?: string | number,
-    nsfw?: boolean,
-    subtype?: string,
-    showType?: string, 
-    ageRatingGuide?: string
-    genres?: Genre[],
-    error? : {message: string}
-}
+
 
 export default function AnimeDetail () {
     const {id}:{id:string} = useParams();
     const dispatch = useAppDispatch()
-    const anime:Anime  = useAppSelector((state) => state["animeDetails"]);
-    const episodes: Array<Episode> = useAppSelector(state => state["animeEpisodes"]);
+    const anime = useAppSelector((state) => state["animeDetails"]); 
+    const episodes = useAppSelector(state => state["animeEpisodes"]);
     const containerRef = useRef()
     const [loading, setLoading] = useState(false);
     useEffect(()=> {
@@ -70,11 +38,11 @@ export default function AnimeDetail () {
         })
     },[dispatch, id])
 
-    // console.log(anime)
-    // console.log(episodes)
     return (
-        loading ? <Loading />: anime.error ? <NotFound msg={anime.error.message}/>:
-        anime && 
+        
+        loading ? <Loading />: 
+       
+        
         <div className={style['animeDetail']} ref={containerRef}>
             <div className={style['animeDetail-header']}  
             style={{backgroundImage:`url(${anime.coverImage})`}}>
@@ -86,16 +54,28 @@ export default function AnimeDetail () {
                     
                     <div className={style['cover-info-container']}>
                         <h2>{anime.name}</h2>
-                        <Tag title={typeof anime.ageRatingGuide === 'string' ? anime.ageRatingGuide: '' } bgColor={'black'} color={'white'}/>
-                        <Tag title={typeof anime.ageRatingGuide === 'string' ? anime.ageRatingGuide: ''} bgColor={'#120B39'} color={'#CB8442'}/>
-                        
-                        <div className={style['doubleTag']}>
-                            <span className={style['first']}>Rating</span>
-                            <span className={style['second']}>{anime.averageRating}</span>
+                        <div className={style['tags']}>
+                            <Tag title={typeof anime.status === 'string' ? anime.status: '' } bgColor={'transparent'} color={'white'}/>
+                            <Tag title={typeof anime.showType === 'string' ? anime.showType: ''} bgColor={'transparent'} color={'white'}/>
+                            <Tag title={typeof anime.ageRatingGuide === 'string' ? anime.ageRatingGuide: ''} bgColor={'transparent'} color={'white'}/>
+                            <div className={style['doubleTag']}>
+                                <span className={style['first']}>Rating</span>
+                                <span className={style['second']}>{anime.averageRating}</span>
+                            </div>
+                            <div className={style['doubleTag']}>
+                                <span className={style['first']}>Views</span>
+                                <span className={style['second']}>{anime.userCount}</span>
+                                
+                            </div>
                         </div>
-                        <div className={style['doubleTag']}>
-                            <span className={style['first']}>Views</span>
-                            <span className={style['second']}>{anime.userCount}</span>
+                        <div className={style['lists']}>
+                            <div className={style['list']}>
+                                <span>Add to favorites</span>
+
+                            </div>
+                            <div className={style['list']}>
+                                <span>Append to a new list</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -113,7 +93,7 @@ export default function AnimeDetail () {
             <div className={style['animeDetail-content']}>
                 <div className={style['animeDetail-content-info']}>
                     <h3>Synopsis</h3>
-                    <p>{anime.synopsis}</p>
+                    <p style={{opacity: '.7'}}>{anime.synopsis}</p>
                     {/* <div className={style['genresTags']}> */}
                     {anime.genres && anime.genres.map((genre:Genre) => {
                         return(
@@ -121,38 +101,38 @@ export default function AnimeDetail () {
                         )
                     })}
                     {/* </div> */}
-                    <div className={style['favorite-count']}>
+                    {/* <div className={style['favorite-count']}>
                         <span>Favorite count: {anime.favoritesCount}</span>
                         <div className={style['btn-favorite']}>
                             <FontAwesomeIcon icon={faFaceSmileWink}/>
                         </div>   
-                    </div>
+                    </div> */}
 
                 </div>
 
-                <h2 style={{textAlign: 'center', padding:'2em', color:'#1A0750'}}>Episodes</h2>
-                {episodes.length ?
+                <h3 style={{textAlign: 'left', padding:'2em', color:'#1A0750'}}>Episodes</h3>
+                {!isError(episodes) ?
                 <div className={style['episodes']}>
                   
                   {episodes.map((episode:Episode) => {
                       return(
                       <div className={style['episode']} key={episode.id}>
                           <div className={style['episode-header']}>
-                              <span>{episode.title}</span>
-                              <span>{` - Season ${episode.seasonNumber} - Episode ${episode.number}`}</span>
+                              <span>{episode.title} E{episode.number}</span>
+                              <span style={{opacity: '.5'}}>{`Season - ${episode.seasonNumber}`}</span>
                           </div>
                           <div className={style['episode-content']}>
                               <img src={ episode.thumbnail === null ? missingImage: episode.thumbnail?.original} alt={'anime img'} 
                               className={style['episode-img']} style={episode.thumbnail === null ? {filter:'grayscale(1)'}: {}}/>
                               <div className={style['episode-content-min']}>{episode.length} min</div>
-                              <div className={style['episode-content-play']}>
+                              {/* <div className={style['episode-content-play']}>
                                   <FontAwesomeIcon icon={faCirclePlay} />
-                              </div>
+                              </div> */}
                           </div>
                       </div>
                       )
-                  })}}
-              </div>: <NotFound msg=''/> }
+                  })}
+              </div>: <NotFound msg={episodes.error.message}/> }
                 
             </div>
             
