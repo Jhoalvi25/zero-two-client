@@ -1,0 +1,59 @@
+.cardPlan {
+  align-items: center;
+  height: fit-content;
+  margin: 50px;
+  padding: 50px;
+  background-color: #47037c;
+  width: 280px;
+  height: 280px;
+  box-shadow: 7px 7px 0px #1a0750;
+}
+
+.title h1 {
+  padding-top: 80px;
+  background-color: white;
+}
+
+.back {
+  background-color: white;
+  display: flex;
+}
+
+.cardPlan ul {
+  list-style: none;
+}
+
+.cardPlan ul li{
+    color: white;
+    font-size: 15px;
+}
+
+
+
+.cardPlan ul li:before {
+  content: "✓";
+  color: greenyellow;
+  margin-right: 5px;
+}
+
+.cardPlan h2 {
+  font-size: 20px;
+  color: white;
+}
+
+.btn {
+  margin: 10px;
+  padding: 8px;
+  font-size: 30px;
+  font-weight: bold;
+  border-radius: 5px;
+  border: none;
+  color: #47037c;
+  background-color: #ffc989;
+  cursor: pointer;
+}
+
+.cardPlan h3{
+    color: white;
+    margin: 10px;
+}

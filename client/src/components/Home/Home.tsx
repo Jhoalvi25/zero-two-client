@@ -1,5 +1,3 @@
-import React from "react";
-
 import Carousel from "./Carousel";
 import SectionHomeUno from "./SectionHomeUno";
 import SectionHomeDos from "./SectionHomeDos";

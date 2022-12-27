@@ -44,7 +44,7 @@ const SectionHomeUno = () => {
                     description={elem?.synopsis?.substring(0, 60) + "..."}
                     showType={elem.showType}
                     status={elem.status}
-                    date={elem.startdate}
+                    date={elem.startDate}
                   />
                 );
               }
