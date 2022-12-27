@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-=======
-import React, { useEffect, useState } from "react";
 
->>>>>>> 4d3721fa0de496fb90b1a41d6fca285c30bcd681
+import React, { useEffect, useState } from "react";
 import Carousel from "./Carousel";
 import SectionHomeUno from "./SectionHomeUno";
 import SectionHomeDos from "./SectionHomeDos";
