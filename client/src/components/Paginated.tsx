@@ -3,7 +3,12 @@ import { Link } from "react-router-dom";
 import style from "../style/Paginated.module.css";
 import parseQuery from "../utils/parseQuery";
 
-export default function Pagination({ totalPages, search, page}) {
+interface Pagination {
+    totalPages: number,
+    search: string, 
+    page: number | string
+}
+export default function Pagination({ totalPages, search, page}:Pagination) {
   
   page = Number(page)
 

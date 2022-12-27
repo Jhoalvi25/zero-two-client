@@ -8,6 +8,7 @@ import CardInformative from "../CardInformative";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { useAppSelector } from "../../redux/hooks";
 
 interface AppState {
   childNewest: Array<ChildNewest>
@@ -24,7 +25,7 @@ interface ChildNewest {
 }
 
 const SectionHomeUno = () => {
-  const newestAnimes: AppState['childNewest'] = useSelector((state) => state['animeNewest']);
+  const newestAnimes= useAppSelector((state) => state['animeNewest']);
   return (
     <>
     <div>
@@ -38,13 +39,17 @@ const SectionHomeUno = () => {
                 return (
                   <CardInformative
                     name={elem.name}
-                    img={elem.posterImage}
+                    posterImage={elem.posterImage}
                     id={elem.id}
                     key={elem.id}
-                    description={elem?.synopsis?.substring(0, 60) + "..."}
+                    synopsis={elem?.synopsis?.substring(0, 60) + "..."}
                     showType={elem.showType}
                     status={elem.status}
+<<<<<<< HEAD
                     date={elem.startDate}
+=======
+                    startDate={elem.startDate}
+>>>>>>> 4d3721fa0de496fb90b1a41d6fca285c30bcd681
                   />
                 );
               }

@@ -2,16 +2,20 @@ import React from "react"
 import parseQuery from "../utils/parseQuery";
 import style from '../style/Sorts.module.css';
 import { useHistory } from "react-router-dom";
-export default function Sorts ({query, sort}) {
+interface Sort {
+    query: string,
+    sort: string
+}
+export default function Sorts ({query, sort}:Sort) {
     // const [sorts, setSorts] = useState("");
     // const [showSort, setShowSort] = useState(false);
  
     let history = useHistory();
-    let changeOption = (e, type) => {
+    let changeOption = (e: React.MouseEvent<HTMLSelectElement>, type: string) => {
         e.preventDefault();
 
-        let paramValue = e.target.value;
-        let paramName = e.target.name;
+        let paramValue = (e.target as HTMLInputElement).value;
+        let paramName = (e.target as HTMLInputElement).name;
 
         if (sort === paramValue) {
             paramValue = '';

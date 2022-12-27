@@ -5,9 +5,9 @@ import {
   faChevronRight,
   faChevronLeft,
 } from "@fortawesome/free-solid-svg-icons";
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import defaultImg from "../../img/defaultImg.jpg";
+import { useAppSelector } from "../../redux/hooks";
 
 export default function Carousel() {
   const nextImage = () => {
@@ -20,17 +20,9 @@ export default function Carousel() {
 
   const [currentImage, setImageCurrent] = React.useState(0);
 
-  interface RootState {
-    animes: {
-      name: string;
-      coverImage: string;
-      length: number;
-    };
-  }
 
-  const animes = useSelector((state: RootState) => state.animes);
+  const animes = useAppSelector((state) => state.animesTrending);
 
-  console.log(animes);
 
   const amount: number = animes?.length;
 

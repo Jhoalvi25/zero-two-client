@@ -2,7 +2,10 @@
 
 .section1_container {
   color: white;
-  background-color: #47037c;
+  color: #1a0750;
+  background-color: #5A2095;
+  background-color: #1a0750;
+  background-color: transparent;
   padding: 40px;
   font-size: 20px;
   text-align: left;
@@ -26,6 +29,10 @@ body::-webkit-scrollbar-thumb {
 
 .section_container {
   background-color: #1a0750;
+  background-color: #FFC989;
+  background-color: transparent;
+  background-color: #F4F0F8;
+
   text-decoration: none;
   padding: 2em 0em;
   display: flex;
@@ -38,6 +45,7 @@ body::-webkit-scrollbar-thumb {
   width: 95%;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  
   gap: 2em;
 }
 .section_link {
@@ -47,6 +55,7 @@ body::-webkit-scrollbar-thumb {
 .down {
   font-size: 30px;
   color: white;
+  color: #1a0750;
 }
 
 .down:hover {

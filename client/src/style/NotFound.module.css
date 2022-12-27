@@ -1,0 +1,20 @@
+.not-found {
+    box-sizing: border-box;
+    min-height: 100vh;
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+
+}
+
+.not-found-img {
+    max-width: 80%;
+    height: 100%;
+    object-fit: cover; 
+    margin: auto;
+    filter: grayscale(1);
+}

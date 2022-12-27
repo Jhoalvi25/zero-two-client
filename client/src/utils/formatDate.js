@@ -1,4 +1,5 @@
 export default function formatDate (date)  {
+    date = new Date(date);
     let year = date.getFullYear();
 
     let month = (1 + date.getMonth()).toString();

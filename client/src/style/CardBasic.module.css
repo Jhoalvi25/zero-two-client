@@ -1,12 +1,13 @@
 .cardBasic {
   color: #1a0750;
+  color: white;
   min-height: 300px;
   max-width: 256px;
   width: 100%;
   text-align: left;
   border-radius: 0.5em;
   box-sizing: border-box;
-  overflow: hidden;
+  /* overflow: hidden; */
   height: 100%;
   cursor: grab;
 }
@@ -23,7 +24,7 @@
 }
 .cardBasic-about {
   height: 80px;
-  background-color: white;
+  background-color: #1a0750;
   padding: 0.5em;
   display: flex;
   flex-direction: column;
