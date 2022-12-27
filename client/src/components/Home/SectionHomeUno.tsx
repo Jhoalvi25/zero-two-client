@@ -45,11 +45,11 @@ const SectionHomeUno = () => {
                     synopsis={elem?.synopsis?.substring(0, 60) + "..."}
                     showType={elem.showType}
                     status={elem.status}
-<<<<<<< HEAD
+
                     date={elem.startDate}
-=======
+
                     startDate={elem.startDate}
->>>>>>> 4d3721fa0de496fb90b1a41d6fca285c30bcd681
+
                   />
                 );
               }
