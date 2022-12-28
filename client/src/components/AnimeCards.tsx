@@ -16,8 +16,8 @@ export default function AnimeCards({posterImage, name, id, showType, status}:Ani
         </div>
         <div className={style['cardAnime-content-container']}>
           <h4>{name}</h4>
-          <Tag title={showType} bgColor={'#A77DDD'} color={'#47037C'}/>
-          <Tag title={status} color={"white"} bgColor={"#47037C"} />
+          <Tag title={showType} bgColor="white" color="#5519B6" />
+          <Tag title={status} bgColor="#5519B6" color="white" />
         </div>
       </div>
     

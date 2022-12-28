@@ -1,3 +1,13 @@
+:root {
+  --main-bg-color-dark: #0f0f0f;
+  --main-bg-color-light: #ffff;
+  --main-color-font-dark: #1a0750;
+  --main-color-font-dark2: rgba(26, 7, 80, 0.54);
+  --main-color-font-light: rgba(255, 255, 255, 0.54);
+  --main-color-content:#F4F0F8;
+  --secondary-color-content-1: #e9dcf7;
+  --secondary-color-content-2: #5519b6;
+}
 * {
   margin: 0;
   padding: 0;
@@ -9,6 +19,7 @@
 .App {
   text-align: center;
   font-family: 'Ubuntu', sans-serif;
+  background-color: var(--main-bg-color-light);
 }
 
 .App-logo {
@@ -35,6 +46,10 @@
 
 .App-link {
   color: #61dafb;
+}
+body {
+  margin-top: 70px;
+  margin-bottom: 270px;
 }
 
 @keyframes App-logo-spin {
