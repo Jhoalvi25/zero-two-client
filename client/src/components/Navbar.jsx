@@ -5,11 +5,15 @@ import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import logo from "../img/zero.png";
+import AuthenticationButton from "./authentication-button";
+import AuthNav from "./auth-nav";
 
 export default function NavBar() {
   return (
     <div className={style.nav}>
+      <AuthNav />
       <div>
+        <div></div>
         <nav className={style.elements}>
           {" "}
           <div className={style.elem}>
@@ -32,7 +36,7 @@ export default function NavBar() {
                 <span className={style.vip}>VIP</span>
               </button>
             </Link>
-            <Link to={"/animes"} className={style.user}>
+            <Link to={"/login"} className={style.user}>
               <button className={style.log}>
                 <FontAwesomeIcon icon={faUser} className={style.iconUser} />
                 <FontAwesomeIcon
