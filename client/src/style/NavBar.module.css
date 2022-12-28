@@ -17,19 +17,12 @@
 }
 
 .logo {
-  height: 70px;
+  height: 40px;
   margin-left: 10px;
   display: flex;
 }
 
-.linea {
-  background-color: #47037c;
-  height: 10px;
-  width: 100%;
-  display: block;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-}
+
 
 
 
@@ -58,12 +51,12 @@
     rgba(137, 112, 233, 1) 27%,
     rgba(75, 49, 235, 1) 100%
   );
-  padding: 1em;
+  padding: 6px;
   font-size: 16px;
   border: 0;
-  border-radius: 6px;
   display: flex;
   align-items: center;
+  margin-top: 2px;
 }
 .freeTrial{
   font-size: 12px;
@@ -82,26 +75,36 @@
 
 .log {
   color: white;
-  background-color: #1a056d;
+  background-color: #ffc989;
   font-size: 16px;
-  padding: 1em;
-  height: 64px;
+  padding: 6px;
+  height: 44px;
   border: 0;
   margin-right: 10px;
-  border-radius: 6px;
+  margin-top: 2px;
   display: flex;
   align-items: center;
 }
 
+.type{
+  color: #1a0750;
+}
+
 .iconDown{
-  margin-left: 10px;
+  margin-right: 10px;
+  margin-left: 15px;
 }
 
 .iconUser{
   background-color: white;
   padding: 4px 4px;
-  color: #1a056d;
+  color: #1a0750;
   border-radius: 20px;
+}
+
+.medal{
+  margin-left: 10px;
+  color: #1a056d;
 }
 
 
@@ -110,7 +113,7 @@
 .explore {
   width: 100%;
   max-width: 7em;
-  padding: 1em;
+  padding: 10px;
   font-weight: bold;
   background-color: transparent;
   display: flex;
@@ -118,6 +121,7 @@
   justify-content: center;
   align-items: center;
   row-gap: .1em;
+  color: #1a0750;
 }
 
 
@@ -129,10 +133,11 @@
 
 .button-dropdown{
   background-color: transparent;
+  color: #1a0750;
   border: 0;
-  padding: .5em;
   display: flex;
   cursor: pointer;
+  font-size: 17px;
 }
 
 .nav-dropdown{
