@@ -1,4 +1,5 @@
 import React from "react";
+import style from "../style/Paginated.module.css";
 
 export default function Pagination({ cardPerPage, totalCards, pagination }) {
   /*   console.log("cardperpage", cardPerPage);
@@ -9,24 +10,27 @@ export default function Pagination({ cardPerPage, totalCards, pagination }) {
     pageNumbers.push(i);
   }
 
+  console.log("render");
+
   return (
     <div>
       <ul className="pagination">
-        {pageNumbers.length <= 1 ? (
+        {/* {pageNumbers.length <= 1 ? (
           <></>
-        ) : (
-          <nav>
-            <ul>
-              {pageNumbers?.map((p) => (
+        ) : ( */}
+        <nav className={style.page}>
+          <ul>
+            {pageNumbers &&
+              pageNumbers?.map((p) => (
                 <div className="pag" key={p}>
                   <button className="page-link" onClick={() => pagination(p)}>
                     {p}
                   </button>
                 </div>
               ))}
-            </ul>
-          </nav>
-        )}
+          </ul>
+        </nav>
+        {/* )} */}
       </ul>
     </div>
   );

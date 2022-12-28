@@ -1,0 +1,15 @@
+
+
+.page button {
+  font-size: 25px;
+  margin: 10px;
+  width: 40px;
+  border-radius: 20px;
+  background: #f1c40f;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.page button:hover {
+  border: 2px solid white;
+  color: white;
+}

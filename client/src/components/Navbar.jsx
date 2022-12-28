@@ -5,11 +5,15 @@ import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import logo from "../img/zero.png";
+import AuthenticationButton from "./authentication-button";
+import AuthNav from "./auth-nav";
 
 export default function NavBar() {
   return (
     <div className={style.nav}>
+      <AuthNav />
       <div>
+        <div></div>
         <nav className={style.elements}>
           {" "}
           <div className={style.elem}>
@@ -25,26 +29,28 @@ export default function NavBar() {
             <Link to={"/suscription"} className={style.sus}>
               {" "}
               <button className={style.premium}>
-                Get premium
+                <div>
+                  <p>Get premium</p>
+                  <p className={style.freeTrial}>15 days free!</p>
+                </div>
                 <span className={style.vip}>VIP</span>
               </button>
             </Link>
-            <Link to={"/zerotwo"} className={style.user}>
+            <Link to={"/login"} className={style.user}>
               <button className={style.log}>
-                User
+                <FontAwesomeIcon icon={faUser} className={style.iconUser} />
                 <FontAwesomeIcon
                   icon={faCaretDown}
                   className={style.iconDown}
                 />
-                <FontAwesomeIcon icon={faUser} className={style.iconUser} />{" "}
               </button>
             </Link>
           </div>
         </nav>
 
-        <div>
+        {/* <div>
           <span className={style.linea}></span>
-        </div>
+        </div> */}
       </div>
     </div>
   );

@@ -1,0 +1,22 @@
+.filters-btn {
+  width: 370vw;
+  margin: 30px;
+}
+
+.filters-title {
+  color: white;
+  margin-right: 10px;
+}
+
+.btn {
+  margin-right: 10px;
+  background-color: #1a0750;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+
+}
+
+
+
