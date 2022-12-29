@@ -6,25 +6,31 @@ import AnimeList from "./components/AnimesList";
 import Footer from "./components/Footer";
 import AnimeDetail from "./components/Animedetail";
 import {
-  getAnimes,
   getAnimeGenres,
-  getAnimeNewest,
-  getAllAnimes,
 } from "./redux/actions/index";
 import { useEffect } from "react";
-import NavBar from "./components/Navbar";
+import NavBar from "./components/NavBar/Navbar";
 import { useAppDispatch } from "./redux/hooks";
+import Profile from "./components/NavBar/Profile";
+import { ProtectedRoute } from "./components/NavBar/Protected-route";
+import { useAuth0 } from "@auth0/auth0-react";
 
-function App() {
+const App: React.FC = () =>  {
   const dispatch = useAppDispatch();
   const location = useLocation();
-
-  // console.log("Aqui estoy!", location)
-
+  const { isLoading } = useAuth0();
+  
   useEffect(() => {
     dispatch(getAnimeGenres());
   }, [dispatch]);
 
+  if (isLoading) {
+    return (
+      <div>
+        <h1>LOADING...............</h1>
+      </div>
+    )
+  }
   return (
     <BrowserRouter>
       <div className="App">
@@ -39,6 +45,7 @@ function App() {
           <Route exact path="/home" component={Home} />
           <Route exact path="/animes" component={AnimeList} />
           <Route exact path="/animes/:id" component={AnimeDetail} />
+          <ProtectedRoute path="/profile" component={Profile} />
         </Switch>
 
         <Footer />

@@ -158,3 +158,25 @@ export const getAnimeTrending = () => {
     }
   }
 }
+
+export const getUserResource = (token: string, email: string) => {
+  return async (dispatch: AppDispatch) => {
+    try {
+        const config = {
+          url: `http://localhost:3001/user/${email}`,
+          method: "GET",
+          headers: {
+            "content-type": "application/json",
+            Authorization: `Bearer ${token}`,
+          }
+        };
+        const response = await axios(config);
+        dispatch({ type: types.GET_USER_BY_EMAIL, payload: response.data });
+    } catch (err) {
+      dispatch({
+        type: types.GET_USER_BY_EMAIL,
+        payload: { error: { message: "Not found" } }
+      })
+    }
+  }
+}
