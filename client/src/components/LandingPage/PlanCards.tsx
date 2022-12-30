@@ -13,7 +13,7 @@ export default function PlanCards(): JSX.Element {
               <div className={style["cardPlan"]}>
                 <h2>{elem.name}</h2>
 
-                <Link to={"/susbscription"}>
+                <Link to={"/payment"}>
                   <button className={style["btn"]}>VIP</button>
                 </Link>
 

@@ -14,12 +14,11 @@ import {
 import { useEffect } from "react";
 import NavBar from "./components/Navbar";
 import { useAppDispatch } from "./redux/hooks";
+import Payments from "./components/Payments/Payments";
 
 function App() {
   const dispatch = useAppDispatch();
   const location = useLocation();
-
-  // console.log("Aqui estoy!", location)
 
   useEffect(() => {
     dispatch(getAnimeGenres());
@@ -39,6 +38,7 @@ function App() {
           <Route exact path="/home" component={Home} />
           <Route exact path="/animes" component={AnimeList} />
           <Route exact path="/animes/:id" component={AnimeDetail} />
+          <Route exact path="/payment" component={Payments} />
         </Switch>
 
         <Footer />
