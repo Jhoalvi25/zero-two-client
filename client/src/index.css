@@ -1,13 +1,33 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.paypal-buttons {
+  display: none;
+}
+
+.paypal-buttons,
+.paypal-buttons-context-iframe,
+.paypal-buttons-label-unknown,
+.paypal-buttons-layout-vertical {
+
+  display: none;
+}
+
+#zoid-paypal-buttons-uid_299032a504_mtc6nti6mtg{
+  display: none;
+}
+
+#braintree-paypal-loggedout:nth-child(n+2) {
+  display: none;
+  }

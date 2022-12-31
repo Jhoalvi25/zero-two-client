@@ -11,18 +11,27 @@ import {
 import { useEffect } from "react";
 import NavBar from "./components/NavBar/Navbar";
 import { useAppDispatch } from "./redux/hooks";
+
 import Profile from "./components/NavBar/Profile";
 import Admin from "./components/NavBar/Admin";
 import { ProtectedRoute } from "./components/NavBar/Protected-route";
 import { useAuth0 } from "@auth0/auth0-react";
-import LoginPage from "./components/NavBar/LoginPage";
 import NotFound from "./components/NotFound";
+
+import Payments from "./components/Payments/Payments";
+import Login from "./components/Login_and_Register/Login";
+import Register from "./components/Login_and_Register/Register";
+
 
 const App: React.FC = () =>  {
   const dispatch = useAppDispatch();
   const location = useLocation();
+
   const { isLoading } = useAuth0();
   
+
+
+
   useEffect(() => {
     dispatch(getAnimeGenres());
   }, [dispatch]);
@@ -48,10 +57,15 @@ const App: React.FC = () =>  {
           <Route exact path="/home" component={Home} />
           <Route exact path="/animes" component={AnimeList} />
           <Route exact path="/animes/:id" component={AnimeDetail} />
+
           <ProtectedRoute exact path="/profile" component={Profile} />
           <ProtectedRoute exact path="/admin" component={Admin} />
-          <Route exact path='/login' component={LoginPage} />
           <Route path='*' component={NotFound} />
+          
+          <Route exact path="/payment" component={Payments} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/register" component={Register} />
+
         </Switch>
 
         <Footer />

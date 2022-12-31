@@ -1,17 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 .cardInformative {
     box-sizing: border-box;
-    background-color: white;
     background-color: rgba(255, 255, 255, 0.342);
-    background-color: #1A0750;
     background-color: transparent;
+    background-color: #e9dcf7;
     backdrop-filter: blur(6px);
+    background-color: white;
     min-width: 380px;
     height: 100%;
     display: flex;
     font-size: 16px;
     font-family: 'Ubuntu', sans-serif;
-    box-shadow: 5px 5px transparent;
+    box-shadow: 1px 1px #e9dcf7;
     /* padding: 1em; */
     max-height: 300px;
     color: white;
@@ -41,7 +41,7 @@
     height: fit-content;
     height: 20%;
     vertical-align: middle;
-    background-color: white;
+    background-color: #e9dcf7;
 }
 
 

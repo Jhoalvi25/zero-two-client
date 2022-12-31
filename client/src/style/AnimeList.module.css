@@ -5,7 +5,7 @@
   max-width: 50%;
   width: 100%;
   /* margin-top: 100px; */
-  background-color: #1a0750;
+  background-color: var(--secondary-color-content-2);
   color: white;
   text-align: left;
   padding: 1em;

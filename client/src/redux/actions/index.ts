@@ -1,14 +1,19 @@
 import * as types from "../types";
 import axios from "axios";
 import { AppDispatch } from "../store";
+
 import { User } from "@auth0/auth0-react";
+
+import { SERVICES_ANIMES, SERVICES_ANIMES_PAGE_ONE } from "../../services";
+
 
 export const getAnimes = (query: string)=> {
 
   return async (dispatch: AppDispatch) =>
     await axios
-      .get(query ? `http://localhost:3001/animes${query}`:`http://localhost:3001/animes?page=1` )
+      .get(query ? `${SERVICES_ANIMES}${query}`:`${SERVICES_ANIMES_PAGE_ONE}` )
       .then((response) => {
+        
         dispatch({
           type: types.GET_ANIMES,
           payload: response.data,
@@ -74,7 +79,15 @@ export const getAnimeEpisodes = (id: number) => {
   return async (dispatch: AppDispatch) => {
     try {
       const response = await axios.get(`http://localhost:3001/episodes/${id}`);
-      return dispatch({ type: types.GET_ANIME_EPISODES, payload: response.data });
+      if(!response.data.length) {
+        return dispatch({
+          type: types.GET_ANIME_EPISODES,
+          payload: {error: { message: `Not available episodes for anime ${id}` }} 
+        })
+      } else {
+        return dispatch({ type: types.GET_ANIME_EPISODES, payload: response.data });
+      }
+      
     } catch (err) {
       return dispatch({ 
         type: types.GET_ANIME_EPISODES,

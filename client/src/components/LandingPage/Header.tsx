@@ -7,10 +7,10 @@ export default function Header() {
   return (
     <div className={style["presentacion"]}>
         <h1>Enjoy Watching you favorites <br /> animes in the way <br /> you wish!</h1>
-        <Link to={"/subscription"}>
+        <Link to={"/payment"}>
             <button className={style["premium"]}>Become premium now°</button>
         </Link>
-        <Link to={"/subscription"}>
+        <Link to={"/home"}>
             <button className={style["explore"]}>Explore</button>
         </Link>
         <Link to={"/subscription"}>

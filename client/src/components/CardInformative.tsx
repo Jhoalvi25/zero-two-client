@@ -38,8 +38,8 @@ const CardInformative = ({name, posterImage, id, synopsis, showType, status, sta
                 </div>
                 <span className={style['date']}>{formatDate(startDate)}</span>
                 <div className={style['tags']}>
-                    <Tag title={showType} bgColor={'#A77DDD'} rounded={true} color={'#5519B6'}/>
-                    <Tag title={status} color={"white"} bgColor={"#5519B6"} rounded={true}/>
+                    <Tag title={showType} bgColor={'white'} color={'#5519B6'}/>
+                    <Tag title={status} color={"white"} bgColor={"#5519B6"} />
                 </div>
             </div>
         </div>

@@ -1,6 +1,6 @@
 .cardBasic {
-  color: #1a0750;
   color: white;
+  color: #1a0750;
   min-height: 300px;
   max-width: 256px;
   width: 100%;
@@ -24,7 +24,7 @@
 }
 .cardBasic-about {
   height: 80px;
-  background-color: #1a0750;
+  background-color: #e9dcf7;
   padding: 0.5em;
   display: flex;
   flex-direction: column;

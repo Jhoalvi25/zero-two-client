@@ -13,8 +13,8 @@ const CardBasic = ({name, posterImage, showType, status}: Anime ) => {
       <motion.div className={style["cardBasic-about"]}>
         <span className={style["title"]}>{name || "Name"}</span>
         <div className={style['tags-container']}>
-          <Tag title={showType} bgColor="#1A0750" color="#A77DDD" />
-          <Tag title={status} bgColor="#A77DDD" />
+          <Tag title={showType} bgColor="white" color="#5519B6" />
+          <Tag title={status} bgColor="#5519B6" color="white" />
         </div>
       </motion.div>
     </div>
