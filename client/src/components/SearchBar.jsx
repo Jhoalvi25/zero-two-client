@@ -20,6 +20,7 @@ export const SearchBar = () => {
       <div className={style["input-icons"]}>
         <input
           type="text"
+          className={style["input-search-home"]}
           placeholder="search anime"
           value={name}
           onChange={(e) => handleInputChange(e)}
