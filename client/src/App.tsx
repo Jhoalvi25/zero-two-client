@@ -12,8 +12,11 @@ import { useEffect } from "react";
 import NavBar from "./components/NavBar/Navbar";
 import { useAppDispatch } from "./redux/hooks";
 import Profile from "./components/NavBar/Profile";
+import Admin from "./components/NavBar/Admin";
 import { ProtectedRoute } from "./components/NavBar/Protected-route";
 import { useAuth0 } from "@auth0/auth0-react";
+import LoginPage from "./components/NavBar/LoginPage";
+import NotFound from "./components/NotFound";
 
 const App: React.FC = () =>  {
   const dispatch = useAppDispatch();
@@ -45,7 +48,10 @@ const App: React.FC = () =>  {
           <Route exact path="/home" component={Home} />
           <Route exact path="/animes" component={AnimeList} />
           <Route exact path="/animes/:id" component={AnimeDetail} />
-          <ProtectedRoute path="/profile" component={Profile} />
+          <ProtectedRoute exact path="/profile" component={Profile} />
+          <ProtectedRoute exact path="/admin" component={Admin} />
+          <Route exact path='/login' component={LoginPage} />
+          <Route path='*' component={NotFound} />
         </Switch>
 
         <Footer />

@@ -46,11 +46,13 @@ export interface Anime {
 // -> Objecto vacio 
 
 export interface User {
-    premium: boolean,
+    plan: string,
     id: string,
     nickname: string,
     password: string,
     email: string,
     age: number,
-    registered: boolean
+    registered: boolean,
+    rol: string,
+    persmission: string
 }

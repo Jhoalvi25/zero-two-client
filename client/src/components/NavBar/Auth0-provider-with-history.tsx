@@ -21,9 +21,9 @@ export const Auth0ProviderWithHistory = (prop: PropsWithChildren): JSX.Element =
     
     return (
       <Auth0Provider
-        domain={'dev-2umtjjknpkgkp3mw.us.auth0.com'}
-        clientId={'LWtNSAzif8u2tsycoRO9r7uNUevadFN6'}
-        audience={'https://zero-two.server.com'}
+        domain={'dev-ril5g3yq77wjfx3s.us.auth0.com'}
+        clientId={'jqsB1I8VXWq6dNhN41XnDGXcBvQ3IpYD'}
+        audience={'https://hello-world.example.com'}
         redirectUri={'http://localhost:3000/home'}
         onRedirectCallback={onRedirectCallback}
       >

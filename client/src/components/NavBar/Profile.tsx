@@ -1,9 +1,13 @@
 
 import { useAuth0 } from "@auth0/auth0-react";
-import React from "react";
-import { getUserResource } from "../../redux/actions";
+import { getUserResource, getUserResourceWithGoogle } from "../../redux/actions";
+import { Link } from 'react-router-dom'
+import { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 
 export default function Profile (): JSX.Element | null {
+    const dispatch = useAppDispatch();
+    const userAccounnt = useAppSelector(state => state.user)
     const { 
       user,
       getAccessTokenSilently
@@ -14,31 +18,26 @@ export default function Profile (): JSX.Element | null {
     }
 
     const emailUser = user.email? user.email : '';
-    let token;
-    const getToken = async () => {
-      token = await getAccessTokenSilently();
-      getUserResource(token, emailUser);
-    };
 
+    const getToken = async() => {
+      const accesToken = await getAccessTokenSilently();
+      dispatch(getUserResourceWithGoogle(accesToken, emailUser))
+  }
+
+    useEffect(() => {
+      getToken()
+    }, [getAccessTokenSilently])
+    console.log(user)
     return (
       <div>
+        {userAccounnt.rol === 'Admin' && 
+        <div className="admin">
+        <Link to='/admin'>Admin</Link>
+        </div>}
+        
         <div className="row align-items-center profile-header">
-          <div className="col-md-2 mb-3">
-            <img
-              src={user.picture}
-              alt="Profile"
-              className="rounded-circle img-fluid profile-picture mb-3 mb-md-0"
-            />
-          </div>
-          <div className="col-md text-center text-md-left">
-            <h2>{user.name}</h2>
-            <p className="lead text-muted">{user.email}</p>
-          </div>
-        </div>
-        <div className="row">
-          <pre className="col-12 text-light bg-dark p-4">
-            {JSON.stringify(user, null, 2)}
-          </pre>
+          <p>{userAccounnt.nickname}</p>
+          <p>{userAccounnt.email}</p>
         </div>
       </div>
     );

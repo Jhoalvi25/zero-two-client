@@ -1,6 +1,7 @@
 import * as types from "../types";
 import axios from "axios";
 import { AppDispatch } from "../store";
+import { User } from "@auth0/auth0-react";
 
 export const getAnimes = (query: string)=> {
 
@@ -159,12 +160,36 @@ export const getAnimeTrending = () => {
   }
 }
 
-export const getUserResource = (token: string, email: string) => {
+export const getUserResource = (user: User) => {
+  return async (dispatch: AppDispatch) => {
+    try {
+      
+        const config = {
+          url: `http://localhost:3001/user`,
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          data: user
+        };
+        const response = await axios(config);
+        dispatch({ type: types.GET_USER_BY_EMAIL, payload: response.data });
+
+    } catch (err: any) {
+      dispatch({
+        type: types.GET_USER_BY_EMAIL,
+        payload: err.message 
+      })
+    }
+  }
+}
+
+export const getUserResourceWithGoogle = (token: string, email: string) => {
   return async (dispatch: AppDispatch) => {
     try {
         const config = {
-          url: `http://localhost:3001/user/${email}`,
-          method: "GET",
+          url: `http://localhost:3001/user/google`,
+          method: "POST",
           headers: {
             "content-type": "application/json",
             Authorization: `Bearer ${token}`,
@@ -175,7 +200,7 @@ export const getUserResource = (token: string, email: string) => {
     } catch (err) {
       dispatch({
         type: types.GET_USER_BY_EMAIL,
-        payload: { error: { message: "Not found" } }
+        payload: { error: { message: err } }
       })
     }
   }
