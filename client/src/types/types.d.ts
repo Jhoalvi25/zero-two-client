@@ -46,3 +46,14 @@ export interface Anime {
 } // -> Objeto que no es no va pasar
 // -> Objecto vacio 
 
+export interface User {
+    plan: string,
+    id: string,
+    nickname: string,
+    password: string,
+    email: string,
+    age: number,
+    registered: boolean,
+    rol: string,
+    persmission: string
+}
