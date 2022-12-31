@@ -8,6 +8,8 @@ import style from "../style/Home.module.css";
 import { useEffect, useState } from "react";
 import { getAnimes } from "../redux/Animes/actions/index";
 import { useDispatch, useSelector } from "react-redux";
+import Filters from "./Filters.jsx";
+import { motion } from "framer-motion";
 
 export const Dashboard = () => {
   const dispatch = useDispatch();
@@ -31,29 +33,26 @@ export const Dashboard = () => {
     setCurrentPage(pageNumber);
   };
 
-  useEffect(() => {
-    dispatch(getAnimes());
-  }, []);
-
   return (
     <div className={style["container"]}>
       <NavBar />
-      <div className={style["Nav"]}>
-        <div className={style["search"]}></div>
-      </div>
+      <motion.div drag="x"
+          dragConstraints={{ right: 0, left: -3580 }} className={style["Nav"]}>
+        <Filters />
+      </motion.div>
       <SearchBar />
       <div className={style["containerc"]}>
         {anime.length > 0 ? (
-          anime.map((a) => {
+          anime.map((a, i) => {
             return (
-              <div className={style["card-container"]}>
+              <div className={style["card-container"]} key={i}>
                 <div className={style["recipe-card"]}>
                   <div className={style["container-card"]}>
                     <AnimeCards
-                      image={a.attributes.posterImage.small}
-                      name={a.attributes.slug}
-                      type={a.type}
-                      rating={a.attributes.averageRating}
+                      image={a?.posterImage}
+                      name={a?.name}
+                      type={a?.showType}
+                      rating={a?.averageRating}
                     />
                   </div>
                 </div>
@@ -62,15 +61,15 @@ export const Dashboard = () => {
           })
         ) : (
           <div className={style["card-container"]}>
-            {currentData?.map((a) => {
+            {currentData?.map((a, i) => {
               return (
-                <div className={style["recipe-card"]}>
+                <div className={style["recipe-card"]} key={i}>
                   <div className={style["container-card"]}>
                     <AnimeCards
-                      image={a.attributes.posterImage.small}
-                      name={a.attributes.slug}
-                      type={a.type}
-                      rating={a.attributes.averageRating}
+                      image={a.posterImage}
+                      name={a?.name}
+                      type={a?.showType}
+                      rating={a?.averageRating}
                     />
                   </div>
                 </div>

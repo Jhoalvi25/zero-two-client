@@ -1,5 +1,5 @@
 .tag {
-    margin-top: 1em;
+    margin-top: .25em;
     min-width: 60px;
     padding: .1em .5em;
     background-color: aquamarine;
@@ -8,5 +8,9 @@
     font-weight: bold;
     border-radius: .5em;
     display: inline-flex;
-    margin-left: .5em;
+    margin-right: .5em;
+    text-align: center;
+}
+.tag > * {
+    margin: auto;
 }

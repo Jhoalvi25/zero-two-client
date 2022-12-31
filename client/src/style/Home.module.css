@@ -2,13 +2,14 @@
   margin-top: 15px;
   background-size: contain;
   width: 100%;
-  height: 240vh;
+  /* height: 240vh; */
   background-color: white;
 }
 .Nav {
-  margin-top: 40px;
+  margin-top: 90px;
   display: flex;
   position: relative;
+  width: 375vw;
   top: 0px;
   background-color: #47037c;
   margin-bottom: 10px;
@@ -21,7 +22,7 @@
 }
 .card-container {
   padding: auto;
-  width: 80%;
+  width: 95%;
   min-height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -44,8 +45,12 @@
   background-color: #ae7cf3;
   cursor: pointer;
 
-  width: 40%;
+  width: 60%;
   display: flex;
   justify-content: center;
   box-shadow: 8px 8px #47037c;
+}
+
+.container {
+  overflow: hidden;
 }
