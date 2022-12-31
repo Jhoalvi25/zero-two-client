@@ -15,6 +15,8 @@ import { useEffect } from "react";
 import NavBar from "./components/Navbar";
 import { useAppDispatch } from "./redux/hooks";
 import Payments from "./components/Payments/Payments";
+import Login from "./components/Login_and_Register/Login";
+import Register from "./components/Login_and_Register/Register";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -39,6 +41,8 @@ function App() {
           <Route exact path="/animes" component={AnimeList} />
           <Route exact path="/animes/:id" component={AnimeDetail} />
           <Route exact path="/payment" component={Payments} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/register" component={Register} />
         </Switch>
 
         <Footer />
