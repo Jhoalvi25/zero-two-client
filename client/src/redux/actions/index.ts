@@ -10,7 +10,7 @@ export const getAnimes = (query: string)=> {
 
   return async (dispatch: AppDispatch) =>
     await axios
-      .get(query ? `${API_ENDPOINT}${query}`:`${API_ENDPOINT}/animes?page=1` )
+      .get(query ? `${API_ENDPOINT}/animes${query}`:`${API_ENDPOINT}/animes?page=1` )
       .then((response) => {
         
         dispatch({
