@@ -1,4 +1,8 @@
-export default function formatDate (date)  {
+interface FormatDte{
+
+}
+
+export default function formatDate (date: string | Date): string  {
     date = new Date(date);
     let year = date.getFullYear();
 

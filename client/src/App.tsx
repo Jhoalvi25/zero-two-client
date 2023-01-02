@@ -58,8 +58,8 @@ const App: React.FC = () =>  {
           <Route exact path="/animes" component={AnimeList} />
           <Route exact path="/animes/:idAnime" component={AnimeDetail} />
           <Route exact path="/animes/:idAnime/:idEpisode" component={EpisodeDetails} />
-          <ProtectedRoute exact path="/profile" component={Profile} />
-          <ProtectedRoute exact path="/admin" component={Admin} />
+          <ProtectedRoute  path="/profile" component={Profile} />
+          <ProtectedRoute  path="/admin" component={Admin} />
           <Route exact path="/payment" component={Payments} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />

@@ -1,18 +1,27 @@
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import {
   PayPalScriptProvider,
   PayPalButtons,
   usePayPalScriptReducer,
 } from "@paypal/react-paypal-js";
+import {
+  OnApproveData,
+  OnApproveActions,
+} from "@paypal/paypal-js/types/components/buttons";
 
 import stylePay from "../../style/Payments/Payments.module.css";
 
 // This values are the props in the UI
-const currency = "USD";
+const currency: string = "USD";
 const style = { layout: "vertical" };
 
+interface Buttonpaypal {
+  currency: string;
+  showSpinner: boolean;
+}
+
 // Custom component to wrap the PayPalButtons and handle currency changes
-const ButtonWrapper = ({ currency, showSpinner }) => {
+const ButtonWrapper = ({ currency, showSpinner }: Buttonpaypal) => {
   // usePayPalScriptReducer can be use only inside children of PayPalScriptProviders
   // This is the main reason to wrap the PayPalButtons in a new component
   const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
@@ -25,11 +34,11 @@ const ButtonWrapper = ({ currency, showSpinner }) => {
         currency: currency,
       },
     });
-  }, [currency, showSpinner]);
+  }, [dispatch, currency, showSpinner]);
 
   var [amount, setAmount] = useState("");
 
-  function handleChange(e) {
+  function handleChange(e: ChangeEvent<HTMLSelectElement>) {
     setAmount(e.target.value);
   }
 
@@ -45,7 +54,7 @@ const ButtonWrapper = ({ currency, showSpinner }) => {
       <br />
       {showSpinner && isPending && <div className="spinner" />}
       <PayPalButtons
-        style={style}
+        style={{ layout: "vertical" }}
         disabled={false}
         forceReRender={[amount, currency, style]}
         fundingSource={undefined}
@@ -66,10 +75,16 @@ const ButtonWrapper = ({ currency, showSpinner }) => {
               return orderId;
             });
         }}
-        onApprove={function (data, actions) {
-          return actions.order.capture().then(function () {
-            // Your code here after capture the order
-          });
+        /*return actions.order?.capture().then(function () {
+          // Your code here after capture the order
+          return data;
+        });*/
+
+        onApprove={async function (
+          data: OnApproveData,
+          actions: OnApproveActions
+        ): Promise<void> {
+          await actions.order?.capture();
         }}
       />
     </>

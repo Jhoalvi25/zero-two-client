@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import style from "../../style/AnimesPage/Filters.module.css";
 import parseQuery from "../../utils/parseQuery";
@@ -17,6 +17,7 @@ interface Filter {
 }
 
 export default function Filters({search, filterParams}:Filter) {
+
   let d:FilterParams = {genres: ''}
   const [filters, setFilters] = useState<{genres: string[] | string}>({
     genres: []

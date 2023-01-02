@@ -1,5 +1,3 @@
-
-
 import style from "../../style/NavBar/SearchBar.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons";

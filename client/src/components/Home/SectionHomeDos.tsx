@@ -1,26 +1,11 @@
-import React from "react";
-import { useSelector } from "react-redux";
-
 import style from "../../style/Home/SectionHomeDos.module.css";
-
 import CardBasic from "./CardBasic";
-
 import { motion } from "framer-motion";
 import { useAppSelector } from "../../redux/hooks";
 
-interface AppState {
-  childAnime: Array<ChildAnime>
-}
-
-interface ChildAnime {
-  name: string
-  posterImage: string
-  showType: string
-  status: string
-}
 // If i want to set props to this element type this: 
 // const SectionHomeDos = ({name_of_the_prop}: Props) => {
-const SectionHomeDos = () => {
+const SectionHomeDos = ():JSX.Element => {
   const animes= useAppSelector((state) => state['animes']);
 
   return (

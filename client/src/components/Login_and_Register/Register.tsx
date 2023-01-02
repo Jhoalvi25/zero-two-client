@@ -4,7 +4,7 @@ import style from "../../style/Login_and_Register/Register.module.css";
 import { Link } from "react-router-dom";
 import validationSchema from "./validations/validationRegister";
 import { useAppDispatch } from "../../redux/hooks";
-import { getUserResource, registerUser } from "../../redux/actions";
+import { registerUser } from "../../redux/actions";
 
 interface FormValues {
   nickname: string;

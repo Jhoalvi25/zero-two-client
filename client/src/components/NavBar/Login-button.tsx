@@ -1,6 +1,5 @@
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import { Link } from "react-router-dom";
 
 export const Login: React.FC = () => {
   const { loginWithRedirect } = useAuth0();
@@ -36,7 +35,7 @@ export const Login: React.FC = () => {
 
 //   return (
 //     <div>
- 
+
 //         <button onClick={handleLogin}>Login</button>
 
 //     </div>

@@ -1,4 +1,3 @@
-import React from "react";
 import style from "../../style/Home/CardBasic.module.css";
 import Tag from "../UtilsComponents/Tag";
 import { motion } from "framer-motion";

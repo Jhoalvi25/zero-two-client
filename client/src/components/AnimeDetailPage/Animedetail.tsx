@@ -1,37 +1,31 @@
-import { Dispatch, useEffect, useRef, useState } from "react";
+import {  useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getAnimeById, getAnimeEpisodes } from "../../redux/actions/index";
 import style from '../../style/AnimeDetailPage/AnimeDetail.module.css';
 import Tag from '../UtilsComponents/Tag';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFaceSmileWink } from "@fortawesome/free-solid-svg-icons";
-import { faCirclePlay } from "@fortawesome/free-solid-svg-icons";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { useDispatch } from "react-redux";
 import Loading from "../UtilsComponents/Loading";
 import missingImage from '../../img/missing.jpg';
 import NotFound from "../UtilsComponents/NotFound";
-import { Anime, Episode, ErrorResponse, Genre } from "../../types/types";
+import {  Episode, Genre } from "../../types/types";
 import { isError } from "../../types/typeGuards";
 import { Link } from "react-router-dom";
 
- function isEmptyObject (input: any): input is {} {
-    if (typeof input === 'object' && !Object.entries(input).length) return true;
-    else return false;
-}
+
 
 
 export default function AnimeDetail () {
+
     const {idAnime}:{idAnime:string} = useParams();
     const dispatch = useAppDispatch()
     const anime = useAppSelector((state) => state["animeDetails"]); 
     const episodes = useAppSelector(state => state["animeEpisodes"]);
-    const containerRef = useRef()
+    const myRef  = useRef<HTMLDivElement | null>(null)
     const [loading, setLoading] = useState(false);
    
     useEffect(()=> {
       
-        containerRef.current.scrollIntoView({behaviour: "smooth", block: "start"});
+        myRef.current?.scrollIntoView({behavior: "smooth", block: "start"});
         setLoading(true);
         dispatch(getAnimeById(idAnime));
 
@@ -45,7 +39,7 @@ export default function AnimeDetail () {
         loading ? <Loading />: 
        
         
-        <div className={style['animeDetail']} ref={containerRef}>
+        <div className={style['animeDetail']} ref={myRef}>
             <div className={style['animeDetail-header']}  
             style={{backgroundImage:`url(${anime.coverImage})`}}>
                 <div className={style['cover']}>

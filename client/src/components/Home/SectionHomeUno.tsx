@@ -1,30 +1,11 @@
-import React from "react";
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-
 import style from "../../style/Home/SectionHomeUno.module.css";
-
 import CardInformative from "./CardInformative";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { useAppSelector } from "../../redux/hooks";
 
-interface AppState {
-  childNewest: Array<ChildNewest>;
-}
-
-interface ChildNewest {
-  name: string;
-  posterImage: string;
-  id: string;
-  synopsis: string;
-  showType: string;
-  status: string;
-  startDate: string;
-}
-
-const SectionHomeUno = () => {
+export default function SectionHomeUno(): JSX.Element {
   const newestAnimes = useAppSelector((state) => state["animeNewest"]);
   return (
     <>
@@ -62,6 +43,4 @@ const SectionHomeUno = () => {
       </section>
     </>
   );
-};
-
-export default SectionHomeUno;
+}

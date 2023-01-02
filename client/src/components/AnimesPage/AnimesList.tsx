@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import AnimeCards from "./AnimeCards";
 import SearchBar from "../NavBar/SearchBar";
 import Pagination from "./Paginated";
@@ -17,9 +17,6 @@ export interface FilterParams {
   genres: string
 }
 
-interface err {
-  message: string
-}
 export const AnimeList = () => {
 
   const allAnimes = useAppSelector((state) => state['allAnimes']);

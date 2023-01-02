@@ -1,21 +1,49 @@
-
 import style from "../../style/AdminPage/Admin.module.css";
 import SearchUser from "./SearchUser";
-import { User } from "../../types/types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faMagnifyingGlass, faGears} from "@fortawesome/free-solid-svg-icons";
+import { faMagnifyingGlass, faGears } from "@fortawesome/free-solid-svg-icons";
+import {
+  getUserResourceWithGoogle,
+} from "../../redux/actions";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useEffect } from "react";
 
-export default function Admin(props:User): JSX.Element {
+export default function Admin(): JSX.Element {
+  const { getAccessTokenSilently, user } = useAuth0();
+  const admin = useAppSelector((state) => state.user);
+  const dispatch = useAppDispatch();
+  console.log("sss", user?.email);
+  const getToken = async () => {
+    const accesToken = await getAccessTokenSilently();
+    if (user?.email) {
+      dispatch(getUserResourceWithGoogle(accesToken, user.email));
+    }
+  };
+  useEffect(() => {
+    getToken();
+  }, [getAccessTokenSilently]);
+
+  // if(admin.error.message) return(
+  //     <div>Ooops... nothing to show here</div>
+  // );
+  // else if(!(admin.nickname === 'admin')) return(
+  //     <div>You don't have permissions to access this page {admin.nickname}</div>
+  // )
+  if (!admin) return <div>Nothing to show here</div>;
+  else if (!(admin.rol === "Admin")) {
+    return <div>You don't have permission to access this page</div>;
+  }
   return (
     <div>
       <div className={style["nav-admin"]}>
         <h1 className={style["text-user"]}>Welcome again </h1>
         <div className={style["user-box"]}>
           <div className={style["card"]}>
-            {props.image ? (
+            {admin.image ? (
               <img
                 className={style["image"]}
-                src={`${props.image}`}
+                src={`${admin.image}`}
                 alt="img"
               />
             ) : (
@@ -67,7 +95,7 @@ export default function Admin(props:User): JSX.Element {
             <div className={style["box"]}>
               Name
               <div>
-                <div >
+                <div>
                   <div className={style["box-text"]}>Nezuko-chan</div>
                 </div>
               </div>
@@ -77,7 +105,7 @@ export default function Admin(props:User): JSX.Element {
             <div className={style["box"]}>
               Plan
               <div>
-                <div >
+                <div>
                   <select className="">
                     <option value="premium">Premium</option>
                     <option value="standar">Standar</option>
@@ -90,7 +118,7 @@ export default function Admin(props:User): JSX.Element {
             <div className={style["box"]}>
               Role
               <div>
-                <div >
+                <div>
                   <select className="">
                     <option value="User">User</option>
                     <option value="editor">Editor</option>
@@ -104,7 +132,7 @@ export default function Admin(props:User): JSX.Element {
             <div className={style["box"]}>
               Status
               <div>
-                <div >
+                <div>
                   <select className="">
                     <option value="Active">Active</option>
                     <option value="Unactive">Unactive</option>

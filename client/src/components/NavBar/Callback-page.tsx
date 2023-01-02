@@ -2,14 +2,11 @@ import { useAuth0 } from "@auth0/auth0-react";
 import React from "react";
 import Profile from "./Profile";
 
-
-export const CallbackPage = ():React.FC | JSX.Element => {
+export const CallbackPage = (): React.FC | JSX.Element => {
   const { error } = useAuth0();
 
   if (error) {
-    return (
-     <div>{error.message}</div>
-    );
+    return <div>{error.message}</div>;
   }
 
   return (

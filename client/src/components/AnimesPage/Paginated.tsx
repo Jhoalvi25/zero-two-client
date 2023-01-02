@@ -1,7 +1,6 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import style from "../../style/AnimesPage/Paginated.module.css";
-import parseQuery from "../../utils/parseQuery";
+import parseQueryPage from "../../utils/parseQueryPage";
 
 interface Pagination {
     totalPages: number,
@@ -20,7 +19,7 @@ export default function Pagination({ totalPages, search, page}:Pagination) {
       while (i < totalPages) {
           i++;
           myPages.push(
-              <Link to={`/animes?${parseQuery(search, i, 'page', 'page')}`} 
+              <Link to={`/animes?${parseQueryPage(search, i, 'page', 'page')}`} 
               className='page' key={i}>
                    <button className={style['page']}
                                 key={i}>
@@ -39,11 +38,11 @@ export default function Pagination({ totalPages, search, page}:Pagination) {
                 {
                     page - 1 > 0 ? 
                     <div className="previous">
-                        <Link to ={`/animes?${parseQuery(search, page, 'page', 'page', 'prev')}`} >Previous</Link>
+                        <Link to ={`/animes?${parseQueryPage(search, page, 'page', 'page', 'prev')}`} >Previous</Link>
                     </div>:
 
                     <div className="previous">
-                         <Link to ={`/animes?${parseQuery(search, page, 'page', 'page', 'prev')}`}  style={{pointerEvents: 'none', opacity: '.7'}}>Previous</Link>
+                         <Link to ={`/animes?${parseQueryPage(search, page, 'page', 'page', 'prev')}`}  style={{pointerEvents: 'none', opacity: '.7'}}>Previous</Link>
                     </div>
                 }
             </div>
@@ -54,7 +53,7 @@ export default function Pagination({ totalPages, search, page}:Pagination) {
 
                         if(page === i + 1) {
                             return  ( 
-                            <Link to={`/animes?${parseQuery(search, i, 'page', 'page')}`} 
+                            <Link to={`/animes?${parseQueryPage(search, i, 'page', 'page')}`} 
                             className='page' id='page-active' key={i + 1} >
 
                                 <button className={style['page-selected']}
@@ -73,10 +72,10 @@ export default function Pagination({ totalPages, search, page}:Pagination) {
                 {
                     page + 1 > totalPages || page + 1 < 0?
                     <div className="next">
-                        <Link to={`/animes?${parseQuery(search, page, 'page', 'page', 'next')}`} style={{pointerEvents: 'none', opacity: '.7'}}>Next</Link>
+                        <Link to={`/animes?${parseQueryPage(search, page, 'page', 'page', 'next')}`} style={{pointerEvents: 'none', opacity: '.7'}}>Next</Link>
                     </div>:
                     <div className="next">
-                        <Link to={`/animes?${parseQuery(search, page, 'page', 'page', 'next')}`}>Next</Link>
+                        <Link to={`/animes?${parseQueryPage(search, page, 'page', 'page', 'next')}`}>Next</Link>
                     </div>
                 }
             </div>
