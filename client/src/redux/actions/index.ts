@@ -1,17 +1,16 @@
 import * as types from "../types";
 import axios from "axios";
 import { AppDispatch } from "../store";
-
 import { User } from "@auth0/auth0-react";
-
 import { SERVICES_ANIMES, SERVICES_ANIMES_PAGE_ONE } from "../../services";
 
+const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT || 'http://localhost:3001';
 
 export const getAnimes = (query: string)=> {
 
   return async (dispatch: AppDispatch) =>
     await axios
-      .get(query ? `${SERVICES_ANIMES}${query}`:`${SERVICES_ANIMES_PAGE_ONE}` )
+      .get(query ? `${API_ENDPOINT}${query}`:`${API_ENDPOINT}/animes?page=1` )
       .then((response) => {
         
         dispatch({
@@ -31,7 +30,7 @@ export const getAllAnimes = (query: string ) => {
  
   return async (dispatch: AppDispatch) =>
     await axios
-    .get(query ? `http://localhost:3001/animes?${query}`:`http://localhost:3001/animes` )
+    .get(query ? `${API_ENDPOINT}/animes?${query}`:`${API_ENDPOINT}/animes` )
       .then((response) => {
         dispatch({
           type: types.GET_ALL_ANIMES,
@@ -50,7 +49,7 @@ export function searchAnimeName(name: string) {
   return async function (dispatch: AppDispatch) {
     try {
       var response = await axios.get(
-        `http://localhost:3001/animes?name=${name}`
+        `${API_ENDPOINT	}/animes?name=${name}`
       );
       return dispatch({ type: types.SEARCH_ANIMES, payload: response.data });
     } catch {
@@ -62,7 +61,7 @@ export function searchAnimeName(name: string) {
 export const getAnimeById = (id: number | string) => {
   return async (dispatch: AppDispatch) => {
     try {
-      const response = await axios.get(`http://localhost:3001/animes/${id}`);
+      const response = await axios.get(`${API_ENDPOINT}/animes/${id}`);
       dispatch({ type: types.GET_ANIME_BY_ID, payload: response.data });
       
     } catch (err) {
@@ -77,7 +76,7 @@ export const getAnimeById = (id: number | string) => {
   export const getAnimeEpisode = (idAnime: number | string, idEpisode: number | string ) => {
     return async (dispatch: AppDispatch) => {
       try {
-        const response = await axios.get(`http://localhost:3001/episodes/${idAnime}/${idEpisode}`);
+        const response = await axios.get(`${API_ENDPOINT}/episodes/${idAnime}/${idEpisode}`);
         dispatch({ type: types.GET_ANIME_EPISODE, payload: response.data });
         
       } catch (err) {
@@ -91,7 +90,7 @@ export const getAnimeById = (id: number | string) => {
 export const getAnimeEpisodes = (id: number) => {
   return async (dispatch: AppDispatch) => {
     try {
-      const response = await axios.get(`http://localhost:3001/episodes/${id}`);
+      const response = await axios.get(`${API_ENDPOINT}/episodes/${id}`);
       if(!response.data.length) {
         return dispatch({
           type: types.GET_ANIME_EPISODES,
@@ -115,7 +114,7 @@ export const filterAndSortAnimes = (query: string) => {
 
   return async (dispatch: AppDispatch) => {
     try {
-      const response = await axios.get(`http://localhost:3001/animes?${query}`);
+      const response = await axios.get(`${API_ENDPOINT}/animes?${query}`);
       dispatch({ type: types.FILTER_AND_SORT_ANIMES, payload: response.data });
 
     } catch (err) {
@@ -130,7 +129,7 @@ export const filterAndSortAnimes = (query: string) => {
 export const getAnimeGenres = () => {
   return async (dispatch: AppDispatch) => {
     try {
-      const response = await axios.get(`http://localhost:3001/genres`);
+      const response = await axios.get(`${API_ENDPOINT}/genres`);
       dispatch({ type: types.GET_ANIME_GENRES, payload: response.data });
 
     } catch (err) {
@@ -146,7 +145,7 @@ export const getAnimeNewest = (query: string) => {
   query = query.toString();
   return async (dispatch: AppDispatch) => {
     try {
-      const response = await axios.get(`http://localhost:3001/animes/newest?${query}`);
+      const response = await axios.get(`${API_ENDPOINT}/animes/newest?${query}`);
       dispatch({ type: types.GET_ANIME_NEWEST, payload: response.data });
     } catch (err) {
       dispatch({
@@ -160,7 +159,7 @@ export const getAnimeNewest = (query: string) => {
 export const getAnimeOldest = () => {
   return async (dispatch: AppDispatch) => {
     try {
-      const response = await axios.get("http://localhost:3001/animes/oldest");
+      const response = await axios.get(`${API_ENDPOINT	}/animes/oldest`);
       dispatch({ type: types.GET_ANIME_OLDEST, payload: response.data });
     } catch (err) {
       dispatch({
@@ -174,7 +173,7 @@ export const getAnimeOldest = () => {
 export const getAnimeTrending = () => {
   return async (dispatch: AppDispatch) => {
     try {
-      const response = await axios.get("http://localhost:3001/animes/newest?sort=rating");
+      const response = await axios.get(`${API_ENDPOINT}/animes/newest?sort=rating`);
       dispatch({ type: types.GET_ANIME_TRENDING, payload: response.data });
 
     } catch (err) {
@@ -190,7 +189,7 @@ export const registerUser = (user: User) => {
     try {
       
         const config = {
-          url: `http://localhost:3001/user/register`,
+          url: `${API_ENDPOINT}/user/register`,
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -213,7 +212,7 @@ export const getUserResource = (user: User) => {
     try {
       
         const config = {
-          url: `http://localhost:3001/user`,
+          url: `${API_ENDPOINT}/user`,
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -236,7 +235,7 @@ export const getUserResourceWithGoogle = (token: string, email: string) => {
   return async (dispatch: AppDispatch) => {
     try {
         const config = {
-          url: `http://localhost:3001/user/google`,
+          url: `${API_ENDPOINT}/user/google`,
           method: "POST",
           headers: {
             "content-type": "application/json",
