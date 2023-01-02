@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import AnimeCards from "./AnimeCards";
 import SearchBar from "../NavBar/SearchBar";
 import Pagination from "./Paginated";
@@ -26,10 +26,13 @@ export const AnimeList = () => {
 
   let {search} = useLocation();
   let searchParams = new URLSearchParams(search);
-  let allAnimeQuery: string | URLSearchParams = new URLSearchParams(search);
+
+  let allAnimeQuery: URLSearchParams | string = useMemo(()=> {
+    return new URLSearchParams(search)
+  },[search]);
   allAnimeQuery.delete('page');
-  allAnimeQuery = allAnimeQuery.toString();
-  allAnimeQuery = decodeURIComponent(allAnimeQuery)
+  allAnimeQuery = allAnimeQuery.toString()
+
 
   let page = searchParams.get('page') || 1;
   let name = searchParams.get('name') || '';

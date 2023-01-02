@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter, Switch, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Home from "./components/Home/Home";
 import LandingPage from "./components/LandingPage/LandingPage";
 import AnimeList from "./components/AnimesPage/AnimesList";
@@ -27,7 +27,7 @@ import Loading from "./components/UtilsComponents/Footer";
 
 const App: React.FC = () =>  {
   const dispatch = useAppDispatch();
-  const location = useLocation();
+
 
   const { isLoading } = useAuth0();
   

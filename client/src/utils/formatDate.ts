@@ -1,6 +1,4 @@
-interface FormatDte{
 
-}
 
 export default function formatDate (date: string | Date): string  {
     date = new Date(date);

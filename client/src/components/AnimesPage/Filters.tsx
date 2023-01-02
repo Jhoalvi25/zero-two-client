@@ -18,7 +18,7 @@ interface Filter {
 
 export default function Filters({search, filterParams}:Filter) {
 
-  let d:FilterParams = {genres: ''}
+  // let d:FilterParams = {genres: ''}
   const [filters, setFilters] = useState<{genres: string[] | string}>({
     genres: []
   })

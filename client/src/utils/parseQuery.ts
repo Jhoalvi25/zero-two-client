@@ -1,12 +1,4 @@
-import { string } from "yup";
 
-interface Query {
-  query?: string | URLSearchParams;
-  paramValue?: string | string[];
-  paramName?: string;
-  type?: string;
-  subType?: string | undefined;
-}
 
 export default function parseQuery(
   query: string | URLSearchParams,

@@ -7,22 +7,22 @@ import {
 } from "../../redux/actions";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { useAuth0 } from "@auth0/auth0-react";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 
 export default function Admin(): JSX.Element {
   const { getAccessTokenSilently, user } = useAuth0();
   const admin = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
-  console.log("sss", user?.email);
-  const getToken = async () => {
+  // console.log("sss", user?.email);
+  const getToken = useCallback(async () => {
     const accesToken = await getAccessTokenSilently();
     if (user?.email) {
       dispatch(getUserResourceWithGoogle(accesToken, user.email));
     }
-  };
+  },[getAccessTokenSilently, dispatch, user?.email])
   useEffect(() => {
     getToken();
-  }, [getAccessTokenSilently]);
+  }, [getToken]);
 
   // if(admin.error.message) return(
   //     <div>Ooops... nothing to show here</div>

@@ -2,12 +2,12 @@ import { Link } from "react-router-dom";
 import style from "../../style/AnimesPage/Paginated.module.css";
 import parseQueryPage from "../../utils/parseQueryPage";
 
-interface Pagination {
+interface PaginationType {
     totalPages: number,
     search: string, 
     page: number | string
 }
-export default function Pagination({ totalPages, search, page}:Pagination) {
+export default function Pagination({ totalPages, search, page}:PaginationType) {
   
   page = Number(page)
 
