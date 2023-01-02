@@ -1,13 +1,13 @@
 import React, { ChangeEvent, useEffect } from "react";
 import { useState } from "react";
-import style from "../style/Filters.module.css";
-import parseQuery from "../utils/parseQuery";
+import style from "../../style/AnimesPage/Filters.module.css";
+import parseQuery from "../../utils/parseQuery";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSortDown, faCheck } from "@fortawesome/free-solid-svg-icons";
 import { useHistory } from "react-router-dom";
-import { useAppSelector } from "../redux/hooks";
-import { FilterParams } from "./AnimesPage/AnimesList";
-import { Genre } from "../types/types";
+import { useAppSelector } from "../../redux/hooks";
+import { FilterParams } from "./AnimesList";
+import { Genre } from "../../types/types";
 
 
 

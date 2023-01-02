@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react'
 import { Link } from "react-router-dom";
-import Tag from '../Tag';
+import Tag from '../UtilsComponents/Tag';
 import style from "../../style/AnimesPage/Animecard.module.css";
 import { Anime } from "../../types/types";
 

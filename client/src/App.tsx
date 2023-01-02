@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route, useLocation } from "react-router-dom";
 import Home from "./components/Home/Home";
 import LandingPage from "./components/LandingPage/LandingPage";
 import AnimeList from "./components/AnimesPage/AnimesList";
-import Footer from "./components/Footer";
+import Footer from "./components/UtilsComponents/Footer";
 import AnimeDetail from "./components/AnimeDetailPage/Animedetail";
 import {
   getAnimeGenres,
@@ -16,13 +16,13 @@ import Profile from "./components/NavBar/Profile";
 import Admin from "./components/AdminPage/Admin";
 import { ProtectedRoute } from "./components/NavBar/Protected-route";
 import { useAuth0 } from "@auth0/auth0-react";
-import NotFound from "./components/NotFound";
+import NotFound from "./components/UtilsComponents/NotFound";
 
 import Payments from "./components/Payments/Payments";
 import Login from "./components/Login_and_Register/Login";
 import Register from "./components/Login_and_Register/Register";
 import EpisodeDetails from "./components/EpisodeDetails/EpisodeDetails";
-import Loading from "./components/Loading";
+import Loading from "./components/UtilsComponents/Footer";
 
 
 const App: React.FC = () =>  {

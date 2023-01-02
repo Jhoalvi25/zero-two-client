@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import AnimeCards from "./AnimeCards";
-import SearchBar from "../SearchBar";
-import Pagination from "../Paginated";
+import SearchBar from "../NavBar/SearchBar";
+import Pagination from "./Paginated";
 import style from "../../style/AnimesPage/AnimeList.module.css";
-import Filters from "../Filters";
+import Filters from "./Filters";
 import { useLocation } from "react-router-dom";
 import { getAllAnimes, getAnimes} from "../../redux/actions";
-import Sorts from "../Sorts";
+import Sorts from "./Sorts";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import Loading from "../Loading";
-import NotFound from "../NotFound";
+import Loading from "../UtilsComponents/Loading";
+import NotFound from "../UtilsComponents/NotFound";
 import { Anime } from "../../types/types";
 import { isError } from "../../types/typeGuards";
 

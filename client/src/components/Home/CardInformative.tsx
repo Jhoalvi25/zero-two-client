@@ -1,7 +1,7 @@
 import React, { PropsWithRef } from "react";
 import { Link } from "react-router-dom";
 import style from '../../style/Home/CardInformative.module.css';
-import Tag from "../Tag";
+import Tag from "../UtilsComponents/Tag";
 import formatDate from "../../utils/formatDate";
 import { Anime } from "../../types/types";
 

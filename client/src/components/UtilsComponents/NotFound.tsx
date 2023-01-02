@@ -1,7 +1,7 @@
 import React from "react";
-import style from "../style/NotFound.module.css";
+import style from "../../style/UtilsComponents/NotFound.module.css";
 import zeroTwo from "../img/pensando.gif"
-import notFoundImg from '../img/missing3.jpg';
+import notFoundImg from '../../img/missing3.jpg';
 interface NotFound {
   msg: string
 }

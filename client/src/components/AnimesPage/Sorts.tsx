@@ -1,6 +1,6 @@
 import React from "react"
-import parseQuery from "../utils/parseQuery";
-import style from '../style/Sorts.module.css';
+import parseQuery from "../../utils/parseQuery";
+import style from '../../style/AnimesPage/Sorts.module.css';
 import { useHistory } from "react-router-dom";
 interface Sort {
     query: string,

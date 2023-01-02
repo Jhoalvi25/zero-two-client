@@ -1,9 +1,9 @@
 import React from "react";
-import style from "../style/SearchBar.module.css";
+import style from "../../style/NavBar/SearchBar.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons";
 import { useHistory } from "react-router-dom";
-import parseQuery from "../utils/parseQuery";
+import parseQuery from "../../utils/parseQuery";
 
 export const SearchBar = ({searchName}:{searchName: string}) => {
 

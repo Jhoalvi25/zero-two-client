@@ -1,7 +1,7 @@
 import React from "react";
 
-import style from '../style/Footer.module.css';
-import logo from "../img/zeroSticker.png";
+import style from '../../style/UtilsComponents/Footer.module.css';
+import logo from "../../img/zeroSticker.png";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faGithub} from "@fortawesome/free-brands-svg-icons"

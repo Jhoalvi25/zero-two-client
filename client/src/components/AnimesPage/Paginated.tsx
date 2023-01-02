@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import style from "../style/Paginated.module.css";
-import parseQuery from "../utils/parseQuery";
+import style from "../../style/AnimesPage/Paginated.module.css";
+import parseQuery from "../../utils/parseQuery";
 
 interface Pagination {
     totalPages: number,

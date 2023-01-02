@@ -1,5 +1,5 @@
 import React from "react";
-import style from '../style/Tag.module.css';
+import style from '../../style/UtilsComponents/Tag.module.css';
 
 interface DataTag {
     title: string
