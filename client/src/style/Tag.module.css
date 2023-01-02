@@ -10,7 +10,13 @@
     display: inline-flex;
     margin-right: .5em;
     text-align: center;
+
+
 }
 .tag > * {
     margin: auto;
+}
+
+.tag-title{
+    padding: 4px;
 }

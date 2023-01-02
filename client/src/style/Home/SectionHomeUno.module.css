@@ -2,7 +2,10 @@
 
 .section1_container {
   color: white;
-  background-color: #47037c;
+  color: #1a0750;
+  background-color: #5A2095;
+  background-color: #1a0750;
+  background-color: transparent;
   padding: 40px;
   font-size: 20px;
   text-align: left;
@@ -26,18 +29,23 @@ body::-webkit-scrollbar-thumb {
 
 .section_container {
   background-color: #1a0750;
+  background-color: #FFC989;
+  background-color: transparent;
+  background-color: #F4F0F8;
+
   text-decoration: none;
   padding: 2em 0em;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1em;
+  gap: 2em;
 }
 .section_newAnimes {
   width: 95%;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  
   gap: 2em;
 }
 .section_link {
@@ -47,4 +55,21 @@ body::-webkit-scrollbar-thumb {
 .down {
   font-size: 30px;
   color: white;
+  color: #1a0750;
+}
+
+.down:hover {
+  animation: increseArrow 1.8s infinite;
+}
+
+@keyframes increseArrow {
+  30% {
+    transform: scale(1.5);
+  }
+  79% {
+    transform: translateY(0.5em);
+  }
+  11% {
+    transform: translateY(0em);
+  }
 }

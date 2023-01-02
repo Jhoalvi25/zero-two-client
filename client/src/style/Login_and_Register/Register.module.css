@@ -1,0 +1,34 @@
+.form {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.form__label {
+  margin: 0.5rem 0;
+}
+
+.form__input {
+  padding: 0.5rem 1rem;
+}
+
+.btn {
+  margin: 1rem 0;
+  padding: 0.5rem 0;
+  background-color: #8051a5;
+  color: white;
+  cursor: pointer;
+}
+
+.link {
+  color: #8051a5;
+}
+
+.restore {
+  color: #8051a5;
+  margin-top: 10px;
+}
+
+.form__error {
+  margin: 0.5rem;
+  color: orangered;
+}

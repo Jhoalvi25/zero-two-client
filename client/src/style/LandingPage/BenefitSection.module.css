@@ -1,0 +1,17 @@
+.benefit {
+  text-align: center;
+  display: flex;
+  padding: 50px;
+  background-color: #1a0750;
+
+}
+
+.benefit p{
+    padding: 50px;
+    color: white;
+}
+
+.icon{
+    margin-bottom: 20px;
+    font-size: 40px;
+}

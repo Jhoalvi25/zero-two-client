@@ -1,0 +1,70 @@
+/* Navbar */
+
+.nav {
+  background: #ffffff;
+  text-decoration: none;
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+  top: 0;
+  box-shadow: 0px 3px 6px #47037c;
+}
+
+.elements {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  height: 40px;
+  margin-left: 10px;
+  display: flex;
+}
+
+.elem {
+  display: flex;
+}
+
+.routes {
+  display: flex;
+  align-items: center;
+}
+
+.routes Link {
+  text-decoration: none;
+}
+
+.sus {
+  text-decoration: none;
+  margin-right: 30px;
+}
+
+.premium {
+  color: #ffcb1d;
+  background: radial-gradient(
+    circle,
+    rgba(137, 112, 233, 1) 27%,
+    rgba(75, 49, 235, 1) 100%
+  );
+  padding: 6px;
+  font-size: 16px;
+  border: 0;
+  display: flex;
+  align-items: center;
+  margin-top: 2px;
+}
+.freeTrial{
+  font-size: 12px;
+  color: #cecee6;
+}
+.vip {
+  margin-left: 10px;
+  margin-right: 2px;
+  background-color: #ffcb1d;
+  color: #8970e9;
+  padding: 2px 2px;
+  border-radius: 2px;
+  font-weight: bold;
+  font-size: 14px;
+}
