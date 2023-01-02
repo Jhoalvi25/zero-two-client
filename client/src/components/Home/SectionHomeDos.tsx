@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 import style from "../../style/Home/SectionHomeDos.module.css";
 
-import CardBasic from "../CardBasic";
+import CardBasic from "./CardBasic";
 
 import { motion } from "framer-motion";
 import { useAppSelector } from "../../redux/hooks";

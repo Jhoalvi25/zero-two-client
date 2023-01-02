@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import style from "../../style/Home/SectionHomeUno.module.css";
 
-import CardInformative from "../CardInformative";
+import CardInformative from "./CardInformative";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";

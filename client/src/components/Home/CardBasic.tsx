@@ -1,8 +1,8 @@
 import React from "react";
-import style from "../style/CardBasic.module.css";
-import Tag from "./Tag";
+import style from "../../style/Home/CardBasic.module.css";
+import Tag from "../Tag";
 import { motion } from "framer-motion";
-import { Anime } from "../types/types";
+import { Anime } from "../../types/types";
 
 const CardBasic = ({name, posterImage, showType, status}: Anime ) => {
   return (

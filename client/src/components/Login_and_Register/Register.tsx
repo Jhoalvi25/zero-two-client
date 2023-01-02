@@ -1,17 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import style from "../../style/Login_and_Register/Register.module.css";
 import { Link } from "react-router-dom";
 import validationSchema from "./validations/validationRegister";
+import { useAppDispatch } from "../../redux/hooks";
+import { getUserResource, registerUser } from "../../redux/actions";
 
+interface FormValues {
+  nickname: string;
+  age: number;
+  email: string;
+  password: string;
+  changePasword: string;
+}
 export default function Register(): JSX.Element {
-  interface FormValues {
-    nickname: string;
-    age: number;
-    email: string;
-    password: string;
-    changePasword: string;
-  }
+  const dispatch = useAppDispatch();
+
   const initialValues: FormValues = {
     nickname: "",
     age: 0,
@@ -20,20 +24,36 @@ export default function Register(): JSX.Element {
     changePasword: "",
   };
 
-  const onSubmit = (values: FormValues) => {
-    setTimeout(() => {
-      alert(JSON.stringify(values, null, 2));
-    }, 500);
+  const [user, setUser] = useState(initialValues);
+  const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
+
+    const inputName = e.target.name;
+    const inputValue = e.target.value;
+    
+    setUser({...user, [inputName]: inputValue })
+  }
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    dispatch(registerUser(user));
+    alert('Check your email for account verification!')
+    setUser({
+      nickname: "",
+      age: 0,
+      email: "",
+      password: "",
+      changePasword: "",
+    }
+  )
   };
   return (
     <div>
       <h2>Create Account</h2>
       <Formik
         initialValues={initialValues}
-        onSubmit={onSubmit}
+        onSubmit={handleSubmit}
         validationSchema={validationSchema}
       >
-        <Form className={style["form"]}>
+        <Form className={style["form"]} onChange={handleChange} onSubmit={handleSubmit}>
           <label htmlFor="nickname" className={style["form__label"]}>
             Nickname
           </label>

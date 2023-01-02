@@ -13,10 +13,10 @@ export default function Header() {
         <Link to={"/home"}>
             <button className={style["explore"]}>Explore</button>
         </Link>
-        <Link to={"/subscription"}>
+        <a href={"#dispositive-section"}>
         <h2>Enjoy personalization</h2>
         <FontAwesomeIcon icon={faAnglesDown} className={style["angle"]}></FontAwesomeIcon>
-        </Link>
+        </a>
       
     </div>
   ) ;

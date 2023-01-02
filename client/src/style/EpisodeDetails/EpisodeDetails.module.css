@@ -1,0 +1,57 @@
+.episode-container {
+    color: var(--main-color-font-dark);
+    text-align: left;
+    font-weight: 400;
+}
+
+.episode-video {
+    position: relative;
+    height: 70vh;
+    background: rgb(0,0,0);
+    /* background: linear-gradient(61deg, rgba(0,0,0,1) 0%, rgba(19,19,20,1) 50%, rgba(252,252,255,0.3757878151260504) 100%, rgba(101,5,196,1) 100%, rgba(40,10,88,1) 100%); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.episode-video svg {
+    color: var(--secondary-color-items-1);
+    height: 60px;
+    opacity: .7;
+    cursor: pointer;
+}
+/*EPISODE INFO*/
+.episode-info {
+    padding: 2em;
+    line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+.episode-info-header {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.episode-info-tags {
+    display: flex;
+    gap: 1em;
+}
+.episode-info-tag {
+    font-size: 14px;
+    color: var(--main-color-font-dark2)
+}
+.episode-addList {
+    display: flex;
+    align-items: center;
+}
+.episode-addList svg{
+    height: 70px;
+    color: var(--secondary-color-items-1);
+    cursor: pointer;
+}
+
+.comments-container {
+    padding: 0em 2em; 
+}

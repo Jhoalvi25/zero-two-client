@@ -1,0 +1,123 @@
+.container-one {
+    display: flex;
+    width: 40%;
+    flex-direction: column;
+  
+    padding: 20px 40px 20px 50px;
+  }
+  
+  .nav-admin {
+    box-sizing: content-box;
+    color: white;
+    background-color: #47037c;
+  }
+  
+  .text-user {
+    margin-top: 150px;
+    padding: 5px;
+    text-align: center;
+  }
+  .user-box {
+    padding: 20px;
+    height: 150px;
+  }
+  .card {
+    border-radius: 3px;
+    background-color: white;
+    height: 90%;
+    width: 35%;
+    display: flex;
+    justify-content: flex-start;
+  }
+  .image {
+    margin-top: 0px;
+    padding: 0px;
+    object-fit: cover;
+    max-height: 100%;
+    max-width: 140px;
+  }
+  
+  .text-container {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    padding: 0.8rem;
+  }
+  .text {
+    color: #47037c;
+  }
+  .box-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 5px;
+    justify-content: space-between;
+    width: 50%;
+  }
+  .box {
+    background-color: #32239539;
+    width: 100%;
+    margin: 5px;
+    padding: 30px 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: #47037c;
+    font-weight: bold;
+  }
+  .box-text {
+    font-weight: 400;
+  }
+  h2 {
+    color: #47037c;
+  }
+  
+  .h2 {
+    padding-bottom: 20px;
+  }
+  
+  .user-data-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 30px;
+  }
+  
+  .container-image-data-container {
+    max-width: 150px;
+  }
+  .image-data-container {
+    width: 100%;
+  }
+  .content-data-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .sub-container-data-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+  }
+  
+  .title-data-container {
+    color: #47037c;
+    text-align: left;
+  }
+  
+  .text-data-container {
+    color: rgb(96, 168, 144);
+  }
+  
+  .icon-data-container {
+    width: 30px;
+    cursor: pointer;
+  }
+  
+  .settings-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+  }

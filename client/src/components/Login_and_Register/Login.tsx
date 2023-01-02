@@ -1,38 +1,55 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import style from "../../style/Login_and_Register/Login.module.css";
 import { Link } from "react-router-dom";
 import validationSchema from "./validations/validationLogin";
+import { useAppDispatch } from "../../redux/hooks";
+import { getUserResource } from "../../redux/actions";
 
+interface FormValues {
+  email: string;
+  password: string;
+}
 export default function Login(): JSX.Element {
-  interface FormValues {
-    email: string;
-    password: string;
-  }
+  const dispatch = useAppDispatch();
+
   const initialValues: FormValues = {
     email: "",
     password: "",
   };
+  const [user, setUser] = useState(initialValues);
+  const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
 
-  const onSubmit = (values: FormValues) => {
-    setTimeout(() => {
-      alert(JSON.stringify(values, null, 2));
-    }, 500);
+    const inputName = e.target.name;
+    const inputValue = e.target.value;
+    
+    setUser({...user, [inputName]: inputValue })
+  }
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    dispatch(getUserResource(user));
+    setUser(initialValues)
   };
   return (
     <div>
       <h2>Log In</h2>
       <Formik
         initialValues={initialValues}
-        onSubmit={onSubmit}
+        onSubmit={handleSubmit}
         validationSchema={validationSchema}
       >
-        <Form className={style["form"]}>
+        
+        <Form className={style["form"]} onChange = {handleChange} onSubmit={handleSubmit}>
           <label htmlFor="email" className={style["form__label"]}>
             Email
           </label>
-          <Field name="email" type="text" className={style["form__input"]} />
-
+          <Field 
+          name="email" 
+          type="text" 
+          className={style["form__input"]}  
+          />
+        
           <ErrorMessage
             name="email"
             component="span"
@@ -46,6 +63,7 @@ export default function Login(): JSX.Element {
             name="password"
             type="password"
             className={style["form__input"]}
+           
           />
 
           <ErrorMessage

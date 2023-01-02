@@ -1,18 +1,19 @@
 import { Dispatch, useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getAnimeById, getAnimeEpisodes } from "../redux/actions/index";
-import style from '../style/AnimeDetail.module.css';
-import Tag from './Tag';
+import { getAnimeById, getAnimeEpisodes } from "../../redux/actions/index";
+import style from '../../style/AnimeDetailPage/AnimeDetail.module.css';
+import Tag from '../Tag';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFaceSmileWink } from "@fortawesome/free-solid-svg-icons";
 import { faCirclePlay } from "@fortawesome/free-solid-svg-icons";
-import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { useDispatch } from "react-redux";
-import Loading from "./Loading";
-import missingImage from '../img/missing.jpg';
-import NotFound from "./NotFound";
-import { Anime, Episode, ErrorResponse, Genre } from "../types/types";
-import { isError } from "../types/typeGuards";
+import Loading from "../Loading";
+import missingImage from '../../img/missing.jpg';
+import NotFound from "../NotFound";
+import { Anime, Episode, ErrorResponse, Genre } from "../../types/types";
+import { isError } from "../../types/typeGuards";
+import { Link } from "react-router-dom";
 
  function isEmptyObject (input: any): input is {} {
     if (typeof input === 'object' && !Object.entries(input).length) return true;
@@ -21,22 +22,23 @@ import { isError } from "../types/typeGuards";
 
 
 export default function AnimeDetail () {
-    const {id}:{id:string} = useParams();
+    const {idAnime}:{idAnime:string} = useParams();
     const dispatch = useAppDispatch()
     const anime = useAppSelector((state) => state["animeDetails"]); 
     const episodes = useAppSelector(state => state["animeEpisodes"]);
     const containerRef = useRef()
     const [loading, setLoading] = useState(false);
+   
     useEffect(()=> {
       
         containerRef.current.scrollIntoView({behaviour: "smooth", block: "start"});
         setLoading(true);
-        dispatch(getAnimeById(id));
+        dispatch(getAnimeById(idAnime));
 
-        dispatch(getAnimeEpisodes(Number(id))).finally(()=> {
+        dispatch(getAnimeEpisodes(Number(idAnime))).finally(()=> {
             setLoading(false);
         })
-    },[dispatch, id])
+    },[dispatch, idAnime])
 
     return (
         
@@ -116,20 +118,24 @@ export default function AnimeDetail () {
                   
                   {episodes.map((episode:Episode) => {
                       return(
-                      <div className={style['episode']} key={episode.id}>
-                          <div className={style['episode-header']}>
-                              <span>{episode.title} E{episode.number}</span>
-                              <span style={{opacity: '.5'}}>{`Season - ${episode.seasonNumber}`}</span>
-                          </div>
-                          <div className={style['episode-content']}>
-                              <img src={ episode.thumbnail === null ? missingImage: episode.thumbnail?.original} alt={'anime img'} 
-                              className={style['episode-img']} style={episode.thumbnail === null ? {filter:'grayscale(1)'}: {}}/>
-                              <div className={style['episode-content-min']}>{episode.length} min</div>
-                              {/* <div className={style['episode-content-play']}>
-                                  <FontAwesomeIcon icon={faCirclePlay} />
-                              </div> */}
-                          </div>
-                      </div>
+                        <Link to ={{pathname: `/animes/${idAnime}/${episode.id}`,
+                        state: {episode}}}>
+                            
+                            <div className={style['episode']} key={episode.id}>
+                                <div className={style['episode-header']}>
+                                    <span>{episode.title} E{episode.number}</span>
+                                    <span style={{opacity: '.5'}}>{`Season - ${episode.seasonNumber}`}</span>
+                                </div>
+                                <div className={style['episode-content']}>
+                                    <img src={ episode.thumbnail === null ? missingImage: episode.thumbnail?.original} alt={'anime img'} 
+                                    className={style['episode-img']} style={episode.thumbnail === null ? {filter:'grayscale(1)'}: {}}/>
+                                    <div className={style['episode-content-min']}>{episode.length} min</div>
+                                    {/* <div className={style['episode-content-play']}>
+                                        <FontAwesomeIcon icon={faCirclePlay} />
+                                    </div> */}
+                                </div>
+                            </div>
+                      </Link>
                       )
                   })}
               </div>: <NotFound msg={episodes.error.message}/> }

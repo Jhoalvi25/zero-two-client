@@ -12,20 +12,20 @@ interface NavStyle {
 
 const NavBar = ({ bgColor, underline }: NavStyle) => {
   const location = useLocation();
-  console.log("Aqui estoy!", location);
+  // console.log("Aqui estoy!", location);
   
   return (
     <div
       className={style["nav"]}
-      style={{
-        backgroundColor: `${bgColor ? bgColor : "white"}`,
-        boxShadow: `${underline && "0px 0px 0px transparent"} `,
-      }}
+      // style={{
+      //   backgroundColor: `${bgColor ? bgColor : "white"}`,
+      //   boxShadow: `${underline && "0px 0px 0px transparent"} `,
+      // }}
     >
       <div>
         <nav className={style["elements"]}>
           <div className={style["elem"]}>
-            <Link to={"/"}>
+            <Link to={"/home"}>
               <img src={logo} alt="img" className={style["logo"]} />
             </Link>
             <DropdownExplore />

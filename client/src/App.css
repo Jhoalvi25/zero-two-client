@@ -7,6 +7,7 @@
   --main-color-content:#F4F0F8;
   --secondary-color-content-1: #e9dcf7;
   --secondary-color-content-2: #5519b6;
+  --secondary-color-items-1: #ffc989;
 }
 * {
   margin: 0;
@@ -18,7 +19,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 .App {
   min-height: 100vh;
-  margin-top: 70px;
+  margin-top: 54px;
   text-align: center;
   font-family: 'Ubuntu', sans-serif;
   background-color: var(--main-bg-color-light);
@@ -50,7 +51,7 @@
   color: #61dafb;
 }
 body {
-  margin-top: 70px;
+  margin-top: 54px;
   margin-bottom: 270px;
 }
 

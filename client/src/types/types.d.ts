@@ -3,16 +3,16 @@ interface ErrorResponse {
     error: {message: string}
 }
 
-interface Episode {
+export interface Episode {
     id: number,
     title: string,
     synopsis: string,
     number: number,
     seasonNumber: number,
-    airDate: string,
+    airdate: string,
     length: number,
     thumbnail: { original?:string, meta?:object },
- 
+    coverImage?: string
 }
 
 export interface Genre {
@@ -47,6 +47,7 @@ export interface Anime {
 // -> Objecto vacio 
 
 export interface User {
+    image: string
     plan: string,
     id: string,
     nickname: string,

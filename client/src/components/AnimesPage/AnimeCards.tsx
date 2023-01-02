@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Tag from './Tag';
-import style from "../style/Animecard.module.css";
-import { Anime } from "../types/types";
+import Tag from '../Tag';
+import style from "../../style/AnimesPage/Animecard.module.css";
+import { Anime } from "../../types/types";
 
 
 export default function AnimeCards({posterImage, name, id, showType, status}:Anime) {

@@ -1,9 +1,9 @@
 import React, { PropsWithRef } from "react";
 import { Link } from "react-router-dom";
-import style from '../style/CardInformative.module.css';
-import Tag from "./Tag";
-import formatDate from "../utils/formatDate";
-import { Anime } from "../types/types";
+import style from '../../style/Home/CardInformative.module.css';
+import Tag from "../Tag";
+import formatDate from "../../utils/formatDate";
+import { Anime } from "../../types/types";
 
   
 interface ChildCardInformative{

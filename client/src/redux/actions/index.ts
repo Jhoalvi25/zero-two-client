@@ -74,7 +74,20 @@ export const getAnimeById = (id: number | string) => {
     }
   };
 
-
+  export const getAnimeEpisode = (idAnime: number | string, idEpisode: number | string ) => {
+    return async (dispatch: AppDispatch) => {
+      try {
+        const response = await axios.get(`http://localhost:3001/episodes/${idAnime}/${idEpisode}`);
+        dispatch({ type: types.GET_ANIME_EPISODE, payload: response.data });
+        
+      } catch (err) {
+        dispatch({
+          type: types.GET_ANIME_EPISODE, 
+          payload: {error: { message: `The anime with id ${idAnime} doesn't exist. Try with another one`}}});
+  
+        };
+      }
+    };
 export const getAnimeEpisodes = (id: number) => {
   return async (dispatch: AppDispatch) => {
     try {
@@ -172,7 +185,29 @@ export const getAnimeTrending = () => {
     }
   }
 }
+export const registerUser = (user: User) => {
+  return async (dispatch: AppDispatch) => {
+    try {
+      
+        const config = {
+          url: `http://localhost:3001/user/register`,
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          data: user
+        };
+        const response = await axios(config);
+        dispatch({ type: types.GET_USER_BY_EMAIL, payload: response.data });
 
+    } catch (err: any) {
+      dispatch({
+        type: types.GET_USER_BY_EMAIL,
+        payload: err.message 
+      })
+    }
+  }
+}
 export const getUserResource = (user: User) => {
   return async (dispatch: AppDispatch) => {
     try {
