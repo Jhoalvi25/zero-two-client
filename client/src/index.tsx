@@ -1,17 +1,14 @@
-import React,{ PropsWithChildren }  from "react";
+import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
-import { BrowserRouter, useHistory  } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { Auth0ProviderWithHistory } from "./components/NavBar/Auth0-provider-with-history";
-import { AppState , Auth0Provider } from "@auth0/auth0-react";
-
 
 const root = ReactDOM.createRoot(document.getElementById("root") as Element);
-
 
 // root.render(
 //   <Provider store={store}>
@@ -28,7 +25,7 @@ const root = ReactDOM.createRoot(document.getElementById("root") as Element);
 //       </Auth0Provider>
 //       </BrowserRouter>
 //     </React.StrictMode>
-//   </Provider>, 
+//   </Provider>,
 // );
 root.render(
   <Provider store={store}>
@@ -39,7 +36,7 @@ root.render(
         </Auth0ProviderWithHistory>
       </BrowserRouter>
     </React.StrictMode>
-  </Provider>, 
+  </Provider>
 );
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

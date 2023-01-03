@@ -2,7 +2,7 @@ import * as types from "../types";
 import axios from "axios";
 import { AppDispatch } from "../store";
 import { User } from "@auth0/auth0-react";
-import { SERVICES_ANIMES, SERVICES_ANIMES_PAGE_ONE } from "../../services";
+
 
 const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT || 'http://localhost:3001';
 
