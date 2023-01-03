@@ -13,16 +13,16 @@
 .background p {
   margin-top: 30px;
   font-size: 20px;
-  color: #797d7f;
+  color: var(--main-color-font-light);
 }
 
 .plan {
-  background-color: #1a0750;
+  background-color: var(--main-color-font-dark);
   border: none;
   margin-top: 30px;
   color: white;
   box-sizing: border-box;
-  box-shadow: 5px 5px 0px #1a0750;
+  box-shadow: 5px 5px 0px var(--main-color-font-dark);
   font-size: 20px;
   padding: 10px 20px;
 }

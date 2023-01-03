@@ -6,7 +6,7 @@
   width: 100%;
   /* margin-top: 100px; */
   background-color: var(--secondary-color-content-2);
-  color: white;
+  color: var(--main-bg-color-light);
   text-align: left;
   padding: 1em;
   display: flex;

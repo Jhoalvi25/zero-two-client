@@ -2,13 +2,13 @@
   text-align: center;
   display: flex;
   padding: 50px;
-  background-color: #1a0750;
+  background-color: var(--main-color-font-dark);
 
 }
 
 .benefit p{
     padding: 50px;
-    color: white;
+    color: var(--main-bg-color-light);
 }
 
 .icon{

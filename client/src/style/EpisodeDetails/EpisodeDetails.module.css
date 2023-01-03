@@ -7,7 +7,7 @@
 .episode-video {
     position: relative;
     height: 70vh;
-    background: rgb(0,0,0);
+    background: var(--main-bg-color-dark);
     /* background: linear-gradient(61deg, rgba(0,0,0,1) 0%, rgba(19,19,20,1) 50%, rgba(252,252,255,0.3757878151260504) 100%, rgba(101,5,196,1) 100%, rgba(40,10,88,1) 100%); */
     background-size: cover;
     background-repeat: no-repeat;

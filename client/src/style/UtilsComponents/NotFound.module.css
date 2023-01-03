@@ -16,12 +16,12 @@
     border: none;
     padding: 1em;
     background-color: var(--main-color-font-dark2);
-    color: white;
+    color: var(--main-bg-color-light);
     margin-top: 2em;
     cursor: pointer;
 }
 .not-found-content .callback-btn a {
-    color: white;
+    color: var(--main-bg-color-light);
 }
 .not-found-content .callback-btn:hover {
     background-color: var(--main-color-font-dark);

@@ -1,11 +1,7 @@
-
 .filters {
   display: flex;
   position: relative;
-
-   max-width: 50%;
-
-
+  max-width: 50%;
 }
 .filters-selected {
   background-color: transparent;
@@ -20,7 +16,7 @@
   position: absolute;
   left: 0;
   top: 1em;
-  background-color: #1A0750;
+  background-color: var(--main-color-font-dark);
   display: flex;
   flex-direction: column;
   gap: .5em;
@@ -29,7 +25,8 @@
 }
 
 .filters-title {
-  color: white;
+  /* color: white; */
+  color: var(--main-color-font-light);
   margin-right: 10px;
 }
 

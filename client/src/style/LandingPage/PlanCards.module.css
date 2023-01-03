@@ -3,19 +3,19 @@
   height: fit-content;
   margin: 50px;
   padding: 50px;
-  background-color: #47037c;
+  background-color: var(--secondary-color-content-3);
   width: 280px;
   height: 280px;
-  box-shadow: 7px 7px 0px #1a0750;
+  box-shadow: 7px 7px 0px var(--main-color-font-dark);
 }
 
 .title h1 {
   padding-top: 80px;
-  background-color: white;
+  background-color: var(--main-bg-color-light);
 }
 
 .back {
-  background-color: white;
+  background-color: var(--main-bg-color-light);
   display: flex;
 }
 
@@ -24,7 +24,7 @@
 }
 
 .cardPlan ul li{
-    color: white;
+    color: var(--main-bg-color-light);
     font-size: 15px;
 }
 
@@ -38,7 +38,7 @@
 
 .cardPlan h2 {
   font-size: 20px;
-  color: white;
+  color: var(--main-bg-color-light);
 }
 
 .btn {
@@ -48,12 +48,12 @@
   font-weight: bold;
   border-radius: 5px;
   border: none;
-  color: #47037c;
-  background-color: #ffc989;
+  color: var(--secondary-color-content-3);
+  background-color: var(--secondary-color-items-1);
   cursor: pointer;
 }
 
 .cardPlan h3{
-    color: white;
+    color: var(--main-bg-color-light);
     margin: 10px;
 }

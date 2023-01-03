@@ -16,7 +16,7 @@
   }
   
   .input-search-home {
-    border: 2px solid #47037c;
+    border: 2px solid var(--secondary-color-content-3);
     -webkit-transition: 0.5s;
     transition: 0.5s;
     outline: none;
@@ -27,7 +27,7 @@
   }
   
   .input-search-home:focus {
-    border: 2px solid #47037c;
+    border: 2px solid var(--secondary-color-content-3);
   }
   
   .input-icons i {
@@ -36,7 +36,7 @@
   
   .icon {
     padding: 0px;
-    color: #47037c;
+    color: var(--secondary-color-content-3);
     top: 10px;
     background-color: white;
     left: 2px;
@@ -45,7 +45,8 @@
   }
   button {
     margin-right: 10px;
-    background-color: #1a0750;
+    /* background-color: #1a0750; */
+    background-color: var(--secondary-color-content-4);
     color: white;
     padding: 5px 10px;
     border: none;

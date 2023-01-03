@@ -1,13 +1,11 @@
 .cardBasic {
-  color: white;
-  color: #1a0750;
+  color: var(--main-color-font-dark);
   min-height: 300px;
   max-width: 256px;
   width: 100%;
   text-align: left;
   border-radius: 0.5em;
   box-sizing: border-box;
-  /* overflow: hidden; */
   height: 100%;
   cursor: grab;
 }
@@ -24,7 +22,7 @@
 }
 .cardBasic-about {
   height: 80px;
-  background-color: #e9dcf7;
+  background-color: var(--secondary-color-content-1);
   padding: 0.5em;
   display: flex;
   flex-direction: column;

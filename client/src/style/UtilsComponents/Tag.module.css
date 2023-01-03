@@ -4,14 +4,12 @@
     padding: .1em .5em;
     background-color: aquamarine;
     width: fit-content;
-    color: #1A0750;
+    color: var(--main-color-font-dark);
     font-weight: bold;
     border-radius: .5em;
     display: inline-flex;
     margin-right: .5em;
     text-align: center;
-
-
 }
 .tag > * {
     margin: auto;

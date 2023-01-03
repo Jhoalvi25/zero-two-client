@@ -2,14 +2,13 @@
     display: flex;
     width: 40%;
     flex-direction: column;
-  
     padding: 20px 40px 20px 50px;
   }
   
   .nav-admin {
     box-sizing: content-box;
     color: white;
-    background-color: #47037c;
+    background-color: var(--secondary-color-content-3);
   }
   
   .text-user {
@@ -23,7 +22,7 @@
   }
   .card {
     border-radius: 3px;
-    background-color: white;
+    background-color: var(--main-bg-color-light);
     height: 90%;
     width: 35%;
     display: flex;
@@ -44,7 +43,7 @@
     padding: 0.8rem;
   }
   .text {
-    color: #47037c;
+    color: var(--secondary-color-content-3);
   }
   .box-container {
     display: flex;
@@ -54,21 +53,21 @@
     width: 50%;
   }
   .box {
-    background-color: #32239539;
+    background-color: var(--secondary-color-content-4);
     width: 100%;
     margin: 5px;
     padding: 30px 15px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    color: #47037c;
+    color: var(--secondary-color-content-3);
     font-weight: bold;
   }
   .box-text {
     font-weight: 400;
   }
   h2 {
-    color: #47037c;
+    color: var(--secondary-color-content-3);
   }
   
   .h2 {
@@ -102,12 +101,12 @@
   }
   
   .title-data-container {
-    color: #47037c;
+    color: var(--secondary-color-content-3);
     text-align: left;
   }
   
   .text-data-container {
-    color: rgb(96, 168, 144);
+    color: var(--secondary-color-items-2);
   }
   
   .icon-data-container {

@@ -1,22 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 .cardInformative {
     box-sizing: border-box;
-    background-color: rgba(255, 255, 255, 0.342);
-    background-color: transparent;
-    background-color: #e9dcf7;
     backdrop-filter: blur(6px);
-    background-color: white;
+    background-color: var(--main-bg-color-light);
     min-width: 380px;
     height: 100%;
     display: flex;
     font-size: 16px;
     font-family: 'Ubuntu', sans-serif;
-    box-shadow: 1px 1px #e9dcf7;
-    /* padding: 1em; */
+    box-shadow: 1px 1px var(--secondary-color-content-1);
     max-height: 300px;
-    color: white;
-    color: #1A0750;
-   
+    color: var(--main-color-font-dark);
     overflow: hidden;
 }
 .cardInformative > div {
@@ -24,7 +18,6 @@
 }
 
 .cardInformative-first {
-    /* color: white; */
     display: flex;
     flex-direction: column;
     justify-content: stretch;
@@ -32,7 +25,7 @@
     width: 60%;
 }
 .cardInformative a {
-    color: #1A0750;
+    color: var(--main-color-font-dark);
 
 }
 
@@ -41,7 +34,7 @@
     height: fit-content;
     height: 20%;
     vertical-align: middle;
-    background-color: #e9dcf7;
+    background-color: var(--secondary-color-content-1);
 }
 
 
@@ -58,8 +51,6 @@
 }
 
 .cardInformative-second {
-    /* color: #1A0750;
-    color: white; */
     padding: 1em;
     text-align: left;
     font-weight: 500;
@@ -74,20 +65,15 @@
 .description {
     opacity: .9;
     width: 100%;
-    /* height: 65px; */
     line-height: 1.5;
-    /* overflow: hidden;
-    text-overflow: ellipsis; */
-   
 }
 .date {
     font-size: 14px;
 }
 .read-more {
-    color: rgba(255, 255, 255, 0.685) !important;
-    color: #1A0750 !important;
+    /* color: rgba(255, 255, 255, 0.685) !important; */
+    color: var(--main-color-font-dark) !important;
     opacity: .5;
- 
 }
 
 .tags{

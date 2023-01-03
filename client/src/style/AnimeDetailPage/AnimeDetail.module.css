@@ -2,7 +2,7 @@
     margin-top: 50px;
     text-align: left;
     min-height: 100vh;
-    color: #1A0750;
+    color: var(--main-color-font-dark);
   
 }
 /*HEADER*/
@@ -20,7 +20,7 @@
     max-height: 550px;
     width: 100%;
     height: 100%;
-    background-color: #48037c85;
+    background-color: var(--secondary-color-content-3);
 }
 .cover-img-container {
     height: 60%;
@@ -34,8 +34,12 @@
 }
 
 .cover-info-container {
-    color: white;
+    /* color: white; */
+    color: var(--main-color-font-light);
     padding: 1em;
+}
+.cover-info-container h2{
+    color: var(--main-bg-color-light)
 }
 
 
@@ -127,14 +131,15 @@
     max-height: 250px;
     height: 100%;
     /* box-shadow: 5px 5px 0px #47037C; */
+    box-shadow: 0 0 6px var(--main-color-font-dark);
     overflow: hidden;
     display: flex;
     flex-direction: column-reverse;
     cursor: pointer;
     border-bottom: 2px solid transparent;
+    transition: all ease-in-out .2s;
 }
 .episode:hover {
-
     transform: scale(1.02);
 }
 .episode-header {
@@ -142,6 +147,7 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+    color: var(--main-color-font-dark);
 }
 .episode-content {
     position: relative;

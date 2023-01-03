@@ -22,7 +22,7 @@
   object-fit: cover;
 }
 .cardAnime-content-container {
-  background-color: #A77DDD;
+  /* background-color: #A77DDD; */
   background-color: var(--secondary-color-content-1);
   height: fit-content;
   padding: 1em;

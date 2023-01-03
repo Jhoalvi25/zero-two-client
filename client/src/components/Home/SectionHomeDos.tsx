@@ -16,7 +16,7 @@ const SectionHomeDos = ():JSX.Element => {
       <motion.section className={style['section_dos']}>
         <motion.div
           drag="x"
-          dragConstraints={{ right: 0, left: -650 }}
+          dragConstraints={{ right: 0, left: -1650 }}
           className={style['cardsContainer']}
         >
           {animes &&

@@ -1,6 +1,6 @@
 
 .section_dos {
-  background-color: #1A0750;
+  background-color: var(--main-color-font-dark);
   background-color: transparent;
   justify-content: space-around;
   align-items: center;
