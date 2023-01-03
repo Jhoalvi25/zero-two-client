@@ -6,6 +6,8 @@ import {
   faCaretDown,
   faUser,
   faMedal,
+  faSignOutAlt,
+  faSignInAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
@@ -45,8 +47,9 @@ const DropdownUser = () => {
       >
         <ul className={style["ul-dropdown"]}>
           <li className={style["li-dropdown"]}>
-            <Link to={"/profile"} className={style["li-dropdown"]}>
-              My Account
+            <Link to="/profile" className={style["a-dropdown"]}>
+              <FontAwesomeIcon icon={faUser} className={style['icon']} />
+              <span>My Account</span>
             </Link>
           </li>
           {!isAuthenticated ? (
@@ -54,12 +57,18 @@ const DropdownUser = () => {
               {/* <li onClick={handleLogin} className={style["li-dropdown"]}>
                 Login
               </li> */}
-              <Link to="/login">Login</Link>
+              <li className={style["li-dropdown"]}>
+                <Link className={style["a-dropdown"]} to="/login">
+                  <FontAwesomeIcon icon={faSignInAlt} className={style['icon']} />
+                  <span>Login</span>
+                </Link>
+              </li>
             </>
           ) : (
             <>
               <li onClick={handleLogout} className={style["li-dropdown"]}>
-                Logout
+                <FontAwesomeIcon icon={faSignOutAlt} className={style['icon']} />
+                <span>Logout</span>
               </li>
             </>
           )}

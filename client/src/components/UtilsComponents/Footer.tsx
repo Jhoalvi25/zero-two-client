@@ -40,7 +40,7 @@ const Footer = () => {
                     <div className={style['options']}>
                         <div className={style['option']}>
                             <FontAwesomeIcon icon={faUserPen} className={style['icon']} />
-                            <span className={style['span-links']}>Create account</span>
+                            <span className={style['span-links']}>Sign up</span>
                         </div>
                         <div className={style['option']}>
                             <FontAwesomeIcon icon={faKey} className={style['icon']} />
