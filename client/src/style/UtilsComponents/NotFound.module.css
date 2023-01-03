@@ -1,20 +1,39 @@
 .not-found {
     box-sizing: border-box;
-    min-height: 100vh;
+    min-height: calc(100vh - 65px);
     width: 100%;
-    min-height: 100%;
+    overflow: hidden;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 2em;
-
+    justify-content: space-around;
+    color: var(--main-color-font-dark2);
 }
-
+.not-found-content {
+    max-width: 40%;
+    width: fit-content;
+}
+.not-found-content .callback-btn {
+    border: none;
+    padding: 1em;
+    background-color: var(--main-color-font-dark2);
+    color: white;
+    margin-top: 2em;
+    cursor: pointer;
+}
+.not-found-content .callback-btn a {
+    color: white;
+}
+.not-found-content .callback-btn:hover {
+    background-color: var(--main-color-font-dark);
+    transform: scale(1.05);
+}
+.not-found-image {
+    max-width: 40%;
+    width: fit-content;
+}
 .not-found-img {
-    max-width: 80%;
+    width: 100%;
     height: 100%;
     object-fit: cover; 
-    margin: auto;
     filter: grayscale(1);
 }

@@ -5,6 +5,9 @@ import { Link } from "react-router-dom";
 import validationSchema from "./validations/validationLogin";
 import { useAppDispatch } from "../../redux/hooks";
 import { getUserResource } from "../../redux/actions";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+import { useAuth0 } from "@auth0/auth0-react";
 
 interface FormValues {
   email: string;
@@ -12,7 +15,17 @@ interface FormValues {
 }
 export default function Login(): JSX.Element {
   const dispatch = useAppDispatch();
+  const {loginWithRedirect} = useAuth0();
+  
 
+  const handleLoginWithGoogle = async () => {
+    await loginWithRedirect({
+      prompt: "login",
+      appState: {
+        returnTo: "/home",
+      },
+    });
+  };
   const initialValues: FormValues = {
     email: "",
     password: "",
@@ -32,15 +45,15 @@ export default function Login(): JSX.Element {
     setUser(initialValues)
   };
   return (
-    <div>
-      <h2>Log In</h2>
+    <div className={style['form-container']}>
       <Formik
         initialValues={initialValues}
         onSubmit={handleSubmit}
         validationSchema={validationSchema}
       >
         
-        <Form className={style["form"]} onChange = {handleChange} onSubmit={handleSubmit}>
+        <Form className={style["form-login"]} onChange = {handleChange} onSubmit={handleSubmit}>
+          <h1>Sign in</h1>
           <label htmlFor="email" className={style["form__label"]}>
             Email
           </label>
@@ -74,17 +87,25 @@ export default function Login(): JSX.Element {
           <Link to={"restore"} className={style["restore"]}>
             <span>Forgot pasword?</span>
           </Link>
-          <button type="submit" className={style["btn"]}>
-            Log In
+          <button type="submit" className={style["login-btn"]}>
+            Sign in
           </button>
-          <p>
-            No acount?{" "}
-            <Link to={"register"} className={style["link"]}>
-              <span>Create One</span>
+          
+          <div className={style["create-reference"]}>
+            <span>No account?</span>
+            <Link to={'register'}>
+              <span className={style['link-create']}> Create One</span>
             </Link>
-          </p>
+          </div>
+          <button type="button" className={style["login-google-btn"]} onClick={handleLoginWithGoogle}>
+            <FontAwesomeIcon icon={faGoogle}/>
+             Sign in with Google
+          </button>
         </Form>
       </Formik>
+      <div className={style['aside-background']}>
+        
+      </div>
     </div>
   );
 }

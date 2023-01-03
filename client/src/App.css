@@ -19,7 +19,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 .App {
   min-height: 100vh;
-  margin-top: 54px;
+  margin-top: 65px;
   text-align: center;
   font-family: 'Ubuntu', sans-serif;
   background-color: var(--main-bg-color-light);
@@ -51,7 +51,7 @@
   color: #61dafb;
 }
 body {
-  margin-top: 54px;
+  margin-top: 65px;
   margin-bottom: 270px;
 }
 

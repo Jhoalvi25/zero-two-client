@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import validationSchema from "./validations/validationRegister";
 import { useAppDispatch } from "../../redux/hooks";
 import { registerUser } from "../../redux/actions";
-
+import sideAnimeImg from '../../img/animeImg1.png'
 interface FormValues {
   nickname: string;
   age: number;
@@ -46,14 +46,15 @@ export default function Register(): JSX.Element {
   )
   };
   return (
-    <div>
-      <h2>Create Account</h2>
+    <div className={style['form-signup-container']}>
+     
       <Formik
         initialValues={initialValues}
         onSubmit={handleSubmit}
         validationSchema={validationSchema}
       >
-        <Form className={style["form"]} onChange={handleChange} onSubmit={handleSubmit}>
+        <Form className={style["form-signup"]} onChange={handleChange} onSubmit={handleSubmit}>
+          <h1>Sign up</h1>
           <label htmlFor="nickname" className={style["form__label"]}>
             Nickname
           </label>
@@ -116,17 +117,22 @@ export default function Register(): JSX.Element {
             component="span"
             className={style["form__error"]}
           />
-          <button type="submit" className={style["btn"]}>
-            Create Account
+          <button type="submit" className={style["signup-btn"]}>
+            Sign up
           </button>
-          <p>
+          <p style={{marginBottom: '2em'}}> 
             Already have an account?{" "}
             <Link to={"login"} className={style["link"]}>
               <span>Log In</span>
             </Link>
           </p>
+          
         </Form>
+      
       </Formik>
+      <div className={style['aside-background']}>
+          <img src={sideAnimeImg} alt="anime img" className={style['anime-img']}/>
+      </div>
     </div>
   );
 }

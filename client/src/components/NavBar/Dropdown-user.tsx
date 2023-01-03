@@ -13,16 +13,16 @@ const DropdownUser = () => {
   const [menu, setMenu] = useState(false);
   //login
   //Pasar User loging, logout a un nuevo componente
-  const { logout, loginWithRedirect, isAuthenticated } = useAuth0();
+  const { logout,  isAuthenticated } = useAuth0();
 
-  const handleLogin = async () => {
-    await loginWithRedirect({
-      prompt: "login",
-      appState: {
-        returnTo: "/home",
-      },
-    });
-  };
+  // const handleLogin = async () => {
+  //   await loginWithRedirect({
+  //     prompt: "login",
+  //     appState: {
+  //       returnTo: "/home",
+  //     },
+  //   });
+  // };
 
   const handleLogout = () => logout({ returnTo: window.location.origin });
 
@@ -51,9 +51,10 @@ const DropdownUser = () => {
           </li>
           {!isAuthenticated ? (
             <>
-              <li onClick={handleLogin} className={style["li-dropdown"]}>
+              {/* <li onClick={handleLogin} className={style["li-dropdown"]}>
                 Login
-              </li>
+              </li> */}
+              <Link to="/login">Login</Link>
             </>
           ) : (
             <>
