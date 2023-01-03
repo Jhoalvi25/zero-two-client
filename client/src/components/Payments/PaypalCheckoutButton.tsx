@@ -1,5 +1,6 @@
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import * as React from "react";
+import style from "../../style/Payments/Payments.module.css"
 
 const debug = true;
 
@@ -75,9 +76,9 @@ export default class App extends React.Component<{}, typeof initialState> {
         <label htmlFor="amount">Order Amount: </label>
         <br />
         <select onChange={this.onChange} name="amount" id="amount">
-          <option value="1.50">$1.50</option>
-          <option value="3.00">$3.00</option>
-          <option value="36.00">$36.00</option>
+          <option value="1.50">PLAN GENIN $1.50</option>
+          <option value="3.00">PLAN CHUUNIN $3.00</option>
+          <option value="36.00">PLAN JOUNIN $36.00</option>
         </select>
         <br />
 
@@ -87,11 +88,11 @@ export default class App extends React.Component<{}, typeof initialState> {
         <br />
         <label>On Approve Message: </label>
         <br />
-        <span data-testid="message">{this.state.onApproveMessage}</span>
+        <span className={style["approve"]} data-testid="message">{this.state.onApproveMessage}</span>
         <br />
         <label>On Error Message: </label>
         <br />
-        <span data-testid="error">{this.state.onErrorMessage}</span>
+        <span className={style["error"]} data-testid="error">{this.state.onErrorMessage}</span>
         <br />
         <PayPalScriptProvider
           options={{
