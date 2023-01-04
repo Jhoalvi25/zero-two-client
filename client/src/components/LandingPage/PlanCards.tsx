@@ -8,9 +8,9 @@ export default function PlanCards(): JSX.Element {
       <h1>Our premium offerts:</h1>
       <div className={style["back"]}>
         {PremiumPlan &&
-          PremiumPlan.map((elem) => {
+          PremiumPlan.map((elem, index) => {
             return (
-              <div className={style["cardPlan"]}>
+              <div key={index} className={style["cardPlan"]}>
                 <h2>{elem.name}</h2>
 
                 <Link to={"/payment"}>
@@ -19,8 +19,8 @@ export default function PlanCards(): JSX.Element {
 
                 <h3>{elem.price}</h3>
                 <ul>
-                  {elem.benefit.map((elem) => {
-                    return <li>{elem}</li>;
+                  {elem.benefit.map((elem, index) => {
+                    return <li key={index}>{elem}</li>;
                   })}
                 </ul>
               </div>

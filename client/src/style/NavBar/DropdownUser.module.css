@@ -102,7 +102,6 @@
 .li-dropdown{
   width: auto;
   list-style: none;
-  cursor: pointer;
   position: relative;
   display: flex;
   column-gap: .5em;
@@ -134,9 +133,10 @@
 }
 
 .a-dropdown{
-  display: flex;
-  column-gap: .5em;
+  /* display: flex;
+  column-gap: .5em; */
   text-decoration: none;
+  cursor: pointer;
   width: 100%;
   color: var(--main-color-font-dark);
 }

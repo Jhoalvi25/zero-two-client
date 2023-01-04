@@ -27,22 +27,28 @@ const DropdownExplore = () => {
       >
         <ul className={style["ul-dropdown"]}>
           <li className={style["li-dropdown"]}>
-            <Link className={style["a-dropdown"]} to="/animes/trending">
-              <FontAwesomeIcon icon={faFire} className={style['icon']}/>
-              <span>Most popular</span>
-            </Link>
+            <FontAwesomeIcon icon={faFire} className={style['icon']}/>
+            <span>
+              <Link className={style["a-dropdown"]} to="/animes/trending">
+                Most popular
+              </Link>
+            </span>
           </li>
           <li className={style["li-dropdown"]}>
-            <Link className={style["a-dropdown"]} to="/animes/newest">
-              <FontAwesomeIcon icon={faEye} className={style['icon']}/>
-              <span>Playing now</span> 
-            </Link>
+            <FontAwesomeIcon icon={faEye} className={style['icon']}/>
+            <span>
+              <Link className={style["a-dropdown"]} to="/animes/newest">
+                Playing now 
+              </Link>
+            </span>
           </li>
           <li className={style["li-dropdown"]}>
-            <Link className={style["a-dropdown"]} to="/animes">
-              <FontAwesomeIcon icon={faMasksTheater} className={style['icon']}/>
-              <span>Genres</span>
-            </Link>
+            <FontAwesomeIcon icon={faMasksTheater} className={style['icon']}/>
+            <span>
+              <Link className={style["a-dropdown"]} to="/animes">
+                Genres
+              </Link>
+            </span>
           </li>
         </ul>
       </nav>

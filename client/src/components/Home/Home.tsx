@@ -4,7 +4,6 @@ import SectionHomeUno from "./SectionHomeUno";
 import SectionHomeDos from "./SectionHomeDos";
 import { useAppDispatch } from "../../redux/hooks";
 import {
-  getAllAnimes,
   getAnimeNewest,
   getAnimes,
   getAnimeTrending,
@@ -14,7 +13,6 @@ export default function Home() {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(getAllAnimes(""));
     dispatch(getAnimes(""));
     dispatch(getAnimeNewest("?page=1"));
     dispatch(getAnimeTrending("?page=1"));

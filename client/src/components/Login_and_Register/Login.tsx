@@ -4,10 +4,11 @@ import style from "../../style/Login_and_Register/Login.module.css";
 import { Link } from "react-router-dom";
 import validationSchema from "./validations/validationLogin";
 import { useAppDispatch } from "../../redux/hooks";
-import { getUserResource } from "../../redux/actions";
+// import { getUserResource } from "../../redux/actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { useAuth0 } from "@auth0/auth0-react";
+
 
 interface FormValues {
   email: string;
@@ -26,6 +27,11 @@ export default function Login(): JSX.Element {
       },
     });
   };
+
+  const handleLoginWithForm = async () => {
+
+  };
+
   const initialValues: FormValues = {
     email: "",
     password: "",

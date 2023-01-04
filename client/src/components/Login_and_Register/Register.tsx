@@ -11,7 +11,7 @@ interface FormValues {
   age: number;
   email: string;
   password: string;
-  changePasword: string;
+  changePassword: string;
 }
 export default function Register(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -21,7 +21,7 @@ export default function Register(): JSX.Element {
     age: 0,
     email: "",
     password: "",
-    changePasword: "",
+    changePassword: "",
   };
 
   const [user, setUser] = useState(initialValues);
@@ -41,9 +41,10 @@ export default function Register(): JSX.Element {
       age: 0,
       email: "",
       password: "",
-      changePasword: "",
-    }
-  )
+      changePassword: "",
+    })
+    // No se esta seteando correctamente los inputs a su valor inicial
+    // CHEQUEAR QUE FUNCIONE
   };
   return (
     <div className={style['form-signup-container']}>
@@ -103,17 +104,17 @@ export default function Register(): JSX.Element {
             className={style["form__error"]}
           />
 
-          <label htmlFor="changepassword" className={style["form__label"]}>
+          <label htmlFor="changePassword" className={style["form__label"]}>
             Confirm Password
           </label>
           <Field
-            name="changepassword"
+            name="changePassword"
             type="password"
             className={style["form__input"]}
           />
 
           <ErrorMessage
-            name="changepassword"
+            name="changePassword"
             component="span"
             className={style["form__error"]}
           />

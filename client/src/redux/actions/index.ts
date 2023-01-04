@@ -23,27 +23,8 @@ export const getAnimes = (query: string)=> {
           type: types.GET_ANIMES,
           payload: {error: {message: 'Not found'}}
         })
-        // return { error: { message: "Not found" } };
       });
 }
-export const getAllAnimes = (query: string ) => {
- 
-  return async (dispatch: AppDispatch) =>
-    await axios
-    .get(query ? `${API_ENDPOINT}/animes?${query}`:`${API_ENDPOINT}/animes` )
-      .then((response) => {
-        dispatch({
-          type: types.GET_ALL_ANIMES,
-          payload: response.data,
-        });
-      })
-      .catch((error) => {
-        dispatch({
-          type: types.GET_ALL_ANIMES,
-          payload: { error: { message: "Not found" } }
-        })
-      });
-};
 
 export function searchAnimeName(name: string) {
   return async function (dispatch: AppDispatch) {
@@ -186,7 +167,7 @@ export const getAnimeTrending = (query:string) => {
   }
 }
 export const registerUser = (user: User) => {
-  return async (dispatch: AppDispatch) => {
+  return async (dispatch: AppDispatch): Promise<void> => {
     try {
       
         const config = {
@@ -197,40 +178,51 @@ export const registerUser = (user: User) => {
           },
           data: user
         };
-        const response = await axios(config);
-        dispatch({ type: types.GET_USER_BY_EMAIL, payload: response.data });
+        await axios(config);
 
     } catch (err: any) {
-      dispatch({
-        type: types.GET_USER_BY_EMAIL,
-        payload: err.message 
-      })
+      throw new Error (err.message);
     }
   }
 }
-export const getUserResource = (user: User) => {
+export const loginUser = (user: User) => {
   return async (dispatch: AppDispatch) => {
     try {
-      
-        const config = {
-          url: `${API_ENDPOINT}/user`,
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          data: user
-        };
-        const response = await axios(config);
-        dispatch({ type: types.GET_USER_BY_EMAIL, payload: response.data });
-
+      const config = {
+        url: `${API_ENDPOINT}/user/login`,
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        data: user
+      };
+      const response = await axios(config);
+      return response; // ACA MANEJAMOS EL TOKEN
     } catch (err: any) {
-      dispatch({
-        type: types.GET_USER_BY_EMAIL,
-        payload: err.message 
-      })
+      throw new Error (err.message);
     }
   }
 }
+
+export const getUserInfo = (accessToken: string) => {
+  return async (dispatch: AppDispatch) => {
+    try {
+      const config = {
+        url: `${API_ENDPOINT}/user`,
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+          Authorization: `Bearer ${accessToken}`
+        }
+      };
+      const response = await axios(config);
+    } catch (err: any) {
+      throw new Error(err);
+    }
+  }
+}
+
+
 
 export const getUserResourceWithGoogle = (token: string, email: string) => {
   return async (dispatch: AppDispatch) => {

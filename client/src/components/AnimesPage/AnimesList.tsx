@@ -80,7 +80,6 @@ export const AnimeList = () => {
         })
       }
       
-    // dispatch(getAllAnimes(typeof allAnimeQuery === 'string' ? allAnimeQuery: ''))
    
   },[dispatch, search, option]);
   // console.log('search', search)

@@ -1,5 +1,5 @@
 
-import { FILTER_AND_SORT_ANIMES, GET_ALL_ANIMES, GET_ANIME_BY_ID, GET_ANIME_EPISODES, GET_ANIME_GENRES, SEARCH_ANIMES, GET_ANIME_NEWEST, GET_ANIME_OLDEST, GET_ANIMES, GET_ANIME_TRENDING, GET_USER_BY_EMAIL, GET_ANIME_EPISODE } from "../types";
+import { FILTER_AND_SORT_ANIMES, GET_ANIME_BY_ID, GET_ANIME_EPISODES, GET_ANIME_GENRES, SEARCH_ANIMES, GET_ANIME_NEWEST, GET_ANIME_OLDEST, GET_ANIMES, GET_ANIME_TRENDING, GET_ANIME_EPISODE } from "../types";
 import {AnyAction} from 'redux'
 import { Anime, Episode, ErrorResponse, Genre, User } from "../../types/types";
 
@@ -7,7 +7,6 @@ import { Anime, Episode, ErrorResponse, Genre, User } from "../../types/types";
 
 interface StateAnimes {
   animes: {count: number , rows: Array<Anime>},
-  allAnimes: Array<Anime>,
   anime: Anime,
   animeNewest: {count: number , rows: Array<Anime>},
   animesTrending: {count: number , rows: Array<Anime>},
@@ -21,7 +20,6 @@ interface StateAnimes {
 }
 const initialState = {
   animes: {count: 0, rows: []},
-  allAnimes: [],
   anime: {} as Anime,
   animeNewest: {count: 0, rows: []},
   animeOldest: [],
@@ -43,14 +41,6 @@ function rootReducer(state:StateAnimes = initialState, action:AnyAction) {
         animes: action.payload,
         error: action.error
       }
-    }
-    case GET_ALL_ANIMES: {
-      return {
-        ...state,
-        allAnimes: action.payload,
-        isActive: false,
-        error: action.error
-      };
     }
     case SEARCH_ANIMES:
       return {

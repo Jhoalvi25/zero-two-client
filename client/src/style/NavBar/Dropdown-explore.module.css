@@ -67,10 +67,14 @@
 .li-dropdown{
   width: auto;
   list-style: none;
-  cursor: pointer;
   position: relative;
   display: flex;
   align-items: center;
+  column-gap: 0.5em;
+  opacity: .7;
+}
+.li-dropdown:hover{
+  opacity: 1;
 }
 
 .li-dropdown:after{
@@ -97,15 +101,9 @@
   text-decoration: none;
   color: var(--main-color-font-dark);
   width: 100%;
-  display: flex;
-  align-items: center;
-  column-gap: .5em;
-  opacity: .7;
+  cursor: pointer;
 }
 
-.a-dropdown:hover{
-  opacity: 1;
-}
 
 .icon{
   color: var(--main-color-font-dark);

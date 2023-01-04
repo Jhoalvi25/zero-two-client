@@ -47,10 +47,12 @@ const DropdownUser = () => {
       >
         <ul className={style["ul-dropdown"]}>
           <li className={style["li-dropdown"]}>
-            <Link to="/profile" className={style["a-dropdown"]}>
-              <FontAwesomeIcon icon={faUser} className={style['icon']} />
-              <span>My Account</span>
-            </Link>
+            <FontAwesomeIcon icon={faUser} className={style['icon']} />
+            <span>
+              <Link to="/profile" className={style["a-dropdown"]}>
+                My Account
+              </Link>
+            </span>
           </li>
           {!isAuthenticated ? (
             <>
@@ -58,10 +60,12 @@ const DropdownUser = () => {
                 Login
               </li> */}
               <li className={style["li-dropdown"]}>
-                <Link className={style["a-dropdown"]} to="/login">
-                  <FontAwesomeIcon icon={faSignInAlt} className={style['icon']} />
-                  <span>Login</span>
-                </Link>
+                <FontAwesomeIcon icon={faSignInAlt} className={style['icon']} />
+                <span>
+                  <Link className={style["a-dropdown"]} to="/login">
+                    Login
+                  </Link>
+                </span>
               </li>
             </>
           ) : (

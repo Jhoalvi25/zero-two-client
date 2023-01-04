@@ -45,7 +45,7 @@
   background-color: var(--secondary-color-content-2);
   color: white;
   opacity: .5;
-
+  transition: all ease-in-out 0.3s;
 }
 .form-login .login-btn:hover, .login-google-btn:hover {
   transform: scale(1.05);
