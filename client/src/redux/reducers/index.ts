@@ -98,11 +98,11 @@ function rootReducer(state:StateAnimes = initialState, action:AnyAction) {
         animesTrending: action.payload,
         error: action.error
       }
-    case GET_USER_BY_EMAIL:
-      return {
-        ...state,
-        user: action.payload,
-      }
+    // case GET_USER_BY_EMAIL:
+    //   return {
+    //     ...state,
+    //     user: action.payload,
+    //   }
     default:
       return state;
   }

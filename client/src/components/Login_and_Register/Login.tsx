@@ -8,6 +8,7 @@ import { useAppDispatch } from "../../redux/hooks";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { useAuth0 } from "@auth0/auth0-react";
+import { getUserResource } from "../../redux/actions";
 
 
 interface FormValues {
@@ -17,7 +18,7 @@ interface FormValues {
 export default function Login(): JSX.Element {
   const dispatch = useAppDispatch();
   const {loginWithRedirect} = useAuth0();
-  
+  let token = '';
 
   const handleLoginWithGoogle = async () => {
     await loginWithRedirect({
@@ -28,9 +29,9 @@ export default function Login(): JSX.Element {
     });
   };
 
-  const handleLoginWithForm = async () => {
+  // const handleLoginWithForm = async () => {
 
-  };
+  // };
 
   const initialValues: FormValues = {
     email: "",
@@ -47,7 +48,7 @@ export default function Login(): JSX.Element {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    dispatch(getUserResource(user));
+    dispatch(getUserResource(token));
     setUser(initialValues)
   };
   return (

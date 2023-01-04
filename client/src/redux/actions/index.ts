@@ -204,7 +204,7 @@ export const loginUser = (user: User) => {
   }
 }
 
-export const getUserInfo = (accessToken: string) => {
+export const getUserResource = (accessToken: string) => {
   return async (dispatch: AppDispatch) => {
     try {
       const config = {
@@ -236,12 +236,9 @@ export const getUserResourceWithGoogle = (token: string, email: string) => {
           }
         };
         const response = await axios(config);
-        dispatch({ type: types.GET_USER_BY_EMAIL, payload: response.data });
-    } catch (err) {
-      dispatch({
-        type: types.GET_USER_BY_EMAIL,
-        payload: { error: { message: err } }
-      })
+      
+    } catch (err:any) {
+      throw new Error(err);
     }
   }
 }

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { getUserResource } from "../../redux/actions";
+import { getUserResource, loginUser } from "../../redux/actions";
 import { useAppDispatch } from "../../redux/hooks";
 
 export default function LoginPage() {
   const dispatch = useAppDispatch();
-
+  const token = '';
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -20,7 +20,7 @@ export default function LoginPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    dispatch(getUserResource(user));
+    dispatch(loginUser(user));
     setUser({ email: "", password: "" });
     //dispatch
   };
