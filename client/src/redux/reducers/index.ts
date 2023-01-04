@@ -6,12 +6,11 @@ import { Anime, Episode, ErrorResponse, Genre, User } from "../../types/types";
 // Use the interfaces for each individual state importing its interfaces
 
 interface StateAnimes {
-  animes: Array<Anime>,
+  animes: {count: number , rows: Array<Anime>},
   allAnimes: Array<Anime>,
   anime: Anime,
-  animeNewest: Array<Anime>,
-  animeOldest: Array<Anime>,
-  animesTrending: Array<Anime>,
+  animeNewest: {count: number , rows: Array<Anime>},
+  animesTrending: {count: number , rows: Array<Anime>},
   isActive: Boolean,
   animeDetails: Anime,
   animeEpisodes: Array<Episode>,
@@ -21,12 +20,12 @@ interface StateAnimes {
   error: ErrorResponse
 }
 const initialState = {
-  animes: [],
+  animes: {count: 0, rows: []},
   allAnimes: [],
   anime: {} as Anime,
-  animeNewest: [],
+  animeNewest: {count: 0, rows: []},
   animeOldest: [],
-  animesTrending: [],
+  animesTrending: {count: 0, rows: []},
   isActive: false,
   animeDetails: {} as Anime,
   animeEpisodes:[],

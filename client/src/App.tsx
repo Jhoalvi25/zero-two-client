@@ -55,15 +55,16 @@ const App: React.FC = () =>  {
         <Switch>
           <Route exact path="/" component={LandingPage} />
           <Route exact path="/home" component={Home} />
-          <Route exact path="/animes" component={AnimeList} />
-          <Route exact path="/animes/:idAnime" component={AnimeDetail} />
-          <Route exact path="/animes/:idAnime/:idEpisode" component={EpisodeDetails} />
+          <Route path={["/animes/:option", "/animes"]} component={AnimeList} />
+          <Route exact path="/watch/:idAnime" component={AnimeDetail} />
+          <Route exact path="/watch/:idAnime/:idEpisode" component={EpisodeDetails} />
           <ProtectedRoute  path="/profile" component={Profile} />
           <ProtectedRoute  path="/admin" component={Admin} />
           <Route exact path="/payment" component={Payments} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
           <Route path='*' component={NotFound} />
+          
         </Switch>
 
         <Footer />

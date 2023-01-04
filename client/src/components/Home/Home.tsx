@@ -16,8 +16,8 @@ export default function Home() {
   useEffect(() => {
     dispatch(getAllAnimes(""));
     dispatch(getAnimes(""));
-    dispatch(getAnimeNewest("page=1"));
-    dispatch(getAnimeTrending());
+    dispatch(getAnimeNewest("?page=1"));
+    dispatch(getAnimeTrending("?page=1"));
   });
   return (
     <div>

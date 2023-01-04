@@ -9,7 +9,7 @@ export default function AnimeCards({posterImage, name, id, showType, status}:Ani
     
       <div className={style["cardAnime"]}>
         <div className={style['cardAnime-image-container']}>
-          <Link to={`/animes/${id}`}>
+          <Link to={`/watch/${id}`}>
             <img src={posterImage} alt={`img ${name}`} className={style['anime-img']} />
           </Link>
         </div>

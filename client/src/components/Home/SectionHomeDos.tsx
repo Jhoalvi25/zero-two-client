@@ -20,7 +20,7 @@ const SectionHomeDos = ():JSX.Element => {
           className={style['cardsContainer']}
         >
           {animes &&
-            animes.map((anime, i) => {
+            animes.rows.map((anime, i) => {
               return (
                 <CardBasic
                   name={anime.name}

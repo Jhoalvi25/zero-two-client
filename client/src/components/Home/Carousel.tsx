@@ -24,9 +24,9 @@ export default function Carousel() {
   const animes = useAppSelector((state) => state.animesTrending);
 
 
-  const amount: number = animes?.length;
+  const amount: number = animes?.rows.length;
 
-  if (!Array.isArray(animes) || amount === 0)
+  if (!Array.isArray(animes.rows) || amount === 0)
     return (
       <div>
         <p>Sin info</p>
@@ -46,8 +46,8 @@ export default function Carousel() {
           </button>
 
           <div className={style["img_carusel_cont"]}>
-            {animes &&
-              animes.map((elem, index) => {
+            {animes.rows &&
+              animes.rows.map((elem, index) => {
                 return (
                   <div key={index}>
                     {currentImage === index && <h2 key={index}>{elem.name}</h2>}
@@ -55,15 +55,15 @@ export default function Carousel() {
                 );
               })}
 
-            {animes &&
-              animes.map((elem, index) => {
+            {animes.rows &&
+              animes.rows.map((elem, index) => {
                 return (
                   <div
                     key={index}
                     className={style["img-container"] + " " + style["fade"]}
                   >
                     {currentImage === index && (
-                      <Link to={`/animes/${elem?.id}`}>
+                      <Link to={`/watch/${elem?.id}`}>
                         <img
                           key={index}
                           src={elem.coverImage ? elem.coverImage : defaultImg}

@@ -27,7 +27,7 @@ const DropdownExplore = () => {
       >
         <ul className={style["ul-dropdown"]}>
           <li className={style["li-dropdown"]}>
-            <Link className={style["a-dropdown"]} to="/animes/newest?sort=rating">
+            <Link className={style["a-dropdown"]} to="/animes/trending">
               <FontAwesomeIcon icon={faFire} className={style['icon']}/>
               <span>Most popular</span>
             </Link>

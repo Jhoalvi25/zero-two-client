@@ -145,7 +145,7 @@ export const getAnimeNewest = (query: string) => {
   query = query.toString();
   return async (dispatch: AppDispatch) => {
     try {
-      const response = await axios.get(`${API_ENDPOINT}/animes/newest?${query}`);
+      const response = await axios.get(query ? `${API_ENDPOINT}/animes/newest${query}`:`${API_ENDPOINT}/animes/newest?page=1`);
       dispatch({ type: types.GET_ANIME_NEWEST, payload: response.data });
     } catch (err) {
       dispatch({
@@ -170,10 +170,11 @@ export const getAnimeOldest = () => {
   };
 };
 
-export const getAnimeTrending = () => {
+export const getAnimeTrending = (query:string) => {
+  query = query.toString();
   return async (dispatch: AppDispatch) => {
     try {
-      const response = await axios.get(`${API_ENDPOINT}/animes/newest?sort=rating`);
+      const response = await axios.get(query ? `${API_ENDPOINT}/animes/trending${query}`:`${API_ENDPOINT}/animes/trending?page=1`);
       dispatch({ type: types.GET_ANIME_TRENDING, payload: response.data });
 
     } catch (err) {

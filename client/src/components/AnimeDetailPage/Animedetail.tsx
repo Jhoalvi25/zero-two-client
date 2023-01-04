@@ -112,7 +112,7 @@ export default function AnimeDetail () {
                   
                   {episodes.map((episode:Episode) => {
                       return(
-                        <Link to ={{pathname: `/animes/${idAnime}/${episode.id}`,
+                        <Link to ={{pathname: `/watch/${idAnime}/${episode.id}`,
                         state: {episode}}}>
                             
                             <div className={style['episode']} key={episode.id}>
