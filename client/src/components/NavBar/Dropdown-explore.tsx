@@ -29,7 +29,7 @@ const DropdownExplore = () => {
           <li className={style["li-dropdown"]}>
             <FontAwesomeIcon icon={faFire} className={style['icon']}/>
             <span>
-              <Link className={style["a-dropdown"]} to="/animes/trending">
+              <Link onClick={toggleMenu} className={style["a-dropdown"]} to="/animes/trending">
                 Most popular
               </Link>
             </span>
@@ -37,7 +37,7 @@ const DropdownExplore = () => {
           <li className={style["li-dropdown"]}>
             <FontAwesomeIcon icon={faEye} className={style['icon']}/>
             <span>
-              <Link className={style["a-dropdown"]} to="/animes/newest">
+              <Link onClick={toggleMenu} className={style["a-dropdown"]} to="/animes/newest">
                 Playing now 
               </Link>
             </span>
@@ -45,7 +45,7 @@ const DropdownExplore = () => {
           <li className={style["li-dropdown"]}>
             <FontAwesomeIcon icon={faMasksTheater} className={style['icon']}/>
             <span>
-              <Link className={style["a-dropdown"]} to="/animes">
+              <Link onClick={toggleMenu} className={style["a-dropdown"]} to="/animes">
                 Genres
               </Link>
             </span>

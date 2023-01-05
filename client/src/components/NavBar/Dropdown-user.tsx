@@ -35,10 +35,10 @@ const DropdownUser = () => {
   }, [token])
 
   const handleLogout = () => {
+    setMenu(!menu);
     if (isAuthenticated) {
       window.localStorage.removeItem('token');
       logout({ returnTo: 'http://localhost:3000/login'})
-     
     } else {
       window.localStorage.removeItem('token');
       history.push('/login')
@@ -67,7 +67,7 @@ const DropdownUser = () => {
           <li className={style["li-dropdown"]}>
             <FontAwesomeIcon icon={faUser} className={style['icon']} />
             <span>
-              <Link to="/profile" className={style["a-dropdown"]}>
+              <Link onClick={toggleMenu} to="/profile" className={style["a-dropdown"]}>
                 My Account
               </Link>
             </span>
@@ -80,7 +80,7 @@ const DropdownUser = () => {
               <li className={style["li-dropdown"]}>
                 <FontAwesomeIcon icon={faSignInAlt} className={style['icon']} />
                 <span>
-                  <Link className={style["a-dropdown"]} to="/login">
+                  <Link onClick={toggleMenu} className={style["a-dropdown"]} to="/login">
                     Login
                   </Link>
                 </span>
