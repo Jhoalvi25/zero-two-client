@@ -8,18 +8,47 @@ import { useAppDispatch } from "../../redux/hooks";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { useAuth0 } from "@auth0/auth0-react";
-import { getUserResource } from "../../redux/actions";
+import { loginUser } from "../../redux/actions";
+import { useHistory } from "react-router-dom";
 
 
 interface FormValues {
   email: string;
   password: string;
 }
+
+
 export default function Login(): JSX.Element {
   const dispatch = useAppDispatch();
   const {loginWithRedirect} = useAuth0();
-  let token = '';
+  const history = useHistory();
 
+  const initialValues: FormValues = {
+    email: "",
+    password: "",
+  };
+
+  const [user, setUser] = useState(initialValues);
+  // const [error ,setError] = useState({message: ''});
+
+  const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
+
+    const inputName = e.target.name;
+    const inputValue = e.target.value;
+    
+    setUser({...user, [inputName]: inputValue })
+  }
+
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    dispatch(loginUser(user)).then((data) => {
+      
+      history.push('/home')
+    });
+    setUser(initialValues)
+  };
+  
   const handleLoginWithGoogle = async () => {
     await loginWithRedirect({
       prompt: "login",
@@ -28,38 +57,22 @@ export default function Login(): JSX.Element {
       },
     });
   };
+ 
 
-  // const handleLoginWithForm = async () => {
-
-  // };
-
-  const initialValues: FormValues = {
-    email: "",
-    password: "",
-  };
-  const [user, setUser] = useState(initialValues);
-  const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
-
-    const inputName = e.target.name;
-    const inputValue = e.target.value;
-    
-    setUser({...user, [inputName]: inputValue })
+  const isLogin = window.localStorage.getItem('token')
+  if (isLogin) {
+    history.push('/home')
   }
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    dispatch(getUserResource(token));
-    setUser(initialValues)
-  };
+  
   return (
     <div className={style['form-container']}>
       <Formik
         initialValues={initialValues}
-        onSubmit={handleSubmit}
+        onSubmit={handleLogin}
         validationSchema={validationSchema}
       >
         
-        <Form className={style["form-login"]} onChange = {handleChange} onSubmit={handleSubmit}>
+        <Form className={style["form-login"]} onChange = {handleChange} onSubmit={handleLogin}>
           <h1>Sign in</h1>
           <label htmlFor="email" className={style["form__label"]}>
             Email
@@ -68,6 +81,7 @@ export default function Login(): JSX.Element {
           name="email" 
           type="text" 
           className={style["form__input"]}  
+          value={user.email}
           />
         
           <ErrorMessage
@@ -83,17 +97,19 @@ export default function Login(): JSX.Element {
             name="password"
             type="password"
             className={style["form__input"]}
-           
+            value={user.password}
           />
 
           <ErrorMessage
             name="password"
             component="span"
             className={style["form__error"]}
+            
           />
           <Link to={"restore"} className={style["restore"]}>
             <span>Forgot pasword?</span>
           </Link>
+          {/* {error.message && <p>{error.message}</p>} */}
           <button type="submit" className={style["login-btn"]}>
             Sign in
           </button>

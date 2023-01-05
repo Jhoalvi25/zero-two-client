@@ -5,7 +5,7 @@ import style from "../../style/UtilsComponents/NotFound.module.css";
 import todorokiImg from '../../img/todoroki-Img.png'
 import { Link } from "react-router-dom";
 interface NotFoundInterface {
-  msg: string
+  msg?: string
 }
 
 export default function NotFound({msg}:NotFoundInterface){

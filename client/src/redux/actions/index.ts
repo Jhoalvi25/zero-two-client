@@ -197,7 +197,8 @@ export const loginUser = (user: User) => {
         data: user
       };
       const response = await axios(config);
-      return response; // ACA MANEJAMOS EL TOKEN
+      window.localStorage.setItem("token", response.data.token)
+      console.log('token stored:', window.localStorage.getItem('token')) // ACA MANEJAMOS EL TOKEN
     } catch (err: any) {
       throw new Error (err.message);
     }
@@ -216,6 +217,9 @@ export const getUserResource = (accessToken: string) => {
         }
       };
       const response = await axios(config);
+      console.log('user get', response)
+      return response.data;
+   
     } catch (err: any) {
       throw new Error(err);
     }
@@ -236,7 +240,8 @@ export const getUserResourceWithGoogle = (token: string, email: string) => {
           }
         };
         const response = await axios(config);
-      
+        window.localStorage.setItem('token', token);
+        return response.data
     } catch (err:any) {
       throw new Error(err);
     }

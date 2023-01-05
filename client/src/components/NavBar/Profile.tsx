@@ -1,43 +1,61 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import { getUserResourceWithGoogle } from "../../redux/actions";
+import { getUserResource, getUserResourceWithGoogle } from "../../redux/actions";
 import { Link } from "react-router-dom";
-import { useCallback, useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { useCallback, useEffect, useState} from "react";
+import { useAppDispatch } from "../../redux/hooks";
+import { useHistory } from "react-router-dom";
+import { User } from "../../types/types";
 
 export default function Profile(): JSX.Element | null {
   const dispatch = useAppDispatch();
-  const userAccounnt = useAppSelector((state) => state.user);
-  const { user, getAccessTokenSilently } = useAuth0();
+  const history = useHistory();
+  // const userAccounnt = useAppSelector((state) => state.user);
+  const {getAccessTokenSilently, user } = useAuth0();
+  const regularToken = window.localStorage.getItem('token');
 
   const emailUser = user?.email ? user?.email : '';
+  const [userLog, setUserLog] = useState<User>({} as User);
 
   const getToken = useCallback( async () => {
     const accesToken = await getAccessTokenSilently();
-    dispatch(getUserResourceWithGoogle(accesToken, emailUser));
-  },[getAccessTokenSilently, dispatch, emailUser])
+    dispatch(getUserResourceWithGoogle(accesToken, emailUser)).then(val => {
+      console.log('GOOGLE', val)
+      setUserLog(val)
+    });
+   
+  },[getAccessTokenSilently, emailUser, dispatch])
 
   useEffect(() => {
     getToken();
-  }, [getToken]);
+    dispatch(getUserResource(regularToken ? regularToken : '')).then(val => {
+      console.log('us', val)
+      setUserLog(val)
+    })
+  }, [getToken, dispatch, regularToken]);
+  console.log(userLog)
 
-  if (!user) {
-    return null;
+
+  if (!regularToken || !userLog) {
+    console.log('r', regularToken, 'u', userLog)
+    history.push('/login')
   }
 
 
-  console.log(user);
+  console.log('PROFILE', regularToken, userLog);
   return (
     <div>
-      {userAccounnt.rol === "Admin" && (
+      {userLog?.rol === "Admin" && 
         <div className="admin">
           <Link to="/admin">Admin</Link>
         </div>
-      )}
-
-      <div className="row align-items-center profile-header">
-        <p>{userAccounnt.nickname}</p>
-        <p>{userAccounnt.email}</p>
-      </div>
-    </div>
+      }
+     { userLog && <div className="row align-items-center profile-header">
+      <h2>{userLog.nickname}</h2>
+      <h2>{userLog.email}</h2>
+      <h2>{userLog.plan}</h2>
+      <h2>{userLog.age}</h2>
+    </div>}
+      
+   </div>
   );
 }

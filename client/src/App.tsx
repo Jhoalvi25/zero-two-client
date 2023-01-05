@@ -14,7 +14,7 @@ import { useAppDispatch } from "./redux/hooks";
 
 import Profile from "./components/NavBar/Profile";
 import Admin from "./components/AdminPage/Admin";
-import { ProtectedRoute } from "./components/NavBar/Protected-route";
+// import { ProtectedRoute } from "./components/NavBar/Protected-route";
 import { useAuth0 } from "@auth0/auth0-react";
 import NotFound from "./components/UtilsComponents/NotFound";
 
@@ -58,8 +58,8 @@ const App: React.FC = () =>  {
           <Route path={["/animes/:option", "/animes"]} component={AnimeList} />
           <Route exact path="/watch/:idAnime" component={AnimeDetail} />
           <Route exact path="/watch/:idAnime/:idEpisode" component={EpisodeDetails} />
-          <ProtectedRoute  path="/profile" component={Profile} />
-          <ProtectedRoute  path="/admin" component={Admin} />
+          <Route path="/profile" component={Profile} />
+          <Route path="/admin" component={Admin} />
           <Route exact path="/payment" component={Payments} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import style from "../../style/NavBar/DropdownUser.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,8 +10,10 @@ import {
   faSignInAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const DropdownUser = () => {
+  const history = useHistory();
   const [menu, setMenu] = useState(false);
   //login
   //Pasar User loging, logout a un nuevo componente
@@ -25,13 +27,29 @@ const DropdownUser = () => {
   //     },
   //   });
   // };
+  const token = window.localStorage.getItem('token');
+  const isLogin = useMemo(() => {
+ 
+    if(token?.length) return true;
+    else return false;
+  }, [token])
 
-  const handleLogout = () => logout({ returnTo: window.location.origin });
+  const handleLogout = () => {
+    if (isAuthenticated) {
+      window.localStorage.removeItem('token');
+      logout({ returnTo: 'http://localhost:3000/login'})
+     
+    } else {
+      window.localStorage.removeItem('token');
+      history.push('/login')
+    }
+  
+  };
 
   const toggleMenu = () => {
     setMenu(!menu);
   };
-
+  
   return (
     <div className={style["explore user"]}>
       <button onClick={toggleMenu} className={style["log"]}>
@@ -54,7 +72,7 @@ const DropdownUser = () => {
               </Link>
             </span>
           </li>
-          {!isAuthenticated ? (
+          {!isLogin ? (
             <>
               {/* <li onClick={handleLogin} className={style["li-dropdown"]}>
                 Login

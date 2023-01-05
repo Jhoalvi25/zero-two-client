@@ -3,36 +3,46 @@ import SearchUser from "./SearchUser";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass, faGears } from "@fortawesome/free-solid-svg-icons";
 import {
+  getUserResource,
   getUserResourceWithGoogle,
 } from "../../redux/actions";
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { useAppDispatch } from "../../redux/hooks";
 import { useAuth0 } from "@auth0/auth0-react";
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { User } from "../../types/types";
+import NotFound from "../UtilsComponents/NotFound";
 
 export default function Admin(): JSX.Element {
   const { getAccessTokenSilently, user } = useAuth0();
-  const admin = useAppSelector((state) => state.user);
+  const regularToken = window.localStorage.getItem('token');
   const dispatch = useAppDispatch();
-  // console.log("sss", user?.email);
+
+  const [admin, setAdmin] = useState<User>({} as User);
+
   const getToken = useCallback(async () => {
     const accesToken = await getAccessTokenSilently();
     if (user?.email) {
-      dispatch(getUserResourceWithGoogle(accesToken, user.email));
+      dispatch(getUserResourceWithGoogle(accesToken, user.email)).then(val => {
+      console.log('GOOGLE', val)
+      setAdmin(val)
+    });
     }
-  },[getAccessTokenSilently, dispatch, user?.email])
+    dispatch(getUserResource(regularToken ? regularToken : '')).then(val => {
+      console.log('us', val)
+      setAdmin(val)
+    })
+  },[getAccessTokenSilently, dispatch, user?.email, regularToken]);
+
+
   useEffect(() => {
     getToken();
   }, [getToken]);
 
-  // if(admin.error.message) return(
-  //     <div>Ooops... nothing to show here</div>
-  // );
-  // else if(!(admin.nickname === 'admin')) return(
-  //     <div>You don't have permissions to access this page {admin.nickname}</div>
-  // )
-  if (!admin) return <div>Nothing to show here</div>;
+  if (!admin) {
+    return (<NotFound />)
+  }
   else if (!(admin.rol === "Admin")) {
-    return <div>You don't have permission to access this page</div>;
+    return (<NotFound msg="You don't have permissions to access this page" />)
   }
   return (
     <div>
