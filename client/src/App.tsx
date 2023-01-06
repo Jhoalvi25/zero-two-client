@@ -23,6 +23,7 @@ import Login from "./components/Login_and_Register/Login";
 import Register from "./components/Login_and_Register/Register";
 import EpisodeDetails from "./components/EpisodeDetails/EpisodeDetails";
 import Loading from "./components/UtilsComponents/Footer";
+import UserDashboard from "./components/User/UserDashboard";
 
 
 const App: React.FC = () =>  {
@@ -63,6 +64,7 @@ const App: React.FC = () =>  {
           <Route exact path="/payment" component={Payments} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
+          <Route exact path="/user" component={UserDashboard} />
           <Route path='*' component={NotFound} />
           
         </Switch>

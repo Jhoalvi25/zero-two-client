@@ -1,0 +1,94 @@
+/* header */
+
+.header {
+  width: 100%;
+  background-image: url("../../img/series-cowboy-bebop.jpg");
+  background-size: cover;
+  align-items: center;
+  display: flex;
+  height: 55vh;
+  overflow-x: hidden;
+}
+
+.blur {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: 85%;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(2px);
+  margin: auto;
+}
+
+.target {
+  align-items: center;
+  width: 75%;
+  display: flex;
+  background-color: white;
+  display: flex;
+  height: 55%;
+}
+
+.logo {
+  width: 32%;
+  height: 100%;
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.info {
+  width: 100%;
+  display: flex;
+}
+
+.user-info {
+  text-align: justify;
+  width: 82%;
+  margin-left: 20px;
+}
+
+.user-info h3 {
+  color: #4c0879;
+  font-size: 20px;
+}
+
+.user-info h3 span {
+  color: #ffc989;
+  font-size: 20px;
+}
+
+.user-info h4 {
+  font-size: 20px;
+  color: #1a0750;
+}
+
+.user-icon {
+  display: flex;
+}
+
+.user-icon h5 {
+  font-size: 15px;
+  color: #65407e;
+}
+
+.badges {
+  margin-left: 20px;
+}
+
+.medal {
+  padding: 5px;
+  margin-right: 20px;
+  background-color: #1a0750;
+  color: white;
+}
+
+.user-logo {
+  font-size: 50px;
+  float: right;
+  color: #1a0750;
+}
