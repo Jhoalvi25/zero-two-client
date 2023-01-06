@@ -14,7 +14,19 @@ export interface Episode {
     thumbnail: { original?:string, meta?:object },
     coverImage?: string
 }
-
+export interface CommentInterface {
+    id: number,
+    replyingTo: string,
+    content: string,
+    rating: number,
+    likesCount: number,
+    spoiler: boolean,
+    id_episode: number,
+    userId: string,
+    reply_id? : number,
+    user: User,
+    Replies: Comment
+}
 export interface Genre {
     id: number,
     name: string
@@ -46,7 +58,7 @@ export interface Anime {
 } // -> Objeto que no es no va pasar
 // -> Objecto vacio 
 
-export interface User {
+export interface UserInterface {
     image: string
     plan: string,
     id: string,

@@ -9,7 +9,7 @@ import {
 import { useAppDispatch } from "../../redux/hooks";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useCallback, useEffect, useState } from "react";
-import { User } from "../../types/types";
+import { UserInterface } from "../../types/types";
 import NotFound from "../UtilsComponents/NotFound";
 
 export default function Admin(): JSX.Element {
@@ -17,7 +17,7 @@ export default function Admin(): JSX.Element {
   const regularToken = window.localStorage.getItem('token');
   const dispatch = useAppDispatch();
 
-  const [admin, setAdmin] = useState<User>({} as User);
+  const [admin, setAdmin] = useState<UserInterface>({} as UserInterface);
 
   const getToken = useCallback(async () => {
     const accesToken = await getAccessTokenSilently();

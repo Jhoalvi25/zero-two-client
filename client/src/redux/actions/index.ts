@@ -247,3 +247,17 @@ export const getUserResourceWithGoogle = (token: string, email: string) => {
     }
   }
 }
+
+export const getEpisodeComments =  (episodeId: number) => {
+  return async (dispatch: AppDispatch) => {
+    try {
+      const response = await axios.get(`${API_ENDPOINT}/reviews/episode/${episodeId}`);
+      dispatch({ type: types.GET_EPISODE_COMMENTS, payload: response.data });
+    } catch (err) {
+      dispatch({
+        type: types.GET_EPISODE_COMMENTS, 
+        payload: { error: { message: "Not found animes to show here" } }
+      })
+    }
+  }
+}

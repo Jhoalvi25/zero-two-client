@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useCallback, useEffect, useState} from "react";
 import { useAppDispatch } from "../../redux/hooks";
 import { useHistory } from "react-router-dom";
-import { User } from "../../types/types";
+import { UserInterface } from "../../types/types";
 
 export default function Profile(): JSX.Element | null {
   const dispatch = useAppDispatch();
@@ -14,7 +14,7 @@ export default function Profile(): JSX.Element | null {
   const regularToken = window.localStorage.getItem('token');
 
   const emailUser = user?.email ? user?.email : '';
-  const [userLog, setUserLog] = useState<User>({} as User);
+  const [userLog, setUserLog] = useState<UserInterface>({} as UserInterface);
 
   const getToken = useCallback( async () => {
     const accesToken = await getAccessTokenSilently();

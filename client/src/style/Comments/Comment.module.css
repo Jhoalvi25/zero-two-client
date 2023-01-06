@@ -1,0 +1,52 @@
+.comment-container {
+    width: 100%;
+    display: flex;
+    gap: .5em;
+    flex-direction: column;
+    font-weight: 400;
+    color: var(--main-color-font-dark) ;
+}
+/*USER */
+.comment-user {
+    width: 100%;
+    display: flex;
+    gap: .5em;
+}
+
+.comment-user .image-container {
+    max-width: 50px;
+}
+
+.comment-user .image-container .user-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.user-info {
+    display: flex;
+    flex-direction: column;
+}
+.user-info-name {
+    color: var(--secondary-color-content-2);
+}
+.user-info-plan {
+    color: var(--main-color-font-light2);
+}
+
+/*INTERACTIONS*/
+.comment-interactions {
+    display: flex;
+    gap: 1em;
+    
+}
+.comment-interaction {
+    display: flex;
+    gap: .25em;
+    cursor: pointer;
+}
+
+/*REPLIES*/
+.replies-content {
+    padding-left: 2em;
+    padding-top: 2em;
+}

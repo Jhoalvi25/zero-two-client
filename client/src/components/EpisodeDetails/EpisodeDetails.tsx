@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import style from '../../style/EpisodeDetails/EpisodeDetails.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faStar } from '@fortawesome/free-solid-svg-icons';
+import Comments from '../Comments/Comements';
 
 export default function EpisodeDetails () {
     const {idAnime, idEpisode} = useParams();
@@ -15,7 +16,7 @@ export default function EpisodeDetails () {
     useEffect(()=> {
         dispatch(getAnimeEpisode(idAnime, idEpisode))
     },[dispatch, idEpisode, idAnime])
-    console.log(episode)
+    // console.log(episode)
     return(
         <div className={style['episode-container']}>
 
@@ -46,9 +47,10 @@ export default function EpisodeDetails () {
                 <p style={{opacity: '.7'}}>{episode.synopsis}</p>
             </div>
 
-            <div className={style['comments-container']}>
+            {/* <div className={style['comments-container']}>
                 <h2>Comments</h2>
-            </div>
+            </div> */}
+            <Comments />
         </div>
     )
 }

@@ -10,3 +10,4 @@ export const GET_ANIMES = "GET_ANIMES";
 export const GET_ANIME_TRENDING = 'GET_ANIME_TRENDING';
 export const LOGIN_USER = 'LOGIN_USER';
 export const GET_USER_INFO = 'GET_USER_INFO';
+export const GET_EPISODE_COMMENTS = 'GET_EPISODE_COMMENTS';
