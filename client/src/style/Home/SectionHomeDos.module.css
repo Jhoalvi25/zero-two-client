@@ -1,0 +1,18 @@
+
+.section_dos {
+  background-color: var(--main-color-font-dark);
+  background-color: transparent;
+  justify-content: space-around;
+  align-items: center;
+  overflow: hidden;
+  width: 100%;
+}
+
+.section_dos .cardsContainer {
+  max-height: 300px;
+  display: flex;
+  width: 130vw;
+  gap: 1em;
+  padding: 2em;
+  justify-content: space-between;
+}

@@ -1,7 +1,36 @@
+:root {
+  --main-bg-color-dark: #0f0f0f;
+  --main-bg-color-light: #ffff;
+  --main-color-font-dark: #1a0750;
+  --main-color-font-dark2: #1a07508a;
+  --main-color-font-light: #ffffff8a;
+  --main-color-font-light2: #c374ff;
+  --main-color-content:#F4F0F8;
+  --secondary-color-content-1: #e9dcf7;
+  --secondary-color-content-2: #5519b6;
+  --secondary-color-content-3: #47037c;
+  --secondary-color-content-4: #32239539;
+  --secondary-color-items-1: #ffc989;
+  --secondary-color-items-2: #60a890;
+  --secondary-color-items-3: #ffcb1d;
+  --secondary-color-items-4: #e1953a;
+  --scrollbar-color: #ecf0f1;
+  --scrollbar-thumb-color: #727272;
+}
+* {
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+}
+
+
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 .App {
+  min-height: 100vh;
+  margin-top: 65px;
   text-align: center;
   font-family: 'Ubuntu', sans-serif;
+  background-color: var(--main-bg-color-light);
 }
 
 .App-logo {
@@ -29,6 +58,10 @@
 .App-link {
   color: #61dafb;
 }
+body {
+  margin-top: 65px;
+  margin-bottom: 270px;
+}
 
 @keyframes App-logo-spin {
   from {
@@ -37,4 +70,13 @@
   to {
     transform: rotate(360deg);
   }
+}
+::-webkit-scrollbar {
+  width: 10px;
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #727272;
+  border-radius: 5px;
 }

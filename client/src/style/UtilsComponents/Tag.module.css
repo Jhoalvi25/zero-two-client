@@ -1,0 +1,20 @@
+.tag {
+    margin-top: .25em;
+    min-width: 60px;
+    padding: .1em .5em;
+    background-color: aquamarine;
+    width: fit-content;
+    color: var(--main-color-font-dark);
+    font-weight: bold;
+    border-radius: .5em;
+    display: inline-flex;
+    margin-right: .5em;
+    text-align: center;
+}
+.tag > * {
+    margin: auto;
+}
+
+.tag-title{
+    padding: 4px;
+}
