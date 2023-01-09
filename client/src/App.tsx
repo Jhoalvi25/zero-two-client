@@ -39,13 +39,7 @@ const App: React.FC = () => {
     return <Loading />;
   }
   return (
-    <Suspense
-      fallback={
-        <h1>
-          <Loading></Loading>
-        </h1>
-      }
-    >
+    <Suspense fallback={<h1>Loading...</h1>}>
       <BrowserRouter>
         <div className="App">
           {/* {location.pathname === "/" ? (
