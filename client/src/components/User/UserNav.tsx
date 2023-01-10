@@ -2,7 +2,7 @@ import style from "../../style/User/UserNav.module.css";
 import { Link } from "react-router-dom";
 import { UserInterface } from "../../types/types";
 
-export default function UserNav(userLog: UserInterface) {
+export default function UserNav(userLog?: UserInterface) {
   return (
     // Nav
 
