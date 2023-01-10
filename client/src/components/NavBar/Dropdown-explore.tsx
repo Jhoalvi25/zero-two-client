@@ -26,30 +26,24 @@ const DropdownExplore = () => {
         }
       >
         <ul className={style["ul-dropdown"]}>
-          <li className={style["li-dropdown"]}>
-            <FontAwesomeIcon icon={faFire} className={style['icon']}/>
-            <span>
-              <Link onClick={toggleMenu} className={style["a-dropdown"]} to="/animes/trending">
-                Most popular
-              </Link>
-            </span>
-          </li>
-          <li className={style["li-dropdown"]}>
-            <FontAwesomeIcon icon={faEye} className={style['icon']}/>
-            <span>
-              <Link onClick={toggleMenu} className={style["a-dropdown"]} to="/animes/newest">
-                Playing now 
-              </Link>
-            </span>
-          </li>
-          <li className={style["li-dropdown"]}>
-            <FontAwesomeIcon icon={faMasksTheater} className={style['icon']}/>
-            <span>
-              <Link onClick={toggleMenu} className={style["a-dropdown"]} to="/animes">
-                Genres
-              </Link>
-            </span>
-          </li>
+          <Link onClick={toggleMenu} className={style["a-dropdown"]} to="/animes/trending">
+            <li className={style["li-dropdown"]}>
+              <FontAwesomeIcon icon={faFire} className={style['icon']}/>
+              <span>Most popular</span>
+            </li>
+          </Link>
+          <Link onClick={toggleMenu} className={style["a-dropdown"]} to="/animes/newest">
+            <li className={style["li-dropdown"]}>
+              <FontAwesomeIcon icon={faEye} className={style['icon']}/>
+              <span>Playing now</span>
+            </li>
+          </Link>
+          <Link onClick={toggleMenu} className={style["a-dropdown"]} to="/animes">
+            <li className={style["li-dropdown"]}>
+              <FontAwesomeIcon icon={faMasksTheater} className={style['icon']}/>
+              <span>Genres</span>
+            </li>
+          </Link>
         </ul>
       </nav>
     </div>

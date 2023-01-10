@@ -261,3 +261,139 @@ export const getEpisodeComments =  (episodeId: number) => {
     }
   }
 }
+
+export const getAllListsUser =  (userId: string) => {
+  return async (dispatch: AppDispatch) => {
+    try {
+      const response = await axios.get(`${API_ENDPOINT}/list/all?userId=${userId}`);
+      dispatch({ type: types.GET_ALL_LISTS_USER, payload: response.data });
+    } catch (err: any) {
+      throw new Error(err.message);
+    }
+  }
+}
+
+export const getList =  (id: number | string) => {
+  return async (dispatch: AppDispatch) => {
+    try {
+      const response = await axios.get(`${API_ENDPOINT}/list/${id}`);
+      dispatch({ type: types.GET_LIST, payload: response.data });
+    } catch (err: any) {
+      throw new Error(err.message);
+    }
+  }
+}
+
+export const clearDetailList = () => {
+  return async (dispatch: AppDispatch) => {
+    try {
+      dispatch({ type: types.CLEAR_LIST_DETAIL})
+    } catch (err: any) {
+      throw new Error(err.message);
+    }
+  }
+}
+
+export const createList =  (newList: object) => {
+  return async (dispatch: AppDispatch) => {
+    try {
+      const config = {
+        url: `${API_ENDPOINT}/list`,
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        data: newList
+      };
+      const response = await axios(config);
+      return response.data;
+    } catch (err: any) {
+      throw new Error(err.message);
+    }
+  }
+}
+
+export const addListAnime =  (addAnime: object) => {
+  return async (dispatch: AppDispatch) => {
+    try {
+      const config = {
+        url: `${API_ENDPOINT}/list/add`,
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+        },
+        data: addAnime
+      };
+      const response = await axios(config).then(function(value) {
+        // Success!
+        return value.data;
+      }, function(err) { 
+        // Error!
+        throw new Error(err.response.data);
+      });
+      return response;
+    } catch (err: any) {
+      throw new Error(err.message);
+    }
+  }
+}
+
+export const editListName =  (editNameList: object) => {
+  return async (dispatch: AppDispatch) => {
+    try {
+      const config = {
+        url: `${API_ENDPOINT}/list/edit`,
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+        },
+        data: editNameList
+      };
+      const response = await axios(config);
+      return response.data;
+    } catch (err: any) {
+      throw new Error(err.message);
+    }
+  }
+}
+
+
+export const deleteAnimeInList =  (deleteAnimeInfo: object) => {
+  return async (dispatch: AppDispatch) => {
+    try {
+      const config = {
+        url: `${API_ENDPOINT}/list/anime`,
+        method: "DELETE",
+        headers: {
+          "content-type": "application/json",
+        },
+        data: deleteAnimeInfo
+      };
+      const response = await axios(config);
+      return response.data;
+    } catch (err: any) {
+      throw new Error(err.message);
+    }
+  }
+}
+export const deleteList =  (id: number) => {
+  return async (dispatch: AppDispatch) => {
+    try {
+      const response = await axios.delete(`${API_ENDPOINT}/list/${id}`);
+      return response.data;
+    } catch (err: any) {
+      throw new Error(err.message);
+    }
+  }
+}
+
+
+export const clearAllLists = () => {
+  return async (dispatch: AppDispatch) => {
+    try {
+      dispatch({ type: types.CLEAR_ALL_LISTS });
+    } catch (err: any) {
+      throw new Error(err.message);
+    }
+  }
+}

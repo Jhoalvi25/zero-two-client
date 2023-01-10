@@ -70,3 +70,25 @@ export interface UserInterface {
     rol: string,
     persmission: string
 }
+
+export interface UserLists {
+    id: number,
+    name: string,
+    userId: string,
+    animes: number
+}
+
+
+
+interface AnimeInList {
+    id: number,
+    name: string,
+    posterImage: string,
+    showType: string
+}
+export interface ListDetail {
+    id: number,
+    name: string,
+    userId: string,
+    animes: Array<AnimeInList>
+}

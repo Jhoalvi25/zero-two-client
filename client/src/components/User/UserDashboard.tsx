@@ -1,10 +1,10 @@
 import UserNav from "./UserNav";
 import HeaderUser from "./HeaderUser";
-import MyList from "./Options/MyList";
-import User from "./Options/User";
-import Plan from "./Options/Plan";
-import Achievements from "./Options/Achievements";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+// import MyList from "./Options/MyList";
+// import User from "./Options/User";
+// import Plan from "./Options/Plan";
+// import Achievements from "./Options/Achievements";
+// import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import style from "../../style/User/UserDasboard.module.css";
 import { useCallback, useEffect, useState } from "react";
 import { getUserResource, getUserResourceWithGoogle } from "../../redux/actions";
@@ -12,9 +12,17 @@ import {  UserInterface } from "../../types/types";
 import { useHistory } from "react-router-dom";
 import { useAppDispatch } from "../../redux/hooks";
 import { useAuth0 } from "@auth0/auth0-react";
-import Admin from "../AdminPage/Admin";
+import { useParams } from "react-router-dom";
+import MyList from "./Options/MyList";
+import User from "./Options/User";
+import Plan from "./Options/Plan";
+import Achievements from "./Options/Achievements";
+// import Admin from "../AdminPage/Admin";
+// import ListDetail from "./Options/ListDetail";
 
 export default function UserDashboard(): JSX.Element {
+  const { options } = useParams();
+
   const dispatch = useAppDispatch();
   const history = useHistory();
   // const userAccounnt = useAppSelector((state) => state.user);
@@ -55,34 +63,25 @@ export default function UserDashboard(): JSX.Element {
   console.log('PROFILE', regularToken, userLog);
   return (
     <div className={style["user"]}>
-      <Router>
-        <UserNav userLog={userLog} ></UserNav>
-        <div className={style["user-content"]}>
-          <HeaderUser></HeaderUser>
-          <div className={style["welcome"]}>
-            <h2 className={style["hola"]}>Hi Juan!</h2>
-            <span className={style["question"]}>What' do we have today?</span>
-          </div>
-
-          <Switch>
-            <Route exact path="/profile/list">
-              <MyList></MyList>
-            </Route>
-            <Route exact path="/profile/user">
-              <User></User>
-            </Route>
-            <Route exact path="/profile/plan">
-              <Plan></Plan>
-            </Route>
-            <Route exact path="/profile/achiviements">
-              <Achievements></Achievements>
-            </Route>
-            <Route exact path="/profile/admin">
-              <Admin />
-            </Route>
-          </Switch>
+      <UserNav userLog={userLog} />
+      <div className={style["user-content"]}>
+        <HeaderUser />
+        <div className={style["welcome"]}>
+          <h2 className={style["hola"]}>Hi Juan!</h2>
+          <span className={style["question"]}>What' do we have today?</span>
         </div>
-      </Router>
+        {
+          options === 'list' ? (
+            <MyList />
+          ) : options === 'user' ? (
+            <User />
+          ) : options === 'plan' ? (
+            <Plan />
+          ) : options === 'achiviements' ? (
+            <Achievements />
+          ) : null
+        }
+      </div>
     </div>
   );
 }

@@ -64,27 +64,23 @@ const DropdownUser = () => {
         }
       >
         <ul className={style["ul-dropdown"]}>
-          <li className={style["li-dropdown"]}>
-            <FontAwesomeIcon icon={faUser} className={style['icon']} />
-            <span>
-              <Link onClick={toggleMenu} to="/profile" className={style["a-dropdown"]}>
-                My Account
-              </Link>
-            </span>
-          </li>
+          <Link onClick={toggleMenu} to="/profile" className={style["a-dropdown"]}>
+            <li className={style["li-dropdown"]}>
+              <FontAwesomeIcon icon={faUser} className={style['icon']} />
+              <span>My Account</span>
+            </li>
+          </Link>
           {!isLogin ? (
             <>
               {/* <li onClick={handleLogin} className={style["li-dropdown"]}>
                 Login
               </li> */}
-              <li className={style["li-dropdown"]}>
-                <FontAwesomeIcon icon={faSignInAlt} className={style['icon']} />
-                <span>
-                  <Link onClick={toggleMenu} className={style["a-dropdown"]} to="/login">
-                    Login
-                  </Link>
-                </span>
-              </li>
+              <Link onClick={toggleMenu} className={style["a-dropdown"]} to="/login">
+                <li className={style["li-dropdown"]}>
+                  <FontAwesomeIcon icon={faSignInAlt} className={style['icon']} />
+                  <span>Login</span>
+                </li>
+              </Link>
             </>
           ) : (
             <>
