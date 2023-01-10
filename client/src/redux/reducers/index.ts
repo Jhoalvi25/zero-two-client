@@ -1,5 +1,5 @@
 
-import { FILTER_AND_SORT_ANIMES, GET_ANIME_BY_ID, GET_ANIME_EPISODES, GET_ANIME_GENRES, SEARCH_ANIMES, GET_ANIME_NEWEST, GET_ANIME_OLDEST, GET_ANIMES, GET_ANIME_TRENDING, GET_ANIME_EPISODE, GET_EPISODE_COMMENTS } from "../types";
+import { FILTER_AND_SORT_ANIMES, GET_ANIME_BY_ID, GET_ANIME_EPISODES, GET_ANIME_GENRES, SEARCH_ANIMES, GET_ANIME_NEWEST, GET_ANIME_OLDEST, GET_ANIMES, GET_ANIME_TRENDING, GET_ANIME_EPISODE, GET_EPISODE_COMMENTS, GET_USER_INFO, ADD_EPISODE_COMMENT, DELETE_EPISODE_POST } from "../types";
 import {AnyAction} from 'redux'
 import { Anime, CommentInterface, Episode, ErrorResponse, Genre, UserInterface } from "../../types/types";
 
@@ -105,14 +105,26 @@ function rootReducer(state:StateAnimes = initialState, action:AnyAction) {
         ...state, 
         episodeComments: action.payload
       }
-    // case GET_USER_BY_EMAIL:
-    //   return {
-    //     ...state,
-    //     user: action.payload,
-    //   }
+    case GET_USER_INFO:
+      return {
+        ...state,
+        user: action.payload,
+      }
+    case ADD_EPISODE_COMMENT: 
+      return {
+        ...state, 
+        episodeComments: [...state.episodeComments	, action.payload]
+      }
+      case DELETE_EPISODE_POST:
+        // let indexEl = state.episodeComments.indexOf(action.payload);
+        return {
+          ...state,
+          episodeComments: state.episodeComments.filter(comment => comment !== action.payload)
+        }
     default:
       return state;
   }
+    
 }
 
 export default rootReducer;

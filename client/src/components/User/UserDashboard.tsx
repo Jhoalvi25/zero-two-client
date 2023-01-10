@@ -6,43 +6,28 @@ import Plan from "./Options/Plan";
 import Achievements from "./Options/Achievements";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import style from "../../style/User/UserDasboard.module.css";
-import { useCallback, useEffect, useState } from "react";
-import { getUserResource, getUserResourceWithGoogle } from "../../redux/actions";
-import {  UserInterface } from "../../types/types";
+// import { useCallback, useEffect, useState } from "react";
+// import { getUserResource, getUserResourceWithGoogle } from "../../redux/actions";
+// import {  UserInterface } from "../../types/types";
 import { useHistory } from "react-router-dom";
-import { useAppDispatch } from "../../redux/hooks";
-import { useAuth0 } from "@auth0/auth0-react";
+import {  useAppSelector } from "../../redux/hooks";
+// import { useAuth0 } from "@auth0/auth0-react";
 import Admin from "../AdminPage/Admin";
 
 export default function UserDashboard(): JSX.Element {
-  const dispatch = useAppDispatch();
+  // const dispatch = useAppDispatch();
   const history = useHistory();
   // const userAccounnt = useAppSelector((state) => state.user);
-  const {getAccessTokenSilently, user } = useAuth0();
+  // const {user } = useAuth0();
   const regularToken = window.localStorage.getItem('token');
 
-  const emailUser = user?.email ? user?.email : '';
+  // const emailUser = user?.email ? user?.email : '';
+  const userLog = useAppSelector(state => state.user);
+  // const [userLog, setUserLog] = useState<UserInterface>({} as UserInterface);
   
-  const [userLog, setUserLog] = useState<UserInterface>({} as UserInterface);
+ 
   
-  const getToken = useCallback( async () => {
-    const accesToken = await getAccessTokenSilently();
-    
-    dispatch(getUserResourceWithGoogle(accesToken, emailUser)).then(val => {
-      console.log('GOOGLE', val)
-      setUserLog(val)
-    });
-   
-  },[getAccessTokenSilently, emailUser, dispatch])
-  
-  useEffect(() => {
-   
-    getToken();
-    dispatch(getUserResource(regularToken ? regularToken : '')).then(val => {
-      console.log('us', val)
-      setUserLog(val)
-    })
-  }, [getToken, dispatch, regularToken]);
+ 
   console.log(userLog)
 
 
@@ -56,7 +41,7 @@ export default function UserDashboard(): JSX.Element {
   return (
     <div className={style["user"]}>
       <Router>
-        <UserNav userLog={userLog} ></UserNav>
+        <UserNav {...userLog} ></UserNav>
         <div className={style["user-content"]}>
           <HeaderUser></HeaderUser>
           <div className={style["welcome"]}>

@@ -21,7 +21,7 @@
   flex-direction: column;
   gap: .5em;
   max-height: 200px;
-  overflow-y: auto;
+  overflow-y : scroll;
 }
 
 .filters-title {
@@ -46,6 +46,7 @@
   height: 0;
   cursor: pointer;
   margin: 0;
+  position: absolute;
 }
 
 

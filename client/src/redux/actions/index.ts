@@ -2,6 +2,7 @@ import * as types from "../types";
 import axios from "axios";
 import { AppDispatch } from "../store";
 import { User } from "@auth0/auth0-react";
+import { CommentInterface } from "../../types/types";
 
 
 const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT || 'http://localhost:3001';
@@ -218,6 +219,7 @@ export const getUserResource = (accessToken: string) => {
       };
       const response = await axios(config);
       console.log('user get', response)
+      dispatch({ type: types.GET_USER_INFO, payload: response.data });
       return response.data;
    
     } catch (err: any) {
@@ -241,7 +243,9 @@ export const getUserResourceWithGoogle = (token: string, email: string) => {
         };
         const response = await axios(config);
         window.localStorage.setItem('token', token);
-        return response.data
+        dispatch({ type: types.GET_USER_INFO, payload: response.data });
+        return response.data //www.paypal?token=asdsadasdas2
+       
     } catch (err:any) {
       throw new Error(err);
     }
@@ -258,6 +262,104 @@ export const getEpisodeComments =  (episodeId: number) => {
         type: types.GET_EPISODE_COMMENTS, 
         payload: { error: { message: "Not found animes to show here" } }
       })
+    }
+  }
+}
+
+export const postComment = (comment: CommentInterface, idEpisode:string, ) => {
+  return async (dispatch: AppDispatch) => {
+    try {
+      const config = {
+        url: `${API_ENDPOINT}/reviews/episode/${idEpisode}/addComment`,
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        data: comment
+      };
+      const response = await axios(config);
+      return response.data
+      
+      // dispatch({type: types.ADD_EPISODE_COMMENT, payload: response.data})
+    } catch (err: any) {
+      throw new Error(err);
+    }
+  }
+}
+
+export const postReply = (reply: CommentInterface, episodeId: number, commentId: number) => {
+  return async (dispatch: AppDispatch) => {
+    try {
+      const config = {
+        url: `${API_ENDPOINT}/reviews/episode/${episodeId}/replyTo/${commentId}`,
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        data: reply
+      };//index of comment and add to its replies
+      const response = await axios(config);
+      return response.data
+    } catch (err:any) {
+      throw new Error(err);
+    }
+  }
+}
+
+export const deleteComment = (idEpisode:number,commentId: number) => {
+  return async (dispatch: AppDispatch) => {
+    try {
+      const config = {
+        url: `${API_ENDPOINT}/reviews/episode/${idEpisode}/deleteComment/${commentId}`,
+        method: "DELETE",
+        headers: {
+          "content-type": "application/json",
+        }
+      };
+      const response = await axios(config);
+      return response.data
+      // dispatch({type: types.DELETE_EPISODE_POST, payload: response.data})
+    } catch (err: any) {
+      throw new Error(err);
+    }
+  }
+}
+
+export const editComment = (idEpisode:number,commentId: number, post:CommentInterface) => {
+  return async (dispatch: AppDispatch) => {
+    try {
+      const config = {
+        url: `${API_ENDPOINT}/reviews/episode/${idEpisode}/editComment/${commentId}`,
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+        },
+        data: post
+      };
+      const response = await axios(config);
+      return response.data
+      // dispatch({type: types.DELETE_EPISODE_POST, payload: response.data})
+    } catch (err: any) {
+      throw new Error(err);
+    }
+  }
+}
+
+export const changeLikeStatus = (userId: string, commentId: number) => {
+  return async (dispatch: AppDispatch) => {
+    try {
+      const config = {
+        url: `${API_ENDPOINT}/like/change/${userId}/${commentId}`,
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+        },
+      };
+      const response = await axios(config);
+      return response.data
+      // dispatch({type: types.DELETE_EPISODE_POST, payload: response.data})
+    } catch (err: any) {
+      throw new Error(err);
     }
   }
 }

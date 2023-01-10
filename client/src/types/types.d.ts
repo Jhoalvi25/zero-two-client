@@ -15,17 +15,18 @@ export interface Episode {
     coverImage?: string
 }
 export interface CommentInterface {
-    id: number,
-    replyingTo: string,
+    id?: number,
+    replyingTo?: string,
     content: string,
-    rating: number,
-    likesCount: number,
-    spoiler: boolean,
+    rating?: number,
+    likesCount?: number,
+    spoiler?: boolean,
     id_episode: number,
-    userId: string,
+    userId?: string,
     reply_id? : number,
-    user: User,
-    Replies: Comment
+    user?: User,
+    Replies?: Array<CommentInterface>,
+    likes?: number
 }
 export interface Genre {
     id: number,
