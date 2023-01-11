@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {  faEllipsisVertical, faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import style from "../../../style/User/Options/MyList.module.css";
-import { useAppDispatch } from "../../../redux/hooks";
+import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import {
   getAllListsUser,
   editListName,
@@ -18,13 +18,15 @@ export default function ListComponent({props, showOptions}: any) {
     id: 0
   });
 
+  const userInfo = useAppSelector((state) => state.user);
+
+
   const [menu, setMenu] = useState(false);
 
   const [modalEdit, setModalEdit] = useState(false);
 
   const changeEditNameHandler = (e: React.ChangeEvent<HTMLInputElement>, idList: number) => {
     e.preventDefault();
-    console.log('ESTE ES EL ID DE LA LISTA: ',idList)
     const inputName = e.target.name;
     const inputValue = e.target.value;
     
@@ -34,7 +36,7 @@ export default function ListComponent({props, showOptions}: any) {
   const submitEditNameHandler = async () => {
     await dispatch(editListName(listEdit));
     await dispatch(clearAllLists());
-    await dispatch(getAllListsUser('3d249439-4c35-456c-9994-77fa2424a7b3'));
+    await dispatch(getAllListsUser(userInfo.id));
     setListEdit({
       name: '',
       id: 0
@@ -45,7 +47,7 @@ export default function ListComponent({props, showOptions}: any) {
   const deleteHandler = async (id: number) => {
     await dispatch(deleteList(id));
     await dispatch(clearAllLists());
-    await dispatch(getAllListsUser('3d249439-4c35-456c-9994-77fa2424a7b3'));
+    await dispatch(getAllListsUser(userInfo.id));
   }
 
   const toggleModalEdit = () => {

@@ -200,6 +200,7 @@ export const loginUser = (user: User) => {
       const response = await axios(config);
       window.localStorage.setItem("token", response.data.token)
       console.log('token stored:', window.localStorage.getItem('token')) // ACA MANEJAMOS EL TOKEN
+      return response.data.token;
     } catch (err: any) {
       throw new Error (err.message);
     }
@@ -323,6 +324,10 @@ export const createList =  (newList: object) => {
     try {
       const config = {
         url: `${API_ENDPOINT}/list`,
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
         data: newList
       };
       const response = await axios(config);

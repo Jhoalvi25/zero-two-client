@@ -33,32 +33,34 @@ import Achievements from "./components/User/Options/Achievements";
 
 const App: React.FC = () =>  {
   const dispatch = useAppDispatch();
-  // const history = useHistory();
 
   const { isLoading, getAccessTokenSilently, user } = useAuth0();
   const regularToken = window.localStorage.getItem('token');
   const emailUser = user?.email ? user?.email : '';
 
+  const getRegularToken = useCallback(async () => {
+    return window.localStorage.getItem('token')  
+  }, [])
+
   const getToken = useCallback( async () => {
     const accesToken = await getAccessTokenSilently();
-    
-    dispatch(getUserResourceWithGoogle(accesToken, emailUser))
-    // .then(val => {
-    //   console.log('GOOGLE', val)
-    //   setUserLog(val)
-    // });
-   
+    await dispatch(getUserResourceWithGoogle(accesToken, emailUser));
   },[getAccessTokenSilently, emailUser, dispatch])
+    
+  const getUserInfo = useCallback(async () => {
+    const regTok = await getRegularToken();
+    await dispatch(getUserResource(regTok ? regTok : ''));
+  }, [dispatch, getRegularToken]);
+
 
   useEffect(() => {
     dispatch(getAnimeGenres());
     getToken();
-    dispatch(getUserResource(regularToken ? regularToken : ''))
-    // .then(val => {
-    //   console.log('us', val)
-    //   setUserLog(val)
-    // })
-  }, [getToken, dispatch, regularToken]);
+    getUserInfo();
+    getRegularToken();
+  }, [getRegularToken, getUserInfo, getToken, dispatch]);
+
+  console.log('esto es regulartoken: ', regularToken)
 
   if (isLoading) {
     return (

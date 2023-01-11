@@ -16,21 +16,21 @@ import ListComponent from "./ListComponenet";
 
 export default function MyList() {
   const dispatch = useAppDispatch();
-  const allListsFromUser = useAppSelector((state) => state.userLists)
-  // const userInfo = useAppSelector((state) => state.user)
+  const allListsFromUser = useAppSelector((state) => state.userLists);
+  const userInfo = useAppSelector((state) => state.user);
   // email: userInfo.email
   const [list, setList] = useState({
     name: '',
-    email: 'nicolas.sanchez.previtera2019@gmail.com'
+    email: userInfo.email
   });
 
   const [modal, setModal] = useState(false);
 
   useEffect(() => {
-    dispatch(getAllListsUser('3d249439-4c35-456c-9994-77fa2424a7b3'));
+    dispatch(getAllListsUser(userInfo.id));
     // dispatch(getAllListsUser(userInfo.id));
     // Este id que paso esta hardcodeado
-  }, [dispatch]);
+  }, [dispatch, userInfo.id]);
 
   const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -43,10 +43,10 @@ export default function MyList() {
   const submitHandler = async () => {
     await dispatch(createList(list));
     await dispatch(clearAllLists());
-    await dispatch(getAllListsUser('3d249439-4c35-456c-9994-77fa2424a7b3'));
+    await dispatch(getAllListsUser(userInfo.id));
     setList({
       name: '',
-      email: 'nicolas.sanchez.previtera2019@gmail.com'
+      email: userInfo.email
     });
     setModal(!modal);
     // Deshacer el modal
@@ -57,7 +57,7 @@ export default function MyList() {
     setModal(!modal);
     setList({
       name: '',
-      email: 'nicolas.sanchez.previtera2019@gmail.com'
+      email: userInfo.email
     });
   }
   

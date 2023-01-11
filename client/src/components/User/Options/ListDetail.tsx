@@ -35,6 +35,7 @@ export default function ListDetail() {
 
   const animesRender = useAppSelector((state) => state['animes']);
   const listDetail = useAppSelector(state => state.listDetail);
+  const userInfo = useAppSelector((state) => state.user);
 
   useEffect(() => {
     dispatch(getList(id));
@@ -60,7 +61,6 @@ export default function ListDetail() {
 
   const changeEditNameHandler = (e: React.ChangeEvent<HTMLInputElement>, idList: number) => {
     e.preventDefault();
-    console.log('ESTE ES EL ID DE LA LISTA: ',idList)
     const inputName = e.target.name;
     const inputValue = e.target.value;
     
@@ -81,7 +81,7 @@ export default function ListDetail() {
   const deleteHandler = async (id: number) => {
     await dispatch(deleteList(id));
     await dispatch(clearAllLists());
-    await dispatch(getAllListsUser('3d249439-4c35-456c-9994-77fa2424a7b3'));
+    await dispatch(getAllListsUser(userInfo.id));
     history.push('/profile/list');
   }
 
@@ -138,7 +138,7 @@ export default function ListDetail() {
             </button>
           </Link>
           <div className={style['div-input-search']}>
-            <SearchBar searchName={name} />
+            <SearchBar styleWidth={true} searchName={name} />
           </div>
           <div className={style['div-options']}>
             <button onClick={toggleMenu} className={style['button-back']}>

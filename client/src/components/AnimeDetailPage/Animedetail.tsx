@@ -29,6 +29,8 @@ export default function AnimeDetail () {
     const episodes = useAppSelector(state => state["animeEpisodes"]);
     const detailList = useAppSelector((state) => state["listDetail"]);
     const allListsFromUser = useAppSelector((state) => state["userLists"])
+    const userInfo = useAppSelector((state) => state.user);
+
 
     const [modal, setModal] = useState(false);
 
@@ -39,7 +41,7 @@ export default function AnimeDetail () {
     
     useEffect(()=> {
         dispatch(getList('Favorites')).then(() => setReady(true));
-        dispatch(getAllListsUser('3d249439-4c35-456c-9994-77fa2424a7b3'));
+        dispatch(getAllListsUser(userInfo.id));
         
         myRef.current?.scrollIntoView({behavior: "smooth", block: "start"});
         setLoading(true);
@@ -51,7 +53,7 @@ export default function AnimeDetail () {
         return () => {
             document.body.classList.remove(style['active-modal']);
         }
-    },[dispatch, idAnime]);
+    },[dispatch, idAnime, userInfo.id]);
 
     const toggleAddAnimeList = async (listId: number) => {
         const animeToAdd = {anime: idAnime, list: listId};

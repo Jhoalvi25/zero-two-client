@@ -8,7 +8,7 @@ import { useAppDispatch } from "../../redux/hooks";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { useAuth0 } from "@auth0/auth0-react";
-import { loginUser } from "../../redux/actions";
+import { getUserResource, loginUser } from "../../redux/actions";
 import { useHistory } from "react-router-dom";
 
 
@@ -43,8 +43,9 @@ export default function Login(): JSX.Element {
     e.preventDefault();
 
     dispatch(loginUser(user)).then((data) => {
-      
-      history.push('/home')
+      dispatch(getUserResource(data)).then(() => {
+        history.push('/home')
+      });
     });
     setUser(initialValues)
   };

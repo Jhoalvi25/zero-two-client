@@ -1,3 +1,5 @@
+ 
+
 .search-container {
   box-sizing: border-box;
   max-width: calc(50% - 2em);
@@ -9,6 +11,10 @@
   padding: 1em;
   color: var(--main-color-font-dark);
   font-size: 16px;
+}
+
+.addWidth100{
+  max-width: 100%;
 }
 
 .search-input {

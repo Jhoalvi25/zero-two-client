@@ -22,16 +22,17 @@
 }
 
 .target {
-  align-items: center;
-  width: 75%;
+  width: 50%;
   display: flex;
   background-color: white;
   display: flex;
+  align-items: center;
+  justify-content: space-between;
   height: 55%;
 }
 
 .logo {
-  width: 32%;
+  width: 30%;
   height: 100%;
 }
 
@@ -42,53 +43,42 @@
 }
 
 .info {
-  width: 100%;
+  width: 50%;
   display: flex;
+  padding-right: 1em;
 }
 
 .user-info {
-  text-align: justify;
-  width: 82%;
+  width: 10em;
   margin-left: 20px;
-}
-
-.user-info h3 {
-  color: #4c0879;
-  font-size: 20px;
-}
-
-.user-info h3 span {
-  color: #ffc989;
-  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .user-info h4 {
-  font-size: 20px;
-  color: #1a0750;
+  color: #4c0879;
+  margin-top: .5em;
+}
+.user-info h3 {
+  color: var(--main-color-font-dark);
+}
+
+.user-info h1 {
+  color: #f8b057;
 }
 
 .user-icon {
   display: flex;
-}
-
-.user-icon h5 {
-  font-size: 15px;
-  color: #65407e;
-}
-
-.badges {
-  margin-left: 20px;
-}
-
-.medal {
-  padding: 5px;
-  margin-right: 20px;
-  background-color: #1a0750;
-  color: white;
+  align-items: center;
+  column-gap: 1em;
+  row-gap: 1.5em;
+  margin-top: 2em;
 }
 
 .user-logo {
+  width: auto;
   font-size: 50px;
-  float: right;
   color: #1a0750;
+  padding: 10px;
 }
