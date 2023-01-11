@@ -1,6 +1,6 @@
 import {  useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getAnimeById, getAnimeEpisodes } from "../../redux/actions/index";
+import { addListAnime, deleteAnimeInList, getAnimeById, getAnimeEpisodes, getList, getAllListsUser } from "../../redux/actions/index";
 import style from '../../style/AnimeDetailPage/AnimeDetail.module.css';
 import Tag from '../UtilsComponents/Tag';
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
@@ -10,6 +10,11 @@ import NotFound from "../UtilsComponents/NotFound";
 import {  Episode, Genre } from "../../types/types";
 import { isError } from "../../types/typeGuards";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBookmark, faCheck, faPlus } from "@fortawesome/free-solid-svg-icons";
+import ListComponent from "../User/Options/ListComponenet";
+import imageNotFound from "../../img//png_image_notListFound.png";
+import { useHistory } from "react-router-dom";
 
 
 
@@ -18,13 +23,26 @@ export default function AnimeDetail () {
 
     const {idAnime}:{idAnime:string} = useParams();
     const dispatch = useAppDispatch()
+    const history = useHistory();
+
     const anime = useAppSelector((state) => state["animeDetails"]); 
     const episodes = useAppSelector(state => state["animeEpisodes"]);
+    const detailList = useAppSelector((state) => state["listDetail"]);
+    const allListsFromUser = useAppSelector((state) => state["userLists"])
+    const userInfo = useAppSelector((state) => state.user);
+
+
+    const [modal, setModal] = useState(false);
+
     const myRef  = useRef<HTMLDivElement | null>(null)
     const [loading, setLoading] = useState(false);
-   
+    const [ready, setReady] = useState(false);
+    
+    
     useEffect(()=> {
-      
+        dispatch(getList('Favorites')).then(() => setReady(true));
+        dispatch(getAllListsUser(userInfo.id));
+        
         myRef.current?.scrollIntoView({behavior: "smooth", block: "start"});
         setLoading(true);
         dispatch(getAnimeById(idAnime));
@@ -32,7 +50,51 @@ export default function AnimeDetail () {
         dispatch(getAnimeEpisodes(Number(idAnime))).finally(()=> {
             setLoading(false);
         })
-    },[dispatch, idAnime])
+        return () => {
+            document.body.classList.remove(style['active-modal']);
+        }
+    },[dispatch, idAnime, userInfo.id]);
+
+    const toggleAddAnimeList = async (listId: number) => {
+        const animeToAdd = {anime: idAnime, list: listId};
+        try {
+          await dispatch(addListAnime(animeToAdd));
+          history.push(`/profile/list/${listId}`);
+        } catch (error: any) {
+            console.log(error);
+        }
+    }
+
+    const toggleModal = () => {
+        setModal(!modal);
+    }
+
+
+    const toggleFavorite = async () => {
+        try {
+            const checkAnimeAdded = detailList.animes.find(anime => anime.id === Number(idAnime)); 
+            if(!checkAnimeAdded) {
+                const animeToFavorite = {anime: Number(idAnime), list: detailList.id};
+                await dispatch(addListAnime(animeToFavorite));
+                await dispatch(getList('Favorites'));
+                alert('Anime Added to Favorites!');
+            } else {
+                const animeToDel = {anime: Number(idAnime), list: detailList.id};
+                await dispatch(deleteAnimeInList(animeToDel));
+                await dispatch(getList('Favorites'));
+                alert('Anime Deleted of Favorites!');
+            }
+        } catch (error: any) {
+            console.log(error);
+        }
+    }
+
+    if(modal) {
+        document.body.classList.add(style['active-modal'])
+    } else {
+        document.body.classList.remove(style['active-modal'])
+    }
+
 
     return (
         
@@ -49,7 +111,7 @@ export default function AnimeDetail () {
                     </div>
                     
                     <div className={style['cover-info-container']}>
-                        <h2>{anime.name}</h2>
+                        <h2 className={style['cover-info-container-h2']}>{anime.name}</h2>
                         <div className={style['tags']}>
                             <Tag title={typeof anime.status === 'string' ? anime.status: '' } bgColor={'transparent'} color={'white'}/>
                             <Tag title={typeof anime.showType === 'string' ? anime.showType: ''} bgColor={'transparent'} color={'white'}/>
@@ -65,12 +127,60 @@ export default function AnimeDetail () {
                             </div>
                         </div>
                         <div className={style['lists']}>
-                            <div className={style['list']}>
+                            <div onClick={toggleFavorite} className={style['lists-span']}>
+                                {
+                                    ready && detailList.animes.find(anime => anime.id === Number(idAnime)) ?
+                                    (
+                                        <FontAwesomeIcon icon={faCheck} /> 
+                                    ) : (
+                                        <FontAwesomeIcon icon={faBookmark} />
+                                    )
+                                }
                                 <span>Add to favorites</span>
-
                             </div>
-                            <div className={style['list']}>
+                            <div onClick={toggleModal} className={style['lists-span']}>
+                                <FontAwesomeIcon icon={faPlus} className={style['icon']} />
                                 <span>Append to a new list</span>
+                                
+                            </div>
+                            <div>
+                            {
+                                    modal && (
+                                        <div className={style['modal']}>
+                                        <div onClick={toggleModal} className={style['overlay']}></div>
+                                        <div className={style['modal-content']}>
+                                            <h2 className={style['title-modal']}>Add the Anime into a List</h2>
+                                            <Link  to="/profile/list">
+                                                <button onClick={toggleModal} className={style['button-create-list-modal']}>
+                                                    <FontAwesomeIcon icon={faPlus} />
+                                                    Create new List
+                                                </button> 
+                                            </Link>
+                                    <div className={style["div_lisComponent_overflow"]}>
+                                    {
+                                        allListsFromUser.length ? allListsFromUser.map((list: any, key) => {
+                                            return (
+                                                <div className={style["lisComponent_style"]} onClick={() => toggleAddAnimeList(list.id)}>
+                                                    <ListComponent showOptions={false} props={list} key={key}/>
+                                                </div>
+                                            )
+                                        }) : 
+                                        <div className={style['content-notFound']}>
+                                            <img className={style['img_notFound']} src={imageNotFound} alt="img not found" />
+                                            <p className={style['text_notFound_1']}>There are no list here.</p>
+                                            <p className={style['text_notFound_2']}>Create one!</p>
+                                        </div>
+                                    }
+                                    </div>
+                                            <div className={style['form-nicolas']}>
+                                                <div className={style['div-buttons']}>
+                                                    <button onClick={toggleModal} className={style['button-create-list-modal']} type="button">Cancel</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    )
+                                }
                             </div>
                         </div>
                     </div>

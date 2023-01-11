@@ -2,7 +2,7 @@
 
 .filter-sort-options {
   box-sizing: border-box;
-  max-width: 50%;
+  max-width: calc(50% - 2em);
   width: 100%;
   /* margin-top: 100px; */
   background-color: var(--secondary-color-content-2);
@@ -11,15 +11,18 @@
   padding: 1em;
   display: flex;
   justify-content: space-between;
+  margin-left: 2em;
 }
 .search-sorts-filters-container {
   margin-top: 100px;
   width: 100%;
+  margin: auto;
   display: flex;
   flex-wrap: wrap;
-  position: sticky;
-  z-index: 1;
-  top: 60px;
+  /* padding: 2em; */
+  /* position: sticky;
+  z-index: 1; */
+  /* top: 60px; */
 }
 
 .card-container {

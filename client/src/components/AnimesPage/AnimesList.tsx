@@ -82,10 +82,6 @@ export const AnimeList = () => {
       
    
   },[dispatch, search, option]);
-  // console.log('search', search)
-
-  // console.log('SANIME', animesToDisplay)
-  // console.log(animeNewest)
   return (
   
     <div className={style["container"]} >
@@ -97,7 +93,7 @@ export const AnimeList = () => {
           <Sorts query={search} sort={sort}/>
         </div>
 
-        <SearchBar searchName={name}/>
+        <SearchBar styleWidth={false} searchName={name}/>
       </div>
       
       {loading ? <Loading />: isError(animesToDisplay) ? <NotFound msg={animesToDisplay.error.message} /> :

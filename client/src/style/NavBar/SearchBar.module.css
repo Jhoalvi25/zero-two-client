@@ -1,6 +1,9 @@
+ 
+
 .search-container {
   box-sizing: border-box;
-  width: 50%;
+  max-width: calc(50% - 2em);
+  width: 100%;
   display: flex;
   justify-content: space-between;
   height: 65px;
@@ -8,6 +11,10 @@
   padding: 1em;
   color: var(--main-color-font-dark);
   font-size: 16px;
+}
+
+.addWidth100{
+  max-width: 100%;
 }
 
 .search-input {
@@ -35,7 +42,8 @@
 }
 .search-btn .search-icon{
   color: var(--main-color-font-dark);
-  font-size: 30px;
+  font-size: 20px;
+  font-weight: 400;
   
 }
 

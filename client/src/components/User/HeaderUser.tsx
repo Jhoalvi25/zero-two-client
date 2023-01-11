@@ -4,12 +4,17 @@ import {
   faMedal,
   faFaceAngry,
   faSkull,
+  faUser,
 } from "@fortawesome/free-solid-svg-icons";
 
 import style from "../../style/User/HeaderUser.module.css";
+import { useAppSelector } from "../../redux/hooks";
 
 
 export default function Headeruser() {
+  const user = useAppSelector(state => state.user);
+
+
     return(
         <div className={style["header"]}>
         <div className={style["blur"]}>
@@ -19,33 +24,12 @@ export default function Headeruser() {
             </div>
             <div className={style["info"]}>
               <div className={style["user-info"]}>
-                <h3>
-                  Demon Slayer -<span> Premium</span>
-                </h3>
-                <h4>Juandgr</h4>
-                <br />
-                <div className={style["user-icon"]}>
-                  <h5>Badges</h5>
-                  <div className={style["badges"]}>
-                    <FontAwesomeIcon
-                      icon={faMedal}
-                      className={style["medal"]}
-                    />
-                    <FontAwesomeIcon
-                      icon={faFaceAngry}
-                      className={style["medal"]}
-                    />
-                    <FontAwesomeIcon
-                      icon={faSkull}
-                      className={style["medal"]}
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className={style["user-logo"]}>
-                <FontAwesomeIcon icon={faSkull} />
+                <h1>{user.nickname}</h1>
               </div>
             </div>
+              <div className={style["user-logo"]}>
+                <FontAwesomeIcon icon={faUser} />
+              </div>
           </div>
         </div>
       </div>

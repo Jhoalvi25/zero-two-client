@@ -1,13 +1,76 @@
 .comments-container {
+    min-height: 100vh;
     padding: 0em 2em; 
     display: flex;
     flex-direction: column;
     gap: 2em;
     background-color: var(--main-color-content);
+    background-color: transparent;
 }
 
 .comments-content {
     display: flex;
     flex-direction: column;
+    gap: 1em;
+    padding-left: 2em;
+}
+
+.add-comment {
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    background-color: var(--main-color-content);
+}
+.add-comment textarea {
+    box-sizing: border-box;
+    resize: none;
+    outline: none;
+    border: none;
+    background-color: var(--main-color-content);
+    padding-left: 4em;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+   
+}
+.add-comment textarea::placeholder {
+    color: var(--main-color-font-dark2);
+}
+.add-comment-interactions {
+    background-color: var(--main-color-font-dark);
+    background-color: transparent;
+    display: flex;
+    justify-content: flex-end;
     gap: 2em;
+    /* padding: 1em 1em; */
+}
+.add-comment-interactions button {
+    border: none;
+    box-sizing: border-box;
+    padding: 1em;
+    background-color: var(--main-color-font-dark2);
+    color: white;
+    cursor: pointer;
+}
+
+.add-comment-interactions button:hover {
+    box-shadow: 3px 3px 0px var(--main-color-font-dark2);
+
+}
+
+.no-comment {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--main-color-content);
+  
+    padding: 2em;
+
+}   
+.no-comment .title {
+    font-size: 20px;
 }

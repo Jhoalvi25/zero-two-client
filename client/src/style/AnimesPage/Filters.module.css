@@ -1,5 +1,6 @@
 .filters {
   display: flex;
+  align-items: center;
   position: relative;
   max-width: 50%;
 }
@@ -11,17 +12,18 @@
 }
 .filters-menu {
   padding: .5em;
-  max-width: 150px;
+  max-width: 200px;
   width: 100%;
   position: absolute;
   left: 0;
-  top: 1em;
+  top: 3em;
   background-color: var(--main-color-font-dark);
   display: flex;
   flex-direction: column;
   gap: .5em;
   max-height: 200px;
-  overflow-y: auto;
+  overflow-y : scroll;
+  z-index: 10;
 }
 
 .filters-title {
@@ -39,6 +41,13 @@
   font-weight: 400;
   cursor: pointer;
   gap: 1em;
+  padding: .3em 0 .3em 0;
+  border-bottom: 1px solid grey;
+  transition: all ease 0.3s;
+}
+
+.option:hover{
+  background-color: #40248f8a;
 }
 
 .checkbox {
@@ -46,6 +55,7 @@
   height: 0;
   cursor: pointer;
   margin: 0;
+  position: absolute;
 }
 
 

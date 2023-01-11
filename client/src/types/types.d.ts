@@ -14,17 +14,18 @@ export interface Episode {
   coverImage?: string;
 }
 export interface CommentInterface {
-  id: number;
-  replyingTo: string;
-  content: string;
-  rating: number;
-  likesCount: number;
-  spoiler: boolean;
-  id_episode: number;
-  userId: string;
-  reply_id?: number;
-  user: User;
-  Replies: Comment;
+    id?: number,
+    replyingTo?: string,
+    content: string,
+    rating?: number,
+    likesCount?: number,
+    spoiler?: boolean,
+    id_episode: number,
+    userId?: string,
+    reply_id? : number,
+    user?: User,
+    Replies?: Array<CommentInterface>,
+    likes?: number
 }
 export interface Genre {
   id: number;
@@ -67,7 +68,7 @@ export interface UserInterface {
   age: number;
   registered: boolean;
   rol: string;
-  persmission: string;
+  persmissions: string;
 }
 
 export interface Payment {
@@ -78,3 +79,25 @@ export interface planChange {
   id: string | number;
   token: string;
 }
+
+export interface UserLists {
+    id: number,
+    name: string,
+    userId: string,
+    animes: number
+}
+
+interface AnimeInList {
+    id: number,
+    name: string,
+    posterImage: string,
+    showType: string
+}
+
+export interface ListDetail {
+    id: number,
+    name: string,
+    userId: string,
+    animes: Array<AnimeInList>
+}
+

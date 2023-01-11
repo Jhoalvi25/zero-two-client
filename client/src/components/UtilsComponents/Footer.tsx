@@ -1,7 +1,7 @@
-import React from "react";
+// import React from "react";
 
 import style from '../../style/UtilsComponents/Footer.module.css';
-import logo from "../../img/zeroSticker.png";
+// import logo from "../../img/zeroSticker.png";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faGithub} from "@fortawesome/free-brands-svg-icons"
@@ -15,7 +15,8 @@ const Footer = () => {
     return (
         <footer className={style['footer']}>
             <div className={style['footer-brand']}>
-                <img src={logo} alt='zero-two brand logo' className={style['brand-logo']}/>
+                {/* <img src={logo} alt='zero-two brand logo' className={style['brand-logo']}/> */}
+                <h1>Zero two</h1>
             </div>
             <div className={style['footer-info']}>
                 <div className={style['explore']}>

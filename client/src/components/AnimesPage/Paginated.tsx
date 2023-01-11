@@ -40,11 +40,11 @@ export default function Pagination({ totalPages, search, page}:PaginationType) {
                 {
                     page - 1 > 0 ? 
                     <div className="previous">
-                        <Link to ={`/${location.pathname}?${parseQueryPage(search, page, 'page', 'page', 'prev')}`} >Previous</Link>
+                        <Link to ={`${location.pathname}?${parseQueryPage(search, page, 'page', 'page', 'prev')}`} >Previous</Link>
                     </div>:
 
                     <div className="previous">
-                         <Link to ={`/${location.pathname}?${parseQueryPage(search, page, 'page', 'page', 'prev')}`}  style={{pointerEvents: 'none', opacity: '.7'}}>Previous</Link>
+                         <Link to ={`${location.pathname}?${parseQueryPage(search, page, 'page', 'page', 'prev')}`}  style={{pointerEvents: 'none', opacity: '.7'}}>Previous</Link>
                     </div>
                 }
             </div>
@@ -55,7 +55,7 @@ export default function Pagination({ totalPages, search, page}:PaginationType) {
 
                         if(page === i + 1) {
                             return  ( 
-                            <Link to={`/${location.pathname}?${parseQueryPage(search, i, 'page', 'page')}`} 
+                            <Link to={`${location.pathname}?${parseQueryPage(search, i, 'page', 'page')}`} 
                             className='page' id='page-active' key={i + 1} >
 
                                 <button className={style['page-selected']}
@@ -74,10 +74,10 @@ export default function Pagination({ totalPages, search, page}:PaginationType) {
                 {
                     page + 1 > totalPages || page + 1 < 0?
                     <div className="next">
-                        <Link to={`/${location.pathname}?${parseQueryPage(search, page, 'page', 'page', 'next')}`} style={{pointerEvents: 'none', opacity: '.7'}}>Next</Link>
+                        <Link to={`${location.pathname}?${parseQueryPage(search, page, 'page', 'page', 'next')}`} style={{pointerEvents: 'none', opacity: '.7'}}>Next</Link>
                     </div>:
                     <div className="next">
-                        <Link to={`/${location.pathname}?${parseQueryPage(search, page, 'page', 'page', 'next')}`}>Next</Link>
+                        <Link to={`${location.pathname}?${parseQueryPage(search, page, 'page', 'page', 'next')}`}>Next</Link>
                     </div>
                 }
             </div>
