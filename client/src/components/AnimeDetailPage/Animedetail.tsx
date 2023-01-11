@@ -1,6 +1,6 @@
 import {  useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
-import { addListAnime, deleteAnimeInList, getAnimeById, getAnimeEpisodes, getList, getAllListsUser } from "../../redux/actions/index";
+import { addListAnime, deleteAnimeInList, getAnimeById, getAnimeEpisodes, getAllListsUser, getListFavorite, clearDetailList } from "../../redux/actions/index";
 import style from '../../style/AnimeDetailPage/AnimeDetail.module.css';
 import Tag from '../UtilsComponents/Tag';
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
@@ -40,7 +40,7 @@ export default function AnimeDetail () {
     
     
     useEffect(()=> {
-        dispatch(getList('Favorites')).then(() => setReady(true));
+        dispatch(getListFavorite(userInfo.id)).then(() => setReady(true));
         dispatch(getAllListsUser(userInfo.id));
         
         myRef.current?.scrollIntoView({behavior: "smooth", block: "start"});
@@ -51,6 +51,7 @@ export default function AnimeDetail () {
             setLoading(false);
         })
         return () => {
+            dispatch(clearDetailList());
             document.body.classList.remove(style['active-modal']);
         }
     },[dispatch, idAnime, userInfo.id]);
@@ -72,16 +73,17 @@ export default function AnimeDetail () {
 
     const toggleFavorite = async () => {
         try {
+            if(detailList.id === null) return;
             const checkAnimeAdded = detailList.animes.find(anime => anime.id === Number(idAnime)); 
             if(!checkAnimeAdded) {
                 const animeToFavorite = {anime: Number(idAnime), list: detailList.id};
                 await dispatch(addListAnime(animeToFavorite));
-                await dispatch(getList('Favorites'));
+                await dispatch(getListFavorite(userInfo.id));
                 alert('Anime Added to Favorites!');
             } else {
                 const animeToDel = {anime: Number(idAnime), list: detailList.id};
                 await dispatch(deleteAnimeInList(animeToDel));
-                await dispatch(getList('Favorites'));
+                await dispatch(getListFavorite(userInfo.id));
                 alert('Anime Deleted of Favorites!');
             }
         } catch (error: any) {

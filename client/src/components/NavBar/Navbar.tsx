@@ -11,7 +11,7 @@ const NavBar = () => {
       <div>
         <nav className={style["elements"]}>
           <div className={style["elem"]}>
-            <Link to={"/home"}>
+            <Link to={"/"}>
               <img src={logo} alt="img" className={style["logo"]} />
             </Link>
             <DropdownExplore />

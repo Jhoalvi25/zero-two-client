@@ -34,12 +34,8 @@ export default function UserDashboard(): JSX.Element {
 
   // const emailUser = user?.email ? user?.email : '';
   const userLog = useAppSelector(state => state.user);
-  // const [userLog, setUserLog] = useState<UserInterface>({} as UserInterface);
   
- 
-  
- 
-  console.log(userLog)
+  console.log('ESTO ES USERLOG', userLog)
 
 
   if (!regularToken || !userLog) {
