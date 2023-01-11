@@ -1,6 +1,6 @@
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import * as React from "react";
-import style from "../../style/Payments/Payments.module.css"
+import style from "../../style/Payments/Payments.module.css";
 
 const debug = true;
 
@@ -73,6 +73,54 @@ export default class App extends React.Component<{}, typeof initialState> {
     return (
       <div>
         <h1>Choose your plan</h1>
+
+        <div className={style["content-card"]}>
+          <div className={style["plan"]}>
+            <button>
+              <div>
+                <h2>Plan Genin</h2>
+                <h3>$1.50</h3>
+                <ul>
+                  <li>Benefit 1</li>
+                  <li>Benefit 2</li>
+                  <li>Benefit 3</li>
+                  <li>Benefit 4</li>
+                </ul>
+              </div>
+            </button>
+          </div>
+
+          <div className={style["plan"]}>
+            <button>
+              <div>
+                <h2>Plan Chuunin</h2>
+                <h3>$3.00</h3>
+                <ul>
+                  <li>Benefit 1</li>
+                  <li>Benefit 2</li>
+                  <li>Benefit 3</li>
+                  <li>Benefit 4</li>
+                </ul>
+              </div>
+            </button>
+          </div>
+
+          <div className={style["plan"]}>
+            <button>
+              <div>
+                <h2>Plan Jounin </h2>
+                <h3>$36.00</h3>
+                <ul>
+                  <li>Benefit 1</li>
+                  <li>Benefit 2</li>
+                  <li>Benefit 3</li>
+                  <li>Benefit 4</li>
+                </ul>
+              </div>
+            </button>
+          </div>
+        </div>
+
         <label htmlFor="amount">Order Amount: </label>
         <br />
         <select onChange={this.onChange} name="amount" id="amount">
@@ -88,11 +136,15 @@ export default class App extends React.Component<{}, typeof initialState> {
         <br />
         <label>On Approve Message: </label>
         <br />
-        <span className={style["approve"]} data-testid="message">{this.state.onApproveMessage}</span>
+        <span className={style["approve"]} data-testid="message">
+          {this.state.onApproveMessage}
+        </span>
         <br />
         <label>On Error Message: </label>
         <br />
-        <span className={style["error"]} data-testid="error">{this.state.onErrorMessage}</span>
+        <span className={style["error"]} data-testid="error">
+          {this.state.onErrorMessage}
+        </span>
         <br />
         <PayPalScriptProvider
           options={{

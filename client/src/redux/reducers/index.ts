@@ -1,110 +1,175 @@
-
-import { FILTER_AND_SORT_ANIMES, GET_ANIME_BY_ID, GET_ANIME_EPISODES, GET_ANIME_GENRES, SEARCH_ANIMES, GET_ANIME_NEWEST, GET_ANIME_OLDEST, GET_ANIMES, GET_ANIME_TRENDING, GET_ANIME_EPISODE, GET_EPISODE_COMMENTS } from "../types";
-import {AnyAction} from 'redux'
-import { Anime, CommentInterface, Episode, ErrorResponse, Genre, UserInterface } from "../../types/types";
+import {
+  FILTER_AND_SORT_ANIMES,
+  GET_ANIME_BY_ID,
+  GET_ANIME_EPISODES,
+  GET_ANIME_GENRES,
+  SEARCH_ANIMES,
+  GET_ANIME_NEWEST,
+  GET_ANIME_OLDEST,
+  GET_ANIMES,
+  GET_ANIME_TRENDING,
+  GET_ANIME_EPISODE,
+  GET_EPISODE_COMMENTS,
+  CREATE_PAYMENT_GENIN,
+  CREATE_PAYMENT_CHUUNIN,
+  CREATE_PAYMENT_JOUNIN,
+  CHANGE_PLAN_SWITCH,
+  EXECUTE_PAYMENT_GENIN,
+  EXECUTE_PAYMENT_CHUUNIN,
+  EXECUTE_PAYMENT_JOUNIN,
+} from "../types";
+import { AnyAction } from "redux";
+import {
+  Anime,
+  CommentInterface,
+  Episode,
+  ErrorResponse,
+  Genre,
+  UserInterface,
+} from "../../types/types";
+import { string } from "yup";
 
 // Use the interfaces for each individual state importing its interfaces
 
 interface StateAnimes {
-  animes: {count: number , rows: Array<Anime>},
-  anime: Anime,
-  animeNewest: {count: number , rows: Array<Anime>},
-  animesTrending: {count: number , rows: Array<Anime>},
-  isActive: Boolean,
-  animeDetails: Anime,
-  animeEpisodes: Array<Episode>,
-  animeEpisode: Episode,
-  user: UserInterface
-  genres: Array<Genre>
-  error: ErrorResponse
-  episodeComments: Array<CommentInterface>
+  payPaypalGenin: any;
+  payPaypalChuunin: any;
+  payPaypalJounin: any;
+  animes: { count: number; rows: Array<Anime> };
+  anime: Anime;
+  animeNewest: { count: number; rows: Array<Anime> };
+  animesTrending: { count: number; rows: Array<Anime> };
+  isActive: Boolean;
+  animeDetails: Anime;
+  animeEpisodes: Array<Episode>;
+  animeEpisode: Episode;
+  user: UserInterface;
+  genres: Array<Genre>;
+  error: ErrorResponse;
+  episodeComments: Array<CommentInterface>;
 }
 const initialState = {
-  animes: {count: 0, rows: []},
+  animes: { count: 0, rows: [] },
   anime: {} as Anime,
-  animeNewest: {count: 0, rows: []},
+  animeNewest: { count: 0, rows: [] },
   animeOldest: [],
-  animesTrending: {count: 0, rows: []},
+  animesTrending: { count: 0, rows: [] },
   isActive: false,
   animeDetails: {} as Anime,
-  animeEpisodes:[],
+  animeEpisodes: [],
   animeEpisode: {} as Episode,
   user: {} as UserInterface,
   genres: [],
   error: {} as ErrorResponse,
-  episodeComments: []
+  episodeComments: [],
+  payPaypalGenin: {},
+  payPaypalChuunin: {},
+  payPaypalJounin: {},
+  executePaymentGenin: {},
+  executePaymentChuunin: {},
+  executePaymentJounin: {},
 };
 
-function rootReducer(state:StateAnimes = initialState, action:AnyAction) {
+function rootReducer(state: StateAnimes = initialState, action: AnyAction) {
   switch (action.type) {
     case GET_ANIMES: {
       return {
         ...state,
         animes: action.payload,
-        error: action.error
-      }
+        error: action.error,
+      };
     }
     case SEARCH_ANIMES:
       return {
         ...state,
         animes: action.payload,
         isActive: true,
-        error: action.error
+        error: action.error,
       };
     case GET_ANIME_BY_ID:
       return {
         ...state,
         animeDetails: action.payload,
-        error: action.error
+        error: action.error,
       };
     case GET_ANIME_EPISODES:
       return {
         ...state,
         animeEpisodes: action.payload,
-        error: action.error
-      }
-      case GET_ANIME_EPISODE:
+        error: action.error,
+      };
+    case GET_ANIME_EPISODE:
       return {
         ...state,
         animeEpisode: action.payload,
-        error: action.error
-      }
-    case FILTER_AND_SORT_ANIMES: 
+        error: action.error,
+      };
+    case FILTER_AND_SORT_ANIMES:
       return {
         ...state,
         animes: action.payload,
-        error: action.error
-      }
+        error: action.error,
+      };
     case GET_ANIME_GENRES:
       return {
         ...state,
         genres: action.payload,
-        error: action.error
-      }
+        error: action.error,
+      };
 
     case GET_ANIME_NEWEST:
       return {
         ...state,
         animeNewest: action.payload,
-        error: action.error
-      }
+        error: action.error,
+      };
     case GET_ANIME_OLDEST:
       return {
         ...state,
         animeOldest: action.payload,
-        error: action.error
-      }
-    case GET_ANIME_TRENDING: 
+        error: action.error,
+      };
+    case GET_ANIME_TRENDING:
       return {
         ...state,
         animesTrending: action.payload,
-        error: action.error
-      }
+        error: action.error,
+      };
     case GET_EPISODE_COMMENTS:
       return {
-        ...state, 
-        episodeComments: action.payload
-      }
+        ...state,
+        episodeComments: action.payload,
+      };
+    case CREATE_PAYMENT_GENIN:
+      return {
+        ...state,
+        payPaypalGenin: action.payload,
+      };
+    case CREATE_PAYMENT_CHUUNIN:
+      return {
+        ...state,
+        payPaypalChuunin: action.payload,
+      };
+    case CREATE_PAYMENT_JOUNIN:
+      return {
+        ...state,
+        payPaypalJounin: action.payload,
+      };
+    case EXECUTE_PAYMENT_GENIN:
+      return {
+        ...state,
+        executePaymentGenin: action.payload,
+      };
+    case EXECUTE_PAYMENT_CHUUNIN:
+      return {
+        ...state,
+        executePaymentChuunin: action.payload,
+      };
+    case EXECUTE_PAYMENT_JOUNIN:
+      return {
+        ...state,
+        executePaymentJounin: action.payload,
+      };
     // case GET_USER_BY_EMAIL:
     //   return {
     //     ...state,

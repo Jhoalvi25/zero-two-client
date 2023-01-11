@@ -56,7 +56,7 @@ export default function UserDashboard(): JSX.Element {
   return (
     <div className={style["user"]}>
       <Router>
-        <UserNav userLog={userLog} ></UserNav>
+        <UserNav {...userLog} ></UserNav>
         <div className={style["user-content"]}>
           <HeaderUser></HeaderUser>
           <div className={style["welcome"]}>
