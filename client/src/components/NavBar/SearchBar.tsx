@@ -4,14 +4,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { useHistory } from "react-router-dom";
 import parseQuery from "../../utils/parseQuery";
+import { useLocation } from "react-router-dom";
 
 export const SearchBar = ({ searchName }: { searchName: string }) => {
   const history = useHistory();
+  const location = useLocation();
 
   function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
     let name = e.target.value;
     let params = parseQuery("?", name, "name", "search");
-    history.push(`/animes?${params}`);
+    history.push(`${location.pathname}?${params}`);
   }
 
   return (

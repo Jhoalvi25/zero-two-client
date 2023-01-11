@@ -17,7 +17,7 @@
 }
 .animeDetail-header .cover {
     max-width: 350px;
-    max-height: 550px;
+    max-height: 800px;
     width: 100%;
     height: 100%;
     background-color: var(--secondary-color-content-3);
@@ -37,8 +37,9 @@
     /* color: white; */
     color: var(--main-color-font-light);
     padding: 1em;
+    
 }
-.cover-info-container h2{
+.cover-info-container-h2{
     color: var(--main-bg-color-light)
 }
 
@@ -64,10 +65,19 @@
     display: flex;
     flex-direction: column;
     gap: .5em;
+    padding-top: .5em;
 }
-.list {
+.lists-span{
     background-color: #a77ddd6c;
     padding: .5em;
+    transition: all ease 0.3s;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    column-gap: .5em;
+}
+.lists-span:hover{
+    background-color: #b593e06c;
 }
 /*ABOUT*/
 .animeDetail-header .about {
@@ -186,3 +196,89 @@
     height: 60px;
 }
 
+body.active-modal {
+    overflow-y: hidden;
+  }
+  
+.modal, .overlay {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+}
+  
+.overlay {
+    background: rgba(49, 49, 49, 0.89);
+}
+.modal-content {
+    z-index: 4;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1.4;
+    background: #f1f1f1;
+    padding: 14px 28px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 1em;
+    width: 500px;
+    height: 420px;
+}
+
+.title-modal{
+    color: var(--main-color-font-dark);
+}
+
+.div-buttons{
+
+}
+
+.form-button-submit{
+    width: 8em;
+    border: 2px solid transparent;
+    color: var(--main-bg-color-light);
+    background-color: var(--secondary-color-content-3);
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.356);
+    padding: .5em;
+    font-size: 16px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all ease 0.3s;
+}
+.form-button-submit:hover{
+    background-color: #48037cbe;
+    transform: scale(1.05);
+}
+
+.button-create-list-modal{
+    border: 2px solid var(--secondary-color-content-3);
+    color: var(--secondary-color-content-3);
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.356);
+    background-color: transparent;
+    padding: .5em;
+    font-size: 16px;
+    font-weight: 800;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    column-gap: .5em;
+    transition: all ease 0.3s;
+}
+
+.div_lisComponent_overflow{
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2em;
+    padding: 1em .5em 1em .5em;
+}
+.lisComponent_style{
+    cursor: pointer;
+}
