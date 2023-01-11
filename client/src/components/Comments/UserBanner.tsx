@@ -15,7 +15,8 @@ export default function UserBanner (user: UserInterface) {
                         {user.nickname}
                     </span>
                     <span className={style['user-info-plan']}>
-                        {user.plan !== "0" ? 'Premium' : 'Regular'}
+                        {user.plan ==='none' ? 'regular': user.plan=='1' ? 'Genin':
+                            user.plan ==='2' ? 'Chuunin': 'Jounin'}
                     </span>
                 </div>
         </div>

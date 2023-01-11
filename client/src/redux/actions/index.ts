@@ -535,3 +535,24 @@ export const searchUsers =  (name: string) => {
     }
   }
 }
+
+export const changeUserSettings = (id: string, settings: {}) => {
+  return async (dispatch: AppDispatch) => {
+    try {
+      const config = {
+        url: `${API_ENDPOINT}/user/configure/${id}`,
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+        },
+        data: settings
+      };
+      const response = await axios(config);
+      // response.data
+      return dispatch({ type: types.GET_USER_INFO, payload: response.data });
+
+    } catch (err: any) {
+      throw new Error(err);
+    }
+  }
+}

@@ -51,7 +51,7 @@ export default function UserDashboard(): JSX.Element {
   console.log('PROFILE', regularToken, userLog);
   return (
     <div className={style["user"]}>
-      <UserNav userLog={userLog} />
+      <UserNav {...userLog} />
       <div className={style["user-content"]}>
         <HeaderUser />
         <div className={style["welcome"]}>

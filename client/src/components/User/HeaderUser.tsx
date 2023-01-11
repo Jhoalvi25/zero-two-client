@@ -1,9 +1,7 @@
-import logo from "../../img/vecteezy_mask-kitsune-illustration-with-fire-black-and-white_6633452.jpg";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faMedal,
-  faFaceAngry,
-  faSkull,
+
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 
@@ -20,7 +18,7 @@ export default function Headeruser() {
         <div className={style["blur"]}>
           <div className={style["target"]}>
             <div className={style["logo"]}>
-              <img src={logo} alt="img" />
+              <img src={user.image} alt="img" />
             </div>
             <div className={style["info"]}>
               <div className={style["user-info"]}>

@@ -107,9 +107,9 @@ export default function Login(): JSX.Element {
             className={style["form__error"]}
             
           />
-          <Link to={"restore"} className={style["restore"]}>
+          {/* <Link to={"restore"} className={style["restore"]}>
             <span>Forgot pasword?</span>
-          </Link>
+          </Link> */}
           {/* {error.message && <p>{error.message}</p>} */}
           <button type="submit" className={style["login-btn"]}>
             Sign in

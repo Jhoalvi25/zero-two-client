@@ -11,7 +11,7 @@ interface FormValues {
   age: number;
   email: string;
   password: string;
-  changePassword: string;
+  confirmPassword: string;
 }
 export default function Register(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -21,7 +21,7 @@ export default function Register(): JSX.Element {
     age: 0,
     email: "",
     password: "",
-    changePassword: "",
+    confirmPassword: "",
   };
 
   const [user, setUser] = useState(initialValues);
@@ -41,7 +41,7 @@ export default function Register(): JSX.Element {
       age: 0,
       email: "",
       password: "",
-      changePassword: "",
+      confirmPassword: "",
     })
     // No se esta seteando correctamente los inputs a su valor inicial
     // CHEQUEAR QUE FUNCIONE
@@ -59,7 +59,8 @@ export default function Register(): JSX.Element {
           <label htmlFor="nickname" className={style["form__label"]}>
             Nickname
           </label>
-          <Field name="nickname" type="text" className={style["form__input"]} />
+          <Field name="nickname" type="text" className={style["form__input"]}
+          value={user.nickname} />
 
           <ErrorMessage
             name="nickname"
@@ -70,7 +71,8 @@ export default function Register(): JSX.Element {
           <label htmlFor="age" className={style["form__label"]}>
             Age
           </label>
-          <Field name="age" type="number" className={style["form__input"]} />
+          <Field name="age" type="number" className={style["form__input"]}
+          value={user.age} />
 
           <ErrorMessage
             name="age"
@@ -81,7 +83,8 @@ export default function Register(): JSX.Element {
           <label htmlFor="email" className={style["form__label"]}>
             Email
           </label>
-          <Field name="email" type="text" className={style["form__input"]} />
+          <Field name="email" type="text" className={style["form__input"]}
+          value={user.email} />
 
           <ErrorMessage
             name="email"
@@ -96,6 +99,7 @@ export default function Register(): JSX.Element {
             name="password"
             type="password"
             className={style["form__input"]}
+            value={user.password}
           />
 
           <ErrorMessage
@@ -104,17 +108,18 @@ export default function Register(): JSX.Element {
             className={style["form__error"]}
           />
 
-          <label htmlFor="changePassword" className={style["form__label"]}>
+          <label htmlFor="confirmPassword" className={style["form__label"]}>
             Confirm Password
           </label>
           <Field
-            name="changePassword"
+            name="confirmPassword"
             type="password"
             className={style["form__input"]}
+            value={user.confirmPassword}
           />
 
           <ErrorMessage
-            name="changePassword"
+            name="confirmPassword"
             component="span"
             className={style["form__error"]}
           />

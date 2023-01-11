@@ -22,7 +22,7 @@ export default yup.object().shape({
     .min(8, "Password is too short - should be 8 chars minimum.")
     .matches(/[a-zA-Z]/, "Password can only contain Latin letters."),
 
-  changepassword: yup.string().when("password", {
+  confirmPassword: yup.string().when("password", {
     is: (val: string | any[]) => (val && val.length > 0 ? true : false),
     then: yup
       .string()
