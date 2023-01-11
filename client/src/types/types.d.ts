@@ -1,18 +1,17 @@
-
 interface ErrorResponse {
-    error: {message: string}
+  error: { message: string };
 }
 
 export interface Episode {
-    id: number,
-    title: string,
-    synopsis: string,
-    number: number,
-    seasonNumber: number,
-    airdate: string,
-    length: number,
-    thumbnail: { original?:string, meta?:object },
-    coverImage?: string
+  id: number;
+  title: string;
+  synopsis: string;
+  number: number;
+  seasonNumber: number;
+  airdate: string;
+  length: number;
+  thumbnail: { original?: string; meta?: object };
+  coverImage?: string;
 }
 export interface CommentInterface {
     id?: number,
@@ -29,47 +28,56 @@ export interface CommentInterface {
     likes?: number
 }
 export interface Genre {
-    id: number,
-    name: string
+  id: number;
+  name: string;
 }
 
 export interface Anime {
-    id?: number,
-    name: string,
-    userCount?: number,
-    synopsis?: string,
-    averageRating?: number,
-    favoritesCount?: number,
-    startDate?: string,
-    endDate?: string,
-    popularityRank?: number,
-    ratingRank?: number,
-    status: string,
-    posterImage: string,
-    coverImage?: string,
-    episodeCount?: number,
-    episodeLength?: number,
-    youtubeVideoId?: string | number,
-    nsfw?: boolean,
-    subtype?: string,
-    showType: string, 
-    ageRatingGuide?: string
-    genres?: Genre[],
-
+  id?: number;
+  name: string;
+  userCount?: number;
+  synopsis?: string;
+  averageRating?: number;
+  favoritesCount?: number;
+  startDate?: string;
+  endDate?: string;
+  popularityRank?: number;
+  ratingRank?: number;
+  status: string;
+  posterImage: string;
+  coverImage?: string;
+  episodeCount?: number;
+  episodeLength?: number;
+  youtubeVideoId?: string | number;
+  nsfw?: boolean;
+  subtype?: string;
+  showType: string;
+  ageRatingGuide?: string;
+  genres?: Genre[];
 } // -> Objeto que no es no va pasar
-// -> Objecto vacio 
+// -> Objecto vacio
 
 export interface UserInterface {
-    image: string
-    plan: string,
-    id: string,
-    nickname: string,
-    password: string,
-    email: string,
-    age: number,
-    registered: boolean,
-    rol: string,
-    permissions: string
+  image: string;
+  plan: string;
+  token: string | number;
+  id: string;
+  nickname: string;
+  password: string;
+  email: string;
+  age: number;
+  registered: boolean;
+  rol: string;
+  permissions: string;
+}
+
+export interface Payment {
+  data: string;
+}
+
+export interface planChange {
+  id: string | number;
+  token: string;
 }
 
 export interface UserLists {
@@ -79,17 +87,17 @@ export interface UserLists {
     animes: number
 }
 
-
-
 interface AnimeInList {
     id: number,
     name: string,
     posterImage: string,
     showType: string
 }
+
 export interface ListDetail {
     id: number,
     name: string,
     userId: string,
     animes: Array<AnimeInList>
 }
+
