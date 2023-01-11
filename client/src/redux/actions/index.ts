@@ -221,8 +221,8 @@ export const loginUser = (user: User) => {
       };
       const response = await axios(config);
 
-      window.localStorage.setItem("token", response.data.token)
-      console.log('token stored:', window.localStorage.getItem('token')) // ACA MANEJAMOS EL TOKEN
+      window.localStorage.setItem("token", response.data.token);
+      console.log("token stored:", window.localStorage.getItem("token")); // ACA MANEJAMOS EL TOKEN
       return response.data.token;
     } catch (err: any) {
       throw new Error(err.message);
@@ -243,7 +243,7 @@ export const getUserResource = (accessToken: string) => {
       };
       const response = await axios(config);
 
-      console.log('user get', response)
+      console.log("user get", response);
       dispatch({ type: types.GET_USER_INFO, payload: response.data });
       return response.data;
     } catch (err: any) {
@@ -255,20 +255,20 @@ export const getUserResource = (accessToken: string) => {
 export const getUserResourceWithGoogle = (token: string, email: string) => {
   return async (dispatch: AppDispatch) => {
     try {
-        const config = {
-          url: `${API_ENDPOINT}/user/google`,
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-            Authorization: `Bearer ${token}`,
-          }
- 
-        const response = await axios(config);
-        window.localStorage.setItem('token', token);
-        dispatch({ type: types.GET_USER_INFO, payload: response.data });
-        return response.data; 
-       
-    } catch (err:any) {
+      const config = {
+        url: `${API_ENDPOINT}/user/google`,
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      };
+
+      const response = await axios(config);
+      window.localStorage.setItem("token", token);
+      dispatch({ type: types.GET_USER_INFO, payload: response.data });
+      return response.data;
+    } catch (err: any) {
       throw new Error(err);
     }
   };
@@ -307,7 +307,7 @@ export const executePaymentGenin = (userId: string, tokenPlan: string) => {
     try {
       const config = {
         url: `${API_ENDPOINT}/execute-paymentGenin?token=${tokenPlan}`,
-    data: { id: userId, token: tokenPlan },
+        data: { id: userId, token: tokenPlan },
       };
 
       const response = await axios(config);
@@ -316,21 +316,23 @@ export const executePaymentGenin = (userId: string, tokenPlan: string) => {
     } catch (error) {
       console.log(error);
     }
-  }
-}
+  };
+};
 
-export const getAllListsUser =  (userId: string) => {
+export const getAllListsUser = (userId: string) => {
   return async (dispatch: AppDispatch) => {
     try {
-      const response = await axios.get(`${API_ENDPOINT}/list/all?userId=${userId}`);
+      const response = await axios.get(
+        `${API_ENDPOINT}/list/all?userId=${userId}`
+      );
       dispatch({ type: types.GET_ALL_LISTS_USER, payload: response.data });
     } catch (err: any) {
       throw new Error(err.message);
     }
-  }
-}
+  };
+};
 
-export const getList =  (id: number | string) => {
+export const getList = (id: number | string) => {
   return async (dispatch: AppDispatch) => {
     try {
       const response = await axios.get(`${API_ENDPOINT}/list/${id}`);
@@ -338,44 +340,46 @@ export const getList =  (id: number | string) => {
     } catch (err: any) {
       throw new Error(err.message);
     }
-  }
-}
+  };
+};
 
 export const clearDetailList = () => {
   return async (dispatch: AppDispatch) => {
     try {
-      dispatch({ type: types.CLEAR_LIST_DETAIL})
+      dispatch({ type: types.CLEAR_LIST_DETAIL });
     } catch (err: any) {
       throw new Error(err.message);
     }
-  }
-}
+  };
+};
 
-  export const postComment = (comment: CommentInterface, idEpisode:string, ) => {
-    return async (dispatch: AppDispatch) => {
-      try {
-        const config = {
-          url: `${API_ENDPOINT}/reviews/episode/${idEpisode}/addComment`,
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          data: comment
-        };
-        const response = await axios(config);
-        return response.data
+export const postComment = (comment: CommentInterface, idEpisode: string) => {
+  return async (dispatch: AppDispatch) => {
+    try {
+      const config = {
+        url: `${API_ENDPOINT}/reviews/episode/${idEpisode}/addComment`,
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        data: comment,
+      };
+      const response = await axios(config);
+      return response.data;
 
-        // dispatch({type: types.ADD_EPISODE_COMMENT, payload: response.data})
-      } catch (err: any) {
-        throw new Error(err);
-      }  
+      // dispatch({type: types.ADD_EPISODE_COMMENT, payload: response.data})
+    } catch (err: any) {
+      throw new Error(err);
+    }
   };
 };
 
 export const createPaymentChuunin = () => {
   return async function (dispatch: AppDispatch) {
     try {
-      const response = await axios.post(`${API_ENDPOINT}/create-paymentChuunin`);
+      const response = await axios.post(
+        `${API_ENDPOINT}/create-paymentChuunin`
+      );
       dispatch({ type: types.CREATE_PAYMENT_CHUUNIN, payload: response.data });
       return response;
     } catch (error) {
@@ -390,7 +394,7 @@ export const executePaymentChuunin = (userId: string, tokenPlan: string) => {
       const config = {
         url: `${API_ENDPOINT}/execute-paymentChuunin?token=${tokenPlan}`,
 
-   data: { id: userId, token: tokenPlan },
+        data: { id: userId, token: tokenPlan },
       };
 
       const response = await axios(config);
@@ -399,11 +403,10 @@ export const executePaymentChuunin = (userId: string, tokenPlan: string) => {
     } catch (error) {
       console.log(error);
     }
-    
-  }
-}
+  };
+};
 
-export const createList =  (newList: object) => {
+export const createList = (newList: object) => {
   return async (dispatch: AppDispatch) => {
     try {
       const config = {
@@ -412,17 +415,17 @@ export const createList =  (newList: object) => {
         headers: {
           "content-type": "application/json",
         },
-        data: newList
+        data: newList,
       };
       const response = await axios(config);
       return response.data;
     } catch (err: any) {
       throw new Error(err.message);
     }
-  }
-}
+  };
+};
 
-export const addListAnime =  (addAnime: object) => {
+export const addListAnime = (addAnime: object) => {
   return async (dispatch: AppDispatch) => {
     try {
       const config = {
@@ -431,23 +434,26 @@ export const addListAnime =  (addAnime: object) => {
         headers: {
           "content-type": "application/json",
         },
-        data: addAnime
+        data: addAnime,
       };
-      const response = await axios(config).then(function(value) {
-        // Success!
-        return value.data;
-      }, function(err) { 
-        // Error!
-        throw new Error(err.response.data);
-      });
+      const response = await axios(config).then(
+        function (value) {
+          // Success!
+          return value.data;
+        },
+        function (err) {
+          // Error!
+          throw new Error(err.response.data);
+        }
+      );
       return response;
     } catch (err: any) {
       throw new Error(err.message);
     }
-  }
-}
+  };
+};
 
-export const editListName =  (editNameList: object) => {
+export const editListName = (editNameList: object) => {
   return async (dispatch: AppDispatch) => {
     try {
       const config = {
@@ -456,17 +462,21 @@ export const editListName =  (editNameList: object) => {
         headers: {
           "content-type": "application/json",
         },
-        data: editNameList
+        data: editNameList,
       };
       const response = await axios(config);
       return response.data;
     } catch (err: any) {
       throw new Error(err.message);
     }
-  }
-}
+  };
+};
 
-export const postReply = (reply: CommentInterface, episodeId: number, commentId: number) => {
+export const postReply = (
+  reply: CommentInterface,
+  episodeId: number,
+  commentId: number
+) => {
   return async (dispatch: AppDispatch) => {
     try {
       const config = {
@@ -475,13 +485,13 @@ export const postReply = (reply: CommentInterface, episodeId: number, commentId:
         headers: {
           "content-type": "application/json",
         },
-        data: reply
-      };//index of comment and add to its replies
+        data: reply,
+      }; //index of comment and add to its replies
       const response = await axios(config);
-      return response.data
-    } catch (err:any) {
+      return response.data;
+    } catch (err: any) {
       throw new Error(err);
-    }  
+    }
   };
 };
 
@@ -518,7 +528,7 @@ export const executePaymentJounin = (userId: string, tokenPlan: string) => {
   };
 };
 
-export const deleteAnimeInList =  (deleteAnimeInfo: object) => {
+export const deleteAnimeInList = (deleteAnimeInfo: object) => {
   return async (dispatch: AppDispatch) => {
     try {
       const config = {
@@ -527,18 +537,17 @@ export const deleteAnimeInList =  (deleteAnimeInfo: object) => {
         headers: {
           "content-type": "application/json",
         },
-        data: deleteAnimeInfo
+        data: deleteAnimeInfo,
       };
       const response = await axios(config);
       return response.data;
     } catch (err: any) {
       throw new Error(err.message);
     }
-  }
-}
+  };
+};
 
-
-export const deleteList =  (id: number) => {
+export const deleteList = (id: number) => {
   return async (dispatch: AppDispatch) => {
     try {
       const response = await axios.delete(`${API_ENDPOINT}/list/${id}`);
@@ -546,10 +555,10 @@ export const deleteList =  (id: number) => {
     } catch (err: any) {
       throw new Error(err.message);
     }
-  }
-}
+  };
+};
 
-export const deleteComment = (idEpisode:number,commentId: number) => {
+export const deleteComment = (idEpisode: number, commentId: number) => {
   return async (dispatch: AppDispatch) => {
     try {
       const config = {
@@ -557,16 +566,16 @@ export const deleteComment = (idEpisode:number,commentId: number) => {
         method: "DELETE",
         headers: {
           "content-type": "application/json",
-        }
+        },
       };
       const response = await axios(config);
-      return response.data
+      return response.data;
       // dispatch({type: types.DELETE_EPISODE_POST, payload: response.data})
     } catch (err: any) {
       throw new Error(err);
     }
-  }
-}
+  };
+};
 
 export const clearAllLists = () => {
   return async (dispatch: AppDispatch) => {
@@ -575,10 +584,14 @@ export const clearAllLists = () => {
     } catch (err: any) {
       throw new Error(err.message);
     }
-  }
-}
+  };
+};
 
-export const editComment = (idEpisode:number,commentId: number, post:CommentInterface) => {
+export const editComment = (
+  idEpisode: number,
+  commentId: number,
+  post: CommentInterface
+) => {
   return async (dispatch: AppDispatch) => {
     try {
       const config = {
@@ -587,16 +600,16 @@ export const editComment = (idEpisode:number,commentId: number, post:CommentInte
         headers: {
           "content-type": "application/json",
         },
-        data: post
+        data: post,
       };
       const response = await axios(config);
-      return response.data
+      return response.data;
       // dispatch({type: types.DELETE_EPISODE_POST, payload: response.data})
     } catch (err: any) {
       throw new Error(err);
     }
-  }
-}
+  };
+};
 
 export const changeLikeStatus = (userId: string, commentId: number) => {
   return async (dispatch: AppDispatch) => {
@@ -609,15 +622,19 @@ export const changeLikeStatus = (userId: string, commentId: number) => {
         },
       };
       const response = await axios(config);
-      return response.data
+      return response.data;
       // dispatch({type: types.DELETE_EPISODE_POST, payload: response.data})
     } catch (err: any) {
       throw new Error(err);
     }
-  }
-}
+  };
+};
 
-export const adminActions = (options: {admin: string, user: string, action: string}) => {
+export const adminActions = (options: {
+  admin: string;
+  user: string;
+  action: string;
+}) => {
   return async (dispatch: AppDispatch) => {
     try {
       const config = {
@@ -626,30 +643,30 @@ export const adminActions = (options: {admin: string, user: string, action: stri
         headers: {
           "content-type": "application/json",
         },
-        data: options
+        data: options,
       };
       const response = await axios(config);
-      return response.data
+      return response.data;
       // dispatch({type: types.DELETE_EPISODE_POST, payload: response.data})
     } catch (err: any) {
       throw new Error(err);
     }
-  }
-}
+  };
+};
 
-export const searchUsers =  (name: string) => {
+export const searchUsers = (name: string) => {
   return async (dispatch: AppDispatch) => {
     try {
-      const response = await axios.get(`${API_ENDPOINT}/user/search?name=${name}`);
+      const response = await axios.get(
+        `${API_ENDPOINT}/user/search?name=${name}`
+      );
       dispatch({ type: types.GET_USERS_BY_SEARCH, payload: response.data });
-      return response
-    
+      return response;
     } catch (err) {
       dispatch({
-        type: types.GET_USERS_BY_SEARCH, 
-        payload: { error: { message: "Users not founded" } }
-      })
+        type: types.GET_USERS_BY_SEARCH,
+        payload: { error: { message: "Users not founded" } },
+      });
     }
-  }
-}
-
+  };
+};
