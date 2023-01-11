@@ -4,13 +4,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGears, faUser } from "@fortawesome/free-solid-svg-icons";
 import {
   adminActions,
-  getUserResource,
-  getUserResourceWithGoogle,
 } from "../../redux/actions";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { useAuth0 } from "@auth0/auth0-react";
-import { useCallback, useEffect, useState } from "react";
-import { UserInterface } from "../../types/types";
+import { useState } from "react";
 import NotFound from "../UtilsComponents/NotFound";
 
 // interface AdminOptions {
@@ -19,11 +15,11 @@ import NotFound from "../UtilsComponents/NotFound";
 //   actions: string
 // } 
 export default function Admin(): JSX.Element {
-  const { getAccessTokenSilently, user } = useAuth0();
-  const regularToken = window.localStorage.getItem('token');
+  // const { getAccessTokenSilently, user } = useAuth0();
+  // const regularToken = window.localStorage.getItem('token');
   const dispatch = useAppDispatch();
 
-  const [admin, setAdmin] = useState<UserInterface>({} as UserInterface);
+  // const [admin, setAdmin] = useState<UserInterface>({} as UserInterface);
   const adminAccount = useAppSelector(state => state.user);
   const [userTarget, setUserTarget] = useState({
     nickname: '',
@@ -54,37 +50,37 @@ export default function Admin(): JSX.Element {
       
     });
   }
-  const getToken = useCallback(async () => {
-    const accesToken = await getAccessTokenSilently();
-    if (user?.email) {
-      dispatch(getUserResourceWithGoogle(accesToken, user.email)).then(val => {
-      console.log('GOOGLE', val)
-      setAdmin(val)
-    });
-    }
-    dispatch(getUserResource(regularToken ? regularToken : '')).then(val => {
-      console.log('us', val)
-      setAdmin(val)
+  // const getToken = useCallback(async () => {
+  //   const accesToken = await getAccessTokenSilently();
+  //   if (user?.email) {
+  //     dispatch(getUserResourceWithGoogle(accesToken, user.email)).then(val => {
+  //     console.log('GOOGLE', val)
+  //     setAdmin(val)
+  //   });
+  //   dispatch(getUserResource(regularToken ? regularToken : '')).then(val => {
+  //     console.log('us', val)
+  //     setAdmin(val)
 
-    })
-  },[getAccessTokenSilently, dispatch, user?.email, regularToken]);
+  //   })
+  //   }
+  // },[getAccessTokenSilently, dispatch, user?.email, regularToken]);
 
-  console.log('USER TARGET', userTarget)
-  useEffect(() => {
-    getToken();
-  }, [getToken]);
-  console.log(userTarget)
-  if (!admin) {
+  // console.log('USER TARGET', userTarget)
+  // // useEffect(() => {
+  // //   getToken();
+  // // }, [getToken]);
+  // console.log(userTarget)
+  if (!adminAccount) {
     return (<NotFound />)
   }
-  else if (!(admin.rol === "Admin")) {
+  else if (adminAccount.rol !== "Admin") {
     return (<NotFound msg="You don't have permissions to access this page" />)
   }
   return (
     <div className={style['admin-container']}>
       <div className={style["nav-admin"]}>
         <h1 className={style["text-user"]}>Welcome again </h1>
-        <h2>{admin.nickname}</h2>
+        <h2>{adminAccount.nickname}</h2>
         {/* <div className={style["user-box"]}>
           <div className={style["card"]}>
             {admin.image ? (

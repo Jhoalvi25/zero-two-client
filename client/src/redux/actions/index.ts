@@ -278,6 +278,17 @@ export const getAllListsUser =  (userId: string) => {
   }
 }
 
+export const getListFavorite = (userId: string) => {
+  return async (dispatch: AppDispatch) => {
+    try {
+      const response = await axios.get(`${API_ENDPOINT}/list/favorites/${userId}`);
+      dispatch({type: types.GET_LIST_FAVORITES, payload: response.data});
+    } catch (err: any) {
+      throw new Error(err.message);
+    }
+  }
+}
+
 export const getList =  (id: number | string) => {
   return async (dispatch: AppDispatch) => {
     try {

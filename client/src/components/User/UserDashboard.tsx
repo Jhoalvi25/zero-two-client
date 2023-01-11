@@ -34,12 +34,8 @@ export default function UserDashboard(): JSX.Element {
 
   // const emailUser = user?.email ? user?.email : '';
   const userLog = useAppSelector(state => state.user);
-  // const [userLog, setUserLog] = useState<UserInterface>({} as UserInterface);
   
- 
-  
- 
-  console.log(userLog)
+  console.log('ESTO ES USERLOG', userLog)
 
 
   if (!regularToken || !userLog) {
@@ -51,7 +47,7 @@ export default function UserDashboard(): JSX.Element {
   console.log('PROFILE', regularToken, userLog);
   return (
     <div className={style["user"]}>
-      <UserNav userLog={userLog} />
+      <UserNav {...userLog} />
       <div className={style["user-content"]}>
         <HeaderUser />
         <div className={style["welcome"]}>
