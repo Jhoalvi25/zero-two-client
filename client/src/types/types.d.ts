@@ -69,5 +69,5 @@ export interface UserInterface {
     age: number,
     registered: boolean,
     rol: string,
-    persmission: string
+    permissions: string
 }

@@ -1,24 +1,59 @@
 import style from "../../style/AdminPage/Admin.module.css";
 import SearchUser from "./SearchUser";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass, faGears } from "@fortawesome/free-solid-svg-icons";
+import { faGears, faUser } from "@fortawesome/free-solid-svg-icons";
 import {
+  adminActions,
   getUserResource,
   getUserResourceWithGoogle,
 } from "../../redux/actions";
-import { useAppDispatch } from "../../redux/hooks";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useCallback, useEffect, useState } from "react";
 import { UserInterface } from "../../types/types";
 import NotFound from "../UtilsComponents/NotFound";
 
+// interface AdminOptions {
+//   admin: string,
+//   user: string,
+//   actions: string
+// } 
 export default function Admin(): JSX.Element {
   const { getAccessTokenSilently, user } = useAuth0();
   const regularToken = window.localStorage.getItem('token');
   const dispatch = useAppDispatch();
 
   const [admin, setAdmin] = useState<UserInterface>({} as UserInterface);
+  const adminAccount = useAppSelector(state => state.user);
+  const [userTarget, setUserTarget] = useState({
+    nickname: '',
+    email: '',
+    plan: '',
+    rol: '',
+    permissions: ''
 
+  })
+  // const options = useState({
+  //   admin: "",
+  //   user: "",
+  //   action: ""
+
+  // })
+
+  const executeAction = (e: React.ChangeEvent<HTMLSelectElement>)=> {
+    const action= e.target.value;
+    const options = {
+      admin: adminAccount.email,
+      user: userTarget.email,
+      action: action
+    };
+    alert(JSON.stringify(options))
+    dispatch(adminActions(options)).then(val => {
+      console.log('VAL', val)
+      setUserTarget(()=> val)
+      
+    });
+  }
   const getToken = useCallback(async () => {
     const accesToken = await getAccessTokenSilently();
     if (user?.email) {
@@ -30,14 +65,15 @@ export default function Admin(): JSX.Element {
     dispatch(getUserResource(regularToken ? regularToken : '')).then(val => {
       console.log('us', val)
       setAdmin(val)
+
     })
   },[getAccessTokenSilently, dispatch, user?.email, regularToken]);
 
-
+  console.log('USER TARGET', userTarget)
   useEffect(() => {
     getToken();
   }, [getToken]);
-
+  console.log(userTarget)
   if (!admin) {
     return (<NotFound />)
   }
@@ -45,10 +81,11 @@ export default function Admin(): JSX.Element {
     return (<NotFound msg="You don't have permissions to access this page" />)
   }
   return (
-    <div>
+    <div className={style['admin-container']}>
       <div className={style["nav-admin"]}>
         <h1 className={style["text-user"]}>Welcome again </h1>
-        <div className={style["user-box"]}>
+        <h2>{admin.nickname}</h2>
+        {/* <div className={style["user-box"]}>
           <div className={style["card"]}>
             {admin.image ? (
               <img
@@ -68,31 +105,34 @@ export default function Admin(): JSX.Element {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
-      <div className={style["container-one"]}>
-        <h2 className={style["h2"]}>User management</h2>
-        <SearchUser />
+      <h2 className={style["h2"]}>User management</h2>
+      <div className={style["admin-content"]}>
+        
+        <SearchUser setUserTarget={setUserTarget} />
+
         <div className={style["user-data-container"]}>
           <div className={style["container-image-data-container"]}>
-            <FontAwesomeIcon icon={faMagnifyingGlass} />
+            {/* <img src={userDefault} alt="user" /> */}
+            <FontAwesomeIcon icon={faUser} />
           </div>
           <div className={style["sub-container-data-container"]}>
             <div className={style["content-data-container"]}>
               <span className={style["title-data-container"]}>Name</span>
-              <span className={style["text-data-container"]}>Nezuko chan</span>
+              <span className={style["text-data-container"]}>{userTarget.nickname}</span>
             </div>
             <div className={style["content-data-container"]}>
               <span className={style["title-data-container"]}>Plan</span>
-              <span className={style["text-data-container"]}>Premium</span>
+              <span className={style["text-data-container"]}>{userTarget.plan}</span>
             </div>
             <div className={style["content-data-container"]}>
-              <span className={style["title-data-container"]}>Role</span>
-              <span className={style["text-data-container"]}>User</span>
+              <span className={style["title-data-container"]}>Rol</span>
+              <span className={style["text-data-container"]}>{userTarget.rol}</span>
             </div>
             <div className={style["content-data-container"]}>
               <span className={style["title-data-container"]}>Status</span>
-              <span className={style["text-data-container"]}>Active</span>
+              <span className={style["text-data-container"]}>{userTarget.permissions}</span>
             </div>
           </div>
           <div>
@@ -100,61 +140,50 @@ export default function Admin(): JSX.Element {
           </div>
         </div>
 
+  
         <div className={style["settings-container"]}>
-          <div className={style["box-container"]}>
-            <div className={style["box"]}>
-              Name
-              <div>
+            <div className={style["box-container"]}>
+              <div className={style["box"]}>
+                Name
                 <div>
-                  <div className={style["box-text"]}>Nezuko-chan</div>
+                  <div>
+                    <div className={style["box-text"]}>{userTarget.nickname || 'Select a user'}</div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className={style["box-container"]}>
-            <div className={style["box"]}>
-              Plan
-              <div>
+            <div className={style["box-container"]}>
+            </div>
+            <div className={style["box-container"]}>
+              <div className={style["box"]}>
+                Role
                 <div>
-                  <select className="">
-                    <option value="premium">Premium</option>
-                    <option value="standar">Standar</option>
-                  </select>
+                  <div>
+                    <select name='action' onChange={(e)=> executeAction(e)} >
+                      <option value="Admin">Admin</option>
+                      <option value="User">User</option>
+                    </select>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className={style["box-container"]}>
-            <div className={style["box"]}>
-              Role
-              <div>
+            <div className={style["box-container"]}>
+              <div className={style["box"]}>
+                Status
                 <div>
-                  <select className="">
-                    <option value="User">User</option>
-                    <option value="editor">Editor</option>
-                    <option value="standar">Moderator</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className={style["box-container"]}>
-            <div className={style["box"]}>
-              Status
-              <div>
-                <div>
-                  <select className="">
-                    <option value="Active">Active</option>
-                    <option value="Unactive">Unactive</option>
-                    <option value="Ban">Ban</option>
-                  </select>
+                  <div>
+                    <select name="action" onChange={(e)=> executeAction(e)}>
+                      <option value="Watch">Active</option>
+                      <option value="Banned" >Ban</option>
+                    </select>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div></div>
+      
+
     </div>
   );
 }
