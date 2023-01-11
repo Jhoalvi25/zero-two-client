@@ -4,6 +4,11 @@ import style from "../../style/Home/CardInformative.module.css";
 import Tag from "../UtilsComponents/Tag";
 import formatDate from "../../utils/formatDate";
 import { Anime } from "../../types/types";
+import {
+  LazyLoadComponent,
+  LazyLoadImage,
+} from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 export default function CardInformative({
   name,
@@ -18,9 +23,10 @@ export default function CardInformative({
     <div className={style["cardInformative"]} key={name + id}>
       <div className={style["cardInformative-first"]}>
         <div className={style["cardInformative-image-container"]}>
-          <img
+          <LazyLoadImage
             src={posterImage}
             alt="anime about alt"
+            effect="blur"
             className={style["anime-img"]}
           />
         </div>
