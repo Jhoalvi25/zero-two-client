@@ -1,5 +1,5 @@
 
-import { FILTER_AND_SORT_ANIMES, GET_ANIME_BY_ID, GET_ANIME_EPISODES, GET_ANIME_GENRES, SEARCH_ANIMES, GET_ANIME_NEWEST, GET_ANIME_OLDEST, GET_ANIMES, GET_ANIME_TRENDING, GET_ANIME_EPISODE, GET_EPISODE_COMMENTS, GET_ALL_LISTS_USER, GET_LIST, CLEAR_ALL_LISTS, CLEAR_LIST_DETAIL, GET_USER_INFO, ADD_EPISODE_COMMENT, DELETE_EPISODE_POST } from "../types";
+import { FILTER_AND_SORT_ANIMES, GET_ANIME_BY_ID, GET_ANIME_EPISODES, GET_ANIME_GENRES, SEARCH_ANIMES, GET_ANIME_NEWEST, GET_ANIME_OLDEST, GET_ANIMES, GET_ANIME_TRENDING, GET_ANIME_EPISODE, GET_EPISODE_COMMENTS, GET_ALL_LISTS_USER, GET_LIST, CLEAR_ALL_LISTS, CLEAR_LIST_DETAIL, GET_USER_INFO, ADD_EPISODE_COMMENT, DELETE_EPISODE_POST, GET_USERS_BY_SEARCH  } from "../types";
 import {AnyAction} from 'redux'
 import { Anime, CommentInterface, Episode, ErrorResponse, Genre, ListDetail, UserInterface, UserLists } from "../../types/types";
 
@@ -18,6 +18,7 @@ interface StateAnimes {
   genres: Array<Genre>
   error: ErrorResponse
   episodeComments: Array<CommentInterface>
+  users: Array<UserInterface>
   userLists: Array<UserLists>,
   listDetail: ListDetail
 }
@@ -35,6 +36,7 @@ const initialState = {
   genres: [],
   error: {} as ErrorResponse,
   episodeComments: [],
+  users: [],
   userLists: [],
   listDetail: {} as ListDetail
 };
@@ -149,6 +151,11 @@ function rootReducer(state:StateAnimes = initialState, action:AnyAction) {
         return {
           ...state,
           episodeComments: state.episodeComments.filter(comment => comment !== action.payload)
+        }
+      case GET_USERS_BY_SEARCH:
+        return{
+          ...state,
+          users: action.payload
         }
     default:
       return state;

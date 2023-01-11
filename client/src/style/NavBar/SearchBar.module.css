@@ -42,7 +42,8 @@
 }
 .search-btn .search-icon{
   color: var(--main-color-font-dark);
-  font-size: 30px;
+  font-size: 20px;
+  font-weight: 400;
   
 }
 
