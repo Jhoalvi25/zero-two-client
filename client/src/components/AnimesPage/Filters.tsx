@@ -71,7 +71,7 @@ export default function Filters({search, filterParams}:Filter) {
       return newObj
     })
   }, [filterParams])
-  // console.log(query)
+
 
   return (
    

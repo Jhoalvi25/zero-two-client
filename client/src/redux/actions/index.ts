@@ -221,7 +221,7 @@ export const loginUser = (user: User) => {
       const response = await axios(config);
 
       window.localStorage.setItem("token", response.data.token);
-      console.log("token stored:", window.localStorage.getItem("token")); // ACA MANEJAMOS EL TOKEN
+// ACA MANEJAMOS EL TOKEN
       return response.data.token;
     } catch (err: any) {
       throw new Error(err.message);
@@ -242,7 +242,7 @@ export const getUserResource = (accessToken: string) => {
       };
       const response = await axios(config);
 
-      console.log("user get", response);
+      
       dispatch({ type: types.GET_USER_INFO, payload: response.data });
       return response.data;
     } catch (err: any) {
@@ -305,6 +305,10 @@ export const executePaymentGenin = (userId: string, tokenPlan: string) => {
   return async function (dispatch: AppDispatch) {
     try {
       const config = {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
         url: `${API_ENDPOINT}/execute-paymentGenin?token=${tokenPlan}`,
         data: { id: userId, token: tokenPlan },
       };
@@ -402,8 +406,11 @@ export const executePaymentChuunin = (userId: string, tokenPlan: string) => {
   return async function (dispatch: AppDispatch) {
     try {
       const config = {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
         url: `${API_ENDPOINT}/execute-paymentChuunin?token=${tokenPlan}`,
-
         data: { id: userId, token: tokenPlan },
       };
 

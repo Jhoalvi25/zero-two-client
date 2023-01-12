@@ -16,9 +16,6 @@ import ListComponent from "../User/Options/ListComponenet";
 import imageNotFound from "../../img//png_image_notListFound.png";
 import { useHistory } from "react-router-dom";
 
-
-
-
 export default function AnimeDetail () {
 
     const {idAnime}:{idAnime:string} = useParams();
@@ -162,7 +159,7 @@ export default function AnimeDetail () {
                                     {
                                         allListsFromUser.length ? allListsFromUser.map((list: any, key) => {
                                             return (
-                                                <div className={style["lisComponent_style"]} onClick={() => toggleAddAnimeList(list.id)}>
+                                                <div className={style["lisComponent_style"]} onClick={() => toggleAddAnimeList(list.id)} key={key}>
                                                     <ListComponent showOptions={false} props={list} key={key}/>
                                                 </div>
                                             )
@@ -222,10 +219,10 @@ export default function AnimeDetail () {
                 {!isError(episodes) ?
                 <div className={style['episodes']}>
                   
-                  {episodes.map((episode:Episode) => {
+                  {episodes.map((episode:Episode, i) => {
                       return(
                         <Link to ={{pathname: `/watch/${idAnime}/${episode.id}`,
-                        state: {episode}}}>
+                        state: {episode}}} key={i}>
                             
                             <div className={style['episode']} key={episode.id}>
                                 <div className={style['episode-header']}>

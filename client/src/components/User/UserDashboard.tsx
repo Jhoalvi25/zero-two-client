@@ -18,8 +18,8 @@ import {  useAppSelector } from "../../redux/hooks";
 import { useParams } from "react-router-dom";
 import MyList from "./Options/MyList";
 import User from "./Options/User";
-import Plan from "./Options/Plan";
-import Achievements from "./Options/Achievements";
+
+
 // import Admin from "../AdminPage/Admin";
 // import ListDetail from "./Options/ListDetail";
 
@@ -35,23 +35,23 @@ export default function UserDashboard(): JSX.Element {
   // const emailUser = user?.email ? user?.email : '';
   const userLog = useAppSelector(state => state.user);
   
-  console.log('ESTO ES USERLOG', userLog)
+  
 
 
   if (!regularToken || !userLog) {
-    console.log('r', regularToken, 'u', userLog)
+
     history.push('/login')
   }
 
 
-  console.log('PROFILE', regularToken, userLog);
+
   return (
     <div className={style["user"]}>
       <UserNav {...userLog} />
       <div className={style["user-content"]}>
         <HeaderUser />
         <div className={style["welcome"]}>
-          <h2 className={style["hola"]}>Hi Juan!</h2>
+          <h2 className={style["hola"]}>Hi {userLog.nickname}</h2>
           <span className={style["question"]}>What' do we have today?</span>
         </div>
         {
@@ -59,11 +59,7 @@ export default function UserDashboard(): JSX.Element {
             <MyList />
           ) : options === 'user' ? (
             <User />
-          ) : options === 'plan' ? (
-            <Plan />
-          ) : options === 'achiviements' ? (
-            <Achievements />
-          ) : null
+          )  : null
         }
       </div>
     </div>

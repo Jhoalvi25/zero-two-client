@@ -6,6 +6,7 @@ import validationSchema from "./validations/validationRegister";
 import { useAppDispatch } from "../../redux/hooks";
 import { registerUser } from "../../redux/actions";
 import sideAnimeImg from '../../img/animeImg1.png'
+import { useHistory } from "react-router-dom";
 interface FormValues {
   nickname: string;
   age: number;
@@ -15,7 +16,7 @@ interface FormValues {
 }
 export default function Register(): JSX.Element {
   const dispatch = useAppDispatch();
-
+  const history = useHistory();
   const initialValues: FormValues = {
     nickname: "",
     age: 0,
@@ -23,7 +24,7 @@ export default function Register(): JSX.Element {
     password: "",
     confirmPassword: "",
   };
-
+  const [isLoading, setIsLoading] = useState(false);
   const [user, setUser] = useState(initialValues);
   const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
 
@@ -34,15 +35,31 @@ export default function Register(): JSX.Element {
   }
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    dispatch(registerUser(user));
-    alert('Check your email for account verification!')
-    setUser({
-      nickname: "",
-      age: 0,
-      email: "",
-      password: "",
-      confirmPassword: "",
-    })
+    setIsLoading(true);
+    dispatch(registerUser(user)).then(val => {
+      setIsLoading(false)
+      alert('Check your email for account verification!')
+      setUser({
+        nickname: "",
+        age: 0,
+        email: "",
+        password: "",
+        confirmPassword: "",
+      })
+      history.push('/login');
+      
+    }).catch(err => {
+      setIsLoading(false);
+      alert('An error has ocurred')
+      setUser({
+        nickname: "",
+        age: 0,
+        email: "",
+        password: "",
+        confirmPassword: "",
+      })
+    });
+
     // No se esta seteando correctamente los inputs a su valor inicial
     // CHEQUEAR QUE FUNCIONE
   };
@@ -123,7 +140,7 @@ export default function Register(): JSX.Element {
             component="span"
             className={style["form__error"]}
           />
-          <button type="submit" className={style["signup-btn"]}>
+          <button type="submit" className={style["signup-btn"]} disabled={isLoading ? true: false}>
             Sign up
           </button>
           <p style={{marginBottom: '2em'}}> 

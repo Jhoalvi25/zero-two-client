@@ -3,11 +3,13 @@
   background-size: cover;
   background-position: center center;
   height: 150vh;
+  color: var(--main-color-font-dark);
 }
 
 .background h2 {
   padding-top: 140px;
   font-size: 30px;
+
 }
 
 .background p {

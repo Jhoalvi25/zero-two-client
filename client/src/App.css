@@ -31,6 +31,9 @@
   text-align: center;
   font-family: 'Ubuntu', sans-serif;
   background-color: var(--main-bg-color-light);
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .App-logo {
@@ -58,10 +61,10 @@
 .App-link {
   color: #61dafb;
 }
-body {
+/* body {
   margin-top: 65px;
   margin-bottom: 270px;
-}
+} */
 
 @keyframes App-logo-spin {
   from {

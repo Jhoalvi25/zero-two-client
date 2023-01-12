@@ -21,7 +21,7 @@ export interface FilterParams {
 export const AnimeList = () => {
 
   const {option} = useParams();
-  // console.log(option)
+
  
 
   const animes = useAppSelector((state) => state['animes']);

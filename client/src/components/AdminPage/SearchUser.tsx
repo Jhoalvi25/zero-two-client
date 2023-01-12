@@ -16,7 +16,7 @@ export const SearchUser = ({setUserTarget}: any)=> {
   function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
     let nameValue = e.target.value;
     const newName = {name: nameValue};
-    // console.log('NAME' , nameValue)
+
 
     dispatch(searchUsers(nameValue)).then((users:any) => {
       setUsers(users.data)
@@ -44,7 +44,7 @@ export const SearchUser = ({setUserTarget}: any)=> {
   }
   
 
-//  console.log(users)
+
   return (
     <div className={style['search-user-container']}>
 

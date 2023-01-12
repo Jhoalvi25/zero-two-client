@@ -41,8 +41,9 @@
   height: 0px;
   opacity: 0;
   overflow: hidden;
-  width: 8em;
+  width: 10em;
   transition: all ease .5s;
+  font-weight: 400;
 }
 
 .nav-dropdown.isActive{

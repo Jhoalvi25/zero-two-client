@@ -2,13 +2,13 @@
     font-weight: 400 !important;
     margin-top: 8em;
     height: 270px;
-    position: absolute;
     width: 100%;
     display: flex;
     flex-direction: column;
     font-size: 14px;
     background-color: var(--main-color-font-dark);
-    color: rgba(255, 255, 255, 0.59)
+    color: rgba(255, 255, 255, 0.59);
+    justify-self: flex-end;
 }
 
 .footer svg {

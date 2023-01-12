@@ -6,7 +6,7 @@ export default function DispositiveSection(): JSX.Element {
       <h2>Watch anytime, anywhere</h2>
       <p>By choosing your premium plan, you can watch anime from any device, <br /> cell phone, tablet and television.</p>
       <a href="#planCards">
-        <button className={style["plan"]}>VIEW PREMIUM PLANS</button>
+        <button className={style["plan"]}>View premium plans</button>
       </a>
     </div>
   );

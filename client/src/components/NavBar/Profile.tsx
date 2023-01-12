@@ -19,7 +19,7 @@ export default function Profile(): JSX.Element | null {
   const getToken = useCallback( async () => {
     const accesToken = await getAccessTokenSilently();
     dispatch(getUserResourceWithGoogle(accesToken, emailUser)).then(val => {
-      console.log('GOOGLE', val)
+     
       setUserLog(val)
     });
    
@@ -28,20 +28,19 @@ export default function Profile(): JSX.Element | null {
   useEffect(() => {
     getToken();
     dispatch(getUserResource(regularToken ? regularToken : '')).then(val => {
-      console.log('us', val)
       setUserLog(val)
     })
   }, [getToken, dispatch, regularToken]);
-  console.log(userLog)
+  
 
 
   if (!regularToken || !userLog) {
-    console.log('r', regularToken, 'u', userLog)
+  
     history.push('/login')
   }
 
 
-  console.log('PROFILE', regularToken, userLog);
+
   return (
     <div>
       {userLog?.rol === "Admin" && 

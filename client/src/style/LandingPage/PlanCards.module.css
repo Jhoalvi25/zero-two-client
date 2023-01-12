@@ -3,28 +3,36 @@
   height: fit-content;
   margin: 50px;
   padding: 50px;
-  background-color: var(--secondary-color-content-3);
+  background-color: var(--main-color-content);
+  color: var(--main-color-font-dark);
   width: 280px;
   height: 280px;
-  box-shadow: 7px 7px 0px var(--main-color-font-dark);
+  box-shadow: 0px 7px 2px var(--main-color-font-dark);
+  flex: 1;
+  height: auto;
 }
 
 .title h1 {
   padding-top: 80px;
   background-color: var(--main-bg-color-light);
+  color: var(--main-color-font-dark);
 }
 
 .back {
   background-color: var(--main-bg-color-light);
   display: flex;
+
 }
 
 .cardPlan ul {
   list-style: none;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
 }
 
 .cardPlan ul li{
-    color: var(--main-bg-color-light);
     font-size: 15px;
 }
 
@@ -32,14 +40,11 @@
 
 .cardPlan ul li:before {
   content: "✓";
-  color: greenyellow;
+  color: rebeccapurple;
   margin-right: 5px;
 }
 
-.cardPlan h2 {
-  font-size: 20px;
-  color: var(--main-bg-color-light);
-}
+
 
 .btn {
   margin: 10px;

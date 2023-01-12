@@ -17,17 +17,9 @@ export default function UserNav(userLog?: UserInterface) {
           <span className={style["line"]}></span>User
         </Link>
 
-        <Link to="/profile/plan">
-          <span className={style["line"]}></span>Plan
-        </Link>
-
-        <Link to="/profile/achiviements">
-          {" "}
-          <span className={style["line"]}></span>Achiviements
-        </Link>
         {userLog?.rol === "Admin" && 
         <Link to="/admin">
-        {" "}
+ 
         <span className={style["line"]}></span>Admin Dashboard
       </Link>
       }

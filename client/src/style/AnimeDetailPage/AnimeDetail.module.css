@@ -1,5 +1,4 @@
 .animeDetail {
-    margin-top: 50px;
     text-align: left;
     min-height: 100vh;
     color: var(--main-color-font-dark);
@@ -236,9 +235,7 @@ body.active-modal {
     color: var(--main-color-font-dark);
 }
 
-.div-buttons{
 
-}
 
 .form-button-submit{
     width: 8em;

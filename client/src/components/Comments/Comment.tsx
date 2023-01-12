@@ -1,6 +1,5 @@
 import { CommentInterface} from "../../types/types";
 import style from '../../style/Comments/Comment.module.css';
-import defaultImg from '../../img/vecteezy_mask-kitsune-illustration-with-fire-black-and-white_6633452.jpg';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp, faReply, faMinus, faChevronDown, faTrashCan, faPenToSquare, faCheck, faX  } from "@fortawesome/free-solid-svg-icons";
 import React, {  useState } from "react";
@@ -116,16 +115,16 @@ export default function Comment ({id, replyingTo, content, rating, likes, spoile
             <div className={style['comment-header']}>
                 <div className={style['comment-user']}>
                     <div className={style['image-container']}>
-                        <img src={`${!user.profileImg ? defaultImg : user.profileImg }`}
+                        <img src={`${actualUser.image}`}
                         alt="user" className={style['user-img']}/>
                     </div>
                     <div className={style['user-info']}>
                         <span className={style['user-info-name']}>
-                            {user.nickname}
+                            {actualUser.nickname}
                         </span>
                         <span className={style['user-info-plan']}>
-                            {user.plan ==='none' ? 'regular': user.plan=='1' ? 'Genin':
-                            user.plan ==='2' ? 'Chuunin': 'Jounin'}
+                            {actualUser.plan ==='none' ? 'regular': actualUser.plan==='1' ? 'Genin':
+                            actualUser.plan ==='2' ? 'Chuunin': 'Jounin'}
                         </span>
                     </div>
                 </div>

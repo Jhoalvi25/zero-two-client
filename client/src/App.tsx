@@ -27,7 +27,7 @@ import UserDashboard from "./components/User/UserDashboard";
 import MyList from "./components/User/Options/MyList";
 import ListDetail from "./components/User/Options/ListDetail";
 import User from "./components/User/Options/User";
-import Plan from "./components/User/Options/Plan";
+
 import Achievements from "./components/User/Options/Achievements";
 
 
@@ -35,7 +35,7 @@ const App: React.FC = () =>  {
   const dispatch = useAppDispatch();
 
   const { isLoading, getAccessTokenSilently, user } = useAuth0();
-  const regularToken = window.localStorage.getItem('token');
+  // const regularToken = window.localStorage.getItem('token');
   const emailUser = user?.email ? user?.email : '';
 
   const getRegularToken = useCallback(async () => {
@@ -60,7 +60,7 @@ const App: React.FC = () =>  {
     getRegularToken();
   }, [getRegularToken, getUserInfo, getToken, dispatch]);
 
-  console.log('esto es regulartoken: ', regularToken)
+
 
   if (isLoading) {
     return (
@@ -93,7 +93,7 @@ const App: React.FC = () =>  {
           <Route exact path="/profile/list" component={MyList} />
           <Route exact path="/profile/list/:id" component={ListDetail} />
           <Route exact path="/profile/user" component={User} />
-          <Route exact path="/profile/plan" component={Plan} />
+
           <Route exact path="/profile/achiviements" component={Achievements} />
           <Route exact path="/profile/admin" component={Admin} />
 

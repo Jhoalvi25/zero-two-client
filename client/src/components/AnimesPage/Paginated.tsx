@@ -10,7 +10,7 @@ interface PaginationType {
 }
 export default function Pagination({ totalPages, search, page}:PaginationType) {
   const location = useLocation();
-//   console.log(location.pathname)
+
   page = Number(page)
 
   let pagesToShow = ()=> {

@@ -1,54 +1,52 @@
 import style from "../../style/LandingPage/PlanCards.module.css";
-import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { useAppSelector, useAppDispatch } from "../../redux/hooks";
-import {
-  createPaymentGenin,
-  createPaymentChuunin,
-  createPaymentJounin,
-} from "../../redux/actions/index";
-import { useRef } from "react";
-import { useHistory } from "react-router-dom";
+// import { useAppDispatch } from "../../redux/hooks";
+// import {
+//   createPaymentGenin,
+//   createPaymentChuunin,
+//   createPaymentJounin,
+// } from "../../redux/actions/index";
+// import { useRef } from "react";
+// import { useHistory } from "react-router-dom";
 
 export default function PlanCards(): JSX.Element {
-  const scrollCard = useRef();
-  let userDB = useAppSelector((state) => state["user"]);
-  let dispatch = useAppDispatch();
-  let history = useHistory();
+  // const scrollCard = useRef();
+  // let userDB = useAppSelector((state) => state["user"]);
+  // let dispatch = useAppDispatch();
+  // let history = useHistory();
 
   // useEffect(() => {}, [dispatch, user]);
 
-  const handleSubmitGenin = async () => {
-    try {
-      await dispatch(createPaymentGenin()).then((val: any) => {
-        window.location.href = val.data.data;
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const handleSubmitGenin = async () => {
+  //   try {
+  //     await dispatch(createPaymentGenin()).then((val: any) => {
+  //       window.location.href = val.data.data;
+  //     });
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
-  const handleSubmitChuunin = async () => {
-    try {
-      await dispatch(createPaymentChuunin()).then((val: any) => {
-        console.log(val, "chuunin");
-        window.location.href = val.data.data;
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const handleSubmitChuunin = async () => {
+  //   try {
+  //     await dispatch(createPaymentChuunin()).then((val: any) => {
+     
+  //       window.location.href = val.data.data;
+  //     });
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
-  const handleSubmitJounin = async () => {
-    try {
-      await dispatch(createPaymentJounin()).then((val: any) => {
-        console.log("jouninnn", val)
-        window.location.href = val.data.data;
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const handleSubmitJounin = async () => {
+  //   try {
+  //     await dispatch(createPaymentJounin()).then((val: any) => {
+        
+  //       window.location.href = val.data.data;
+  //     });
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   return (
     <div id="planCards" className={style["title"]}>
@@ -57,9 +55,9 @@ export default function PlanCards(): JSX.Element {
         <div className={style["cardPlan"]}>
           <h2>GENIN-PLAN</h2>
 
-          <button className={style["btn"]} onClick={handleSubmitGenin}>
+          {/* <button className={style["btn"]} onClick={handleSubmitGenin}>
             VIP
-          </button>
+          </button> */}
 
           <h3>1.50 USD</h3>
           <ul>
@@ -71,10 +69,10 @@ export default function PlanCards(): JSX.Element {
         </div>
         <div className={style["cardPlan"]}>
           <h2>CHUUNIN-PLAN(1-Month)</h2>
-
+{/* 
           <button className={style["btn"]} onClick={handleSubmitChuunin}>
             VIP
-          </button>
+          </button> */}
 
           <h3>3.00 USD</h3>
           <ul>
@@ -88,9 +86,9 @@ export default function PlanCards(): JSX.Element {
         <div className={style["cardPlan"]}>
           <h2>JOUNIN-PLAN(1-Year)</h2>
 
-          <button className={style["btn"]} onClick={handleSubmitJounin}>
+          {/* <button className={style["btn"]} onClick={handleSubmitJounin}>
             VIP
-          </button>
+          </button> */}
 
           <h3>36.00 USD</h3>
           <ul>

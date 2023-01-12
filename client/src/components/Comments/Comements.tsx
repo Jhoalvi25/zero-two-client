@@ -24,7 +24,7 @@ export default function Comments () {
         dispatch(postComment(post, idEpisode)).then((val) => {
             dispatch(getEpisodeComments(idEpisode))
         })
-        // alert(JSON.stringify(post))
+
         setPost({   
             "nickname": '',
             "content": '',
@@ -40,7 +40,7 @@ export default function Comments () {
         newPost.nickname = user.nickname;
         setPost(newPost);
     }
-    console.log(user)
+    
     useEffect(()=> {
         dispatch(getEpisodeComments(idEpisode))
      

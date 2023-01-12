@@ -43,33 +43,15 @@ export default function Admin(): JSX.Element {
       user: userTarget.email,
       action: action
     };
-    alert(JSON.stringify(options))
+
     dispatch(adminActions(options)).then(val => {
-      console.log('VAL', val)
       setUserTarget(()=> val)
       
+    }).catch(err => {
+      alert('Invalid action')
     });
   }
-  // const getToken = useCallback(async () => {
-  //   const accesToken = await getAccessTokenSilently();
-  //   if (user?.email) {
-  //     dispatch(getUserResourceWithGoogle(accesToken, user.email)).then(val => {
-  //     console.log('GOOGLE', val)
-  //     setAdmin(val)
-  //   });
-  //   dispatch(getUserResource(regularToken ? regularToken : '')).then(val => {
-  //     console.log('us', val)
-  //     setAdmin(val)
 
-  //   })
-  //   }
-  // },[getAccessTokenSilently, dispatch, user?.email, regularToken]);
-
-  // console.log('USER TARGET', userTarget)
-  // // useEffect(() => {
-  // //   getToken();
-  // // }, [getToken]);
-  // console.log(userTarget)
   if (!adminAccount) {
     return (<NotFound />)
   }

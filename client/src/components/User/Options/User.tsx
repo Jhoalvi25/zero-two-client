@@ -28,7 +28,7 @@ export default function User() {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     dispatch(changeUserSettings(user.id, UserSettings)).then(()=> alert('Settings saved successfully'))
-    alert(JSON.stringify(UserSettings))
+ 
   }
   return (
     <>

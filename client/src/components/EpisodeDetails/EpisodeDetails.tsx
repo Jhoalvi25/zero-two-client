@@ -4,7 +4,7 @@ import { getAnimeEpisode } from '../../redux/actions';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import style from '../../style/EpisodeDetails/EpisodeDetails.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlay, faStar } from '@fortawesome/free-solid-svg-icons';
+import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import Comments from '../Comments/Comements';
 
 export default function EpisodeDetails () {
@@ -16,8 +16,9 @@ export default function EpisodeDetails () {
     useEffect(()=> {
         dispatch(getAnimeEpisode(idAnime, idEpisode))
     },[dispatch, idEpisode, idAnime])
-    // console.log(episode)
+
     return(
+
         <div className={style['episode-container']}>
 
             <div className={style['episode-video']} 
@@ -36,15 +37,9 @@ export default function EpisodeDetails () {
                             <span className={style['episode-info-tag']}>Length: {episode.length} min</span>
                         </div>
                     </div>
-                    <div className={style['episode-header-interaction']}>
-                        <div className={style['episode-addList']}>
-                            <span>Add to favorites</span>
-                            <FontAwesomeIcon icon={faStar} />
-                        </div>
-                    </div>
                 </div>
                 <h2>Description</h2>
-                <p style={{opacity: '.7'}}>{episode.synopsis}</p>
+                <p style={{opacity: '.7'}}>{episode.synopsis ? episode.synopsis : 'The anime does not have a description'}</p>
             </div>
 
             {/* <div className={style['comments-container']}>

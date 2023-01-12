@@ -7,11 +7,10 @@ export default function parseQuery(
   type: string,
   subType?: string | undefined
 ) {
-  // console.log('PARAMS LENGTH', params.length)
-  // console.log('params', params)
+
   query = new URLSearchParams(query);
 
-  // console.log('PARAM', params)
+
   if (type === "filters") {
     if (paramValue.length) {
       paramValue =
@@ -42,7 +41,7 @@ export default function parseQuery(
       query.set("page", "1");
       query = query.toString();
       query = decodeURIComponent(query);
-      // console.log(query)
+
       return query;
     } else {
       query.delete(paramName);
@@ -68,7 +67,7 @@ export default function parseQuery(
       return query;
     }
   } else {
-    // console.log('g', query)
+
     query = query.toString();
     query = decodeURIComponent(query);
     return query;
