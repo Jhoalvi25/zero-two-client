@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+.cardInformative {
+    box-sizing: border-box;
+    backdrop-filter: blur(6px);
+    background-color: var(--main-bg-color-light);
+    min-width: 380px;
+    height: 100%;
+    display: flex;
+    font-size: 16px;
+    font-family: 'Ubuntu', sans-serif;
+    box-shadow: 1px 1px var(--secondary-color-content-1);
+    max-height: 300px;
+    color: var(--main-color-font-dark);
+    overflow: hidden;
+}
+.cardInformative > div {
+    width: 50%;
+}
+
+.cardInformative-first {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    height: 100%;
+    width: 60%;
+}
+.cardInformative a {
+    color: var(--main-color-font-dark);
+
+}
+
+.cardInformative-first .about {
+    padding: 1em;
+    height: fit-content;
+    height: 20%;
+    vertical-align: middle;
+    background-color: var(--secondary-color-content-1);
+}
+
+
+.cardInformative-image-container {
+    width: 100%;
+    height: 80%;
+   
+}
+
+.cardInformative-image-container .anime-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cardInformative-second {
+    padding: 1em;
+    text-align: left;
+    font-weight: 500;
+    height: auto;
+    width: 40%;
+
+}
+.cardInformative-second > * {
+    margin-bottom: 1em;
+}
+
+.description {
+    opacity: .9;
+    width: 100%;
+    line-height: 1.5;
+}
+.date {
+    font-size: 14px;
+}
+.read-more {
+    /* color: rgba(255, 255, 255, 0.685) !important; */
+    color: var(--main-color-font-dark) !important;
+    opacity: .5;
+}
+
+.tags{
+    margin-top: 20px;
+}
